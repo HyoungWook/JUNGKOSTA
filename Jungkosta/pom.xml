@@ -13,8 +13,9 @@
 		<org.aspectj-version>1.6.10</org.aspectj-version>
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 	</properties>
-	   <!-- commons-fileupload -->
-	<dependencies>   
+	<dependencies>
+
+      <!-- commons-fileupload -->
       <dependency>
          <groupId>commons-fileupload</groupId>
          <artifactId>commons-fileupload</artifactId>
@@ -42,13 +43,12 @@
          <version>1.5.4</version>
       </dependency>
 
-	<!-- https://mvnrepository.com/artifact/org.springframework/spring-tx -->
-	<dependency>
+      <!--spring-tx -->
+      <dependency>
          <groupId>org.springframework</groupId>
          <artifactId>spring-tx</artifactId>
          <version>${org.springframework-version}</version>
       </dependency>
-
 
       <!-- spring-aop -->
       <dependency>
@@ -201,6 +201,7 @@
          <artifactId>spring-test</artifactId>
          <version>${org.springframework-version}</version>
       </dependency>
+
    </dependencies>
     <build>
         <plugins>
