@@ -5,9 +5,9 @@
 <configuration>
 
   <typeAliases>
-    <package name="jungkosta.trade.domain"/> <!-- domain 패키지 안의 클래스들이 typealias로 잡힘 -->
-    <!-- <package name="jungkosta.main.domain"/>
-    <package name="jungkosta.auction.domain"/> -->
+    <package name="jungkosta.main.domain"/>
+    <package name="jungkosta.trade.domain"/>
+    <package name="jungkosta.auction.domain"/>
   </typeAliases>
 
 
