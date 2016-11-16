@@ -16,6 +16,8 @@
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	 <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
    
+   
+   
    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
       <property name="dataSource" ref="dataSource"/>
    </bean>
@@ -31,7 +33,7 @@
    
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"/>
-		<property name="mapperLocations" value="classpath:mappers.*/*Mapper.xml"/>
+		<property name="mapperLocations" value="classpath:mappers/**/*Mapper.xml"/>
 		<property name="configLocation" value="classpath:/mybatis-config.xml"></property>
 	</bean>
    
@@ -39,4 +41,9 @@
       <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"/>
    </bean>	
 	
+	<!-- service -->
+	<context:component-scan base-package="jungkosta.trade.service"/>
+	
+	<!-- dao -->
+	<context:component-scan base-package="jungkosta.trade.persistence"/>
 </beans>
