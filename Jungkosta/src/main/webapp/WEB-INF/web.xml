@@ -13,22 +13,6 @@
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
-
-	<!-- Processes application requests -->
-	<servlet>
-		<servlet-name>appServlet</servlet-name>
-		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-		<init-param>
-			<param-name>contextConfigLocation</param-name>
-			<param-value>/WEB-INF/spring/appServlet/servlet-context.xml</param-value>
-		</init-param>
-		<load-on-startup>4</load-on-startup>
-	</servlet>
-		
-	<servlet-mapping>
-		<servlet-name>appServlet</servlet-name>
-		<url-pattern>/</url-pattern>
-	</servlet-mapping>
 	
 	<!-- 메인서블릿 -->
 	<servlet>
@@ -43,7 +27,7 @@
 	
 	<servlet-mapping>
 		<servlet-name>mainServlet</servlet-name>
-		<url-pattern>/Jungkosta</url-pattern>
+		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 	
 	<!-- 거래 서블릿 -->
@@ -59,7 +43,7 @@
 	
 	<servlet-mapping>
 		<servlet-name>tradeServlet</servlet-name>
-		<url-pattern>/Jungkosta/trade</url-pattern>
+		<url-pattern>/trade/*</url-pattern>
 	</servlet-mapping>
 	
 	<!-- 경매 서블릿 -->
@@ -75,7 +59,7 @@
 	
 	<servlet-mapping>
 		<servlet-name>auctionServlet</servlet-name>
-		<url-pattern>/Jungkosta/auction</url-pattern>
+		<url-pattern>/auction/*</url-pattern>
 	</servlet-mapping>
 	
 	<filter>
