@@ -35,6 +35,8 @@ public class TradeController {
 		System.out.println(salevo);
 		model.addAttribute("list", service.listSale());
 		
-
+	}
+	@RequestMapping(value = "/tradeOrder", method=RequestMethod.GET)
+	public void tradeOrder() throws Exception{
 	}
 }
