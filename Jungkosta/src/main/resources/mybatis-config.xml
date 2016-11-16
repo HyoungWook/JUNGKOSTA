@@ -5,9 +5,10 @@
 <configuration>
 
   <typeAliases>
-    <package name="jungkosta.main.domain"/>
+
     <package name="jungkosta.trade.domain"/>
     <package name="jungkosta.auction.domain"/>
+    <package name="jungkosta.main.domain"/> 
   </typeAliases>
 
 
