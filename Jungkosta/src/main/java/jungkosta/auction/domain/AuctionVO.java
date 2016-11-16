@@ -1,42 +1,41 @@
 package jungkosta.auction.domain;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
-public class AuctionVO {
+public class AuctionVO implements Serializable{
 
-	private int autcion_id;
+	private int auction_id;
 	private int auction_stcost;
-	private int immediate_bid_cost;
+	private int immediate_bid;
 	private Timestamp register_date;
 	private Timestamp auction_end_date;
 	private String auction_end_status;
-	private int sale_id;
 
+	private int sale_id;
 	private String item_name;
+	private int item_cost;
 	private Timestamp buy_time;
 	private String item_status;
 	private String item_scratch;
 	private String additional_info;
 	private String buy_info;
 	private Timestamp sale_date;
+	private String email;
+	private int subca_id;
+	private char flag;
+	private String sale_status;
 	private String item_pic1;
 	private String item_pic2;
 	private String item_pic3;
 	private String item_pic4;
-	private String email;
-	private int item_cost;
-	private int subca_id;
 
-
-
-	private String flag;
-
-	public int getAutcion_id() {
-		return autcion_id;
+	public int getAuction_id() {
+		return auction_id;
 	}
 
-	public void setAutcion_id(int autcion_id) {
-		this.autcion_id = autcion_id;
+	public void setAuction_id(int auction_id) {
+		this.auction_id = auction_id;
 	}
 
 	public int getAuction_stcost() {
@@ -47,12 +46,12 @@ public class AuctionVO {
 		this.auction_stcost = auction_stcost;
 	}
 
-	public int getImmediate_bid_cost() {
-		return immediate_bid_cost;
+	public int getImmediate_bid() {
+		return immediate_bid;
 	}
 
-	public void setImmediate_bid_cost(int immediate_bid_cost) {
-		this.immediate_bid_cost = immediate_bid_cost;
+	public void setImmediate_bid(int immediate_bid) {
+		this.immediate_bid = immediate_bid;
 	}
 
 	public Timestamp getRegister_date() {
@@ -93,6 +92,14 @@ public class AuctionVO {
 
 	public void setItem_name(String item_name) {
 		this.item_name = item_name;
+	}
+
+	public int getItem_cost() {
+		return item_cost;
+	}
+
+	public void setItem_cost(int item_cost) {
+		this.item_cost = item_cost;
 	}
 
 	public Timestamp getBuy_time() {
@@ -151,14 +158,6 @@ public class AuctionVO {
 		this.email = email;
 	}
 
-	public int getItem_cost() {
-		return item_cost;
-	}
-
-	public void setItem_cost(int item_cost) {
-		this.item_cost = item_cost;
-	}
-
 	public int getSubca_id() {
 		return subca_id;
 	}
@@ -167,12 +166,20 @@ public class AuctionVO {
 		this.subca_id = subca_id;
 	}
 
-	public String getFlag() {
+	public char getFlag() {
 		return flag;
 	}
 
-	public void setFlag(String flag) {
+	public void setFlag(char flag) {
 		this.flag = flag;
+	}
+
+	public String getSale_status() {
+		return sale_status;
+	}
+
+	public void setSale_status(String sale_status) {
+		this.sale_status = sale_status;
 	}
 
 	public String getItem_pic1() {
@@ -209,19 +216,14 @@ public class AuctionVO {
 
 	@Override
 	public String toString() {
-		return "AuctionVO [autcion_id=" + autcion_id + ", auction_stcost=" + auction_stcost + ", immediate_bid_cost="
-				+ immediate_bid_cost + ", register_date=" + register_date + ", auction_end_date=" + auction_end_date
+		return "AuctionVO [auction_id=" + auction_id + ", auction_stcost=" + auction_stcost + ", immediate_bid="
+				+ immediate_bid + ", register_date=" + register_date + ", auction_end_date=" + auction_end_date
 				+ ", auction_end_status=" + auction_end_status + ", sale_id=" + sale_id + ", item_name=" + item_name
-				+ ", buy_time=" + buy_time + ", item_status=" + item_status + ", item_scratch=" + item_scratch
-				+ ", additional_info=" + additional_info + ", buy_info=" + buy_info + ", sale_date=" + sale_date
-				+ ", item_pic1=" + item_pic1 + ", item_pic2=" + item_pic2 + ", item_pic3=" + item_pic3 + ", item_pic4="
-				+ item_pic4 + ", email=" + email + ", item_cost=" + item_cost + ", subca_id=" + subca_id
-				 + ", flag=" + flag + "]";
+				+ ", item_cost=" + item_cost + ", buy_time=" + buy_time + ", item_status=" + item_status
+				+ ", item_scratch=" + item_scratch + ", additional_info=" + additional_info + ", buy_info=" + buy_info
+				+ ", sale_date=" + sale_date + ", email=" + email + ", subca_id=" + subca_id + ", flag=" + flag
+				+ ", sale_status=" + sale_status + ", item_pic1=" + item_pic1 + ", item_pic2=" + item_pic2
+				+ ", item_pic3=" + item_pic3 + ", item_pic4=" + item_pic4 + "]";
 	}
 
-
-
-	
-
 }
-

@@ -35,8 +35,7 @@ public class AuctionDAOImpl implements AuctionDAO {
 	}
 	@Override
 	public Integer selectAuction_id() throws Exception {
-		sqlSession.selectOne()
-		return null;
+		/*sqlSession.selectOne()
 		
 		try {
 			if (sqlSession.select != null) {
@@ -46,7 +45,9 @@ public class AuctionDAOImpl implements AuctionDAO {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			return 0;
+			return 0;*/
+		
+		return null;
 	}
 
 	@Override
