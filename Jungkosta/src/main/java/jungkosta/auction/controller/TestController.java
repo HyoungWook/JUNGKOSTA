@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 
 @Controller
-@RequestMapping("/Jungkosta/auction/*")
 public class TestController {
    
    private static final Logger logger = LoggerFactory.getLogger(TestController.class);
