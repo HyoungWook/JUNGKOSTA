@@ -4,20 +4,47 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
+
+<link href="./resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="./resources/auction/css/auction_add_lsj.css" rel="stylesheet">
+
+<title>경매물품 등록</title>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="./resources/auction/js/main.js"></script>
+<script type="text/javascript" src="./resources/auction/js/category.js"></script>
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+<script src="./resources/auction/js/valid_check_lsj.js"></script>
+
+<style>
+.input_error_phw {
+	display: none;
+}
+
+.fileDrop {
+  width: 80%;
+  height: 100px;
+  border: 1px dotted gray;
+  background-color: lightslategrey;
+  margin: auto;
+  
+}
+</style>
 </head>
 <body>
 	<br />
 	<br />
 	<br />
-	
-	<!-- <script src="./js/date.js"></script> -->
+
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script src="./resources/auction/js/date.js"></script>
 
 	<span id="top_lsj">경매 물품 등록</span>
 
 	<div class="container">
-		<form action="insertAuctionProc.jsp" method="post"
-			enctype="multipart/form-data" id="add_btn">
+		<form action="auctionRegister" method="post" enctype="multipart/form-data">
 			
 			<input type="hidden" name="flag" value="1">
 
@@ -126,32 +153,9 @@
 
 					<div id="list_title_lsj">상품의 이미지를 올려주세요.</div>
 					<br />
-
 					<div class="form-group">
-
-						<input id="fileInput" type="file"
-							data-class-button="btn btn-default"
-							data-class-input="form-control" data-button-text=""
-							data-icon-name="fa fa-upload" class="form-control" tabindex="-1"
-							style="position: absolute; clip: rect(0px, 0px, 0px, 0px);"
-							name="item_pic">
-
-						<div class="bootstrap-filestyle input-group">
-
-							<input type="text" id="userfile" class="form-control"
-								style="z-index: 1;" name="userfile" disabled="disabled"
-								name="item_pic"> <span
-								class="group-span-filestyle input-group-btn" tabindex="0">
-
-								<label for="fileInput" class="btn btn-info "> <span
-									class="glyphicon fa fa-upload">업로드</span>
-
-							</label>
-
-							</span>
-
-						</div>
-
+<!-- 						<label for="exampleInputEmail1">File DROP Here</label> -->
+						<div class="fileDrop"></div>
 					</div>
 					<br /> <br />
 					<div id="list_title_lsj">경매 종료날짜를 입력해 주세요.</div>
