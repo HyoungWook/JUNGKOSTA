@@ -7,6 +7,14 @@
 	</configSuffixes>
 	<enableImports><![CDATA[true]]></enableImports>
 	<configs>
+<<<<<<< HEAD
+	</configs>
+	<autoconfigs>
+		<config>src/main/webapp/WEB-INF/spring/auctionServlet/auction-context.xml</config>
+		<config>src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml</config>
+		<config>src/main/webapp/WEB-INF/spring/root-context.xml</config>
+		<config>src/main/webapp/WEB-INF/spring/mainServlet/main-context.xml</config>
+=======
 		<config>src/main/webapp/WEB-INF/spring/auctionServlet/auctionServlet-context.xml</config>
 		<config>src/main/webapp/WEB-INF/spring/mainServlet/mainServlet-context.xml</config>
 		<config>src/main/webapp/WEB-INF/spring/tradeServlet/tradeServlet-context.xml</config>
@@ -14,6 +22,7 @@
 	<autoconfigs>
 		<config>src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml</config>
 		<config>src/main/webapp/WEB-INF/spring/root-context.xml</config>
+>>>>>>> branch 'master' of https://github.com/HyoungWook/JUNGKOSTA.git
 	</autoconfigs>
 	<configSets>
 	</configSets>
