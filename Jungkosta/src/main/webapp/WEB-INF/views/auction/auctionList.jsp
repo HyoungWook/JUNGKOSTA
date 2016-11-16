@@ -5,8 +5,10 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <!-- bootstrap -->
-<link href="/Jungkosta/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<link href="/Jungkosta/resources/bootstrap/css/kfonts2.css" rel="stylesheet">
+<link href="/Jungkosta/resources/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet">
+<link href="/Jungkosta/resources/bootstrap/css/kfonts2.css"
+	rel="stylesheet">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="/Jungkosta/resources/bootstrap/js/bootstrap.min.js"></script>
@@ -198,6 +200,7 @@
 				<c:forEach var="temp" items="${ listAuction}" varStatus="index">
 					<div class="col-md-3 item_info_phw"
 						onclick="sendDetail(${temp.sale_id})">
+
 						<br> <b>무료배송</b> <img id="icon_auc_phw" alt=""
 							src="/Jungkosta/resources/auction/images/icon_auc.png">
 

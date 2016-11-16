@@ -6,7 +6,7 @@ $(function() {
 });
 
 function sendDetail(id) {
-	location.href = "Auction_detail_phw.jsp?sale_id=" + id;
+	location.href = "/Jungkosta/auction/auctionDetail?sale_id=" + id;
 }
 
 function successHandler(data) {

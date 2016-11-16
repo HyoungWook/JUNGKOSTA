@@ -2,12 +2,15 @@ package jungkosta.auction.domain;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.Date;
 
-public class AuctionVO implements Serializable{
+public class AuctionVO implements Serializable {
 
-	private int auction_id;
+	//현우가 살짝 고침 전체 복사 바람
+	
+	private int autcion_id;
 	private int auction_stcost;
-	private int immediate_bid;
+	private int immediate_bid_cost;
 	private Timestamp register_date;
 	private Timestamp auction_end_date;
 	private String auction_end_status;
@@ -23,19 +26,19 @@ public class AuctionVO implements Serializable{
 	private Timestamp sale_date;
 	private String email;
 	private int subca_id;
-	private char flag;
-	private String sale_status;
+	private String flag = "1";
+	private String sale_status = "false";
 	private String item_pic1;
 	private String item_pic2;
 	private String item_pic3;
 	private String item_pic4;
 
-	public int getAuction_id() {
-		return auction_id;
+	public int getAutcion_id() {
+		return autcion_id;
 	}
 
-	public void setAuction_id(int auction_id) {
-		this.auction_id = auction_id;
+	public void setAutcion_id(int autcion_id) {
+		this.autcion_id = autcion_id;
 	}
 
 	public int getAuction_stcost() {
@@ -46,12 +49,12 @@ public class AuctionVO implements Serializable{
 		this.auction_stcost = auction_stcost;
 	}
 
-	public int getImmediate_bid() {
-		return immediate_bid;
+	public int getImmediate_bid_cost() {
+		return immediate_bid_cost;
 	}
 
-	public void setImmediate_bid(int immediate_bid) {
-		this.immediate_bid = immediate_bid;
+	public void setImmediate_bid_cost(int immediate_bid_cost) {
+		this.immediate_bid_cost = immediate_bid_cost;
 	}
 
 	public Timestamp getRegister_date() {
@@ -166,11 +169,11 @@ public class AuctionVO implements Serializable{
 		this.subca_id = subca_id;
 	}
 
-	public char getFlag() {
+	public String getFlag() {
 		return flag;
 	}
 
-	public void setFlag(char flag) {
+	public void setFlag(String flag) {
 		this.flag = flag;
 	}
 
@@ -216,8 +219,8 @@ public class AuctionVO implements Serializable{
 
 	@Override
 	public String toString() {
-		return "AuctionVO [auction_id=" + auction_id + ", auction_stcost=" + auction_stcost + ", immediate_bid="
-				+ immediate_bid + ", register_date=" + register_date + ", auction_end_date=" + auction_end_date
+		return "AuctionVO [autcion_id=" + autcion_id + ", auction_stcost=" + auction_stcost + ", immediate_bid_cost="
+				+ immediate_bid_cost + ", register_date=" + register_date + ", auction_end_date=" + auction_end_date
 				+ ", auction_end_status=" + auction_end_status + ", sale_id=" + sale_id + ", item_name=" + item_name
 				+ ", item_cost=" + item_cost + ", buy_time=" + buy_time + ", item_status=" + item_status
 				+ ", item_scratch=" + item_scratch + ", additional_info=" + additional_info + ", buy_info=" + buy_info
