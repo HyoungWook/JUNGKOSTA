@@ -77,7 +77,7 @@
 
                   <h3 class="saleCategory_ktw">구매시기는 언제인가요?</h3>
                   <div class="buy_date form-group">
-                     <input type="text" id="buy_date" name="buy_date"
+                     <input type="text" id="buy_date" name="buy_time"
                         class="form-control cate_ktw">
                   </div>
                   <br>

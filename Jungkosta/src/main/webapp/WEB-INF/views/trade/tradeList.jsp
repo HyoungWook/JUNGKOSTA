@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>	
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -227,7 +227,7 @@
 
 				<div class="item_list_ktw">
 					<div class="row">
-						<c:forEach var="temp" items="${list}">
+						<c:forEach var="temp" items="${ list}">
 
 							<div class="col-md-2 col-md-offset-2 item_info_ktw"
 								onclick="sendDetail(${temp.sale_id})">
@@ -238,7 +238,7 @@
 									<c:if test="${temp.item_pic1!=null }">
 										<%--      <c:set var="head" value="${fn:substring(temp.item_pic, 0 ,fn:length(temp.item_pic)-4) }"></c:set>
             <c:set var="pattern" value="${fn:substringAfter(temp.item_pic,head) }"></c:set> --%>
-										<img src="/resources/images/trade/gier2.jpg">
+										<%-- <img src="../upload/${head}_small${pattern}"> --%>
 									</c:if>
 								</div>
 								<!-- <div>

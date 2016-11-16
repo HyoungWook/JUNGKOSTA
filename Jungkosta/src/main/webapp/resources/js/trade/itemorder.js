@@ -91,6 +91,7 @@ $(function(){
 			 var btn_radio = $(this).val();
 			
 			// alert($itemPrice);
+			 alert(btn_radio);
 			 
 			 chargeType(this.id);
 			 
@@ -114,6 +115,7 @@ $(function(){
 		 
 		 function chargeType(id) {
 			var $itemPrice = $('#itemcost').val();
+			alert($itemPrice);
 			var type = "";
 			var persent;
 			
@@ -128,6 +130,7 @@ $(function(){
 
 			var charge = ($itemPrice * persent);
 			var total = parseInt($itemPrice) + charge + 2500;
+			alert(total);
 			var charge_str = addComma(charge);
 			var total_str = addComma(total);
 
