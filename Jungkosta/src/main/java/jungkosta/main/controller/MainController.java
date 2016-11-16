@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * Handles requests for the application home page.
  */
 @Controller
-public class HomeController {
+public class MainController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
@@ -34,6 +34,16 @@ public class HomeController {
 		model.addAttribute("serverTime", formattedDate );
 		
 		return "home";
+	}
+	
+	@RequestMapping(value="/mainSignupForm", method=RequestMethod.GET)
+	public void go(){
+		
+	}
+	
+	@RequestMapping(value="/mainSignupForm2", method=RequestMethod.GET)
+	public void mainSignupForm2(){
+		
 	}
 	
 }
