@@ -43,7 +43,7 @@
 	
 	<servlet-mapping>
 		<servlet-name>mainServlet</servlet-name>
-		<url-pattern>/Jungkosta</url-pattern>
+		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 	
 	<!-- 거래 서블릿 -->
@@ -59,7 +59,7 @@
 	
 	<servlet-mapping>
 		<servlet-name>tradeServlet</servlet-name>
-		<url-pattern>/Jungkosta/trade</url-pattern>
+		<url-pattern>/trade/*</url-pattern>
 	</servlet-mapping>
 	
 	<!-- 경매 서블릿 -->
@@ -75,7 +75,7 @@
 	
 	<servlet-mapping>
 		<servlet-name>auctionServlet</servlet-name>
-		<url-pattern>/Jungkosta/auction</url-pattern>
+		<url-pattern>/auction/*</url-pattern>
 	</servlet-mapping>
 	
 	<filter>
