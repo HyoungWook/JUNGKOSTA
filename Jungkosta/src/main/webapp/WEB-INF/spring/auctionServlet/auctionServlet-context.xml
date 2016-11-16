@@ -22,6 +22,8 @@
 	</beans:bean>
 	
 	<context:component-scan base-package="jungkosta.auction.controller"/>
+	<context:component-scan base-package="jungkosta.auction.persistence" />
+	<context:component-scan base-package="jungkosta.auction.service" />
 	
 	
 	
