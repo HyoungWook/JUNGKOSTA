@@ -2,9 +2,12 @@ package jungkosta.auction.service;
 
 import javax.inject.Inject;
 
+import org.springframework.stereotype.Service;
+
 import jungkosta.auction.domain.BiddingVO;
 import jungkosta.auction.persistence.BiddingDAO;
 
+@Service
 public class BiddingServiceImpl implements BiddingService {
 
 	@Inject
@@ -22,6 +25,11 @@ public class BiddingServiceImpl implements BiddingService {
 	public int selectBidding_id() throws Exception {
 
 		return dao.selectBidding_id();
+	}
+
+	@Override
+	public int countBidding(int auction_id) throws Exception {
+		return dao.countBidding(auction_id);
 	}
 
 }

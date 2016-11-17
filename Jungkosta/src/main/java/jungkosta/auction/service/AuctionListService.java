@@ -6,7 +6,7 @@ import jungkosta.auction.domain.AuctionVO;
 
 public interface AuctionListService {
 	
-	public List<AuctionVO> auctionList() throws Exception;
+	public List<AuctionVO> auctionList(String sort) throws Exception;
 	
 	
 

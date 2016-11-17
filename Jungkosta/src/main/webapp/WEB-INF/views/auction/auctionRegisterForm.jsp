@@ -1,21 +1,40 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 
-<link href="/Jungkosta/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<link href="/Jungkosta/resources/auction/css/auction_add_lsj.css" rel="stylesheet">
+<link href="/Jungkosta/resources/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet">
+<link href="/Jungkosta/resources/auction/css/auction_add_lsj.css"
+	rel="stylesheet">
 
 <title>경매물품 등록</title>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script type="text/javascript" src="/Jungkosta/resources/auction/js/main.js"></script>
-<script type="text/javascript" src="/Jungkosta/resources/auction/js/category.js"></script>
+<script type="text/javascript"
+	src="/Jungkosta/resources/auction/js/main.js"></script>
+<script type="text/javascript"
+	src="/Jungkosta/resources/auction/js/category.js"></script>
 <link rel="stylesheet"
 	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
 <script src="/Jungkosta/resources/auction/js/valid_check_lsj.js"></script>
+
+<script type="text/javascript">
+	$(function() {
+		$(".fileDrop").on("dragenter dragover", function(event) {
+			event.preventDefault();
+		});
+		
+		$(".fileDrop").on("drop", function(event) {
+			event.preventDefault();
+			alert("이미지 드랍");
+
+		});
+
+	});
+</script>
 
 <style>
 .input_error_phw {
@@ -23,12 +42,11 @@
 }
 
 .fileDrop {
-  width: 80%;
-  height: 100px;
-  border: 1px dotted gray;
-  background-color: lightslategrey;
-  margin: auto;
-  
+	width: 80%;
+	height: 100px;
+	border: 1px dotted gray;
+	background-color: lightslategrey;
+	margin: auto;
 }
 </style>
 </head>
@@ -44,8 +62,8 @@
 	<span id="top_lsj">경매 물품 등록</span>
 
 	<div class="container">
-		<form id="add_btn" method="post" >
-			
+		<form id="add_btn" method="post">
+
 			<input type="hidden" name="flag" value="1">
 
 			<div class="row">
@@ -154,7 +172,7 @@
 					<div id="list_title_lsj">상품의 이미지를 올려주세요.</div>
 					<br />
 					<div class="form-group">
-<!-- 						<label for="exampleInputEmail1">File DROP Here</label> -->
+						<label for="exampleInputEmail1">Image DROP Here</label>
 						<div class="fileDrop"></div>
 					</div>
 					<br /> <br />
@@ -163,8 +181,9 @@
 					<div class="row">
 						<div class="col-md-5">
 							<label for="to">종료 날짜:</label> <input type="text" id="to"
-								style="z-index: 2;" class="form-control" name="auction_end_date_temp"
-								placeholder="날짜를 선택해 주세요"> <br>
+								style="z-index: 2;" class="form-control"
+								name="auction_end_date_temp" placeholder="날짜를 선택해 주세요">
+							<br>
 						</div>
 						<div class="col-md-5">
 							<label for="to">종료 시간:</label> <select class="form-control"

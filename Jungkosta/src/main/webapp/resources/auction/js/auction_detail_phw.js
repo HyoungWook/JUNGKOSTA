@@ -2,40 +2,33 @@ $(function() {
 
 	var $status = $("#status").val();
 	var $end_date = $("#end_date").val();
+	var $auction_id = $("#sale_id").val();
 	var timeId = "";
-
+	var now = new Date();
+	
 	$("#auction_record")
 			.click(
 					function() {
 
 						var listBid_page = window
-								.open("listBidding_phw.jsp", "newWindow",
+								.open("listBidding_phw.jsp/", "newWindow",
 										'width=550, height=500, menubar=yes, status=yes, scrollbar = yes');
 
 						return false;
 					});
 
 	function getTime() {
-
-		var now = new Date();
-
 		var date = new Date($end_date);
-
 		var dd = Math.floor((date - now) / 1000 / 60 / 60 / 24);
-
 		var hour = Math.floor(((date - now) / 1000 / 60 / 60) - (dd * 24));
-
 		var minute = Math.floor(((date - now) / 1000 / 60) - (dd * 24 * 60)
 				- (hour * 60));
-
 		var second = Math.floor(((date - now) / 1000) - (dd * 24 * 60 * 60)
 				- (hour * 60 * 60) - (minute * 60));
-
 		var time = dd + "일 " + hour + "시간 " + minute + "분 " + second + "초";
 
 		$(function() {
 			$("#remainning_time_phw").text(time);
-
 		});
 
 	}
@@ -55,7 +48,7 @@ $(function() {
 					function() {
 						if ($status == "false") {
 							var bid_page = window
-									.open("bidRegisterForm", "newWindow",
+									.open("bidRegisterForm/" + $auction_id, "newWindow",
 											'width=550, height=700, menubar=yes, status=yes, scrollbar = yes');
 						} else {
 							alert("해당 상품은 경매가 종료된 상품입니다.");

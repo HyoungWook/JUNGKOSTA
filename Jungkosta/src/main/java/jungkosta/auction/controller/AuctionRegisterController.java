@@ -49,7 +49,7 @@ public class AuctionRegisterController {
 		auction.setBuy_time(Timestamp.valueOf(buy_time));
 		auction.setAuction_end_date(Timestamp.valueOf(auction_end_date));
 		// 수정부분 feat : 현우
-		auction.setAutcion_id(service.auction_id() + 1);
+		auction.setAuction_id(service.auction_id() + 1);
 		
 		auction.setItem_cost(auction.getAuction_stcost());
 
