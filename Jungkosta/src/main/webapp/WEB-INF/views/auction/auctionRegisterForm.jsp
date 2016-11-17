@@ -16,81 +16,8 @@
 	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
 <script src="/Jungkosta/resources/auction/js/valid_check_lsj.js"></script>
-<script type="text/javascript" src="/resources/js/upload.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
-
-<script id="template" type="text/x-handlebars-template">
-<li>
-  <span class="mailbox-attachment-icon has-img"><img src="{{imgsrc}}" alt="Attachment"></span>
-  <div class="mailbox-attachment-info">
-	<a href="{{getLink}}" class="mailbox-attachment-name">{{fileName}}</a>
-	<a href="{{fullName}}" 
-     class="btn btn-default btn-xs pull-right delbtn"><i class="fa fa-fw fa-remove"></i></a>
-	</span>
-  </div>
-</li>                
-</script>    
-
-<script>
-
-var template = Handlebars.compile($("#template").html());
-
-$(".fileDrop").on("dragenter dragover", function(event){
-	event.preventDefault();
-});
-
-
-$(".fileDrop").on("drop", function(event){
-	event.preventDefault();
-	
-	var files = event.originalEvent.dataTransfer.files;
-	
-	var file = files[0];
-
-	var formData = new FormData();
-	
-	formData.append("file", file);	
-	
-	
-	$.ajax({
-		  url: '/uploadAjax',
-		  data: formData,
-		  dataType:'text',
-		  processData: false,
-		  contentType: false,
-		  type: 'POST',
-		  success: function(data){
-			  
-			  var fileInfo = getFileInfo(data);
-			  
-			  var html = template(fileInfo);
-			  
-			  $(".uploadedList").append(html);
-		  }
-		});	
-});
-
-
-$("#registerForm").submit(function(event){
-	event.preventDefault();
-	
-	var that = $(this);
-	
-	var str ="";
-	$(".uploadedList .delbtn").each(function(index){
-		 str += "<input type='hidden' name='files["+index+"]' value='"+$(this).attr("href") +"'> ";
-	});
-	
-	that.append(str);
-
-	that.get(0).submit();
-});
-
-
-
-
-</script>
-
+<link href="/Jungkosta/resources/auction/dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 <style>
 .input_error_phw {
 	display: none;
@@ -303,4 +230,80 @@ $("#registerForm").submit(function(event){
 	</div>
 
 </body>
+<script type="text/javascript" src="/Jungkosta/resources/auction/js/upload.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
+
+<script id="template" type="text/x-handlebars-template">
+<li>
+  <span class="mailbox-attachment-icon has-img"><img src="{{imgsrc}}" alt="Attachment"></span>
+  <div class="mailbox-attachment-info">
+	<a href="{{getLink}}" class="mailbox-attachment-name">{{fileName}}</a>
+	<a href="{{fullName}}" 
+     class="btn btn-default btn-xs pull-right delbtn"><i class="fa fa-fw fa-remove"></i></a>
+	</span>
+  </div>
+</li>                
+</script>    
+
+<script>
+
+var template = Handlebars.compile($("#template").html());
+
+$(".fileDrop").on("dragenter dragover", function(event){
+	event.preventDefault();
+});
+
+$(".fileDrop").on("drop", function(event){
+	event.preventDefault();
+	
+	var files = event.originalEvent.dataTransfer.files;
+	
+	var file = files[0];
+
+	var formData = new FormData();
+	
+	formData.append("file", file);	
+	
+	
+	$.ajax({
+		  url:'uploadAjax',
+		  data: formData,
+		  dataType:'text',
+		  processData: false,
+		  contentType: false,
+		  type: 'POST',
+		  success: function(data){
+			  
+			 var fileInfo = getFileInfo(data);
+			  
+			  var html = template(fileInfo);
+			  
+			  $(".uploadedList").append(html); 
+			
+			  
+		  }
+		});	
+});
+
+
+$("#add_btn").submit(function(event){
+	event.preventDefault();
+	
+	var that = $(this);
+	
+	var str ="";
+	$(".uploadedList .delbtn").each(function(index){
+		 str += "<input type='hidden' name='item_pic'"+(index+1)+" value='"+$(this).attr("href") +"'> ";
+	});
+	
+	that.append(str);
+
+	that.get(0).submit();
+});
+
+
+
+
+</script>
 </html>
+

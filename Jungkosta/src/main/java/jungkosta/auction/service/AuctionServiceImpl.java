@@ -15,7 +15,6 @@ public class AuctionServiceImpl implements AuctionService {
 	@Inject
 	private AuctionDAO dao;
 	
-	@Transactional
 	@Override
 	public void register(AuctionVO auction) throws Exception {
 		
@@ -32,7 +31,7 @@ public class AuctionServiceImpl implements AuctionService {
 
 	@Override
 	public int sale_id() throws Exception {
-		// TODO Auto-generated method stub
+
 		return dao.selectSale_id();
 	}
 	

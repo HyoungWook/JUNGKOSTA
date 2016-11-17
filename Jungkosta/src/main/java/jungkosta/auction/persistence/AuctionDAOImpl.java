@@ -15,28 +15,27 @@ public class AuctionDAOImpl implements AuctionDAO {
 
 	@Inject
 	private SqlSession sqlSession;
-	
+
 	private static final String namespace = "jungkosta.mappers.auction.AuctionMapper";
-	
-	
+
 	@Override
 	public void insertSale(AuctionVO auction) throws Exception {
-		System.out.println(auction);
-		sqlSession.insert(namespace+".insertSale", auction);
+		sqlSession.insert(namespace + ".insertSale", auction);
 	}
 
 	@Override
 	public void insertAuction(AuctionVO auction) throws Exception {
 
-			sqlSession.insert(namespace+".insertAuction",auction);
-		
+		sqlSession.insert(namespace + ".insertAuction", auction);
+
 	}
+
 	@Override
 	public int selectAuction_id() throws Exception {
-		
-		if(sqlSession.selectOne(namespace+".selectAuction_id")!=null){			
-			return sqlSession.selectOne(namespace+".selectAuction_id");
-		}else{
+
+		if (sqlSession.selectOne(namespace + ".selectAuction_id") != null) {
+			return sqlSession.selectOne(namespace + ".selectAuction_id");
+		} else {
 			return 0;
 		}
 
@@ -44,10 +43,10 @@ public class AuctionDAOImpl implements AuctionDAO {
 
 	@Override
 	public int selectSale_id() throws Exception {
-		
-		if(sqlSession.selectOne(namespace+".selectSale_id")!=null){			
-			return sqlSession.selectOne(namespace+".selectSale_id");
-		}else{
+
+		if (sqlSession.selectOne(namespace + ".selectSale_id") != null) {
+			return sqlSession.selectOne(namespace + ".selectSale_id");
+		} else {
 			return 0;
 		}
 	}
@@ -65,10 +64,9 @@ public class AuctionDAOImpl implements AuctionDAO {
 	@Override
 	public AuctionVO selectAuction(int auction_id) throws Exception {
 		return null;
-		
-		
+
 	}
-	
+
 	@Override
 	public AuctionVO read(int sale_id) throws Exception {
 
@@ -77,9 +75,7 @@ public class AuctionDAOImpl implements AuctionDAO {
 
 	@Override
 	public CategoryVO selectCategory(int subca_id) throws Exception {
-		// TODO Auto-generated method stub
 		return sqlSession.selectOne(namespace + ".selectCategory", subca_id);
 	}
-
 
 }

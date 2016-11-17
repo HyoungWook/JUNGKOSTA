@@ -38,27 +38,41 @@
 	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
-	
+
 	<!--우성 Tiles setting -->
-	<bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
+	<bean id="tilesConfigurer"
+		class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
 		<property name="definitions">
 			<list>
 				<value>/WEB-INF/tiles/tiles2def.xml</value>
 			</list>
 		</property>
 	</bean>
-	
+
 	<!--우성 tiles view Resolver 추가 -->
-	<bean id="viewResolver1" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
-		<property name="viewClass" value="org.springframework.web.servlet.view.tiles2.TilesView"/>
-		<property name="order" value="1"/>
+	<bean id="viewResolver1"
+		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.tiles2.TilesView" />
+		<property name="order" value="1" />
 	</bean>
-	
+
 	<!-- service -->
-	<context:component-scan base-package="jungkosta.trade.service"/>
-	
+	<context:component-scan base-package="jungkosta.trade.service" />
+
 	<!-- dao -->
-	<context:component-scan base-package="jungkosta.trade.persistence"/>
+	<context:component-scan base-package="jungkosta.trade.persistence" />
+
+	<!-- auction multipartResolver -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="10485760" />
+	</bean>
+
+	<!-- auction uploadpath -->
+	<bean id="uploadPath" class="java.lang.String">
+		<constructor-arg value="C:\\upload" />
+	</bean>
 
 </beans>
 
