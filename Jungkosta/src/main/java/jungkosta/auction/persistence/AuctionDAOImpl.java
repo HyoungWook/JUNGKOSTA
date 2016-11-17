@@ -21,6 +21,7 @@ public class AuctionDAOImpl implements AuctionDAO {
 	
 	@Override
 	public void insertSale(AuctionVO auction) throws Exception {
+		System.out.println(auction);
 		sqlSession.insert(namespace+".insertSale", auction);
 	}
 
@@ -33,14 +34,22 @@ public class AuctionDAOImpl implements AuctionDAO {
 	@Override
 	public int selectAuction_id() throws Exception {
 		
-		return sqlSession.selectOne(namespace+".selectAuction_id");
+		if(sqlSession.selectOne(namespace+".selectAuction_id")!=null){			
+			return sqlSession.selectOne(namespace+".selectAuction_id");
+		}else{
+			return 0;
+		}
 
 	}
 
 	@Override
 	public int selectSale_id() throws Exception {
 		
-		return sqlSession.selectOne(namespace+".selectSale_id");
+		if(sqlSession.selectOne(namespace+".selectSale_id")!=null){			
+			return sqlSession.selectOne(namespace+".selectSale_id");
+		}else{
+			return 0;
+		}
 	}
 
 	@Override

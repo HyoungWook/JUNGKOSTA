@@ -5,17 +5,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 
-<link href="./resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<link href="./resources/auction/css/auction_add_lsj.css" rel="stylesheet">
+<link href="/Jungkosta/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/Jungkosta/resources/auction/css/auction_add_lsj.css" rel="stylesheet">
 
 <title>경매물품 등록</title>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script type="text/javascript" src="./resources/auction/js/main.js"></script>
-<script type="text/javascript" src="./resources/auction/js/category.js"></script>
+<script type="text/javascript" src="/Jungkosta/resources/auction/js/main.js"></script>
+<script type="text/javascript" src="/Jungkosta/resources/auction/js/category.js"></script>
 <link rel="stylesheet"
 	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
-<script src="./resources/auction/js/valid_check_lsj.js"></script>
+<script src="/Jungkosta/resources/auction/js/valid_check_lsj.js"></script>
 
 <style>
 .input_error_phw {
@@ -39,7 +39,7 @@
 
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-	<script src="./resources/auction/js/date.js"></script>
+	<script src="/Jungkosta/resources/auction/js/date.js"></script>
 
 	<span id="top_lsj">경매 물품 등록</span>
 
