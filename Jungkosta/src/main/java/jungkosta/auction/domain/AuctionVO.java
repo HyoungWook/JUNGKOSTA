@@ -6,7 +6,7 @@ import java.util.Date;
 
 public class AuctionVO implements Serializable {
 
-	//현우가 살짝 고침 전체 복사 바람
+	
 	
 	private int autcion_id;
 	private int auction_stcost;
