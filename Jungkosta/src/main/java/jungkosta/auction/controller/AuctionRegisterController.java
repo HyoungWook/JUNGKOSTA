@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import jungkosta.auction.domain.AuctionVO;
 import jungkosta.auction.service.AuctionService;
@@ -22,10 +21,7 @@ public class AuctionRegisterController {
 
 	@Inject
 	private AuctionService service;
-
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 */
+	
 
 	@RequestMapping(value = "/auctionRegisterForm", method = RequestMethod.GET)
 	public void auctionRegisterForm() {
@@ -37,7 +33,7 @@ public class AuctionRegisterController {
 	public String auctionRegister(AuctionVO auction, HttpServletRequest request) throws Exception {
 
 		auction.setSale_id(service.sale_id() + 1);
-		auction.setEmail("qkrgusdn93@naver.com");
+		auction.setEmail("aaa@aaa.com");
 
 		// 수정부분 feat : 현우
 		String buy_time = request.getParameter("buy_time_temp");
@@ -56,7 +52,9 @@ public class AuctionRegisterController {
 		System.out.println(auction);
 
 		service.register(auction);
-		return "redirect:/home";
+		return "redirect:/auction/auctionList";
 	}
+	
+	
 
 }
