@@ -21,4 +21,5 @@ public class AuctionListServiceImpl implements AuctionListService {
 		return dao.auctionList();
 	}
 
+
 }

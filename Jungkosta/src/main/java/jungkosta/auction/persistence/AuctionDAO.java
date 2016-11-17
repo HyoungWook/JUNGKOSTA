@@ -8,8 +8,8 @@ public interface AuctionDAO {
 	
 	public void insertAuction(AuctionVO auction) throws Exception;
 	public void insertSale(AuctionVO auction)throws Exception;
-	public Integer selectAuction_id()throws Exception;
-	public Integer selectSale_id()throws Exception;
+	public int selectAuction_id()throws Exception;
+	public int selectSale_id()throws Exception;
 	public List<AuctionVO> listAuction()throws Exception;
 	//public List<AuctionVO> listAuctionEnd(Sort sort)throws Exception;
 	public AuctionVO selectSale(int sale_id)throws Exception;

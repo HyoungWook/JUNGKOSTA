@@ -17,8 +17,21 @@ public class AuctionServiceImpl implements AuctionService {
 	@Transactional
 	@Override
 	public void register(AuctionVO auction) throws Exception {
+
 		dao.insertSale(auction);
 		dao.insertAuction(auction);
+	}
+
+	@Override
+	public int auction_id() throws Exception {
+		// TODO Auto-generated method stub
+		return dao.selectAuction_id();
+	}
+
+	@Override
+	public int sale_id() throws Exception {
+		// TODO Auto-generated method stub
+		return dao.selectSale_id();
 	}
 
 }
