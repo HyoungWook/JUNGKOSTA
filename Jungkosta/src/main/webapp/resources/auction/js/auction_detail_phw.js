@@ -55,7 +55,7 @@ $(function() {
 					function() {
 						if ($status == "false") {
 							var bid_page = window
-									.open("bid_page_lsj.jsp", "newWindow",
+									.open("bidRegisterForm", "newWindow",
 											'width=550, height=700, menubar=yes, status=yes, scrollbar = yes');
 						} else {
 							alert("해당 상품은 경매가 종료된 상품입니다.");

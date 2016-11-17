@@ -4,6 +4,9 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
+
+<title>경매 메인 페이지</title>
+
 <!-- bootstrap -->
 <link href="/Jungkosta/resources/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -24,6 +27,7 @@
 
 	<br> <br>
 
+	<!-- jQuery -->
 	<script type="/Jungkosta/resources/lib/jquery-3.1.1.min.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<script type="text/javascript"
