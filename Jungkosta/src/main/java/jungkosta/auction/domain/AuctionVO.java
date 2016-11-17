@@ -13,7 +13,7 @@ public class AuctionVO implements Serializable {
 	private int immediate_bid_cost;
 	private Timestamp register_date;
 	private Timestamp auction_end_date;
-	private String auction_end_status;
+	private String auction_end_status = "false";
 
 	private int sale_id;
 	private String item_name;
@@ -27,7 +27,7 @@ public class AuctionVO implements Serializable {
 	private String email;
 	private int subca_id;
 	private String flag = "1";
-	private String sale_status = "false";
+	private String sale_status = "거래가능";
 	private String item_pic1;
 	private String item_pic2;
 	private String item_pic3;

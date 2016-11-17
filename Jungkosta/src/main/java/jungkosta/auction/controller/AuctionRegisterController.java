@@ -45,11 +45,15 @@ public class AuctionRegisterController {
 		buy_time += " 00:00:00.0";
 		auction_end_date += " " + request.getParameter("time_sel") + ":00.0";
 		
+		System.out.println(auction);
+		
 		auction.setBuy_time(Timestamp.valueOf(buy_time));
 		auction.setAuction_end_date(Timestamp.valueOf(auction_end_date));
 		//수정부분 feat : 현우
 		
-		service.register(auction);
+		
+		
+		//service.register(auction);
 		return "redirect:/home";
 	}
 

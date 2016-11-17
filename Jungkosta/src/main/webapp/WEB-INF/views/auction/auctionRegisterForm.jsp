@@ -44,7 +44,7 @@
 	<span id="top_lsj">경매 물품 등록</span>
 
 	<div class="container">
-		<form id="add_btn" method="post">
+		<form id="add_btn" method="post" >
 			
 			<input type="hidden" name="flag" value="1">
 
@@ -199,7 +199,7 @@
 							<br>
 							<div class="input-group">
 								<input type="text" class="form-control input_cost"
-									style="text-align: right; z-index: 1" name="immediate_bid"
+									style="text-align: right; z-index: 1" name="immediate_bid_cost"
 									id="immediate_bid_cost"> <span
 									class="input-group-addon"> 원 </span>
 							</div>
