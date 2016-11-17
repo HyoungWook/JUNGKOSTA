@@ -44,9 +44,9 @@
 	<span id="top_lsj">경매 물품 등록</span>
 
 	<div class="container">
-		<form id="add_btn" method="post" >
+		<form id="add_btn" method="post" role="form" >
 			
-			<input type="hidden" name="flag" value="1">
+			<input type="hidden" name="flag" value="1" >
 
 			<div class="row">
 				<div class="col-md-3"></div>
@@ -293,7 +293,7 @@ $("#add_btn").submit(function(event){
 	
 	var str ="";
 	$(".uploadedList .delbtn").each(function(index){
-		 str += "<input type='hidden' name='item_pic'"+(index+1)+" value='"+$(this).attr("href") +"'> ";
+		 str +="<input type='hidden' name='item_pic'"+(index+1)+" value='"+$(this).attr("href") +"'> ";
 	});
 	
 	that.append(str);

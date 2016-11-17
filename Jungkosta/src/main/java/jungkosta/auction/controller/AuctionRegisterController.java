@@ -34,7 +34,7 @@ public class AuctionRegisterController {
 
 		auction.setSale_id(service.sale_id() + 1);
 		auction.setEmail("aaa@aaa.com");
-
+		auction.setItem_pic1(request.getParameter("item_pic1"));
 		// 수정부분 feat : 현우
 		String buy_time = request.getParameter("buy_time_temp");
 		String auction_end_date = request.getParameter("auction_end_date_temp");
