@@ -4,7 +4,7 @@ $(function() {
 	var $end_date = $("#end_date").val();
 	var $auction_id = $("#sale_id").val();
 	var timeId = "";
-	var now = new Date();
+	
 	
 	$("#auction_record")
 			.click(
@@ -18,6 +18,7 @@ $(function() {
 					});
 
 	function getTime() {
+		var now = new Date();
 		var date = new Date($end_date);
 		var dd = Math.floor((date - now) / 1000 / 60 / 60 / 24);
 		var hour = Math.floor(((date - now) / 1000 / 60 / 60) - (dd * 24));

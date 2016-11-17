@@ -54,7 +54,7 @@
 <div class="container">
 	<form action="bid_Proc.jsp" method="post">
 		<input type="hidden" name="email" value="${email }"> <input
-			type="hidden" name="auction_id" value="${auction.autcion_id }">
+			type="hidden" name="auction_id" value="${auction.auction_id }">
 		<table class="table table-bordered">
 			<p>입찰 상품</p>
 			<tbody>
