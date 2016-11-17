@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import jungkosta.auction.domain.AuctionVO;
+import jungkosta.auction.domain.CategoryVO;
 import jungkosta.auction.persistence.AuctionDAO;
 
 @Service
@@ -32,6 +33,17 @@ public class AuctionServiceImpl implements AuctionService {
 	public int sale_id() throws Exception {
 		// TODO Auto-generated method stub
 		return dao.selectSale_id();
+	}
+	
+	@Override
+	public AuctionVO read(int sale_id) throws Exception {
+		return dao.read(sale_id);
+	}
+
+	@Override
+	public CategoryVO selectCategory(int subca_id) throws Exception {
+
+		return dao.selectCategory(subca_id);
 	}
 
 }

@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import jungkosta.auction.domain.AuctionVO;
+import jungkosta.auction.domain.CategoryVO;
 
 @Repository
 public class AuctionDAOImpl implements AuctionDAO {
@@ -55,6 +56,20 @@ public class AuctionDAOImpl implements AuctionDAO {
 	@Override
 	public AuctionVO selectAuction(int auction_id) throws Exception {
 		return null;
+		
+		
+	}
+	
+	@Override
+	public AuctionVO read(int sale_id) throws Exception {
+
+		return sqlSession.selectOne(namespace + ".read", sale_id);
+	}
+
+	@Override
+	public CategoryVO selectCategory(int subca_id) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(namespace + ".selectCategory", subca_id);
 	}
 
 

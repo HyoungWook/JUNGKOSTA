@@ -23,8 +23,6 @@ public class AuctionListController {
 		
 		List<AuctionVO> listAuction = service.auctionList();
 		
-		System.out.println(listAuction);
-		
 		model.addAttribute("listAuction", listAuction);
 		
 	}

@@ -6,7 +6,7 @@
 <mapper namespace="jungkosta.mappers.auction.AuctionMapper">
 
 
-		<insert id="insertAuction" parameterType="AuctionVO">
+	<insert id="insertAuction" parameterType="AuctionVO">
 		insert into
 		auction_register
 		(
@@ -18,15 +18,16 @@
 		#{autcion_id}, #{auction_stcost}, #{immediate_bid_cost}, sysdate,
 		#{auction_end_date}, #{auction_end_status}, #{sale_id}
 		)
-	  </insert>
-	
-	
+	</insert>
+
+
 	<insert id="insertSale" parameterType="AuctionVO">
 		insert into sale
 		(
 		sale_id,
 		item_name, item_cost, buy_time, item_status, item_scratch,
-		additional_info, buy_info, sale_date, item_pic1,item_pic2,item_pic3,item_pic4, email, subca_id,
+		additional_info, buy_info, sale_date,
+		item_pic1,item_pic2,item_pic3,item_pic4, email, subca_id,
 		flag
 		)
 		values
@@ -35,11 +36,12 @@
 		#{item_status},
 		#{item_scratch}, #{additional_info}, #{buy_info},
 		sysdate,
-		#{item_pic1},#{item_pic2},#{item_pic3},#{item_pic4}, #{email}, #{subca_id}, #{flag}
+		#{item_pic1},#{item_pic2},#{item_pic3},#{item_pic4}, #{email},
+		#{subca_id}, #{flag}
 		)
 	</insert>
 
-		<select id="selectAuction_id" resultType="Integer">
+	<select id="selectAuction_id" resultType="Integer">
 		select max(autcion_id)
 		from auction_register
 		</select>
@@ -49,7 +51,17 @@
 		sale
 	</select>
 
+	<!-- start add by 현우 -->
+	<select id="read" resultType="AuctionVO">
+		select * from auctionlist_view
+		where sale_id = #{sale_id}
+	</select>
 	
+	<select id="selectCategory" resultType="CategoryVO">
+		select * from category_view
+		where subca_id = #{subca_id}
+	</select>
+	<!-- end add by 현우 -->
 
 
 
