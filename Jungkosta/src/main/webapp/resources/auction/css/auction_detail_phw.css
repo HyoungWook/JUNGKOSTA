@@ -1,0 +1,137 @@
+.category_phw img {
+	width: 30px;
+	height: 25px;
+}
+
+.item_detail_phw {
+	display: inline;
+}
+
+.item_imgs_phw {
+	text-align: center;
+	height: 250px;
+}
+
+#item_main_phw {
+	width: 100%;
+	height: 100%;
+}
+
+#item_sub_imgs_phw {
+	width: auto;
+	height: 50px;
+	text-align: center;
+}
+
+#item_sub_imgs_phw img {
+	position: relative;
+	top: 15%;
+	width: 50px;
+	hegith: 50px;
+}
+
+#nav_phw {
+	text-align: center;
+}
+
+#nav_phw div {
+	display: inline;
+}
+
+#prev_phw img {
+	width: 30px;
+	height: 30px;
+}
+
+#nav_dot_phw img {
+	width: 10px;
+	height: 10px;
+}
+
+#next_phw img {
+	width: 30px;
+	height: 30px;
+}
+
+#good_phw {
+	width: 30px;
+	height: 30px;
+}
+
+#check_phw {
+	width: 30px;
+	height: 30px;
+}
+
+.message_phw span {
+	font-size: 10px;
+}
+
+.product_info_phw {
+	font-size: 10px;
+}
+
+.product_info_phw span {
+	font-size: 10px;
+}
+
+#product_price_phw {
+	font-size: 40px;
+	font-weight: bold;
+	color: red;
+}
+
+#start {
+	font-size: 12px;
+}
+
+#start_price_phw {
+	font-size: 12px;
+}
+
+#bid_count_phw {
+	font-size: 20px;
+}
+
+.delivery_phw {
+	font-size: 15px;
+}
+
+.auction_info_phw {
+	text-align: center;
+}
+
+.auction_info_phw strong {
+	font-size: 15px
+}
+
+#remainning_time_phw {
+	font-size: 30px;
+	color: red;
+}
+
+.detail_select_phw {
+	padding-left: 2%;
+}
+
+.detail_select_phw li {
+	width: 33%;
+	text-align: center;
+}
+
+#info{
+	color:gray;
+}
+
+#product_info{
+	font-size:20px;
+}
+
+#item_main_phw2{
+	width:60%;
+	height:60%;
+}
+
+.table th{
+	text-align: center;
+}

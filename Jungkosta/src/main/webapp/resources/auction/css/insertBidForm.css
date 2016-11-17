@@ -1,0 +1,36 @@
+.product_info_phw table tr {
+	height: 30px;
+}
+
+#price {
+	margin-left: 150px;
+}
+
+#price tr {
+	height: 40px;
+}
+
+#total_cost {
+	color: red;
+	font-size: 20px;
+}
+
+.payment {
+	text-align: center;
+}
+
+.payment legend {
+	text-align: left;
+}
+
+.bank {
+	text-align: left;
+}
+
+.transfer {
+	display: none;
+}
+
+.card {
+	display: none;
+}

@@ -59,6 +59,6 @@
 	
 	<!-- dao -->
 	<context:component-scan base-package="jungkosta.trade.persistence"/>
-	
+
 </beans>
 
