@@ -42,7 +42,7 @@
 		<select id="selectAuction_id" resultType="Integer">
 		select max(autcion_id)
 		from auction_register
-	</select>
+		</select>
 
 	<select id="selectSale_id" resultType="Integer">
 		select max(sale_id) from

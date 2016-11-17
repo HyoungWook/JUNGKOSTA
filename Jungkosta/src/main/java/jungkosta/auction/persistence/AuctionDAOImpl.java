@@ -14,29 +14,24 @@ public class AuctionDAOImpl implements AuctionDAO {
 
 	@Inject
 	private SqlSession sqlSession;
-	
+
 	private static final String namespace = "jungkosta.mappers.auction.AuctionMapper";
-	
-	
+
 	@Override
 	public void insertSale(AuctionVO auction) throws Exception {
-		sqlSession.insert(namespace+".insertSale", auction);
+		sqlSession.insert(namespace + ".insertSale", auction);
 	}
 
 	@Override
 	public void insertAuction(AuctionVO auction) throws Exception {
-		try {
-			insertSale(auction);
-			sqlSession.insert(namespace+".insertAuction",auction);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
+		sqlSession.insert(namespace + ".insertAuction", auction);
+
 	}
+
 	@Override
 	public Integer selectAuction_id() throws Exception {
-		/*sqlSession.selectOne()
-		
+		return sqlSession.selectOne(namespace+".selectAuction_id");
+		/*sqlSession.selectOne()		
 		try {
 			if (sqlSession.select != null) {
 				return session.getMapper(AuctionMapper.class).selectSale_id();
@@ -47,13 +42,12 @@ public class AuctionDAOImpl implements AuctionDAO {
 			e.printStackTrace();
 			return 0;*/
 		
-		return null;
 	}
 
 	@Override
 	public Integer selectSale_id() throws Exception {
-		
-		return null;
+
+		return sqlSession.selectOne(namespace+".selectSale_id");
 	}
 
 	@Override
@@ -70,6 +64,5 @@ public class AuctionDAOImpl implements AuctionDAO {
 	public AuctionVO selectAuction(int auction_id) throws Exception {
 		return null;
 	}
-
 
 }
