@@ -24,8 +24,6 @@ public class AuctionDetailController {
 		AuctionVO auction = service.read(sale_id);
 		
 		CategoryVO category = service.selectCategory(auction.getSubca_id());
-		
-		System.out.println(category);
 
 		model.addAttribute("auction", auction);
 		model.addAttribute("category", category);

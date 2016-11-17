@@ -46,7 +46,6 @@
 		sale
 	</select>
 
-	<!-- start add by 현우 -->
 	<select id="read" resultType="AuctionVO">
 		select * from auctionlist_view
 		where sale_id = #{sale_id}
@@ -57,11 +56,6 @@
 		category_view
 		where subca_id = #{subca_id}
 	</select>
-	<!-- end add by 현우 -->
-
-
-
-
 
 
 </mapper>
