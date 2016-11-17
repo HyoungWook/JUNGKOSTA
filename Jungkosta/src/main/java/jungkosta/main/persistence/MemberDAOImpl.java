@@ -20,4 +20,9 @@ public class MemberDAOImpl implements MemberDAO {
 		sqlSession.insert(namespace+".createMember", vo);
 	}
 
+	@Override
+	public MemberVO selectMember(String email) throws Exception {
+		return sqlSession.selectOne(namespace+".selectMember", email);
+	}
+
 }

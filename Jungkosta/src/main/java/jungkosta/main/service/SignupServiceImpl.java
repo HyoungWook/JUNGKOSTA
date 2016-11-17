@@ -19,4 +19,9 @@ public class SignupServiceImpl implements SignupService {
 
 	}
 
+	@Override
+	public MemberVO selectMemberService(String email) throws Exception {
+		return dao.selectMember(email);
+	}
+
 }

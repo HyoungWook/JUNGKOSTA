@@ -13,6 +13,10 @@
 			0, 0, #{interests_1}, #{interests_2}, #{interests_3}, #{resident_id}, 0, #{bank_name}
 		)
 	</insert>
+	
+	<select id="selectMember" parameterType="String" resultType="MemberVO">
+		select * from member where email = #{email}
+	</select>
  
 </mapper>  
 
