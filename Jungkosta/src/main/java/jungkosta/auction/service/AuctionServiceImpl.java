@@ -20,7 +20,8 @@ public class AuctionServiceImpl implements AuctionService {
 	public void register(AuctionVO auction) throws Exception {
 		
 		dao.insertSale(auction);
-		//dao.insertAuction(auction);
+		dao.insertAuction(auction);
+		
 	}
 
 	@Override
