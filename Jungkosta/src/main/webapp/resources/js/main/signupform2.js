@@ -227,20 +227,18 @@ $(function() {
 
 		$.ajax({
 			type : "post",
-			url : "../main/SendMail.jsp",
+			url : "mainMailSendProc",
 			datatype : "text",
 			data : "receiver=" + receiver,
 			cache : false,
 			success : function(data) {
 
-				alert(data);
-
 				var id = 0;
 				var time = 30;
 				var result = data.trim();
 
-				if (result == '메일 발송 완료') {
-
+				if (result == 'success') {
+					alert('메일 발송 완료');
 					var $label = $('<label/>', {
 						'class' : 'col-xs-2 col-lg-2 control-label'
 					});
@@ -269,7 +267,7 @@ $(function() {
 
 						if (time < 0) {
 							$.ajax({
-								url : "../main/expire_number.jsp",
+								url : "expire_number",
 								cache : false,
 								datatype : "text",
 								type : "post",
@@ -281,11 +279,15 @@ $(function() {
 						}
 					}, 1000);
 				}
+				if(result == 0){
+					alert("중복된 E-Mail입니다.");
+				}
 			},
 			error : function() {}
 		})
 
 	})
+	
 	$('#confirmOK_khw').click(function() {
 
 		var receiver = $('#conEmail').val();
@@ -293,7 +295,7 @@ $(function() {
 		var confirm_num_khw = $('#confirm_num_khw').val();
 
 		$.ajax({
-			url : "../main/confirmnum.jsp",
+			url : "confirmnumProc",
 			datatype : "text",
 			data : "number=" + confirm_num_khw,
 			type : "post",
