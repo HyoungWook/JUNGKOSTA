@@ -1,6 +1,8 @@
 package jungkosta.auction.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -11,15 +13,20 @@ import jungkosta.auction.persistence.AuctionListDAO;
 
 @Service
 public class AuctionListServiceImpl implements AuctionListService {
-	
+
 	@Inject
 	private AuctionListDAO dao;
 
 	@Override
-	public List<AuctionVO> auctionList() throws Exception {
-		
-		return dao.auctionList();
-	}
+	public List<AuctionVO> auctionList(String sort) throws Exception {
 
+		Map<String, String> map = new HashMap<>();
+
+		map.put("sort", sort);
+		
+		System.out.println(map);
+
+		return dao.auctionList(map);
+	}
 
 }

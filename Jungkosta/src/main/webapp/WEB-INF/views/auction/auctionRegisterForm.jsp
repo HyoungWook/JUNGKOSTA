@@ -5,18 +5,19 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 
-<link href="./resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<link href="./resources/auction/css/auction_add_lsj.css" rel="stylesheet">
+<link href="/Jungkosta/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/Jungkosta/resources/auction/css/auction_add_lsj.css" rel="stylesheet">
 
 <title>경매물품 등록</title>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script type="text/javascript" src="./resources/auction/js/main.js"></script>
-<script type="text/javascript" src="./resources/auction/js/category.js"></script>
+<script type="text/javascript" src="/Jungkosta/resources/auction/js/main.js"></script>
+<script type="text/javascript" src="/Jungkosta/resources/auction/js/category.js"></script>
 <link rel="stylesheet"
 	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
-<script src="./resources/auction/js/valid_check_lsj.js"></script>
-
+<script src="/Jungkosta/resources/auction/js/valid_check_lsj.js"></script>
+<link href="/Jungkosta/resources/auction/dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 <style>
 .input_error_phw {
 	display: none;
@@ -28,7 +29,6 @@
   border: 1px dotted gray;
   background-color: lightslategrey;
   margin: auto;
-  
 }
 </style>
 </head>
@@ -39,7 +39,7 @@
 
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-	<script src="./resources/auction/js/date.js"></script>
+	<script src="/Jungkosta/resources/auction/js/date.js"></script>
 
 	<span id="top_lsj">경매 물품 등록</span>
 
@@ -157,6 +157,17 @@
 <!-- 						<label for="exampleInputEmail1">File DROP Here</label> -->
 						<div class="fileDrop"></div>
 					</div>
+					
+					<!-- /파일 업로드란 -->
+					
+					<div class="box-footer">
+						<div>
+							<hr>
+						</div>
+						
+					<ul class="mailbox-attachments clearfix uploadedList">
+					</ul>						
+					
 					<br /> <br />
 					<div id="list_title_lsj">경매 종료날짜를 입력해 주세요.</div>
 					<br />
@@ -204,7 +215,7 @@
 									class="input-group-addon"> 원 </span>
 							</div>
 							<div class="input_error_phw" id="immediate_phw">
-								<p style="color: red">즉시 구매가를 입력해 주세요.</p>
+								<p style="color:red">즉시 구매가를 입력해 주세요.</p>
 							</div>
 						</div>
 						<div class="col-md-2"></div>
@@ -219,4 +230,80 @@
 	</div>
 
 </body>
+<script type="text/javascript" src="/Jungkosta/resources/auction/js/upload.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
+
+<script id="template" type="text/x-handlebars-template">
+<li>
+  <span class="mailbox-attachment-icon has-img"><img src="{{imgsrc}}" alt="Attachment"></span>
+  <div class="mailbox-attachment-info">
+	<a href="{{getLink}}" class="mailbox-attachment-name">{{fileName}}</a>
+	<a href="{{fullName}}" 
+     class="btn btn-default btn-xs pull-right delbtn"><i class="fa fa-fw fa-remove"></i></a>
+	</span>
+  </div>
+</li>                
+</script>    
+
+<script>
+
+var template = Handlebars.compile($("#template").html());
+
+$(".fileDrop").on("dragenter dragover", function(event){
+	event.preventDefault();
+});
+
+$(".fileDrop").on("drop", function(event){
+	event.preventDefault();
+	
+	var files = event.originalEvent.dataTransfer.files;
+	
+	var file = files[0];
+
+	var formData = new FormData();
+	
+	formData.append("file", file);	
+	
+	
+	$.ajax({
+		  url:'uploadAjax',
+		  data: formData,
+		  dataType:'text',
+		  processData: false,
+		  contentType: false,
+		  type: 'POST',
+		  success: function(data){
+			  
+			 var fileInfo = getFileInfo(data);
+			  
+			  var html = template(fileInfo);
+			  
+			  $(".uploadedList").append(html); 
+			
+			  
+		  }
+		});	
+});
+
+
+$("#add_btn").submit(function(event){
+	event.preventDefault();
+	
+	var that = $(this);
+	
+	var str ="";
+	$(".uploadedList .delbtn").each(function(index){
+		 str += "<input type='hidden' name='item_pic'"+(index+1)+" value='"+$(this).attr("href") +"'> ";
+	});
+	
+	that.append(str);
+
+	that.get(0).submit();
+});
+
+
+
+
+</script>
 </html>
+

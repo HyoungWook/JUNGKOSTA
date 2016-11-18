@@ -11,24 +11,29 @@ import org.springframework.web.bind.annotation.RequestParam;
 import jungkosta.auction.domain.AuctionVO;
 import jungkosta.auction.domain.CategoryVO;
 import jungkosta.auction.service.AuctionService;
+import jungkosta.auction.service.BiddingService;
 
 @Controller
 public class AuctionDetailController {
 
 	@Inject
-	private AuctionService service;
+	private AuctionService auctionService;
+	
+	@Inject
+	private BiddingService bidService;
 
 	@RequestMapping(value = "/auctionDetail", method = RequestMethod.GET)
 	public void auctionDetail(@RequestParam("sale_id") int sale_id, Model model) throws Exception {
 
-		AuctionVO auction = service.read(sale_id);
+		AuctionVO auction = auctionService.read(sale_id);
 		
-		CategoryVO category = service.selectCategory(auction.getSubca_id());
+		CategoryVO category = auctionService.selectCategory(auction.getSubca_id());
 		
-		System.out.println(category);
+		int count = bidService.countBidding(auction.getAuction_id());
 
 		model.addAttribute("auction", auction);
 		model.addAttribute("category", category);
+		model.addAttribute("countBidding", count);
 
 	}
 
