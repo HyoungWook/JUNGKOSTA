@@ -22,7 +22,6 @@ public class TradeController {
 	@Inject
 	private SaleService service_tw;
 	private TradeService service;
-	
 	//물품 등록_tw
 	@RequestMapping(value= "/tradeRegisterForm", method= RequestMethod.GET)
 	public void registerGet(SaleVO saleVO) {
