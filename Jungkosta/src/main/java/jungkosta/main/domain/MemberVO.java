@@ -3,6 +3,7 @@ package jungkosta.main.domain;
 import java.io.Serializable;
 
 public class MemberVO implements Serializable{
+
 	private String email;
 	private String password;
 	private String name;
@@ -20,6 +21,30 @@ public class MemberVO implements Serializable{
 	private int warning_num;
 	private String bank_name;
 	
+	public MemberVO(){}
+	
+	public MemberVO(String email, String password, String name, String address, String phone_num, String question,
+			String answer, String account_num, int point, String grade, String interests_1, String interests_2,
+			String interests_3, String resident_id, int warning_num, String bank_name) {
+		super();
+		this.email = email;
+		this.password = password;
+		this.name = name;
+		this.address = address;
+		this.phone_num = phone_num;
+		this.question = question;
+		this.answer = answer;
+		this.account_num = account_num;
+		this.point = point;
+		this.grade = grade;
+		this.interests_1 = interests_1;
+		this.interests_2 = interests_2;
+		this.interests_3 = interests_3;
+		this.resident_id = resident_id;
+		this.warning_num = warning_num;
+		this.bank_name = bank_name;
+	}
+
 	@Override
 	public String toString() {
 		return "MemberVO [email=" + email + ", password=" + password + ", name=" + name + ", address=" + address
@@ -125,6 +150,5 @@ public class MemberVO implements Serializable{
 	public void setBank_name(String bank_name) {
 		this.bank_name = bank_name;
 	}
-	
-	
+
 }
