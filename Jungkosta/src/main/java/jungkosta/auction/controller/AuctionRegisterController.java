@@ -28,7 +28,6 @@ public class AuctionRegisterController {
 
 	}
 
-	// auctionRegister => auctionRegisterForm 변경
 	@RequestMapping(value = "/auctionRegisterForm", method = RequestMethod.POST)
 	public String auctionRegister(AuctionVO auction, HttpServletRequest request) throws Exception {
 
