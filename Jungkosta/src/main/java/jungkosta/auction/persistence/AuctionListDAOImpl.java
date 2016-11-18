@@ -16,7 +16,7 @@ public class AuctionListDAOImpl implements AuctionListDAO {
 	@Inject
 	private SqlSession sqlSession;
 
-	private static final String namespace = "jungkosta.mappers.auction.AuctionListMapper";
+	private static final String namespace = "jungkosta.main.mappers.auction.AuctionMapper";
 
 	@Override
 	public List<AuctionVO> auctionList(Map<String, String> map) throws Exception {

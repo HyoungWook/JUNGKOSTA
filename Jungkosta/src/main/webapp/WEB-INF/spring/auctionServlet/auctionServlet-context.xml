@@ -16,19 +16,17 @@
 
 	<!-- auction uploadpath -->
 	<beans:bean id="uploadPath" class="java.lang.String">
-		<beans:constructor-arg value="C:\\upload" />
+		<beans:constructor-arg value="c:/upload" />
 	</beans:bean>
 
-	<resources mapping="/resources/**" location="Jungkosta/resources/" />
+	<resources mapping="/resources/**" location="/resources/" />
 	<beans:bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/auction/" />
 		<beans:property name="suffix" value=".jsp" />
-		<beans:property name="order" value="2" />
 	</beans:bean>
 
 	<context:component-scan base-package="jungkosta.auction.controller" />
-	<context:component-scan base-package="jungkosta.auction.persistence" />
-	<context:component-scan base-package="jungkosta.auction.service" />
+
 
 </beans:beans>

@@ -1,10 +1,8 @@
 package jungkosta.auction.domain;
 
-import java.io.Serializable;
 import java.sql.Timestamp;
-import java.util.Date;
 
-public class AuctionVO implements Serializable {
+public class AuctionVO {
 
 	private int auction_id;
 	private int auction_stcost;

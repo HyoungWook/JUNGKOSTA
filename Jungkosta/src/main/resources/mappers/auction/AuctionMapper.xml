@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="jungkosta.mappers.auction.AuctionMapper">
+<mapper namespace="jungkosta.main.mappers.auction.AuctionMapper">
 
 
 	<insert id="insertAuction" parameterType="AuctionVO">
@@ -60,6 +60,20 @@
 		select * from
 		category_view
 		where subca_id = #{subca_id}
+	</select>
+
+	<select id="auctionList" parameterType="java.util.Map"
+		resultType="AuctionVO">
+		select * from auctionlist_view
+		<choose>
+			<when test="sort == 'add_sort'.toString()">
+				order by sale_date desc
+			</when>
+			<when test="sort == 'end_sort'.toString()">
+				order by auction_end_date
+			</when>
+		</choose>
+
 	</select>
 
 
