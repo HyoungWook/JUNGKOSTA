@@ -5,13 +5,20 @@
 
 <mapper namespace="jungkosta.mappers.trade.tradeMapper">
 
-<!-- <insert id="insertSale" parameterType="SaleVO"> insert into sale(sale_id,item_name,item_cost,buy_time,item_status,item_scratch, additional_info,buy_info,sale_date,email,subca_id, flag,item_pic1,item_pic2,item_pic3,item_pic4) values(#{sale_id},#{item_name},#{item_cost},#{buy_time},#{item_status}, #{item_scratch},#{additional_info},#{buy_info},sysdate,#{email},#{subca_id},#{flag}, #{item_pic1}, #{item_pic2}, #{item_pic3}, #{item_pic4}) </insert> -->
+<insert id="insertSale" parameterType="SaleVO">
+		insert into sale(sale_id, item_name, item_cost, buy_time, item_status, item_scratch, additional_info, buy_info, sale_date, email, subca_id, 
+	flag, item_pic1, item_pic2, item_pic3, item_pic4) 
+	values(
+		#{sale_id}, #{item_name}, #{item_cost}, #{buy_time}, #{item_status}, #{item_scratch}, 
+		#{additional_info}, #{buy_info}, SYSDATE, #{email}, #{subca_id}, #{flag}, 
+		#{item_pic1}, #{item_pic2}, #{item_pic3}, #{item_pic4}
+	)
+	</insert>
+	
+	<select id="selectS_id" resultType="Integer">
+		select max(sale_id) from sale
+	</select>
 
-
-<!-- max(id)_tw -->
- <select id="selectS_id" resultType="Integer"> 
- select max(sale_id) from sale
-  </select>
 
 <!-- listAll_tw -->
 	<select id="listSale" resultType="SaleVO_tw">

@@ -10,21 +10,31 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import jungkosta.trade.domain.SaleVO;
 import jungkosta.trade.domain.SaleVO_tw;
 import jungkosta.trade.domain.SubCategoryVO;
 import jungkosta.trade.service.SaleService;
+import jungkosta.trade.service.TradeService;
 
 @Controller
 public class TradeController {
 
 	@Inject
-	private SaleService service;
+	private SaleService service_tw;
+	private TradeService service;
 	
 	//물품 등록_tw
-	@RequestMapping(value = "/tradeRegisterForm", method=RequestMethod.GET)
-	public void registerForm(Model model){
-		String test ="테스트";
-		model.addAttribute("test", test);
+	@RequestMapping(value= "/tradeRegisterForm", method= RequestMethod.GET)
+	public void registerGet(SaleVO saleVO) {
+		System.out.println("Insert Form");
+	}
+	
+	@RequestMapping(value= "/tradeRegisterForm", method= RequestMethod.POST)
+	public String registPost(SaleVO saleVO) throws Exception{
+		System.out.println(saleVO);
+		service.regist(saleVO);
+		
+		return "redirect:/Jungkosta";
 	}
 	
 	//물품 상세_tw
@@ -32,9 +42,9 @@ public class TradeController {
 	public void tradeDetail(@RequestParam("sale_id") int sale_id, Model model) throws Exception{
 		System.out.println("sale_id : " + sale_id);
 		
-		SaleVO_tw salevo = service.searchSale(sale_id);
-		SubCategoryVO subCavo = service.searchSubCategory(salevo.getSubca_id());
-		String totalCavo = service.searchTotalCategory(subCavo.getCa_id());
+		SaleVO_tw salevo = service_tw.searchSale(sale_id);
+		SubCategoryVO subCavo = service_tw.searchSubCategory(salevo.getSubca_id());
+		String totalCavo = service_tw.searchTotalCategory(subCavo.getCa_id());
 		
 		model.addAttribute("totalcategoryName",totalCavo);
 		model.addAttribute("subcategory", subCavo);
@@ -47,7 +57,7 @@ public class TradeController {
 	public String tradelistSub(Model model, @RequestParam("subca_id") Integer subca_id) throws Exception{
 		System.out.println("subca_id : " + subca_id);
 		
-		model.addAttribute("list", service.listSalesub(subca_id));
+		model.addAttribute("list", service_tw.listSalesub(subca_id));
 	
 		return "tradeList";
 	}
@@ -59,7 +69,7 @@ public class TradeController {
 		int deliveryPrice = 2500;
 		
 		model.addAttribute("deliveryPrice", deliveryPrice);
-		model.addAttribute("register", service.searchSale(sale_id));
+		model.addAttribute("register", service_tw.searchSale(sale_id));
 		
 	}
 }
