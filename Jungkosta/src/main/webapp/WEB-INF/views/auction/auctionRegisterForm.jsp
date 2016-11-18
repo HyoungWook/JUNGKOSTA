@@ -16,7 +16,7 @@
 	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
 <script src="/Jungkosta/resources/auction/js/valid_check_lsj.js"></script>
-<link href="/Jungkosta/resources/auction/dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
+<!-- <link href="/Jungkosta/resources/auction/dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" /> -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 <style>
 .input_error_phw {
@@ -303,7 +303,7 @@ $(".fileDrop").on("drop", function(event){
 		
 		  }
 		});	
-});
+
 
 
 $(".uploadedList").on("click",".delbtn",function(event){
