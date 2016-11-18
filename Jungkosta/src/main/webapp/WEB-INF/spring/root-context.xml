@@ -55,8 +55,8 @@
 	</bean>
 	
 	<!-- 메인 서비스, DAO-->
-	<context:component-scan base-package="jungkosta.trade.service"/>
-	<context:component-scan base-package="jungkosta.trade.persistence"/>
+	<context:component-scan base-package="jungkosta.main.service"/>
+	<context:component-scan base-package="jungkosta.main.persistence"/>
 	
 	<!-- 거래 service, DAO -->
 	<context:component-scan base-package="jungkosta.trade.service"/>
