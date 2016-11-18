@@ -20,7 +20,8 @@
 	</bean>
 
 	<tx:annotation-driven />
-
+	
+	
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
@@ -31,7 +32,7 @@
 
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="mapperLocations" value="classpath:mappers.*/*Mapper.xml" />
+		<property name="mapperLocations" value="classpath:mappers/**/*Mapper.xml" />
 		<property name="configLocation" value="classpath:/mybatis-config.xml"></property>
 	</bean>
 
@@ -48,9 +49,15 @@
 		</property>
 	</bean>
 	
-	<!--우성 tiles view Resolver 추가 -->
+	<!--우성 tiles view Resolver 추가 --> 
 	<bean id="viewResolver1" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
 		<property name="viewClass" value="org.springframework.web.servlet.view.tiles2.TilesView"/>
 		<property name="order" value="1"/>
 	</bean>
+	
+	<!-- 우성 main service persistence 추가-->
+	<context:component-scan base-package="jungkosta.main.service"/>
+	<context:component-scan base-package="jungkosta.main.persistence"/>
+	<!-- main service persistence 끝 -->
+	
 </beans>

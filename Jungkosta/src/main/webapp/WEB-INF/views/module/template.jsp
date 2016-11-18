@@ -5,20 +5,25 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
 	<link href="/Jungkosta/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<link href="/Jungkosta/resources/bootstrap/css/kfonts2.css" rel="stylesheet">
+    <script src="/Jungkosta/resources/lib/jquery-3.1.1.min.js"></script>
     <script src="/Jungkosta/resources/bootstrap/js/bootstrap.min.js"></script>
-    
-    
     
 <title>Insert title here</title>
 </head>
 <body>
 	
+	<!-- 우성 header 수정 -->
 	<tiles:insertAttribute name="header"/>
 	
+	<!-- 우성 nav 부분 추가 -->
+	<tiles:insertAttribute name="nav"/>
+
 	<tiles:insertAttribute name="body"/>
 	
 	<tiles:insertAttribute name="footer"/>
+	
 </body>
 </html>
