@@ -42,7 +42,8 @@ function getListInfo(entry) {
 		main_image : main_image,
 		auction_end_status : entry.auction_end_status,
 		item_name : entry.item_name,
-		item_cost : entry.item_cost
+		item_cost : entry.item_cost,
+		immediate_bid_cost : entry.immediate_bid_cost//이수진 추가
 	}
 
 }

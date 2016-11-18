@@ -217,6 +217,7 @@
 	<br> <br> <br>
 
 </div>
+<!-- 이수진 즉시구매가 추가 -->
 <script id="template" type="text/x-handlebars-template">
 		<div class="col-md-3 item_info_phw" onclick="sendDetail({{sale_id}})">
 			<br> 
@@ -236,7 +237,11 @@
 			<span>현재가 </span> &nbsp;&nbsp; 
 			<strong class="product_price_phw">
 				{{item_cost}}
-			</strong> 
+			</strong></br></br>
+			<span>즉시구매가</span>
+			<strong class="product_price_phw"> &nbsp; 
+				{{immediate_bid_cost}}
+			</strong>
 			<br> <br>
 		</div>
 </script>
