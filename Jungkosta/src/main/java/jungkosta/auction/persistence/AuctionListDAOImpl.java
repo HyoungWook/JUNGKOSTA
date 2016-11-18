@@ -21,6 +21,10 @@ public class AuctionListDAOImpl implements AuctionListDAO {
 	@Override
 	public List<AuctionVO> auctionList(Map<String, String> map) throws Exception {
 
+		List<AuctionVO> list = sqlSession.selectList(namespace + ".auctionList", map);
+
+		System.out.println("현재 개수 : " + list.size());
+
 		return sqlSession.selectList(namespace + ".auctionList", map);
 	}
 

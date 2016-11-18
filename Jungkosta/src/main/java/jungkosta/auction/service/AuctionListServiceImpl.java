@@ -23,9 +23,6 @@ public class AuctionListServiceImpl implements AuctionListService {
 		Map<String, String> map = new HashMap<>();
 
 		map.put("sort", sort);
-		
-		System.out.println(map);
-
 		return dao.auctionList(map);
 	}
 
