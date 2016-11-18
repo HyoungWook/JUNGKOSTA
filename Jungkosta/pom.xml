@@ -202,6 +202,12 @@
          <version>${org.springframework-version}</version>
       </dependency>
 
+	<!-- https://mvnrepository.com/artifact/org.apache.tiles/tiles-api -->
+<dependency>
+    <groupId>org.apache.tiles</groupId>
+    <artifactId>tiles-api</artifactId>
+    <version>3.0.7</version>
+</dependency>
    </dependencies>
     <build>
         <plugins>

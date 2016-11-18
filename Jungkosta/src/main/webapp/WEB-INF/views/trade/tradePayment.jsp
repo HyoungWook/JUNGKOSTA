@@ -1,5 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -25,7 +34,7 @@
 		var pointnum = ${payment_cost}*0.01;
 		var point2 = Math.round(pointnum);
 		$('#pointnum').val(point2);
-	})
+	});
 
 </script>
 
@@ -283,6 +292,7 @@
 		</div>
 
 	</div>
+>>>>>>> branch 'trade' of https://github.com/HyoungWook/JUNGKOSTA.git
 
 </body>
 </html>

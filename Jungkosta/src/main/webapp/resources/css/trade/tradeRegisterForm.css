@@ -11,3 +11,67 @@
 	font-size: 1.2em;
 	margin-left: 87px;
 }
+
+.saleTotal_ktw {
+   font-family: "Helvetica Neue", Helvetica, Arial, "맑은 고딕",
+      "Malgun gothic", sans-serif;
+   font-weight: bold;
+   font-size: 2.0em;
+   margin: 50px;
+}
+
+.saleCategory_ktw {
+   font-family: "Helvetica Neue", Helvetica, Arial, "맑은 고딕",
+      "Malgun gothic", sans-serif;
+   font-weight: bold;
+   font-size: 1.5em;
+   color: #0092E0;
+}
+
+.cate_ktw{
+   width: 500px;
+}
+
+#bankName .form-control {
+   width: 150px;
+}
+
+#account .form-control {
+   width: 300px;
+}
+
+#bankName p {
+   font-weight: bold;
+   font-size: 1.2em;
+}
+
+#account p {
+   font-weight: bold;
+   font-size: 1.2em;
+}
+
+.input-group {
+   width: 300px;
+}
+
+.item_pic .form-control {
+   width: 500px;
+   display: inline;
+}
+
+.bank_footer .btn {
+   margin-top: 80px;
+   margin-bottom: 50px;
+   height: 50px;
+   width: 140px;
+   font-size: 1.5em;
+   font-weight: bold;
+}
+
+.sub_ktw{
+   margin-left: 240px;
+}
+
+.can_ktw{
+   margin-left: 30px;
+}

@@ -8,11 +8,19 @@
 <script src="/Jungkosta/resources/lib/jquery-3.1.1.min.js"></script>
 
 <!-- javaScript -->
+<<<<<<< HEAD
+<script type="text/javascript" src="/Jungkosta/resources/js/trade/qna.js"></script>
+
+<!-- css -->
+<script type="text/javascript" src="/Jungkosta/resources/css/trade/tradeDetail.css"></script>
+<script type="text/javascript" src="/Jungkosta/resources/js/trade/qna.js"></script>
+
 <script type="text/javascript" src="/resources/js/trade/qna.js"></script>
 
 <!-- css -->
 <script type="text/javascript" src="/resources/css/trade/tradeDetail.css"></script>
 <script type="text/javascript" src="/resources/js/trade/qna.js"></script>
+
 
 <!-- bootstrap -->
 <link href="/Jungkosta/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">

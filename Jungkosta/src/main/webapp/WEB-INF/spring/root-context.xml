@@ -16,6 +16,8 @@
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	 <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
    
+   
+   
    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
       <property name="dataSource" ref="dataSource"/>
    </bean>
@@ -37,9 +39,11 @@
    
    <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
       <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"/>
-   </bean>
-   
-   <context:component-scan base-package="jungkosta.trade.persistence"/>
-	<context:component-scan base-package="jungkosta.trade.service"/>	
+   </bean>	
 	
+	<!-- service -->
+	<context:component-scan base-package="jungkosta.trade.service"/>
+	
+	<!-- dao -->
+	<context:component-scan base-package="jungkosta.trade.persistence"/>
 </beans>
