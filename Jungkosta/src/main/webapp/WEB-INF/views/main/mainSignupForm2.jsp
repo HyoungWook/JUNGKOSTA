@@ -20,7 +20,7 @@
 <title>!중고세끼!</title>
 </head>
 <body>
-
+	<!-- 모달시작 -->
 	<div class="modal fade" id="emailconfirm_khw" tabindex="-1"
 		role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
@@ -68,6 +68,7 @@
 			</div>
 		</div>
 	</div>
+	<!-- 모달 끝 -->
 
 	<div class="container">
 		<div class="row">
@@ -79,7 +80,7 @@
 					<hr>
 					<br> <br>
 				</div>
-				<form class="form-horizontal" role="form" action="signupok.jsp"
+				<form class="form-horizontal" role="form" action="mainSignupForm2"
 					method="post">
 					<div class="e form-group">
 						<label for="emailaddress" class="col-xs-2 col-lg-2 control-label">E-Mail</label>
