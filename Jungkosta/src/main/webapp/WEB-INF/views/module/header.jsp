@@ -58,7 +58,7 @@
 					<h4 class="modal-title" id="myModalLabel">Login</h4>
 				</div>
 					<div class="modal-body">
-					<form method="post" action="login">
+					<form method="post" action="/Jungkosta/login">
 						<div class="form-group">
 							<label for="email" class="col-xs-2 col-lg-2 control-label">이메일</label>
 							<div class="col-xs-10 col-lg-10">
@@ -194,7 +194,7 @@
 					<c:if test="${email != null }">
 						
 						<div class="dropdown">
-							<a href="logout" class="a_header" >Log-out</a>
+							<a href="/Jungkosta/logout" class="a_header" >Log-out</a>
 							<a id="a_header" href="#" class="a_header" data-toggle="dropdown">information</a>
 							<ul class="dropdown-menu" role="menu">
 								<li role="presentation" class="dropdown-header">message</li>

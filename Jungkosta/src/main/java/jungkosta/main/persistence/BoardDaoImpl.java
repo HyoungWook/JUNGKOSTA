@@ -4,9 +4,11 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import jungkosta.main.controller.BoardController;
 import jungkosta.main.domain.BoardVO;
 
 @Repository
@@ -33,9 +35,9 @@ public class BoardDaoImpl implements BoardDao {
 	}
 	
 	@Override
-	public List<BoardVO> boardList() throws Exception {
+	public List<BoardVO> boardList(int startPage) throws Exception {
 		
-		List<BoardVO> list = session.selectList(namespace+".boardList");
+		List<BoardVO> list = session.selectList(namespace+".boardList",new RowBounds(startPage, BoardController.PAGE_SIZE));
 		
 		return list;
 	}

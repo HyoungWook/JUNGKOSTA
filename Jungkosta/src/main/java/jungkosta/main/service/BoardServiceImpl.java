@@ -22,9 +22,9 @@ public class BoardServiceImpl implements BoardService {
 	}
 	
 	@Override
-	public List<BoardVO> boardList() throws Exception {
+	public List<BoardVO> boardList(int startPage) throws Exception {
 		
-		List<BoardVO> list = boardDao.boardList();
+		List<BoardVO> list = boardDao.boardList(startPage);
 		
 		return list;
 	}

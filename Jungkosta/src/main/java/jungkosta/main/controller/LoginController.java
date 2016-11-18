@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import jungkosta.commons.util.Path;
 import jungkosta.main.domain.MemberVO;
 import jungkosta.main.service.LoginService;
 
@@ -23,8 +24,10 @@ public class LoginController {
 
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logoutGET(HttpServletRequest request) {
-
-		String url = determine_url(request.getHeader("referer"));
+		
+		Path path = Path.getInstance();
+		
+		String url = path.determine_url(request.getHeader("referer"));
 
 		HttpSession session = request.getSession();
 
@@ -38,13 +41,14 @@ public class LoginController {
 	@RequestMapping(value = "/login", method = { RequestMethod.POST, RequestMethod.GET })
 	public String loginPost(HttpServletRequest request, MemberVO vo) throws Exception {
 		
+		Path path = Path.getInstance();
 		MemberVO ret_vo = service.check_Login(vo);
 
 		String url = null;
 
 		HttpSession session = request.getSession();
 		System.out.println(request.getHeader("referer"));
-		url = determine_url(request.getHeader("referer"));
+		url = path.determine_url(request.getHeader("referer"));
 
 		if (ret_vo == null) {
 
@@ -59,22 +63,4 @@ public class LoginController {
 		return "redirect:"+url;
 	}
 
-	public String determine_url(String prev_URL) {
-
-		StringTokenizer tok = new StringTokenizer(prev_URL, "/");
-		String url = "";
-		
-		tok = new StringTokenizer(prev_URL, "/");
-
-		for (int i = 0; i < 3; i++)
-			tok.nextToken();
-		if(!tok.hasMoreTokens()){
-			url = "/";
-		}
-		while (tok.hasMoreTokens()) {
-			url += "/" + tok.nextToken();
-		}
-		
-		return url;
-	}
 }

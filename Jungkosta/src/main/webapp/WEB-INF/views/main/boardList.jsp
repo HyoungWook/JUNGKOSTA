@@ -60,7 +60,7 @@
 			<div class="col-md-10">
 			<hr>
 			<c:if test="${email != null }">
-				<a href="write_board.jsp" class="a_ws">글 쓰기</a>
+				<a href="/Jungkosta/boardWriteForm" class="a_ws">글 쓰기</a>
 			</c:if>
 			</div>
 		<div class="col-md-1"></div>	
@@ -69,16 +69,16 @@
 		<div class="col-md-4"></div>
 		<div class="col-md-4" id="page_num_ws">
 			<c:if test="${listModel.startPage > 5 }">
-				<a href="boardList.jsp/${listModel.startPage-5 }">[이전]</a>
+				<a href="boardList/${listModel.startPage-5 }">[이전]</a>
 			</c:if>
 			<c:forEach var="pageNo" begin="${listModel.startPage }" end="${listModel.endPage }">
 			
 				<c:choose>
 					<c:when test="${listModel.requestPage != pageNo }">
-						<a href="boardList.jsp/${pageNo }">[${ pageNo}]</a>
+						<a href="boardList/${pageNo }">[${ pageNo}]</a>
 					</c:when>
 					<c:otherwise>
-						<a href="boardList.jsp/${pageNo }"><b>[${ pageNo}]</b></a>
+						<a href="boardList/${pageNo }"><b>[${ pageNo}]</b></a>
 					</c:otherwise>	
 				</c:choose>
 				
@@ -86,7 +86,7 @@
 			</c:forEach>
 			
 			<c:if test="${listModel.endPage < listModel.totalPageCount }">
-				<a href="board.jsp?pageNum=${listModel.startPage-5 }">[이후]</a>
+				<a href="boardList/${listModel.startPage-5 }">[이후]</a>
 			</c:if>
 		</div>
 		<div class="col-md-4"></div>
