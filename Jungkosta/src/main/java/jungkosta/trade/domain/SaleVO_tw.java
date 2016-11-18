@@ -3,7 +3,7 @@ package jungkosta.trade.domain;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
-public class SaleVO implements Serializable{
+public class SaleVO_tw implements Serializable{
 	private int sale_id;
 	private String item_name;
 	private String item_cost;
@@ -22,9 +22,9 @@ public class SaleVO implements Serializable{
 	private String item_pic3;
 	private String item_pic4;
 	
-	public SaleVO(){}
+	public SaleVO_tw(){}
 
-	public SaleVO(int sale_id, String item_name, String item_cost, Timestamp buy_time, String item_status,
+	public SaleVO_tw(int sale_id, String item_name, String item_cost, Timestamp buy_time, String item_status,
 			String item_scratch, String additional_info, String buy_info, Timestamp sale_date, String email,
 			int subca_id, String flag, String sale_status, String item_pic1, String item_pic2, String item_pic3,
 			String item_pic4) {

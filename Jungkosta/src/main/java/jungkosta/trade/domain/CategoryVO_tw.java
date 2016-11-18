@@ -1,12 +1,12 @@
 package jungkosta.trade.domain;
 
-public class CategoryVO {
+public class CategoryVO_tw {
 	private int ca_id;
 	private String ca_name;
 	
-	public CategoryVO(){}
+	public CategoryVO_tw(){}
 
-	public CategoryVO(int ca_id, String ca_name) {
+	public CategoryVO_tw(int ca_id, String ca_name) {
 		super();
 		this.ca_id = ca_id;
 		this.ca_name = ca_name;

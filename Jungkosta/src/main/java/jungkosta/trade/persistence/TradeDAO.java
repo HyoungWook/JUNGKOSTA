@@ -1,9 +1,9 @@
 package jungkosta.trade.persistence;
 
-import jungkosta.trade.domain.SaleVO;
+import jungkosta.trade.domain.SaleVO_tw;
 
 public interface TradeDAO {
 	
-	public void insertSale(SaleVO sale) throws Exception;
+	public void insertSale(SaleVO_tw sale) throws Exception;
 
 }
