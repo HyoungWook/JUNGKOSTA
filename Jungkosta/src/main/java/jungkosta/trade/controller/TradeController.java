@@ -1,11 +1,14 @@
 package jungkosta.trade.controller;
 
+import java.util.Date;
+
 import javax.inject.Inject;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import jungkosta.trade.domain.SaleVO;
 import jungkosta.trade.service.TradeService;
@@ -17,17 +20,16 @@ public class TradeController {
 	private TradeService service;
 	
 	@RequestMapping(value= "/tradeRegisterForm", method= RequestMethod.GET)
-	public void registerGet() {
+	public void registerGet(SaleVO saleVO) {
 		System.out.println("Insert Form");
 	}
 	
 	@RequestMapping(value= "/tradeRegisterForm", method= RequestMethod.POST)
-	public String registPost(SaleVO saleVO, Model model) throws Exception{
-		System.out.println(saleVO.getItem_name());
+	public String registPost(SaleVO saleVO) throws Exception{
+		System.out.println(saleVO);
 		service.regist(saleVO);
-		model.addAttribute("result", "SUCCESS");
 		
-		return "redirect:/jungkosta/";
+		return "redirect:/Jungkosta";
 	}
 	
 	@RequestMapping(value= "/tradeList", method= RequestMethod.GET)

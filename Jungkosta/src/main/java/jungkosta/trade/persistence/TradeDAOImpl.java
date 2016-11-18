@@ -20,4 +20,9 @@ public class TradeDAOImpl implements TradeDAO {
 		sqlSession.insert(namespace + ".insertSale", sale);
 	}
 
+	@Override
+	public int selectS_id() throws Exception {
+		return sqlSession.selectOne(namespace + ".selectS_id");
+	}
+
 }

@@ -15,7 +15,8 @@ public class TradeServiceImpl implements TradeService {
 
 	@Override
 	public void regist(SaleVO sale) throws Exception {
-			dao.insertSale(sale);
+		sale.setSale_id(dao.selectS_id() + 1);
+		dao.insertSale(sale);
 	}
 
 }
