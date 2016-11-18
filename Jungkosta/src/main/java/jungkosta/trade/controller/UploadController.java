@@ -20,8 +20,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import jungkosta.commons.utill.MediaUtils;
-import jungkosta.commons.utill.UploadFileUtils;
+import jungkosta.commons.util.MediaUtils;
+import jungkosta.commons.util.UploadFileUtils;
+
 
 @Controller
 public class UploadController {

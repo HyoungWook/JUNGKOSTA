@@ -231,7 +231,7 @@
       			<configuration>
         			<failOnMissingWebXml>false</failOnMissingWebXml>
      			</configuration>
-			</plugin>
+			</plugin> 
 		
 			<plugin>
 				<artifactId>maven-eclipse-plugin</artifactId>

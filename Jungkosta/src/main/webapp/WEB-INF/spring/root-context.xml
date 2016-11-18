@@ -61,6 +61,10 @@
 	<!-- 거래 service, DAO -->
 	<context:component-scan base-package="jungkosta.trade.service"/>
 	<context:component-scan base-package="jungkosta.trade.persistence"/>
+	
+	<!-- 옥션 service, DAO -->
+	<context:component-scan base-package="jungkosta.auction.persistence" />
+	<context:component-scan base-package="jungkosta.auction.service" />
 
 	<!-- auction multipartResolver -->
 	<bean id="multipartResolver"
