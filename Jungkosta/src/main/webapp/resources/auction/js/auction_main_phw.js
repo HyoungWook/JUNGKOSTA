@@ -62,7 +62,6 @@ $(function() {
 				var data = "sort=" + sort;
 				$.ajax({
 					url : "auctionListSort",
-					type : "post",
 					dataType : "json",
 					data : data,
 					success : successHandler,

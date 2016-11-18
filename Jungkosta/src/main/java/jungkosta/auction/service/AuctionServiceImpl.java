@@ -15,6 +15,7 @@ public class AuctionServiceImpl implements AuctionService {
 	@Inject
 	private AuctionDAO dao;
 	
+	@Transactional
 	@Override
 	public void register(AuctionVO auction) throws Exception {
 		

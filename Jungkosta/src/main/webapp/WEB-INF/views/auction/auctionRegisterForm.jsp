@@ -264,6 +264,12 @@ $(".fileDrop").on("drop", function(event){
 	
 	formData.append("file", file);	
 	
+	// start 현우 수정 부분
+		var item_pic = $("input[name^=item_pic]").size();
+
+
+		if (item_pic < 4) {
+	
 	
 	$.ajax({
 		  url:'uploadAjax',
@@ -281,6 +287,20 @@ $(".fileDrop").on("drop", function(event){
 			  $(".uploadedList").append(html); 
 			
 			  
+						$file_area.append(str);
+
+						if (item_pic < 3) {
+							$("#file_phw").fadeIn();
+						} else {
+							$("#file_phw").fadeOut();
+						}
+						
+					}
+			});
+		}else{
+			alert("이미지를 4개 초과하여 업로드 할 수 없습니다.");
+		}
+		
 		  }
 		});	
 });
@@ -304,7 +324,7 @@ $(".uploadedList").on("click",".delbtn",function(event){
 });
 
 
-$("#add_btn").submit(function(event){
+/* $("#add_btn").submit(function(event){
 	event.preventDefault();
 	
 	var that = $(this);
@@ -317,7 +337,7 @@ $("#add_btn").submit(function(event){
 	that.append(str);
 
 	that.get(0).submit();
-});
+}); */
 
 </script>
 </html>

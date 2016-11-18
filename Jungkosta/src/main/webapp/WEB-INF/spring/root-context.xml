@@ -63,16 +63,7 @@
 	<!-- dao -->
 	<context:component-scan base-package="jungkosta.trade.persistence" />
 
-	<!-- auction multipartResolver -->
-	<bean id="multipartResolver"
-		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-		<property name="maxUploadSize" value="10485760" />
-	</bean>
 
-	<!-- auction uploadpath -->
-	<bean id="uploadPath" class="java.lang.String">
-		<constructor-arg value="C:\\upload" />
-	</bean>
-
+	
 </beans>
 
