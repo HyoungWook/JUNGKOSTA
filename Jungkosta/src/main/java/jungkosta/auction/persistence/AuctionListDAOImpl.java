@@ -1,6 +1,7 @@
 package jungkosta.auction.persistence;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -18,9 +19,9 @@ public class AuctionListDAOImpl implements AuctionListDAO {
 	private static final String namespace = "jungkosta.mappers.auction.AuctionListMapper";
 
 	@Override
-	public List<AuctionVO> auctionList() throws Exception {
+	public List<AuctionVO> auctionList(Map<String, String> map) throws Exception {
 
-		return sqlSession.selectList(namespace + ".auctionList");
+		return sqlSession.selectList(namespace + ".auctionList", map);
 	}
 
 }

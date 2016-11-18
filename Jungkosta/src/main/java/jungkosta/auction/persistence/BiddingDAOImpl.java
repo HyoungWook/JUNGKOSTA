@@ -3,9 +3,11 @@ package jungkosta.auction.persistence;
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.stereotype.Repository;
 
 import jungkosta.auction.domain.BiddingVO;
 
+@Repository
 public class BiddingDAOImpl implements BiddingDAO {
 
 	@Inject
@@ -27,6 +29,11 @@ public class BiddingDAOImpl implements BiddingDAO {
 			return 0;
 		}
 
+	}
+
+	@Override
+	public int countBidding(int auction_id) throws Exception {
+		return sqlSession.selectOne(namespace + ".countBidding", auction_id);
 	}
 
 }

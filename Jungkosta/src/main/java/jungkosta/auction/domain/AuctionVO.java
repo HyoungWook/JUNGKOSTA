@@ -6,7 +6,7 @@ import java.util.Date;
 
 public class AuctionVO implements Serializable {
 
-	private int autcion_id;
+	private int auction_id;
 	private int auction_stcost;
 	private int immediate_bid_cost;
 	private Timestamp register_date;
@@ -31,12 +31,12 @@ public class AuctionVO implements Serializable {
 	private String item_pic3 = "";
 	private String item_pic4 = "";
 
-	public int getAutcion_id() {
-		return autcion_id;
+	public int getAuction_id() {
+		return auction_id;
 	}
 
-	public void setAutcion_id(int autcion_id) {
-		this.autcion_id = autcion_id;
+	public void setAuction_id(int auction_id) {
+		this.auction_id = auction_id;
 	}
 
 	public int getAuction_stcost() {
@@ -217,7 +217,7 @@ public class AuctionVO implements Serializable {
 
 	@Override
 	public String toString() {
-		return "AuctionVO [autcion_id=" + autcion_id + ", auction_stcost=" + auction_stcost + ", immediate_bid_cost="
+		return "AuctionVO [auction_id=" + auction_id + ", auction_stcost=" + auction_stcost + ", immediate_bid_cost="
 				+ immediate_bid_cost + ", register_date=" + register_date + ", auction_end_date=" + auction_end_date
 				+ ", auction_end_status=" + auction_end_status + ", sale_id=" + sale_id + ", item_name=" + item_name
 				+ ", item_cost=" + item_cost + ", buy_time=" + buy_time + ", item_status=" + item_status

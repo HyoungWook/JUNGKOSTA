@@ -7,9 +7,19 @@
 <mapper namespace="jungkosta.mappers.auction.AuctionListMapper">
 	<cache />
 
-	<select id="auctionList" resultType="AuctionVO">
+	<select id="auctionList" parameterType="java.util.Map" resultType="AuctionVO">
 		select * from auctionlist_view
+		<choose>
+			<when test="sort == 'add_sort'.toString()">
+				order by sale_date desc
+			</when>
+			<when test="sort == 'end_sort'.toString()">
+				order by auction_end_date
+			</when>
+		</choose>
+		
 	</select>
+
 
 </mapper>
 

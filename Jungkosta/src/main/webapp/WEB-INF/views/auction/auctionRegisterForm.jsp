@@ -286,6 +286,24 @@ $(".fileDrop").on("drop", function(event){
 });
 
 
+$(".uploadedList").on("click",".delbtn",function(event){
+	event.preventDefault();
+	var that = $(this);
+
+ 	$.ajax({
+		url:"deleteFile",
+		type:"post",
+		data:{fileName:$(this).attr("href")},
+		dataType:"text",
+		success:function(result){
+			if(result=='deleted'){
+				 that.closest("li").remove();
+			}
+		}
+	}); 
+});
+
+
 $("#add_btn").submit(function(event){
 	event.preventDefault();
 	
@@ -293,16 +311,13 @@ $("#add_btn").submit(function(event){
 	
 	var str ="";
 	$(".uploadedList .delbtn").each(function(index){
-		 str +="<input type='hidden' name='item_pic'"+(index+1)+" value='"+$(this).attr("href") +"'> ";
+		 str +="<input type='hidden' name='item_pic"+(index+1)+"' value='"+$(this).attr("href") +"'>";
 	});
 	
 	that.append(str);
 
 	that.get(0).submit();
 });
-
-
-
 
 </script>
 </html>

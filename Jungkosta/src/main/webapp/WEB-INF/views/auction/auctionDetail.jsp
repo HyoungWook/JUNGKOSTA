@@ -30,6 +30,7 @@
 	rel="stylesheet">
 
 <div class="container">
+	<input type="hidden" id="sale_id" value="${auction.sale_id }">
 	<input type="hidden" id="status" value="${auction.auction_end_status}">
 	<input type="hidden" id="end_date" value="${auction.auction_end_date}">
 

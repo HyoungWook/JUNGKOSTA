@@ -15,7 +15,7 @@
 		auction_end_status, sale_id
 		) values
 		(
-		#{autcion_id}, #{auction_stcost}, #{immediate_bid_cost}, sysdate,
+		#{auction_id}, #{auction_stcost}, #{immediate_bid_cost}, sysdate,
 		#{auction_end_date}, #{auction_end_status}, #{sale_id}
 		)
 	</insert>

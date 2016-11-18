@@ -18,12 +18,11 @@ function successHandler(data) {
 						var html = "<div class='col-md-3 item_info_phw' onclick='sendDetail("
 								+ entry.sale_id + ")'>";
 						html += "<b>무료배송</b>";
-						html += "<img id='icon_auc_phw' alt='' src='./images_phw/icon_auc.png'>";
+						html += "<img id='icon_auc_phw' alt='' src='/Jungkosta/resources/auction/images/icon_auc.png'>";
 						html += "<div class='item_img_phw'>";
-						html += "<img id='item_main_img' alt='' src='../upload/"
-								+ entry.item_pic + "'>";
+						html += "<img id='item_main_img' alt='Item_Pic' src='" + "'>";
 						if (entry.auction_end_status == "true") {
-							html += "<img id='close_auc_phw' alt='' src='./images_phw/auction_close.png'>";
+							html += "<img id='close_auc_phw' alt='' src='/Jungkosta/resources/auction/images/auction_close.png'>";
 						}
 
 						html += "</div>";
@@ -62,7 +61,7 @@ $(function() {
 				var sort = $(this).val();
 				var data = "sort=" + sort;
 				$.ajax({
-					url : "range_server_lsj.jsp",
+					url : "auctionListSort",
 					type : "post",
 					dataType : "json",
 					data : data,
