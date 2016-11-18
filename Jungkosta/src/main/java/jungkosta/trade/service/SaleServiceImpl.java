@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import jungkosta.trade.domain.SaleVO;
+import jungkosta.trade.domain.SaleVO_tw;
 import jungkosta.trade.domain.SubCategoryVO;
 import jungkosta.trade.persistence.SaleDAO;
 
@@ -18,7 +19,7 @@ public class SaleServiceImpl implements SaleService {
 	
 	
 	@Override
-	public int insertSale(SaleVO saleVO) {
+	public int insertSale(SaleVO_tw saleVO) {
 		return 0;
 	}
 
@@ -28,31 +29,36 @@ public class SaleServiceImpl implements SaleService {
 	}
 
 	@Override
-	public List<SaleVO> listSale() throws Exception {
+	public List<SaleVO_tw> listSale() throws Exception {
 		return saleDAO.listSale();
 	}
-
+	
 	@Override
-	public SubCategoryVO searchSubCategory(int subca_id) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<SaleVO_tw> listSalesub(Integer subca_id) throws Exception {
+		return saleDAO.listSalesub(subca_id);
+	}
+	
+	@Override
+	public SubCategoryVO searchSubCategory(int subca_id) throws Exception {
+		return saleDAO.searchSubCategory(subca_id);
 	}
 
 	@Override
-	public SaleVO searchSale(int sale_id) throws Exception {
+	public SaleVO_tw searchSale(int sale_id) throws Exception {
 		return saleDAO.searchSale(sale_id);
 	}
 
 	@Override
-	public String searchTotalCategory(int subca_id) {
+	public String searchTotalCategory(int subca_id) throws Exception {
+		return saleDAO.searchTotalCategory(subca_id);
+	}
+
+	@Override
+	public List<SaleVO> listSalesub(int subca_id) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
-	public List<SaleVO> listSalesub(int subca_id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 
 }

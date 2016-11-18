@@ -5,6 +5,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import jungkosta.trade.domain.SaleVO;
+import jungkosta.trade.domain.SaleVO_tw;
 import jungkosta.trade.persistence.TradeDAO;
 
 @Service
@@ -15,7 +16,8 @@ public class TradeServiceImpl implements TradeService {
 
 	@Override
 	public void regist(SaleVO sale) throws Exception {
-			dao.insertSale(sale);
+		sale.setSale_id(dao.selectS_id() + 1);
+		dao.insertSale(sale);
 	}
 
 }

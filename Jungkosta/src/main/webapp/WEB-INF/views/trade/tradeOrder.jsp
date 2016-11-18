@@ -11,9 +11,13 @@
 <!-- JQuery -->
 <script src="/Jungkosta/resources/lib/jquery-3.1.1.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
+
+<!-- Javascript -->
 <script type="text/javascript" src="/Jungkosta/resources/js/trade/itemorder.js"></script>
-	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <!-- Css -->
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -21,16 +25,12 @@
 <!-- Bootstrap -->
 <script src="/Jungkosta/resources/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
  <link href="/Jungkosta/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
- <link rel="stylesheet"
-	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
 <!-- daum map api -->
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-<script
-	src="http://dmaps.daum.net/map_js_init/postcode.v2.js?autoload=false"></script>
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js?autoload=false"></script>
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-<script
-	src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 	
 <style type="text/css">
 body {
@@ -200,7 +200,7 @@ body {
 </head>
 <body>
 	<div class="container">
-		<form action="itemOrderProc.jsp" method="post">
+		<form id="tradeOrder" method="post">
 			<h2>주문하기</h2>
 			<div class="row">
 				<div class="col-md-offset-1 col-md-4 left_ktw">
@@ -287,11 +287,12 @@ body {
 					<div class="row">
 						<div class="col-md-offset-1 col-md-2">
 							<div id="item_sub_imgs_ktw">
-								<c:set var="head"
+								<%-- <c:set var="head"
 									value="${fn:substring(register.item_pic, 0 ,fn:length(register.item_pic)-4) }"></c:set>
 								<c:set var="pattern"
-									value="${fn:substringAfter(register.item_pic,head) }"></c:set>
-								<img src="../upload/${head}_small${pattern}">
+									value="${fn:substringAfter(register.item_pic,head) }"></c:set> --%>
+								<%-- <img src="../upload/${head}_small${pattern}"> --%>
+								<img alt="" src="/Jungkosta/resources/images/trade/gier2.jpg">
 							</div>
 							<br>
 						</div>
@@ -306,7 +307,7 @@ body {
 					<br> <br> <br>
 					<hr>
 					<div class="row">
-						<div class="col-md-offset-1 col-md-3">
+						<div class="col-md-offset-1 col-md-4">
 							<h4>상품 금액</h4>
 							<br>
 							<h5 id="extraprice_ktw">수수료 :</h5>
@@ -320,7 +321,7 @@ body {
 							<h4 class="text-primary">총 결제 금액</h4>
 							<br>
 						</div>
-						<div class="col-md-offset-3 col-md-5">
+						<div class="col-md-offset-2 col-md-5">
 							<h4 id="item_Price_ktw">
 								<fmt:formatNumber value="${register.item_cost }" pattern="#,###" />
 								원
@@ -365,11 +366,15 @@ body {
 								name="email" value="${member.email }"> <br> <br>
 
 
-							<h4 id="total_Price_ktw">${deliveryPrice + register.item_cost}원</h4>
+							<%-- <h4 id="total_Price_ktw">${deliveryPrice + register.item_cost}원</h4> --%>
+							
+							<h4 id="total_Price_ktw">
+							<fmt:formatNumber value="${deliveryPrice + register.item_cost 
+							+ register.item_cost*0.01}" pattern="#,###"/>원</h4>
 							<br> <input type="hidden" name="payment_cost" id="cost"
 								value="${deliveryPrice + register.item_cost + register.item_cost*0.01}">
 
-
+								
 							<br>
 						</div>
 					</div>
@@ -378,7 +383,7 @@ body {
 
 					<button type="button" class="btn btn-primary btn-lg"
 						data-target="#myModal" data-toggle="modal" id="orderButton_ktw">주문하기</button>
-					<a href="itemlist.jsp"><button type="button"
+					<a href="tradelist"><button type="button"
 							class="btn btn-danger btn-lg" id="signbutton_khw">취소</button></a>
 
 
@@ -394,7 +399,67 @@ body {
 								aria-hidden="true">×</button>
 							<h4 class="modal-title" id="myModalLabel">주문하기</h4>
 						</div>
-						<div class="modal-body modalBody"></div>
+						<div class="modal-body modalBody">
+						
+	<div class="tw_form">
+		<table class="deposit">
+			<tr><td><strong>무통장입금</strong></td></tr>
+		<tr>
+		<td width="100" align="right"><label for="deposit_bank">은행
+				: </label></td>
+		<td width="300"><select name="bank" id="deposit_bank">
+				<option>신한 은행</option>
+				<option>국민 은행</option>
+				<option>농협</option>
+		</select></td>
+	</tr>
+	<tr>
+		<td align="right"><label>예금주 : </label></td>
+		<td align="left"><label>중코스타</label></td>
+	</tr>
+	<tr>
+		<td align="right"><label>계좌번호 : </label></td>
+		<td><input type="text" name="account_no" size="30"></td>
+	</tr>
+</table>	
+			
+	</div>
+	<div class="tw_form">
+	<table class="transfer">
+	<tr><td><strong>실시간계좌이체</strong></td></tr>
+	<tr>
+		<td width="100" align="right"><label for="transfer_bank">은행
+				: </label></td>
+		<td width="300"><select name="bank" class="bank"
+			id="transfer_bank">
+				<option>신한 은행</option>
+				<option>국민 은행</option>
+				<option>농협</option>
+		</select></td>
+	</tr>
+	<tr>
+		<td align="right"><label>예금주 : &nbsp;</label></td>
+		<td align="left"><label>중코스타</label></td>
+		<!-- <td><input type="text" name="name" size="20" value=""></td> -->
+	</tr>
+	<tr>
+		<td align="right"><label>내 계좌번호 :</label></td>
+		<td><input type="text" name="account_no" size="30"></td>
+	</tr>
+
+	<tr>
+		<td align="right"><label>비밀번호 : &nbsp;</label></td>
+		<td><input type="text" name="account_no" size="30"></td>
+	</tr>
+
+	<tr>
+		<td align="right"><label>계좌번호 : &nbsp;</label></td>
+		<td><input type="text" name="account_no" size="30"></td>
+	</tr>
+</table>
+	</div>
+						
+						 </div>
 						<div class="modal-footer">
 
 							<button type="submit" class="btn btn-primary">주문</button>
@@ -408,6 +473,7 @@ body {
 			</div>
 			<!-- /.modal -->
 		</form>
+	
 
 	</div>
 </body>
