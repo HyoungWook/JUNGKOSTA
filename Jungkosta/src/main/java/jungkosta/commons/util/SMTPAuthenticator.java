@@ -1,4 +1,4 @@
-package jungkosta.commons.utill;
+package jungkosta.commons.util;
 
 import javax.mail.PasswordAuthentication;
 
