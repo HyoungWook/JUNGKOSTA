@@ -34,7 +34,6 @@ public class AuctionRegisterController {
 
 		auction.setSale_id(service.sale_id() + 1);
 		auction.setEmail("aaa@aaa.com");
-		//auction.setEmail("qkrgusdn93@naver.com");
 
 		String buy_time = request.getParameter("buy_time_temp");
 		String auction_end_date = request.getParameter("auction_end_date_temp");

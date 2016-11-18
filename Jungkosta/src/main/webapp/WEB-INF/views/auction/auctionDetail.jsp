@@ -37,6 +37,26 @@
 
 	<br> <br>
 
+<script id="template" type="text/x-handlebars-template">
+		<br/><br/>
+		<div>{{item_pic1}}</div>&nbsp;&nbsp;<div>{{item_pic2}}</div>&nbsp;&nbsp;
+		<div>{{item_pic3}}</div>&nbsp;&nbsp;<div>{{item_pic4}}</div>
+</script><!-- 이수진 변경 -->
+
+<script>
+	var template = Handlebars.compile($("#template").html());
+
+	$.getJSON("auctionDetailImg", function(data) {
+		$.each(data, function(index, entry) {
+
+			var listInfo = getListInfo(entry);
+			var html = template(listInfo);
+
+			$(".item_list_phw").append(html);
+		});
+	});
+</script><!-- 이수진 변경 -->
+
 	<div class="main_phw">
 
 		<h1>경매</h1>
@@ -56,8 +76,8 @@
 					<div class="item_imgs_phw">
 						<c:set var="headName" value="images_address" />
 						<c:set var="pattern" value="images_address" />
-						<img id="item_main_phw" alt="main_Image" src="">
-
+						<img id="item_main_phw" alt="main_Image" src="/Jungkosta/auction/displayFile?fileName=${auction.item_pic1}">
+						<!-- src변경 -->
 						<div id="item_sub_imgs_phw">
 							<img alt="Thumbnail" src="">
 						</div>
@@ -173,10 +193,7 @@
 
 		<br> <br>
 		<hr>
-
-
-
-
+		
 		<div class="detail_phw">
 
 			<ul class="nav nav-tabs detail_select_phw">
@@ -191,8 +208,8 @@
 				<br /> <br /> <br />
 				<div class="tab-pane active" id="product_info">
 					<label>상품 정보</label> <br /> <br /> <img id="item_main_phw2"
-						alt="아이템 상품 이미지" src=""> <br /> <br /> <span id="info">제품구입
-						일자:</span>&nbsp;
+						alt="아이템 상품 이미지" src="/Jungkosta/auction/displayFile?fileName=${auction.item_pic1}"> <br /> <br /> <span id="info">제품구입
+						일자:</span>&nbsp;<!-- src변경 -->
 					<fmt:formatDate value="${auction.buy_time}" pattern="yyyy년 MM월 dd일" />
 					<br /> <br /> <span id="info">상품 상태:</span>&nbsp;${auction.item_status}
 					<br /> <br /> <span id="info">제품 흠집 정도:</span>&nbsp;${auction.item_scratch}

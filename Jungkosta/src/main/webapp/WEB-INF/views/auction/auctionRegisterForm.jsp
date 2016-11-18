@@ -16,7 +16,7 @@
 	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
 <script src="/Jungkosta/resources/auction/js/valid_check_lsj.js"></script>
-<!-- <link href="/Jungkosta/resources/auction/dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" /> -->
+<link href="/Jungkosta/resources/auction/dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 <style>
 .input_error_phw {
@@ -264,7 +264,7 @@ $(".fileDrop").on("drop", function(event){
 	
 	formData.append("file", file);	
 	
-	// start 현우 수정 부분
+
 		var item_pic = $("input[name^=item_pic]").size();
 
 
@@ -287,7 +287,7 @@ $(".fileDrop").on("drop", function(event){
 			  $(".uploadedList").append(html); 
 			
 			  
-						$file_area.append(str);
+			$file_area.append(str);
 
 						if (item_pic < 3) {
 							$("#file_phw").fadeIn();
@@ -300,9 +300,7 @@ $(".fileDrop").on("drop", function(event){
 		}else{
 			alert("이미지를 4개 초과하여 업로드 할 수 없습니다.");
 		}
-		
-		  }
-		});	
+});	
 
 
 
@@ -324,7 +322,7 @@ $(".uploadedList").on("click",".delbtn",function(event){
 });
 
 
-/* $("#add_btn").submit(function(event){
+$("#add_btn").submit(function(event){
 	event.preventDefault();
 	
 	var that = $(this);
@@ -337,7 +335,7 @@ $(".uploadedList").on("click",".delbtn",function(event){
 	that.append(str);
 
 	that.get(0).submit();
-}); */
+});
 
 </script>
 </html>
