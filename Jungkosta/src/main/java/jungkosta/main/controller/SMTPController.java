@@ -30,6 +30,7 @@ public class SMTPController {
 	@Inject
 	private SignupService service;
 	
+	//SMTP 메일서버 메소드 
 	@RequestMapping(value = "mainMailSendProc", method = RequestMethod.POST)
 	public ResponseEntity<String> mainMailSendProc(
 			@RequestParam("receiver") String receiver, HttpServletRequest request) throws Exception {
@@ -117,6 +118,7 @@ public class SMTPController {
 		return entity;
 	}
 	
+	//인증번호 확인 메소드
 	@RequestMapping(value="confirmnumProc", method=RequestMethod.POST)
 	public ResponseEntity<String> confirmnumProc(@RequestParam("number") String number,
 			HttpServletRequest request){
@@ -138,6 +140,19 @@ public class SMTPController {
 		return entity;
 	}
 	
+	//타임오바 세션제거
 	@RequestMapping(value="expire_number", method=RequestMethod.POST)
-	public ResponseEntity<String> timeOver(HttpServletRequest request)
+	public ResponseEntity<String> timeOver(HttpServletRequest request){
+		ResponseEntity<String> entity = null;
+		HttpSession session = request.getSession();
+		
+		try {
+			session.removeAttribute("connum");
+			entity = new ResponseEntity<>("", HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+			entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
+		return entity;
+	}
 }

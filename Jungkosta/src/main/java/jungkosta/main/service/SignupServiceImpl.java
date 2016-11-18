@@ -16,7 +16,6 @@ public class SignupServiceImpl implements SignupService {
 	@Override
 	public void signupProc(MemberVO vo) throws Exception {
 		dao.createMember(vo);
-
 	}
 
 	@Override
