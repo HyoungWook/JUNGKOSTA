@@ -13,7 +13,7 @@ public class BiddingDAOImpl implements BiddingDAO {
 	@Inject
 	private SqlSession sqlSession;
 
-	private static final String namespace = "jungkosta.mappers.auction.BidMapper";
+	private static final String namespace = "jungkosta.main.mappers.auction.BidMapper";
 
 	@Override
 	public void registerBid(BiddingVO vo) throws Exception {

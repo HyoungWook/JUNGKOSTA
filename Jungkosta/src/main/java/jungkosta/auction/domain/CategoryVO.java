@@ -1,8 +1,6 @@
 package jungkosta.auction.domain;
 
-import java.io.Serializable;
-
-public class CategoryVO implements Serializable {
+public class CategoryVO  {
 
 	private int ca_id;
 	private String ca_name;

@@ -16,10 +16,14 @@ public class AuctionListDAOImpl implements AuctionListDAO {
 	@Inject
 	private SqlSession sqlSession;
 
-	private static final String namespace = "jungkosta.mappers.auction.AuctionListMapper";
+	private static final String namespace = "jungkosta.main.mappers.auction.AuctionMapper";
 
 	@Override
 	public List<AuctionVO> auctionList(Map<String, String> map) throws Exception {
+
+		List<AuctionVO> list = sqlSession.selectList(namespace + ".auctionList", map);
+
+		System.out.println("현재 개수 : " + list.size());
 
 		return sqlSession.selectList(namespace + ".auctionList", map);
 	}

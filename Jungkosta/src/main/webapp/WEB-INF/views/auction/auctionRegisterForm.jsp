@@ -44,9 +44,9 @@
 	<span id="top_lsj">경매 물품 등록</span>
 
 	<div class="container">
-		<form id="add_btn" method="post" >
+		<form id="add_btn" method="post" role="form" >
 			
-			<input type="hidden" name="flag" value="1">
+			<input type="hidden" name="flag" value="1" >
 
 			<div class="row">
 				<div class="col-md-3"></div>
@@ -264,6 +264,12 @@ $(".fileDrop").on("drop", function(event){
 	
 	formData.append("file", file);	
 	
+
+		var item_pic = $("input[name^=item_pic]").size();
+
+
+		if (item_pic < 4) {
+	
 	
 	$.ajax({
 		  url:'uploadAjax',
@@ -281,8 +287,38 @@ $(".fileDrop").on("drop", function(event){
 			  $(".uploadedList").append(html); 
 			
 			  
-		  }
-		});	
+			$file_area.append(str);
+
+						if (item_pic < 3) {
+							$("#file_phw").fadeIn();
+						} else {
+							$("#file_phw").fadeOut();
+						}
+						
+					}
+			});
+		}else{
+			alert("이미지를 4개 초과하여 업로드 할 수 없습니다.");
+		}
+});	
+
+
+
+$(".uploadedList").on("click",".delbtn",function(event){
+	event.preventDefault();
+	var that = $(this);
+
+ 	$.ajax({
+		url:"deleteFile",
+		type:"post",
+		data:{fileName:$(this).attr("href")},
+		dataType:"text",
+		success:function(result){
+			if(result=='deleted'){
+				 that.closest("li").remove();
+			}
+		}
+	}); 
 });
 
 
@@ -293,16 +329,13 @@ $("#add_btn").submit(function(event){
 	
 	var str ="";
 	$(".uploadedList .delbtn").each(function(index){
-		 str += "<input type='hidden' name='item_pic'"+(index+1)+" value='"+$(this).attr("href") +"'> ";
+		 str +="<input type='hidden' name='item_pic"+(index+1)+"' value='"+$(this).attr("href") +"'>";
 	});
 	
 	that.append(str);
 
 	that.get(0).submit();
 });
-
-
-
 
 </script>
 </html>

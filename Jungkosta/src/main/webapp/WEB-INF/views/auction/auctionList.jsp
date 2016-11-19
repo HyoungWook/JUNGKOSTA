@@ -14,6 +14,7 @@
 	rel="stylesheet">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
 <script src="/Jungkosta/resources/bootstrap/js/bootstrap.min.js"></script>
 
 
@@ -22,6 +23,15 @@
 	rel="stylesheet">
 <link rel="stylesheet"
 	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+
+<!-- start 현우 추가 부분 -->
+<!-- template -->
+<script type="text/javascript"
+	src="/Jungkosta/resources/auction/js/upload.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
+<!-- end 현우 추가 부분 -->
 
 <div class="container">
 
@@ -199,37 +209,7 @@
 				<img alt="" src="/Jungkosta/resources/auction/images/loading.gif">
 			</div>
 
-			<div class="row item_list_phw">
-
-				<c:forEach var="temp" items="${ listAuction}" varStatus="index">
-					<div class="col-md-3 item_info_phw"
-						onclick="sendDetail(${temp.sale_id})">
-
-						<br> <b>무료배송</b> <img id="icon_auc_phw" alt=""
-							src="/Jungkosta/resources/auction/images/icon_auc.png">
-
-
-						<div class="item_img_phw">
-							<img id="item_main_img" alt="" src="c:/upload/${temp.item_pic1 }">
-
-							<c:if test="${temp.auction_end_status == true }">
-								<img id="close_auc_phw" alt=""
-									src="./images_phw/auction_close.png">
-							</c:if>
-						</div>
-						<div>
-							<a>관심상품 담기</a> | <a>미리 보기</a>
-						</div>
-						<br> <br> <b class="item_name_phw">${temp.item_name }</b>
-						<br> <br> <span>현재가 </span> &nbsp;&nbsp; <strong
-							class="product_price_phw"> <fmt:formatNumber
-								value="${temp.item_cost }" pattern="#,###" />원
-						</strong> <br> <br>
-
-					</div>
-
-				</c:forEach>
-			</div>
+			<div class="row item_list_phw"></div>
 		</div>
 	</div>
 
@@ -237,3 +217,48 @@
 	<br> <br> <br>
 
 </div>
+<!-- 이수진 즉시구매가 추가 -->
+<script id="template" type="text/x-handlebars-template">
+		<div class="col-md-3 item_info_phw" onclick="sendDetail({{sale_id}})">
+			<br> 
+			<b>무료배송</b> <img id="icon_auc_phw" alt="auction_icon" src="/Jungkosta/resources/auction/images/icon_auc.png">
+			<div class="item_img_phw">
+				<img id="item_main_img" alt="main_image" src="{{main_image}}">
+					<c:if test="{{auction_end_status}} == true">
+						<img id="close_auc_phw" alt="auction_close" src="/Jungkosta/resources/auction/images/auction_close.png">
+					</c:if>
+			</div>
+			<div>
+				<a>관심상품 담기</a> | <a>미리 보기</a>
+			</div>
+			<br> <br> 
+			<b class="item_name_phw">{{item_name}}</b>
+			<br> <br> 
+			<span>현재가 </span> &nbsp;&nbsp; 
+			<strong class="product_price_phw">
+				{{item_cost}}
+			</strong></br></br>
+			<span>즉시구매가</span>
+			<strong class="product_price_phw"> &nbsp; 
+				{{immediate_bid_cost}}
+			</strong>
+			<br> <br>
+		</div>
+</script>
+<script>
+	var template = Handlebars.compile($("#template").html());
+
+	$.getJSON("auctionListSort?sort=null", function(data) {
+		$.each(data, function(index, entry) {
+
+			var listInfo = getListInfo(entry);
+			var html = template(listInfo);
+
+			$(".item_list_phw").append(html);
+		});
+	});
+</script>
+
+
+
+

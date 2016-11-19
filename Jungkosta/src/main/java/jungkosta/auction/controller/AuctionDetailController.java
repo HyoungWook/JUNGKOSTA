@@ -16,6 +16,8 @@ import jungkosta.auction.service.BiddingService;
 @Controller
 public class AuctionDetailController {
 
+	//start 현우 수정 부분
+	
 	@Inject
 	private AuctionService auctionService;
 	
@@ -36,5 +38,7 @@ public class AuctionDetailController {
 		model.addAttribute("countBidding", count);
 
 	}
+	
+	//end 현우 수정 부분
 
 }
