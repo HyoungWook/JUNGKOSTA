@@ -25,6 +25,10 @@
 <script type="text/javascript"
 	src="/Jungkosta/resources/auction/js/auction_detail_phw.js"></script>
 
+<!-- template -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
+
 
 <link href="/Jungkosta/resources/auction/css/auction_detail_phw.css"
 	rel="stylesheet">
@@ -37,25 +41,9 @@
 
 	<br> <br>
 
-<script id="template" type="text/x-handlebars-template">
-		<br/><br/>
-		<div>{{item_pic1}}</div>&nbsp;&nbsp;<div>{{item_pic2}}</div>&nbsp;&nbsp;
-		<div>{{item_pic3}}</div>&nbsp;&nbsp;<div>{{item_pic4}}</div>
-</script><!-- 이수진 변경 -->
+	<script id="template" type="text/x-handlebars-template">
 
-<script>
-	var template = Handlebars.compile($("#template").html());
-
-	$.getJSON("auctionDetailImg", function(data) {
-		$.each(data, function(index, entry) {
-
-			var listInfo = getListInfo(entry);
-			var html = template(listInfo);
-
-			$(".item_list_phw").append(html);
-		});
-	});
-</script><!-- 이수진 변경 -->
+</script>
 
 	<div class="main_phw">
 
@@ -74,11 +62,15 @@
 			<div class="row">
 				<div class="col-md-offset-1 col-md-3 item_detail_phw">
 					<div class="item_imgs_phw">
-						<c:set var="headName" value="images_address" />
-						<c:set var="pattern" value="images_address" />
-						<img id="item_main_phw" alt="main_Image" src="/Jungkosta/auction/displayFile?fileName=${auction.item_pic1}">
-						<!-- src변경 -->
+						<img id="item_main_phw" alt="main_Image"
+							src="/Jungkosta/auction/displayFile?fileName=${auction.item_pic1}">
+						
+						<hr>
+						
 						<div id="item_sub_imgs_phw">
+							<img alt="Thumbnail" src="">
+							<img alt="Thumbnail" src="">
+							<img alt="Thumbnail" src="">
 							<img alt="Thumbnail" src="">
 						</div>
 
@@ -193,7 +185,7 @@
 
 		<br> <br>
 		<hr>
-		
+
 		<div class="detail_phw">
 
 			<ul class="nav nav-tabs detail_select_phw">
@@ -208,8 +200,10 @@
 				<br /> <br /> <br />
 				<div class="tab-pane active" id="product_info">
 					<label>상품 정보</label> <br /> <br /> <img id="item_main_phw2"
-						alt="아이템 상품 이미지" src="/Jungkosta/auction/displayFile?fileName=${auction.item_pic1}"> <br /> <br /> <span id="info">제품구입
-						일자:</span>&nbsp;<!-- src변경 -->
+						alt="아이템 상품 이미지"
+						src="/Jungkosta/auction/displayFile?fileName=${auction.item_pic1}">
+					<br /> <br /> <span id="info">제품구입 일자:</span>&nbsp;
+					<!-- src변경 -->
 					<fmt:formatDate value="${auction.buy_time}" pattern="yyyy년 MM월 dd일" />
 					<br /> <br /> <span id="info">상품 상태:</span>&nbsp;${auction.item_status}
 					<br /> <br /> <span id="info">제품 흠집 정도:</span>&nbsp;${auction.item_scratch}

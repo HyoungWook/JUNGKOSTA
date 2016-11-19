@@ -35,7 +35,13 @@ function getFileInfo(fullName) {
 
 function getListInfo(entry) {
 	
-	var main_image = "/Jungkosta/auction/displayFile?fileName=" + entry.item_pic1;
+
+	var fullName = entry.item_pic1;
+
+	var front = fullName.substr(0, 12); // /2015/07/01/
+	var end = fullName.substr(14);
+
+	var main_image = "/Jungkosta/auction/displayFile?fileName=" + front + end;
 
 	return {
 		sale_id : entry.sale_id,
@@ -43,7 +49,8 @@ function getListInfo(entry) {
 		auction_end_status : entry.auction_end_status,
 		item_name : entry.item_name,
 		item_cost : entry.item_cost,
-		immediate_bid_cost : entry.immediate_bid_cost//이수진 추가
+		immediate_bid_cost : entry.immediate_bid_cost
+	// 이수진 추가
 	}
 
 }
