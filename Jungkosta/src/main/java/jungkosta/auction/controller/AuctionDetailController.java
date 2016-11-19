@@ -16,11 +16,10 @@ import jungkosta.auction.service.BiddingService;
 @Controller
 public class AuctionDetailController {
 
-	//start 현우 수정 부분
-	
+
 	@Inject
 	private AuctionService auctionService;
-	
+
 	@Inject
 	private BiddingService bidService;
 
@@ -28,17 +27,20 @@ public class AuctionDetailController {
 	public void auctionDetail(@RequestParam("sale_id") int sale_id, Model model) throws Exception {
 
 		AuctionVO auction = auctionService.read(sale_id);
-		
+
 		CategoryVO category = auctionService.selectCategory(auction.getSubca_id());
-		
+
 		int count = bidService.countBidding(auction.getAuction_id());
 
 		model.addAttribute("auction", auction);
 		model.addAttribute("category", category);
 		model.addAttribute("countBidding", count);
-
+		
+		//start 현우 추가 부분
+		model.addAttribute("thumbnail", auctionService.getThunbnail(auction.getSale_id()));
+		//end 현우 추가 부분
 	}
-	
-	//end 현우 수정 부분
+
+
 
 }

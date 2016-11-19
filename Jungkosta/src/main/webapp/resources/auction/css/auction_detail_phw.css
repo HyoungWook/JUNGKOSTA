@@ -5,6 +5,9 @@
 
 .item_detail_phw {
 	display: inline;
+	
+	height: 500px;
+	
 }
 
 .item_imgs_phw {
@@ -19,15 +22,14 @@
 
 #item_sub_imgs_phw {
 	width: auto;
-	height: 50px;
+	height: 100px;
 	text-align: center;
 }
 
 #item_sub_imgs_phw img {
 	position: relative;
-	top: 15%;
-	width: 50px;
-	hegith: 50px;
+	width: 80px;
+	height: 80px;
 }
 
 #nav_phw {
@@ -134,4 +136,17 @@
 
 .table th{
 	text-align: center;
+}
+
+.active_phw{
+	border: 5px solid red;
+}
+
+#item_pic_list img{
+	display: block;
+	
+	width: 500px;
+}
+.answer_icon{
+	width: 30px;
 }

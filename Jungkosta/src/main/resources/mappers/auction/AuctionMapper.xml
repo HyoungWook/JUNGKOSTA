@@ -73,8 +73,9 @@
 				order by auction_end_date
 			</when>
 		</choose>
-
 	</select>
+	
+	
 
 
 </mapper>

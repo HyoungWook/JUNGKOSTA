@@ -50,7 +50,6 @@ function getListInfo(entry) {
 		item_name : entry.item_name,
 		item_cost : entry.item_cost,
 		immediate_bid_cost : entry.immediate_bid_cost
-	// 이수진 추가
 	}
-
 }
+

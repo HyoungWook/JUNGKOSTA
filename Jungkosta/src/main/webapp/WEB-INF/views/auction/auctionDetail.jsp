@@ -41,10 +41,6 @@
 
 	<br> <br>
 
-	<script id="template" type="text/x-handlebars-template">
-
-</script>
-
 	<div class="main_phw">
 
 		<h1>경매</h1>
@@ -60,18 +56,16 @@
 
 		<div class="info_phw">
 			<div class="row">
-				<div class="col-md-offset-1 col-md-3 item_detail_phw">
+				<div class="col-md-offset-1 col-md-4 item_detail_phw">
 					<div class="item_imgs_phw">
-						<img id="item_main_phw" alt="main_Image"
-							src="/Jungkosta/auction/displayFile?fileName=${auction.item_pic1}">
-						
+						<img id="item_main_phw" alt="main_Image" src="">
+
 						<hr>
-						
+
 						<div id="item_sub_imgs_phw">
-							<img alt="Thumbnail" src="">
-							<img alt="Thumbnail" src="">
-							<img alt="Thumbnail" src="">
-							<img alt="Thumbnail" src="">
+							<c:forEach var="thumb" items="${thumbnail }">
+								<img alt="thumb" src="displayFile?fileName=${thumb}">
+							</c:forEach>
 						</div>
 
 						<br>
@@ -79,7 +73,7 @@
 
 					</div>
 				</div>
-				<div class="col-md-6 col-md-offset-2">
+				<div class="col-md-6 col-md-offset-1">
 
 					<div>
 						<img id="good_phw" alt=""
@@ -199,9 +193,8 @@
 			<div class="tab-content">
 				<br /> <br /> <br />
 				<div class="tab-pane active" id="product_info">
-					<label>상품 정보</label> <br /> <br /> <img id="item_main_phw2"
-						alt="아이템 상품 이미지"
-						src="/Jungkosta/auction/displayFile?fileName=${auction.item_pic1}">
+					<label>상품 정보</label> <br /> <br />
+					<div id="item_pic_list"></div>
 					<br /> <br /> <span id="info">제품구입 일자:</span>&nbsp;
 					<!-- src변경 -->
 					<fmt:formatDate value="${auction.buy_time}" pattern="yyyy년 MM월 dd일" />
@@ -238,13 +231,11 @@
 
 										<form id="reply_phw">
 											<input type="hidden" id="email" name="email"
-												value="${email }"> <input type="hidden"
-												name="sale_id" value="${auction.sale_id }">
+												value="qkrgusdn93@naver.com"> <input type="hidden"
+												name="sale_id" value="${auction.sale_id }"> <input
+												type="hidden" name="qa_level" value="0">
 											<div class="qAnda form-group">
 
-												<c:if test="${email == null }">
-													<c:set var="login_no" value="로그인 후 이용가능 합니다." />
-												</c:if>
 
 												<textarea class="form-control" id="content" name="content"
 													placeholder="${login_no }"></textarea>
@@ -270,21 +261,11 @@
 										<th width="400">내용</th>
 										<th width="200">글쓴이</th>
 										<th width="100">작성일자</th>
+										<th width="100">비고</th>
 									</tr>
 								</thead>
 								<tbody id="listReply">
-									<c:set var="seq" value="${replySize}" />
-									<c:forEach var="temp" items="${reply }">
-										<tr>
-
-											<td align="center">${seq}</td>
-											<td>${temp.content }</td>
-											<td align="center">${temp.email }</td>
-											<td align="center"><fmt:formatDate
-													value="${temp.register_date }" pattern="yyyy-MM-dd" /></td>
-										</tr>
-										<c:set var="seq" value="${seq - 1}" />
-									</c:forEach>
+					
 								</tbody>
 							</table>
 						</div>
@@ -299,3 +280,44 @@
 
 	</div>
 </div>
+<script id="template" type="text/x-handlebars-template">
+	<tr>
+		<td align='center'>{{index}}</td>
+		<td>
+			{{#if_phw qa_level}}
+			&nbsp;<img class='answer_icon' alt='icon' src='/Jungkosta/resources/auction/images/AnswerLine.gif'>
+			{{/if_phw}}
+			{{content}}
+		</td>
+		<td align='center'>{{email}}</td>
+		<td align='center'>{{time}}</td>
+		<td align='center'>
+			{{#if_phw qa_level}}
+			<button class="btn btn-primary">답변 달기</button>
+			{{/if_phw}}
+			<input type='hidden' name='sale_id' value='{{sale_id}}' >
+			<input type='hidden' name='item_qa_id' value='{{item_qa_id}}' >
+		</td>
+	</tr>
+</script>
+
+<!-- start 현우 추가 부분 -->
+<script id="templateReply" type="text/x-handlebars-template">
+	<tr>
+		<td colspan='5'>
+			<form>
+				<input type='hidden' name='email' value='qkrgusdn93@naver.com' >
+				<input type='hidden' name='sale_id' value='{{sale_id}}' >
+				<input type='hidden' name='qa_level' value='1' >
+				<input type='hidden' name='ref' value='{{ref}}' >
+				<textarea class="form-control" name="content"></textarea>
+				<div class='row'>
+					<div class='col-md-offset-11'>
+						<input class="btn btn-primary" type='submit' value='답변 완료'>
+					</div>
+				</div>
+			</form>
+		</td>
+	</tr>
+</script>
+<!-- end 현우 추가 부분 -->

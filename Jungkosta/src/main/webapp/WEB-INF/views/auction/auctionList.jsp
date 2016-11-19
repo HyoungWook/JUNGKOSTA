@@ -217,7 +217,6 @@
 	<br> <br> <br>
 
 </div>
-<!-- 이수진 즉시구매가 추가 -->
 <script id="template" type="text/x-handlebars-template">
 		<div class="col-md-3 item_info_phw" onclick="sendDetail({{sale_id}})">
 			<br> 
