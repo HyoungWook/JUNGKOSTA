@@ -6,15 +6,21 @@
 
 <!-- jquery -->
 <script src="/Jungkosta/resources/lib/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="/Jungkosta/resources/js/trade/upload.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
 
 <!-- css -->
-<script type="text/javascript" src="/resources/css/trade/tradeRegisterForm.css"></script>
+<link href="/Jungkosta/resources/css/trade/tradeRegisterForm.css" rel="stylesheet">
+<!-- Font Awesome Icons -->
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<!-- Ionicons -->
+<link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
 
 <!-- javaScript -->
-<script type="text/javascript" src="/resources/js/trade/itemRegister.js"></script>
-<script type="text/javascript" src="/resources/js/trade/main.js"></script>
-<script type="text/javascript" src="/resources/js/trade/category.js"></script>
-<script type="text/javascript" src="/resources/js/trade/date.js"></script>
+<script type="text/javascript" src="/Jungkosta/resources/js/trade/itemRegister.js"></script>
+<script type="text/javascript" src="/Jungkosta/resources/js/trade/main.js"></script>
+<script type="text/javascript" src="/Jungkosta/resources/js/trade/category.js"></script>
+<script type="text/javascript" src="/Jungkosta/resources/js/trade/date.js"></script>
 
 <!-- bootStrap -->
 <link href="/Jungkosta/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -31,8 +37,7 @@
 <body>
 	<h2>${test }</h2><br>
 	
-	 <form id="itemRegister" action="tradeRegisterForm" method="post"
-      enctype="multipart/form-data">
+	 <form id="itemRegister" method="post"> <!-- enctype="multipart/form-data" -->
       <div class="container">
          <div id="section">
             <div class="row">
@@ -122,7 +127,7 @@
 
                   <div class="form-group">
 
-                     <input id="fileInput" filestyle="" type="file"
+                     <!-- <input id="fileInput" filestyle="" type="file"
                         data-class-button="btn btn-default" name="item_pic"
                         data-class-input="form-control" data-button-text=""
                         data-icon-name="fa fa-upload" class="form-control" tabindex="-1"
@@ -141,7 +146,20 @@
 
                         </span>
 
-                     </div>
+                     </div> -->
+                     
+                     <!-- Drag&Drop Image Upload -->
+                     <div class="form-group">
+						<label for="exampleInputEmail1" id="fileLabel">File DROP Here</label>
+						<div class="fileDrop"></div>
+					</div>
+					<!-- Uploaded Images List -->
+					<div>
+						<ul class="mailbox-attachments clearfix uploadedList">
+			
+						</ul>
+					</div>
+                     
 
                   </div>
                   <br /> <br />
@@ -189,6 +207,72 @@
          </div>
       </div>
    </form>
+	
+<script id="template" type="text/x-handlebars-template">
+	<li>
+		<span class="mailbox-attachment-icon has-img"><img src="{{imgsrc}}" alt="Attachment"></span>
+  		<div class="mailbox-attachment-info">
+			<a href="{{getLink}}" class="mailbox-attachment-name">{{fileName}}</a>
+			<a href="{{fullName}}" 
+     		class="btn btn-default btn-xs pull-right delbtn"><i class="fa fa-fw fa-remove"></i></a>
+		</span>
+  		</div>
+	</li>                
+</script>
+
+<script type="text/javascript">
+var template = Handlebars.compile($('#template').html());
+
+$('.fileDrop').on('dragenter dragover', function(event) {
+	event.preventDefault();
+});
+
+$('.fileDrop').on('drop', function(event) {
+	event.preventDefault();
+	
+	var files = event.originalEvent.dataTransfer.files;
+	var file = files[0];
+	
+	var formData = new FormData();
+	formData.append("file", file);
+	
+	$.ajax({
+		url: 'uploadAjax',
+		type: 'POST',
+		data: formData,
+		dataType: 'text',
+		processData: false,
+		contentType: false,
+		success: function(data) {
+			alert('success');
+			
+			var fileInfo = getFileInfo(data);
+			
+			var html = template(fileInfo);
+			
+			$('.uploadedList').append(html);
+		},
+		error: function(error) {
+			alert('fail');
+		}
+	});
+});
+
+$("#itemRegister").submit(function(event){
+	event.preventDefault();
+	
+	var that = $(this);
+	
+	var str ="";
+	$(".uploadedList .delbtn").each(function(index){
+		 str += "<input type='hidden' name='item_pic["+ (index + 1) +"]' value='"+$(this).attr("href") +"'> ";
+	});
+	
+	that.append(str);
+
+	that.get(0).submit();
+});
+</script>
 	
 </body>
 </html>

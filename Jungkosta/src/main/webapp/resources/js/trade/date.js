@@ -11,7 +11,7 @@ $(function() {
 		changeMonth : true,
 
 		numberOfMonths : 3,
-		dateFormat : "yy-mm-dd"
+		dateFormat : "yy/mm/dd"
 
 	})
 
@@ -28,7 +28,7 @@ $(function() {
 		changeMonth : true,
 
 		numberOfMonths : 3,
-		dateFormat : "yy-mm-dd"
+		dateFormat : "yy/mm/dd"
 
 	})
 
@@ -45,7 +45,7 @@ $(function() {
 		changeMonth : true,
 
 		numberOfMonths : 3,
-		dateFormat : "yy-mm-dd"
+		dateFormat : "yy/mm/dd"
 
 	})
 

@@ -1,78 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:tx="http://www.springframework.org/schema/tx"
-	xmlns:context="http://www.springframework.org/schema/context"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd">
 
-	<bean id="transactionManager"
-		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-		<property name="dataSource" ref="dataSource" />
+	<!-- Root Context: defines shared resources visible to all other web components -->
+
+	 <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+   	
+   <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+      <property name="dataSource" ref="dataSource"/>
+   </bean>
+   
+   <tx:annotation-driven/>
+      
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+		<property name="url" value="jdbc:oracle:thin:@localhost:1521:XE"/>
+		<property name="username" value="jungkosta"/>
+ 		<property name="password" value="1234"/>
 	</bean>
 
-	<tx:annotation-driven />
-
-	<bean id="dataSource"
-		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
-		<property name="url" value="jdbc:oracle:thin:@localhost:1521:XE" />
-		<property name="username" value="jungkosta" />
-		<property name="password" value="1234" />
-	</bean>
 
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="configLocation" value="classpath:/mybatis-config.xml" />
 		<property name="mapperLocations" value="classpath:mappers/**/*Mapper.xml" />
-
+		<property name="configLocation" value="classpath:/mybatis-config.xml"></property>
 	</bean>
 
 	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
 	
-	<!-- auction multipartResolver -->
-	<bean id="multipartResolver"
-		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-		<property name="maxUploadSize" value="10485760" />
-	</bean>
-
-	<!-- auction uploadpath -->
-	<bean id="uploadPath" class="java.lang.String">
-		<constructor-arg value="c:/upload" />
-	</bean>
-
 	<!--우성 Tiles setting -->
-	<bean id="tilesConfigurer"
-		class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
+	<bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
 		<property name="definitions">
 			<list>
 				<value>/WEB-INF/tiles/tiles2def.xml</value>
 			</list>
 		</property>
 	</bean>
-
+	
 	<!--우성 tiles view Resolver 추가 -->
-	<bean id="viewResolver1"
-		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
-		<property name="viewClass"
-			value="org.springframework.web.servlet.view.tiles2.TilesView" />
-		<property name="order" value="1" />
+	<bean id="viewResolver1" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<property name="viewClass" value="org.springframework.web.servlet.view.tiles2.TilesView"/>
+		<property name="order" value="1"/>
 	</bean>
-
-	<!-- service -->
-	<context:component-scan base-package="jungkosta.trade.service" />
-
-	<!-- dao -->
-	<context:component-scan base-package="jungkosta.trade.persistence" />
-
-
+	
+	<!-- 메인 서비스, DAO-->
+	<context:component-scan base-package="jungkosta.main.service"/>
+	<context:component-scan base-package="jungkosta.main.persistence"/>
+	
+	<!-- 거래 service, DAO -->
+	<context:component-scan base-package="jungkosta.trade.service"/>
+	<context:component-scan base-package="jungkosta.trade.persistence"/>
+	
+	<!-- 옥션 service, DAO -->
 	<context:component-scan base-package="jungkosta.auction.persistence" />
 	<context:component-scan base-package="jungkosta.auction.service" />
-
-
 
 </beans>
 

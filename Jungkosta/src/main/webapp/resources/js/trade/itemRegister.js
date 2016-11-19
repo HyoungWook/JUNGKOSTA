@@ -131,11 +131,11 @@ $(function(){
          return false;
       }
       
-      if($userfile.val().length == 0){
+      /*if($userfile.val().length == 0){
          alert('상품의 사진을 업로드해주세요');
          
          return false;
-      }
+      }*/
       
       if(($item_cost.val().length == 0 || numReg.test($item_cost.val())==false)){
          alert('상품의 가격을 입력해주세요');
