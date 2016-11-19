@@ -14,7 +14,11 @@ public class SignupServiceImpl implements SignupService {
 	private MemberDAO dao;
 
 	@Override
-	public void signupProc(MemberVO vo) throws Exception {
+	public void signupProc(MemberVO vo, String pass) throws Exception {
+		char[] password = pass.toCharArray();
+		long num = (long)password[0];
+		
+		System.out.println(Long.toHexString(num));
 		dao.createMember(vo);
 	}
 

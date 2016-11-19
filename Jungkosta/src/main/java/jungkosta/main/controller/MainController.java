@@ -53,7 +53,8 @@ public class MainController {
 	public String mainSignupProc(MemberVO vo, 
 			@RequestParam("resident_id") String[] resi,
 			@RequestParam("address") String[] adr,
-			@RequestParam("interests") String[] inter)throws Exception{
+			@RequestParam("interests") String[] inter,
+			@RequestParam("password") String pass)throws Exception{
 		
 		vo.setResident_id(resi[0] + '-' + resi[1]);
 		vo.setAddress(adr[0] + '/' + adr[1] + '/' + adr[2]);
@@ -61,8 +62,8 @@ public class MainController {
 		vo.setInterests_2(inter[1]);
 		vo.setInterests_3(inter[2]);
 		
-		service.signupProc(vo);
-		return "main";
+		service.signupProc(vo, pass);
+		return "redirect:/";
 	}
 	
 }
