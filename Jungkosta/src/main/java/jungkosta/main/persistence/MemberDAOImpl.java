@@ -22,7 +22,10 @@ public class MemberDAOImpl implements MemberDAO {
 
 	@Override
 	public MemberVO selectMember(String email) throws Exception {
-		return sqlSession.selectOne(namespace+".selectMember", email);
+		// TODO Auto-generated method stub
+		return null;
 	}
+
+	
 
 }

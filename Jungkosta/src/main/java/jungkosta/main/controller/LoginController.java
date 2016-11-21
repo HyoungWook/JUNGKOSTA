@@ -3,15 +3,20 @@ package jungkosta.main.controller;
 import java.util.StringTokenizer;
 
 import javax.inject.Inject;
+import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import jungkosta.commons.util.Path;
 import jungkosta.main.domain.MemberVO;
 import jungkosta.main.service.LoginService;
 
@@ -23,8 +28,10 @@ public class LoginController {
 
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logoutGET(HttpServletRequest request) {
-
-		String url = determine_url(request.getHeader("referer"));
+		
+		Path path = Path.getInstance();
+		
+		String url = path.determine_url(request.getHeader("referer"));
 
 		HttpSession session = request.getSession();
 
@@ -34,47 +41,23 @@ public class LoginController {
 
 		return "redirect:"+url;
 	}
-
-	@RequestMapping(value = "/login", method = { RequestMethod.POST, RequestMethod.GET })
-	public String loginPost(HttpServletRequest request, MemberVO vo) throws Exception {
+	
+	//2016/11/19일 수정 우성 ajax로 수정함.
+	@ResponseBody
+	@RequestMapping(value = "/loginProc", method=RequestMethod.POST)
+	public ResponseEntity<String> loginPost(HttpServletRequest request,@RequestParam("email") String email,
+							@RequestParam("password") String password) throws Exception {
 		
-		MemberVO ret_vo = service.check_Login(vo);
-
-		String url = null;
-
-		HttpSession session = request.getSession();
-		System.out.println(request.getHeader("referer"));
-		url = determine_url(request.getHeader("referer"));
-
-		if (ret_vo == null) {
-
-		} else {
-			session.setAttribute("email", ret_vo.getEmail());
-			session.setAttribute("name", ret_vo.getName());
-			session.setAttribute("password", ret_vo.getPassword());
-		}
+		MemberVO vo = new MemberVO();
+		ResponseEntity<String> entity = null;
+		vo.setEmail(email);
+		vo.setPassword(password);
 		
-		System.out.println(url);
+		String result = service.check_Login(request,vo);
 		
-		return "redirect:"+url;
+		entity = new ResponseEntity<String>(result,HttpStatus.OK);
+		
+		return entity;
 	}
-
-	public String determine_url(String prev_URL) {
-
-		StringTokenizer tok = new StringTokenizer(prev_URL, "/");
-		String url = "";
-		
-		tok = new StringTokenizer(prev_URL, "/");
-
-		for (int i = 0; i < 3; i++)
-			tok.nextToken();
-		if(!tok.hasMoreTokens()){
-			url = "/";
-		}
-		while (tok.hasMoreTokens()) {
-			url += "/" + tok.nextToken();
-		}
-		
-		return url;
-	}
+	/////////////////////////////////////////////////////////////////////////
 }

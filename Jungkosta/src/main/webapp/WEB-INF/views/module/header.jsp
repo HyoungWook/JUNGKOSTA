@@ -43,8 +43,8 @@
 	margin-right: 11.0em;
 }
 </style>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="/Jungkosta/resources/js/module/header.js"></script>
+	<!-- 2016/11/19 우성 라이브러리 충돌로 인해 삭제함 -->
+	<script src="/Jungkosta/resources/js/main/header.js"></script>
 </head>
 <body>
 	<input type="hidden" value="${email }" id="hidden_email_ws">
@@ -58,7 +58,8 @@
 					<h4 class="modal-title" id="myModalLabel">Login</h4>
 				</div>
 					<div class="modal-body">
-					<form method="post" action="login">
+					<!-- 2016/11/19 우성 수정 form action 삭제-->
+					<form>
 						<div class="form-group">
 							<label for="email" class="col-xs-2 col-lg-2 control-label">이메일</label>
 							<div class="col-xs-10 col-lg-10">
@@ -73,11 +74,11 @@
 									name="password" id="password_ws">
 							</div>
 						</div>
-						
+						<!--2016/11/19 우성 button type button으로 수정  -->
 						<div class="form group button_div_header">
-							<a href="../main/find_email.jsp" class="find_header_ws">이메일 찾기</a>
-							<a href="../main/find_password.jsp" class="find_header_ws" id="last_find_header_ws">비밀번호 찾기</a>
-							<button type="submit" class="btn btn-primary col-md-offset-0 button_header" id="form_header_ws">Log-in</button>
+							<a href="/Jungkosta/findEmailForm" class="find_header_ws">이메일 찾기</a>
+							<a href="/Jungkosta/findPasswordForm" class="find_header_ws" id="last_find_header_ws">비밀번호 찾기</a>
+							<button type="button" class="btn btn-primary col-md-offset-0 button_header" id="form_header_ws">Log-in</button>
 							<button type="button" class="btn btn-default button_header"
 								data-dismiss="modal">Cancel</button>
 						</div>
@@ -189,17 +190,18 @@
 				<div class="col-md-3">
 					<c:if test="${email == null }">
 						<a href="#myModal1" class="a_header" data-toggle="modal">Log-in</a>
-						<a href="../main/signupform1.jsp" class="a_header">Sign-up</a>
+						<a href="/Jungkosta/mainSignupForm" class="a_header">Sign-up</a>
 					</c:if>
 					<c:if test="${email != null }">
 						
 						<div class="dropdown">
-							<a href="logout" class="a_header" >Log-out</a>
+							<a href="/Jungkosta/logout" class="a_header" >Log-out</a>
 							<a id="a_header" href="#" class="a_header" data-toggle="dropdown">information</a>
 							<ul class="dropdown-menu" role="menu">
 								<li role="presentation" class="dropdown-header">message</li>
-								<li role="presentation"><a href='../main/message_send_frame.jsp' role="menuitem" tabindex="-1">메시지 발신</a></li>
-								<li role="presentation"><a href='../main/message_receive.jsp' role="menuitem" tabindex="-1" id="a_message_ws">메시지 수신</a></li>
+								<!-- 2016/11/19 우성 메시지 a태그 수정 -->
+								<li role="presentation"><a href='/Jungkosta/messageSendForm' role="menuitem" tabindex="-1">메시지 발신</a></li>
+								<li role="presentation"><a href='/Jungkosta/messageReceiveForm' role="menuitem" tabindex="-1" id="a_message_ws">메시지 수신</a></li>
 								<li role="presentation" class="divider"></li>
 								<c:choose>
 									<c:when test="${email != 'admin@admin.com' }">
@@ -214,7 +216,7 @@
 									</c:when>
 									<c:otherwise>
 										<li role="presentation" class="dropdown-header">Manage</li>
-										<li role="presentation"><a href='../main/custom_search.jsp' role="menuitem" tabindex="-1">회원 검색</a></li>
+										<li role="presentation"><a href='/Jungkosta/customSearchForm' role="menuitem" tabindex="-1">회원 검색</a></li>
 										<li role="presentation"><a href='#' role="menuitem" tabindex="-1">물품 판매 검색</a></li>
 										<li role="presentation"><a href='#' role="menuitem" tabindex="-1">물품 경매 검색</a></li>
 									</c:otherwise>

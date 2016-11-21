@@ -231,7 +231,7 @@
 
 										<form id="reply_phw">
 											<input type="hidden" id="email" name="email"
-												value="qkrgusdn93@naver.com"> <input type="hidden"
+												value="aaa@aaaa.com"> <input type="hidden"
 												name="sale_id" value="${auction.sale_id }"> <input
 												type="hidden" name="qa_level" value="0">
 											<div class="qAnda form-group">
@@ -306,7 +306,7 @@
 	<tr>
 		<td colspan='5'>
 			<form>
-				<input type='hidden' name='email' value='qkrgusdn93@naver.com' >
+				<input type='hidden' name='email' value='aaa@aaaa.com' >
 				<input type='hidden' name='sale_id' value='{{sale_id}}' >
 				<input type='hidden' name='qa_level' value='1' >
 				<input type='hidden' name='ref' value='{{ref}}' >

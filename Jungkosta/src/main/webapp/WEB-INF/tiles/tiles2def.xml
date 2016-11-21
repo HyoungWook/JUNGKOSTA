@@ -21,6 +21,48 @@
 	<definition name="boardList" extends="base_layout">
 		<put-attribute name="body" value="/WEB-INF/views/main/boardList.jsp"/>
 	</definition>
+	<definition name="mainSignupForm" extends="base_layout">
+		<put-attribute name="body" value="/WEB-INF/views/main/mainSignupForm.jsp"/>
+	</definition>
+	<definition name="mainSignupForm2" extends="base_layout">
+		<put-attribute name="body" value="/WEB-INF/views/main/mainSignupForm.jsp"/>
+	</definition>
+	
+	<!-- 우성 2016/11월/18일 추가 -->
+	<definition name="boardDetail" extends="base_layout">
+		<put-attribute name="body" value="/WEB-INF/views/main/boardDetail.jsp"/>
+	</definition>
+	<definition name="findEmailForm" extends="base_layout">
+		<put-attribute name="body" value="/WEB-INF/views/main/findEmailForm.jsp"/>
+	</definition>
+	<definition name="findEmailResult" extends="base_layout">
+		<put-attribute name="body" value="/WEB-INF/views/main/findEmailResult.jsp"/>
+	</definition>
+	<definition name="findPasswordForm" extends="base_layout">
+		<put-attribute name="body" value="/WEB-INF/views/main/findPasswordForm.jsp"/>
+	</definition>
+	<definition name="findPasswordResult" extends="base_layout">
+		<put-attribute name="body" value="/WEB-INF/views/main/findPasswordResult.jsp"/>
+	</definition>
+	<definition name="customSearchForm" extends="base_layout">
+		<put-attribute name="body" value="/WEB-INF/views/main/customSearchForm.jsp"/>
+	</definition>
+	<definition name="blackListForm" extends="base_layout">
+		<put-attribute name="body" value="/WEB-INF/views/main/blackListForm.jsp"/>
+	</definition>
+	<!-- 우성 끝 -->
+	
+	<!-- 2016/11/19 우성 추가 -->
+	<definition name="messageSendForm" extends="base_layout">
+		<put-attribute name="body" value="/WEB-INF/views/main/messageSendForm.jsp"/>
+	</definition>
+	<definition name="messageReceiveForm" extends="base_layout">
+		<put-attribute name="body" value="/WEB-INF/views/main/messageReceiveForm.jsp"/>
+	</definition>
+	<definition name="warningForm" extends="base_layout">
+		<put-attribute name="body" value="/WEB-INF/views/main/warningForm.jsp"/>
+	</definition>
+	<!-- 우성 끝 -->
 </tiles-definitions>
 
 

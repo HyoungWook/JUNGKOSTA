@@ -9,7 +9,6 @@
 	<link href="/Jungkosta/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<link href="/Jungkosta/resources/bootstrap/css/kfonts2.css" rel="stylesheet">
     <script src="/Jungkosta/resources/lib/jquery-3.1.1.min.js"></script>
-    <script src="/Jungkosta/resources/bootstrap/js/bootstrap.min.js"></script>
     
 <title>Insert title here</title>
 </head>

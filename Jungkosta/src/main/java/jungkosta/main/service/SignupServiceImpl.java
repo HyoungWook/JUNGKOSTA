@@ -1,5 +1,7 @@
 package jungkosta.main.service;
 
+import java.util.ArrayList;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
@@ -15,11 +17,24 @@ public class SignupServiceImpl implements SignupService {
 
 	@Override
 	public void signupProc(MemberVO vo, String pass) throws Exception {
-		char[] password = pass.toCharArray();
-		long num = (long)password[0];
+		char[] password = pass.toCharArray(); 
+
+		ArrayList<Long> num = new ArrayList<>();
+		String hexa = "";
 		
-		System.out.println(Long.toHexString(num));
-		dao.createMember(vo);
+		for(int i=0; i<password.length; i++){
+			
+			num.add((long)password[i]);
+			hexa = Long.toHexString(num.get(i)+1);
+
+		}
+		
+		password = hexa.toCharArray();
+		for(int i=0; i<password.length; i++){
+			System.out.println(password[i] + 1);
+		}
+		
+		dao.createMember(vo);		
 	}
 
 	@Override
