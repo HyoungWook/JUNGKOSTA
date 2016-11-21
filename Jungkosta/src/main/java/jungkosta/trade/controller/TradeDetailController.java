@@ -1,6 +1,5 @@
 package jungkosta.trade.controller;
 
-import javax.annotation.Resource;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Controller;
@@ -19,9 +18,6 @@ public class TradeDetailController {
 	@Inject
 	private SaleService service_tw;
 	
-	@Resource(name= "uploadPath")
-	private String uploadPath;
-	
 	@RequestMapping(value = "/tradeDetail", method=RequestMethod.GET)
 	public void tradeDetail(@RequestParam("sale_id") int sale_id, Model model) throws Exception{
 		System.out.println("sale_id : " + sale_id);
@@ -30,7 +26,6 @@ public class TradeDetailController {
 		SubCategoryVO subCavo = service_tw.searchSubCategory(salevo.getSubca_id());
 		String totalCavo = service_tw.searchTotalCategory(subCavo.getCa_id());
 		
-		model.addAttribute("uploadPath", uploadPath);
 		model.addAttribute("totalcategoryName",totalCavo);
 		model.addAttribute("subcategory", subCavo);
 		model.addAttribute("register", salevo);

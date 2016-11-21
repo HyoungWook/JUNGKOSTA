@@ -27,6 +27,7 @@ public class TradeRegisterController {
 		service.regist(saleVO);
 		
 		return "redirect:/Jungkosta";
+
 	}
 	
 }

@@ -18,6 +18,7 @@ public class SaleVO implements Serializable{
 	private String additional_info;
 	private String buy_info;
 	private Date sale_date;
+
 	private String email = "test2@test2.com";
 	private int subca_id;
 	private char flag = '0';
