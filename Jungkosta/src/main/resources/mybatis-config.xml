@@ -4,8 +4,8 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 
-  <typeAliases>
 
+  <typeAliases>
     <package name="jungkosta.trade.domain"/>
     <package name="jungkosta.auction.domain"/>
     <package name="jungkosta.main.domain"/> 

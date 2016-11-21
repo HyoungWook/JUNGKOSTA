@@ -3,6 +3,7 @@ package jungkosta.trade.service;
 import java.util.List;
 
 import jungkosta.trade.domain.SaleVO;
+import jungkosta.trade.domain.SaleVO_tw;
 import jungkosta.trade.domain.SubCategoryVO;
 
 public interface SaleService {

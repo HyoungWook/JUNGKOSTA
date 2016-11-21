@@ -1,0 +1,79 @@
+
+
+#signup_khw{
+	font-size: 2.5em;
+	margin-top: 1.3em;
+	margin-bottom: 0.5em; 
+}
+
+.checkbox-inline{
+	font-size: 1.2em;
+}
+
+#next_khw{
+	margin-left: 1.5em;
+	margin-top: 1.5em;
+	padding: 0.5em 1.5em;
+}
+
+.content_khw{
+padding: 4em 0;
+height:25em;
+overflow: scroll;
+}
+
+#button_ws{
+	text-align: right;
+	margin-right:3.0em;
+	
+}
+
+.ad_khw{
+	margin-left: 7.0em;
+}
+
+.interests_label_khw{
+	position: absolute;
+	height: 5em;
+	font-weight: bolder;
+	
+}
+
+.interests_ca1_khw .checkbox-inline{
+	font-size: 0.9em;
+	height: 2em;
+}
+
+.elec_label_khw{
+	height: 6em;
+}
+
+.interests_ca2_khw .checkbox-inline{
+	font-size: 0.9em;
+}
+
+.interests_ca2_head_khw{
+	margin-left: 0.7em;
+	
+}
+
+.interests_ca3_khw .checkbox-inline{
+	font-size: 0.9em;
+}
+
+.interests_ca3_head_khw{
+	margin-left: 8.1em;
+	
+}
+
+#mail_form{
+	position: relative;
+	z-index: 1;
+}
+
+#loading{
+	display : none;
+	position: absolute;
+	left : 22%;
+	z-index: 2;
+}

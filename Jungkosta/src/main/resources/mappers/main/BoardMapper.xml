@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="jungkosta.mappers.main.BoardMapper">
+
+	<select id="BoardNumber" resultType="Integer">
+		select max(board_id) from board
+	</select>
+	
+	<insert id="insertBoard" parameterType="BoardVO">
+		insert into board(board_id,email,title,content,views_num,write_date) values(#{board_id},#{email},#{title},#{content},0,sysdate)
+	</insert>
+	
+	<select id="boardList" resultType="Board2VO">
+		select * from board b1, member m1 where b1.email = m1.email order by b1.board_id
+	</select>
+	
+	<select id="boardDetail" parameterType="int" resultType="Board2VO">
+		select * from board b1, member m1 where b1.board_id = #{board_id} and b1.email = m1.email
+	</select>
+	
+	<update id="increaseViewNum" parameterType="int">
+		update board set views_num = views_num+1 where board_id = #{board_id}
+	</update>
+	
+	
+	<select id="replyNum" resultType="Integer">
+		select max(reply_id) from reply
+	</select>
+	
+	<insert id="insertReply" parameterType="ReplyVO">
+		insert into reply(reply_id,board_id,email,content,write_date) values(#{reply_id},#{board_id},#{email},#{content},sysdate)
+	</insert>
+	
+	<select id="replyList" parameterType="int" resultType="Reply2VO">
+		select * from reply r1, member m1 where r1.email = m1.email and r1.board_id = #{board_id}
+	</select>
+	 
+	<delete id="replyDelete" parameterType="int">
+		delete from reply where board_id = #{board_id}
+	</delete>
+	<delete id="boardDelete" parameterType="int">
+		delete from board where board_id = #{board_id}
+	</delete>
+	
+	<select id="countBoard" resultType="Integer">
+		select count(*) from board
+	</select>
+	
+</mapper>

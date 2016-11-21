@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="jungkosta.mappers.main.ManagerMapper">
+
+	<select id="customSearch" parameterType="MemberVO" resultType="MemberVO">
+		select* from member where warning_num != '2' and name like '${name}' and email != 'admin@admin.com'
+	</select>
+	
+	<select id="emailSearch" parameterType="String" resultType="MemberVO">
+		select* from member where email = #{email}
+	</select>
+	
+	<insert id="insertBlackList" parameterType="BlacklistVO">
+		insert into blacklist(blacklist_id,reason,email,admin_id) values(#{blacklist_id},#{reason},#{email},#{admin_id})
+	</insert>
+	
+	<select id="ManagerID" parameterType="String" resultType="Integer">
+		select admin_id from administrator where email = #{email}
+	</select>
+	
+	<update id="registBlackList" parameterType="String">
+		update member set warning_num = 2 where email = #{email}  
+	</update>
+	<!-- 
+	<select id="get_Blacklist_index" resultType="Integer">
+		select max(blacklist_id) from blacklist
+	</select>
+	<select id="select_Member" parameterType="String" resultType="Member_ws">
+		select * from member where email = #{email}
+	</select>
+	 -->
+	<update id="increaseWarningNumber" parameterType="hashMap">
+		update member set warning_num = #{warning_num} where email = #{email}
+	</update>
+	
+</mapper>
