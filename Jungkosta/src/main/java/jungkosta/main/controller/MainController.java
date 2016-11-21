@@ -63,7 +63,9 @@ public class MainController {
 		vo.setInterests_3(inter[2]);
 		
 		service.signupProc(vo, pass);
-		return "main";
+
+		return "redirect:/";
+
 	}
 	
 }
