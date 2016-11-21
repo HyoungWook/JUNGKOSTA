@@ -41,6 +41,11 @@ public class SaleServiceImpl implements SaleService {
 		return saleDAO.searchTotalCategory(subca_id);
 	}
 
+	@Override
+	public void updateSaleStatusFirst(SaleVO salevo) throws Exception {
+		saleDAO.updateSaleStatusFirst(salevo);
+	}
+
 
 
 }

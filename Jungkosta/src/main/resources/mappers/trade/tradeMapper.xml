@@ -55,5 +55,8 @@
  	where SUB_CATEGORY.CA_ID = CATEGORY.CA_ID and 
  	category.ca_id =#{ca_id} </select>
 
+	<update id="changeSaleStateFirst" parameterType="SaleVO">
+		update sale set sale_status = #{sale_status} where sale_id = (select sale_id from PURCHASE)
+	</update>
 
 </mapper>

@@ -15,6 +15,8 @@ public interface SaleService {
 	public SaleVO searchSale(int sale_id)throws Exception;
 
 	public String searchTotalCategory(int subca_id)throws Exception;
+	
+	public void updateSaleStatusFirst(SaleVO salevo)throws Exception;
 
 
 

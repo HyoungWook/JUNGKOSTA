@@ -5,25 +5,27 @@ import java.sql.Timestamp;
 
 public class PurchaseVO implements Serializable{
 	private int purchase_id;
-	private int delivery_cost;
+	private int purchase_cost;
 	private String payment_method;
 	private Timestamp purchase_date;
 	private String email;
 	private int sale_id;
 	private Timestamp purchase_deadline;
+	private String purchase_status;
 	
 	public PurchaseVO(){}
 
-	public PurchaseVO(int purchase_id, int delivery_cost, String payment_method, Timestamp purchase_date, String email,
-			int sale_id, Timestamp purchase_deadline) {
+	public PurchaseVO(int purchase_id, int purchase_cost, String payment_method, Timestamp purchase_date, String email,
+			int sale_id, Timestamp purchase_deadline, String purchase_status) {
 		super();
 		this.purchase_id = purchase_id;
-		this.delivery_cost = delivery_cost;
+		this.purchase_cost = purchase_cost;
 		this.payment_method = payment_method;
 		this.purchase_date = purchase_date;
 		this.email = email;
 		this.sale_id = sale_id;
 		this.purchase_deadline = purchase_deadline;
+		this.purchase_status = purchase_status;
 	}
 
 	public int getPurchase_id() {
@@ -34,12 +36,12 @@ public class PurchaseVO implements Serializable{
 		this.purchase_id = purchase_id;
 	}
 
-	public int getDelivery_cost() {
-		return delivery_cost;
+	public int getPurchase_cost() {
+		return purchase_cost;
 	}
 
-	public void setDelivery_cost(int delivery_cost) {
-		this.delivery_cost = delivery_cost;
+	public void setPurchase_cost(int purchase_cost) {
+		this.purchase_cost = purchase_cost;
 	}
 
 	public String getPayment_method() {
@@ -82,12 +84,21 @@ public class PurchaseVO implements Serializable{
 		this.purchase_deadline = purchase_deadline;
 	}
 
+	public String getPurchase_status() {
+		return purchase_status;
+	}
+
+	public void setPurchase_status(String purchase_status) {
+		this.purchase_status = purchase_status;
+	}
+
 	@Override
 	public String toString() {
-		return "PurchaseVO [purchase_id=" + purchase_id + ", delivery_cost=" + delivery_cost + ", payment_method="
+		return "PurchaseVO [purchase_id=" + purchase_id + ", purchase_cost=" + purchase_cost + ", payment_method="
 				+ payment_method + ", purchase_date=" + purchase_date + ", email=" + email + ", sale_id=" + sale_id
-				+ ", purchase_deadline=" + purchase_deadline + "]";
+				+ ", purchase_deadline=" + purchase_deadline + ", purchase_status=" + purchase_status + "]";
 	}
-	
+
+
 	
 }

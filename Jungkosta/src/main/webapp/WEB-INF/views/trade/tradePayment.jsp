@@ -272,11 +272,11 @@
 
 			</div>
 
-			<form action="itempaymentCheck.jsp" method="post">
-				<input type="hidden" name="payment_cost" value="${payment_cost}"> <input
-					type="hidden" name="point" id = "pointnum" value="">
+			<form action="tradepayment" method="post">
+				<input type="hidden" name="payment_cost" value="${payment_cost}"> 
+				<input type="hidden" name="point" id = "pointnum" value="">
 				<input type="hidden" name="payment_status" value="입금완료">
-				<input type="hidden" name="purchase_id" value="${purchase_ktw.purchase_id }">
+				<input type="hidden" name="purchase_id" value="${purchase.purchase_id }">
 
 				<hr>
 

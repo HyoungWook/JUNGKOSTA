@@ -46,5 +46,11 @@ public class SaleDAOImpl implements SaleDAO {
 		return sqlSession.selectList(namespace+".listSalesub", subca_id);
 	}
 
+	@Override//거래상태 변경_tw
+	public void updateSaleStatusFirst(SaleVO salevo) throws Exception {
+		sqlSession.update(namespace+".changeSaleStateFirst", salevo);
+		
+	}
+
 
 }

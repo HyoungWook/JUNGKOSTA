@@ -13,7 +13,13 @@
 <script type="text/javascript" src="/Jungkosta/resources/js/trade/qna.js"></script>
 
 <!-- css -->
-<style ></style>
+<style type="text/css">
+
+.subImg{
+	width : 80px;
+	height : 80px;
+}
+</style>
 <link href="/Jungkosta/resources/css/trade/tradeDetail.css" rel="stylesheet"> 
 <script type="text/javascript" src="/Jungkosta/resources/js/trade/qna.js"></script>
 
