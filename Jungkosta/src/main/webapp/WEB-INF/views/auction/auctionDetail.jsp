@@ -23,14 +23,14 @@
 <script type="/Jungkosta/resources/lib/jquery-3.1.1.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script type="text/javascript"
-	src="/Jungkosta/resources/auction/js/auction_detail_phw.js"></script>
+	src="/Jungkosta/resources/js/auction/auction_detail_phw.js"></script>
 
 <!-- template -->
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
 
 
-<link href="/Jungkosta/resources/auction/css/auction_detail_phw.css"
+<link href="/Jungkosta/resources/css/auction/auction_detail_phw.css"
 	rel="stylesheet">
 
 <div class="container">
@@ -48,9 +48,9 @@
 
 		<div class="category_phw">
 			<label>${category.ca_name } <img alt=""
-				src="/Jungkosta/resources/auction/images/down.PNG">
+				src="/Jungkosta/resources/images/auction/down.PNG">
 			</label> &nbsp;&nbsp;>&nbsp;&nbsp; <label>${category.subca_name } <img
-				alt="" src="/Jungkosta/resources/auction/images/down.PNG">
+				alt="" src="/Jungkosta/resources/images/auction/down.PNG">
 			</label>
 		</div>
 
@@ -77,9 +77,9 @@
 
 					<div>
 						<img id="good_phw" alt=""
-							src="/Jungkosta/resources/auction/images/good.png"> &nbsp;
+							src="/Jungkosta/resources/images/auction/good.png"> &nbsp;
 						&nbsp; <strong>중코스타</strong> &nbsp;&nbsp;<img id="check_phw"
-							alt="" src="/Jungkosta/resources/auction/images/check.jpg">
+							alt="" src="/Jungkosta/resources/images/auction/check.jpg">
 						<br>
 						<div class="row">
 							<div class="col-md-offset-2 message_phw">
@@ -285,7 +285,7 @@
 		<td align='center'>{{index}}</td>
 		<td>
 			{{#if_phw qa_level}}
-			&nbsp;<img class='answer_icon' alt='icon' src='/Jungkosta/resources/auction/images/AnswerLine.gif'>
+			&nbsp;<img class='answer_icon' alt='icon' src='/Jungkosta/resources/images/auction/AnswerLine.gif'>
 			{{/if_phw}}
 			{{content}}
 		</td>

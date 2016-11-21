@@ -63,6 +63,13 @@
 		<put-attribute name="body" value="/WEB-INF/views/main/warningForm.jsp"/>
 	</definition>
 	<!-- 우성 끝 -->
+	
+	<!-- start 현우 auction view 추가 -->
+	<definition name="auctionList" extends="base_layout">
+		<put-attribute name="body" value="/WEB-INF/views/auction/auctionList.jsp"></put-attribute>
+	</definition>
+	<!-- end 현우 auction view 추가 -->
+	
 </tiles-definitions>
 
 

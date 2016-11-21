@@ -22,14 +22,14 @@
 <link rel="stylesheet"
 	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet"
-	href="/Jungkosta/resources/auction/css/auctionPurchaseForm.css">
+	href="/Jungkosta/resources/css/auction/auctionPurchaseForm.css">
 
 
 <!-- jQuery -->
 <script type="/Jungkosta/resources/lib/jquery-3.1.1.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script type="text/javascript"
-	src="/Jungkosta/resources/auction/js/auctionPurchaseForm.js"></script>
+	src="/Jungkosta/resources/js/auction/auctionPurchaseForm.js"></script>
 
 
 <div class=container>
