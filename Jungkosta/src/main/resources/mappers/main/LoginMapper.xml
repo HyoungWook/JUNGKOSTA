@@ -9,5 +9,7 @@
 		select * from member where email = #{email} and password = #{password}
 	</select>
 
-
+	<select id="checkBlackList" parameterType="String" resultType="BlackListVO">
+		select * from blacklist where email = #{email}
+	</select>
 </mapper>

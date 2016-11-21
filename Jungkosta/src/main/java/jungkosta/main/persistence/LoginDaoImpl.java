@@ -5,6 +5,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import jungkosta.main.domain.BlackListVO;
 import jungkosta.main.domain.MemberVO;
 
 @Repository
@@ -22,5 +23,10 @@ public class LoginDaoImpl implements LoginDao {
 		return ret_vo;
 	}
 	
+	@Override
+	public BlackListVO checkBlackList(String email) throws Exception {
+		BlackListVO vo = session.selectOne(namespace+".checkBlackList",email);
+		return vo;
+	}
 	
 }

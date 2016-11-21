@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Listmodel {
 	
-	private List<BoardVO> list;
+	private List<Board2VO> list;
 	private int requestPage;
 	private int totalPageCount;
 	private int startPage;
@@ -17,7 +17,7 @@ public class Listmodel {
 	
 	
 	
-	public Listmodel(List<BoardVO> list, int requestPage,
+	public Listmodel(List<Board2VO> list, int requestPage,
 			int totalPageCount, int startPage, int endPage) {
 		super();
 		this.list = list;
@@ -29,11 +29,11 @@ public class Listmodel {
 
 
 
-	public List<BoardVO> getList() {
+	public List<Board2VO> getList() {
 		return list;
 	}
 
-	public void setList(List<BoardVO> list) {
+	public void setList(List<Board2VO> list) {
 		this.list = list;
 	}
 
