@@ -27,6 +27,19 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Insert title here</title>
+<script type="text/javascript">
+
+	$(function(){
+		var subimg = $('.subImg');
+		var mainimg = $('.item_ktw');
+		subimg.on('click', function(){	
+			var source = $(this).attr('src');
+			$('.item_ktw').attr('src', source);
+			
+		})
+		
+	})
+</script>
 </head>
 <body>
 
@@ -42,28 +55,28 @@
 			<img src="/Jungkosta/resources/images/trade/direct_tw.png">&nbsp;<a href="#">&nbsp;${subcategory.subca_name}</a>
 			<img id="category_button_ktw" src="/Jungkosta/resources/images/trade/category_direct.png">
 			<div class="row">
-
+ 
 				<div class="col-md-offset-1 col-md-3 left_ktw">
-					 <img class="item_ktw" src="C:/upload/${register.item_pic1 }" />
+					 <img class="item_ktw" src="displayFile?fileName=${register.item_pic1}" />
 					<div class="row">
 						<div class="col-md-2 col-md-offset-1">
 							<div id="item_sub_imgs_ktw">
-								<img alt="" src="/Jungkosta/resources/images/trade/gier2.jpg">
+								<img alt="" src="displayFile?fileName=${register.item_pic1}" class="subImg">
 							</div>	
 						</div>
 						<div class="col-md-2 col-md-offset-1">
 							<div id="item_sub_imgs_ktw">
-								<img alt="" src="/Jungkosta/resources/images/trade/gier2.jpg">
+								<img alt="" src="/Jungkosta/resources/images/trade/gier2.jpg" class="subImg">
 							</div>	
 						</div>
 						<div class="col-md-2 col-md-offset-1">
 							<div id="item_sub_imgs_ktw">
-								<img alt="" src="/Jungkosta/resources/images/trade/gier2.jpg">
+								<img alt="" src="displayFile?fileName=${register.item_pic3}"  class="subImg">
 							</div>	
 						</div>
 						<div class="col-md-2 col-md-offset-1">
 							<div id="item_sub_imgs_ktw">
-								<img alt="" src="/Jungkosta/resources/images/trade/gier2.jpg">
+								<img alt="" src="displayFile?fileName=${register.item_pic4}"  class="subImg">
 							</div>	
 						</div>
 						<br> <br> <br> <br> <br>

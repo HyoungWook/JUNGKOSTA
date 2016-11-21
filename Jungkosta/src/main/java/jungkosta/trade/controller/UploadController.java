@@ -16,22 +16,21 @@ import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import jungkosta.commons.util.MediaUtils;
 import jungkosta.commons.util.UploadFileUtils;
 
-
 @Controller
 public class UploadController {
 	
+	//uploadPath_ysi
 	//tradeServlet에 설정한 이미지를 upload할 경로
 	@Resource(name= "uploadPath")
 	private String uploadPath;
 	
-	//
+	//uploadFile_ysi
 	private String uploadFile(String originalName, byte[] fileData) throws Exception{
 		UUID uid = UUID.randomUUID();
 		String savedName = uid.toString() + "_" + originalName;
@@ -42,11 +41,13 @@ public class UploadController {
 		return savedName;
 	}
 	
+	//uploadAjaxGet_ysi
 	@RequestMapping(value= "/uploadAjax", method= RequestMethod.GET)
 	public void uploadAjax() {
 		System.out.println("uploadAjax");
 	}
 	
+	//uploadAjaxPost_ysi
 	@ResponseBody
 	@RequestMapping(value= "/uploadAjax", method= RequestMethod.POST, 
 								produces= "text/plain;charset=UTF-8")
@@ -58,46 +59,7 @@ public class UploadController {
 		return new ResponseEntity<String>(UploadFileUtils.uploadFile(uploadPath, file.getOriginalFilename(), file.getBytes()), 
 							HttpStatus.CREATED);
 	}
-	
-	/*@ResponseBody
-	@RequestMapping("/displayFile")
-	public ResponseEntity<byte[]> displayFile(String fileName) throws Exception{
-		
-		InputStream in = null;
-		ResponseEntity<byte[]> entity = null;
-		
-		try {
-			
-			String formatName = fileName.substring(fileName.lastIndexOf(".") + 1);
-			
-			MediaType mType = MediaUtils.getMediaType(formatName);
-			
-			HttpHeaders headers = new HttpHeaders();
-			
-			in = new FileInputStream(uploadPath + fileName);
-			
-			if(mType != null) {
-				headers.setContentType(mType);
-			} else {
-				fileName = fileName.substring(fileName.indexOf("_") + 1);
-				headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
-				headers.add("Content-Disposition", "attachment); filename=\"" +
-						new String(fileName.getBytes("UTF-8"), "ISO-8859-1") + "\"");
-			}
-			
-			entity = new ResponseEntity<>(IOUtils.toByteArray(in), 
-					headers,
-					HttpStatus.CREATED);
-
-		} catch (Exception e) {
-			e.printStackTrace();
-			entity = new ResponseEntity<byte[]>(HttpStatus.BAD_REQUEST);
-		} finally {
-			in.close();
-		}
-		return entity;
-	}*/
-	
+		//displayFile_ysi
 		@ResponseBody
 		@RequestMapping("/displayFile")
 		public ResponseEntity<byte[]>  displayFile(String fileName)throws Exception{
@@ -138,6 +100,30 @@ public class UploadController {
 				in.close();
 			}
 			return entity;    
+		}
+		
+		//deleteFile_ysi
+		@ResponseBody
+		@RequestMapping(value= "/deleteFile", method= RequestMethod.POST)
+		public ResponseEntity<String> deleteFile(String fileName) throws Exception {
+			
+			String formatName = fileName.substring(fileName.lastIndexOf(".") + 1);
+			
+			MediaType mType = MediaUtils.getMediaType(formatName);
+			
+			if(mType != null) {
+				
+				String front = fileName.substring(0, 12);
+				String end = fileName.substring(14);
+				
+				System.out.println(front + " : " + end);
+				
+				new File(uploadPath + (front + end).replace('/', File.separatorChar)).delete();
+			}
+			
+			new File(uploadPath + fileName.replace('/', File.separatorChar)).delete();
+			
+			return new ResponseEntity<String>("deleted", HttpStatus.OK);
 		}
 	
 }
