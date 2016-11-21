@@ -7,7 +7,7 @@
 <!-- jquery -->
 <script src="/Jungkosta/resources/lib/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="/Jungkosta/resources/js/trade/upload.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script> 
 
 <!-- css -->
 <link href="/Jungkosta/resources/css/trade/tradeRegisterForm.css" rel="stylesheet">

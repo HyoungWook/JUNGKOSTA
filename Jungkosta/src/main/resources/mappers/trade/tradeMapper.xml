@@ -21,6 +21,11 @@
 		select max(sale_id) from sale
 	</select>
 
+	<!-- 일반판매물품 listAll_ysi -->
+	<select id="listAll" parameterType="Integer" resultType="SaleVO">
+		select * from sale 
+			where subca_id = #{subca_id}
+	</select>
 
 <!-- listAll_tw -->
 	<select id="listSale" resultType="SaleVO">

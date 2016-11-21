@@ -1,5 +1,7 @@
 package jungkosta.trade.persistence;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -15,12 +17,14 @@ public class TradeDAOImpl implements TradeDAO {
 	
 	private static final String namespace = "jungkosta.mappers.trade.TradeMapper";
 
+	//일반 판매 등록_ysi
 	@Override
 	public void insertSale(SaleVO sale) throws Exception {
 		sqlSession.insert(namespace + ".insertSale", sale);
 		
 	}
 	
+	//sale_id select_ysi
 	@Override
 	public Integer selectS_id()throws Exception {
 		if((sqlSession.selectOne(namespace+".selectS_id")) == null){
@@ -29,6 +33,12 @@ public class TradeDAOImpl implements TradeDAO {
 		else{
 			return sqlSession.selectOne(namespace+".selectS_id");
 		}
+	}
+
+	//listSale_ysi
+	@Override
+	public List<SaleVO> listAll(Integer subca_id) throws Exception {
+		return sqlSession.selectList(namespace + ".listAll", subca_id);
 	}
 
 

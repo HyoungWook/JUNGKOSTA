@@ -44,26 +44,26 @@
 			<div class="row">
 
 				<div class="col-md-offset-1 col-md-3 left_ktw">
-					 <img class="item_ktw" src="C:/upload/${register.item_pic1 }" />
+					 <img class="item_ktw" src="displayFile?fileName=${register.item_pic1 }" />
 					<div class="row">
 						<div class="col-md-2 col-md-offset-1">
 							<div id="item_sub_imgs_ktw">
-								<img alt="" src="/Jungkosta/resources/images/trade/gier2.jpg">
+								<img alt="" src="displayFile?fileName=${register.item_pic2 }">
 							</div>	
 						</div>
 						<div class="col-md-2 col-md-offset-1">
 							<div id="item_sub_imgs_ktw">
-								<img alt="" src="/Jungkosta/resources/images/trade/gier2.jpg">
+								<img alt="" src="displayFile?fileName=${register.item_pic1 }">
 							</div>	
 						</div>
 						<div class="col-md-2 col-md-offset-1">
 							<div id="item_sub_imgs_ktw">
-								<img alt="" src="/Jungkosta/resources/images/trade/gier2.jpg">
+								<img alt="" src="displayFile?fileName=${register.item_pic3 }">
 							</div>	
 						</div>
 						<div class="col-md-2 col-md-offset-1">
 							<div id="item_sub_imgs_ktw">
-								<img alt="" src="/Jungkosta/resources/images/trade/gier2.jpg">
+								<img alt="" src="displayFile?fileName=${register.item_pic4 }">
 							</div>	
 						</div>
 						<br> <br> <br> <br> <br>
