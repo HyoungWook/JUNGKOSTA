@@ -5,14 +5,10 @@
 <html>
 <head>
 	<title>중코스타 - 국내 1위 중고거래 사이트</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script src="/Jungkosta/resources/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
-
-<h1>
-	Hello JUNGKOSTA!  
-</h1>
-
-<P>  The time on the server is ${serverTime}. </P>
 
 </body>
 </html>

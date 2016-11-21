@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
 </head>
 <body>
@@ -12,7 +12,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
 
 <!-- jQuery -->
@@ -37,6 +38,8 @@
 
 </script>
 
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title>Insert title here</title>
 </head>
 <body>
 
@@ -44,24 +47,24 @@
 
 		<div class="main">
 
-		 	<h2>Ï£ºÎ¨∏ ÏÉÅÌíà Í≤∞Ï†ú</h2>
+		 	<h2>¡÷πÆ ªÛ«∞ ∞·¡¶</h2>
 
 			<hr>
 
 			<div class="product_info">
 				<div class="row">
 					<div class="col-md-offset-2">
-						<h4>ÏÉÅÌíà Ï†ïÎ≥¥</h4>
+						<h4>ªÛ«∞ ¡§∫∏</h4>
 
 						<br>
 
 						<table id="payment_date">
 							<tr>
-								<td width="200px" align="center">Íµ¨Îß§Ïùº : <b> <fmt:formatDate
+								<td width="200px" align="center">±∏∏≈¿œ : <b> <fmt:formatDate
 											value="${purchase_ktw.purchase_date }" pattern="yyyy. MM. dd" />
 								</b>
 								</td>
-								<td width="200px" align="center">Íµ¨Îß§ Î≤àÌò∏ : <b>${purchase_ktw.purchase_id }</b>
+								<td width="200px" align="center">±∏∏≈ π¯»£ : <b>${purchase_ktw.purchase_id }</b>
 								</td>
 							</tr>
 						</table>
@@ -81,7 +84,7 @@
 									alt="" src="../upload/${headName }_small${pattern}"></td>
 								<td>
 									<div class="row">
-										<div class="col-md-offset-2">${register.item_name } / 1Í∞ú</div>
+										<div class="col-md-offset-2">${register.item_name } / 1∞≥</div>
 									</div>
 								</td>
 							</tr>
@@ -96,13 +99,13 @@
 			<div class="member_info">
 				<div class="row">
 					<div class="col-md-offset-2">
-						<h4>Î∞õÎäî ÏÇ¨Îûå Ï†ïÎ≥¥</h4>
+						<h4>πﬁ¥¬ ªÁ∂˜ ¡§∫∏</h4>
 						<br>
 						<table>
 							<tr height="50px">
 								<td width="200">
 									<div class="row">
-										<div class="col-md-offset-3">ÏàòÎ†πÏù∏</div>
+										<div class="col-md-offset-3">ºˆ∑…¿Œ</div>
 									</div>
 								</td>
 								<td width="600">
@@ -115,7 +118,7 @@
 
 								<td>
 									<div class="row">
-										<div class="col-md-offset-3">Ïó∞ÎùΩÏ≤ò</div>
+										<div class="col-md-offset-3">ø¨∂Ù√≥</div>
 									</div>
 								</td>
 								<td><div class="row">
@@ -125,7 +128,7 @@
 							<tr height="50px">
 								<td>
 									<div class="row">
-										<div class="col-md-offset-3">Ï£ºÏÜå</div>
+										<div class="col-md-offset-3">¡÷º“</div>
 									</div>
 								</td>
 								<td><div class="row">
@@ -142,13 +145,13 @@
 			<div id="payment_info">
 				<div class="row">
 					<div class="col-md-offset-2">
-						<h4>Í≤∞Ï†ú Ï†ïÎ≥¥</h4>
+						<h4>∞·¡¶ ¡§∫∏</h4>
 						<br>
 						<table>
 							<tr>
 								<th width="400">
 									<div class="row">
-										<div class="col-md-offset-2">Í≤∞Ï†ú ÏàòÎã®</div>
+										<div class="col-md-offset-2">∞·¡¶ ºˆ¥‹</div>
 									</div>
 								</th>
 								<th width="400"></th>
@@ -160,14 +163,14 @@
 								<td>
 									<div class="row">
 										<div class="col-md-offset-2 col-md-4">
-											<p align="right">Ï¥ù ÏÉÅÌíà Í∞ÄÍ≤© :</p>
+											<p align="right">√— ªÛ«∞ ∞°∞› :</p>
 
 										</div>
 										<div class="col-md-6">
 											<p align="right" id="product_cost">
 											 	<fmt:formatNumber value="${register.item_cost }"
 													pattern="#,###" />
-												Ïõê 
+												ø¯ 
 												
 											</p>
 										</div>
@@ -177,19 +180,19 @@
 							<tr>
 								<td>
 									<div class="row">
-										<div class="col-md-offset-2 col-md-3">ÏùÄÌñâÎ™Ö :</div>
-										<div class="">Ïã†Ìïú ÏùÄÌñâ</div>
+										<div class="col-md-offset-2 col-md-3">¿∫«‡∏Ì :</div>
+										<div class="">Ω≈«— ¿∫«‡</div>
 									</div>
 								</td>
 								<td>
 									<div class="row">
 										<div class="col-md-offset-2 col-md-4">
-											<p align="right">Î∞∞ÏÜ°Î£å :</p>
+											<p align="right">πËº€∑· :</p>
 
 										</div>
 										<div class="col-md-6">
 											<p align="right">
-												<fmt:formatNumber value="2500" pattern="#,###" />Ïõê
+												<fmt:formatNumber value="2500" pattern="#,###" />ø¯
 											</p>
 										</div>
 									</div>
@@ -200,7 +203,7 @@
 								<td><div class="row">
 										<div class="col-md-offset-2 col-md-4">
 											<c:choose>
-												<c:when test="${purchase_ktw.payment_method == 'Î¨¥ÌÜµÏû•ÏûÖÍ∏à' }">
+												<c:when test="${purchase_ktw.payment_method == 'π´≈Î¿Â¿‘±›' }">
 													<c:set var="charge" value="0.01" />
 												</c:when>
 												<c:otherwise>
@@ -209,7 +212,7 @@
 
 											</c:choose>
 											<p align="right">
-												ÏàòÏàòÎ£å(
+												ºˆºˆ∑·(
 												<fmt:formatNumber value="${charge }" type="percent" />
 												) :
 											</p>
@@ -218,7 +221,7 @@
 										<div class="col-md-6">
 											<p align="right">
 												<fmt:formatNumber value="${register.item_cost * charge }"
-													pattern="#,###" />Ïõê
+													pattern="#,###" />ø¯
 											</p>
 										</div>
 									</div>
@@ -230,14 +233,14 @@
 								<td>
 									<div class="row">
 										<div class="col-md-offset-2 col-md-4">
-											<p align="right">Ï¥ù Í≤∞Ï†ú Í∏àÏï° :</p>
+											<p align="right">√— ∞·¡¶ ±›æ◊ :</p>
 										</div>
 										<div class="col-md-6">
 											<p align="right" id="total_cost">
 												<c:set var="total_cost"
 													value="${payment_cost}" />
 												<fmt:formatNumber value="${total_cost }" pattern="#,###" />
-												Ïõê
+												ø¯
 											</p>
 		
 										</div>
@@ -250,13 +253,13 @@
 								<td>
 									<div class="row point">
 										<div class="col-md-offset-2 col-md-4">
-											<p align="right">Ï†ÅÎ¶ΩÍ∏à :</p>
+											<p align="right">¿˚∏≥±› :</p>
 										</div>
 										<div class="col-md-6">
 											<p align="right">
 												<fmt:formatNumber value="${payment_cost * 0.01}"
 													pattern="#,###" />
-												Ïõê
+												ø¯
 											</p>
 										</div>
 									</div>
@@ -272,14 +275,14 @@
 			<form action="itempaymentCheck.jsp" method="post">
 				<input type="hidden" name="payment_cost" value="${payment_cost}"> <input
 					type="hidden" name="point" id = "pointnum" value="">
-				<input type="hidden" name="payment_status" value="ÏûÖÍ∏àÏôÑÎ£å">
+				<input type="hidden" name="payment_status" value="¿‘±›øœ∑·">
 				<input type="hidden" name="purchase_id" value="${purchase_ktw.purchase_id }">
 
 				<hr>
 
 
 				<div align="right" id="payment_btn">
-					<button class="btn btn-lg" type="submit">Í≤∞Ï†úÌïòÍ∏∞</button>
+					<button class="btn btn-lg" type="submit">∞·¡¶«œ±‚</button>
 				</div>
 
 

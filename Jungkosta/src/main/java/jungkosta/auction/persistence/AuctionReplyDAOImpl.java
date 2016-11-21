@@ -37,6 +37,7 @@ public class AuctionReplyDAOImpl implements AuctionReplyDAO {
 	@Override
 	public List<AuctionReplyVO> replyList(int sale_id) throws Exception {
 
+		
 		return sqlSession.selectList(namespace + ".replyList", sale_id);
 	}
 

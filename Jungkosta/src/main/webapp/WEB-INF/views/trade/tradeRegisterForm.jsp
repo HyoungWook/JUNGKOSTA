@@ -11,6 +11,8 @@
 
 <!-- css -->
 <link href="/Jungkosta/resources/css/trade/tradeRegisterForm.css" rel="stylesheet">
+<!-- Theme style -->
+<link href="/Jungkosta/resources/dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
 <!-- Font Awesome Icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 <!-- Ionicons -->
@@ -27,7 +29,7 @@
 <script src="/Jungkosta/resources/bootstrap/js/bootstrap.min.js"></script>
 
 <!-- jquery-ui -->
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
@@ -125,7 +127,7 @@
                   <img alt="" src="../image/gearfit01.jpg"><br>
                   <img alt="" src="../image/gearfit02.jpg"><br> <br> -->
 
-                  <div class="form-group">
+                  <div class="form-group" id="fileUpload">
 
                      <!-- <input id="fileInput" filestyle="" type="file"
                         data-class-button="btn btn-default" name="item_pic"
@@ -207,7 +209,8 @@
          </div>
       </div>
    </form>
-	
+
+<!-- UploadedList Template -->
 <script id="template" type="text/x-handlebars-template">
 	<li>
 		<span class="mailbox-attachment-icon has-img"><img src="{{imgsrc}}" alt="Attachment"></span>
@@ -220,6 +223,7 @@
 	</li>                
 </script>
 
+<!-- Upload Script Start -->
 <script type="text/javascript">
 var template = Handlebars.compile($('#template').html());
 
@@ -227,6 +231,7 @@ $('.fileDrop').on('dragenter dragover', function(event) {
 	event.preventDefault();
 });
 
+//사진 Drag&Drop
 $('.fileDrop').on('drop', function(event) {
 	event.preventDefault();
 	
@@ -244,8 +249,6 @@ $('.fileDrop').on('drop', function(event) {
 		processData: false,
 		contentType: false,
 		success: function(data) {
-			alert('success');
-			
 			var fileInfo = getFileInfo(data);
 			
 			var html = template(fileInfo);
@@ -258,21 +261,43 @@ $('.fileDrop').on('drop', function(event) {
 	});
 });
 
-$("#itemRegister").submit(function(event){
+//사진 submit
+/* $("#itemRegister").submit(function(event){
 	event.preventDefault();
 	
 	var that = $(this);
 	
 	var str ="";
 	$(".uploadedList .delbtn").each(function(index){
-		 str += "<input type='hidden' name='item_pic["+ (index + 1) +"]' value='"+$(this).attr("href") +"'> ";
+		 str += "<input type='hidden' name='item_pic"+ (index + 1) +"' value='"+$(this).attr("href") +"'> ";
 	});
 	
 	that.append(str);
 
 	that.get(0).submit();
+}); */
+
+//사진 delete button
+$('.uploadedList').on('click', '.delbtn', function(event) {
+	event.preventDefault();
+	
+	var that = $(this);
+	
+	$.ajax({
+		url: '/Jungkosta/trade/deleteFile',
+		type: 'post',
+		data: {fileName: $(this).attr("href")},
+		dataType: 'text',
+		success: function(result) {
+			if(result == 'deleted') {
+				that.closest("li").remove();
+			}
+		}
+	});
 });
+
 </script>
+<!-- Upload Script End -->
 	
 </body>
 </html>

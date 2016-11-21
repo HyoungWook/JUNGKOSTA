@@ -33,4 +33,15 @@ $(function() {
 
 	}
 
+	
+	$('#item_sub_imgs_ktw').find('img').on('click', function() {
+		
+		var that = $(this).attr('src');
+		
+		$('.item_ktw').attr('src', that);
+	});
+
 })
+
+
+

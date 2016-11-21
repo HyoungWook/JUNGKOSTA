@@ -28,7 +28,7 @@ public class MainController {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/", method = {RequestMethod.GET,RequestMethod.POST})
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
@@ -63,7 +63,9 @@ public class MainController {
 		vo.setInterests_3(inter[2]);
 		
 		service.signupProc(vo, pass);
+
 		return "redirect:/";
+
 	}
 	
 }

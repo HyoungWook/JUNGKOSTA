@@ -23,15 +23,15 @@
 		<beans:constructor-arg value="C:\\local"></beans:constructor-arg>
 	</beans:bean>
 
-
+	<!-- ViewResolver -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/trade/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
+	<!-- Controller Scan -->
 	<context:component-scan base-package="jungkosta.trade.controller"/>
 	
 	
 	
 </beans:beans>
-
