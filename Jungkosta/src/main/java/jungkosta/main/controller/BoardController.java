@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,8 +14,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import jungkosta.commons.util.Path;
+import jungkosta.main.domain.Board2VO;
 import jungkosta.main.domain.BoardVO;
 import jungkosta.main.domain.Listmodel;
+import jungkosta.main.domain.Reply2VO;
+import jungkosta.main.domain.ReplyVO;
 import jungkosta.main.service.BoardService;
 
 
@@ -23,7 +28,7 @@ public class BoardController {
 	@Inject
 	private BoardService service;
 	
-	public static final int PAGE_SIZE = 10;
+	public static final int PAGE_SIZE = 5;
 	
 	@RequestMapping(value="boardWriteForm",method=RequestMethod.GET)
 	public String boardWriteForm(){
@@ -36,14 +41,14 @@ public class BoardController {
 		
 		service.boardInsert(vo);
 		
-		return "redirect:boardWriteForm";
+		return "redirect:boardList/1";
 		
 	}
 	
 	@RequestMapping(value="boardList/{bno}",method=RequestMethod.GET)
 	public String boardList(@PathVariable("bno") Integer bno, Model model)throws Exception{
 		
-		List<BoardVO> list = null;
+		List<Board2VO> list = null;
 		
 		Integer value = service.boardCount();
 		
@@ -81,4 +86,42 @@ public class BoardController {
 		
 		return "boardList";
 	}
+	
+	@RequestMapping(value="boardDetail/{bno}",method=RequestMethod.GET)
+	public String boardDetail(@PathVariable("bno") Integer bno, Model model)throws Exception{
+		
+		service.increaseViewNum(bno);
+		
+		Board2VO board = service.boardDetail(bno);
+		
+		model.addAttribute("board", board);
+		model.addAttribute("boardNum",bno);
+		
+		List<Reply2VO> list = service.replyList(bno);
+		model.addAttribute("list", list);
+		
+		return "boardDetail";
+	}
+	
+	@RequestMapping(value="replyProc/{bno}",method=RequestMethod.GET)
+	public String reply(HttpServletRequest request,@PathVariable("bno") Integer bno, ReplyVO vo,Model model)throws Exception{
+		
+		HttpSession session = request.getSession();
+		
+		Integer rno = service.replyNum();
+		
+		if(rno == null){
+			vo.setReply_id(1);
+		}
+		else{
+			vo.setReply_id(rno+1);
+		}
+		
+		vo.setEmail((String)session.getAttribute("email"));
+		
+		service.insertReply(vo);
+		
+		return "redirect:/boardDetail/"+bno;
+	}
+	
 }

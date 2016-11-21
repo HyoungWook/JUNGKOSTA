@@ -45,7 +45,7 @@
 						<c:forEach items="${list }" var="item">
 							<tr>
 								<td class="item_ws">${item.board_id }</td>
-								<td><a href="board_detail.jsp?board_id=${item.board_id }">${item.title }</a></td>
+								<td><a href="/Jungkosta/boardDetail/${item.board_id}">${item.title }</a></td>
 								<td class="item_ws">${item.name }</td>
 								<td class="item_ws">${item.views_num }</td>
 							</tr>
@@ -75,10 +75,10 @@
 			
 				<c:choose>
 					<c:when test="${listModel.requestPage != pageNo }">
-						<a href="boardList/${pageNo }">[${ pageNo}]</a>
+						<a href="${pageNo }">[${ pageNo}]</a>
 					</c:when>
 					<c:otherwise>
-						<a href="boardList/${pageNo }"><b>[${ pageNo}]</b></a>
+						<a href="${pageNo }"><b>[${ pageNo}]</b></a>
 					</c:otherwise>	
 				</c:choose>
 				
@@ -86,7 +86,7 @@
 			</c:forEach>
 			
 			<c:if test="${listModel.endPage < listModel.totalPageCount }">
-				<a href="boardList/${listModel.startPage-5 }">[이후]</a>
+				<a href="${listModel.startPage-5 }">[이후]</a>
 			</c:if>
 		</div>
 		<div class="col-md-4"></div>
