@@ -37,6 +37,7 @@
 	<input type="hidden" id="sale_id" value="${auction.sale_id }">
 	<input type="hidden" id="status" value="${auction.auction_end_status}">
 	<input type="hidden" id="end_date" value="${auction.auction_end_date}">
+	<input type="hidden" id="saler" value="${auction.email }">
 
 
 	<br> <br>
@@ -231,14 +232,13 @@
 
 										<form id="reply_phw">
 											<input type="hidden" id="email" name="email"
-												value="qkrgusdn93@naver.com"> <input type="hidden"
+												value="${email }"> <input type="hidden"
 												name="sale_id" value="${auction.sale_id }"> <input
 												type="hidden" name="qa_level" value="0">
 											<div class="qAnda form-group">
 
 
-												<textarea class="form-control" id="content" name="content"
-													placeholder="${login_no }"></textarea>
+												<textarea class="form-control" id="content" name="content"></textarea>
 											</div>
 											<div class="reply_button_si">
 												<button type="submit" class="btn btn-default"
@@ -284,7 +284,7 @@
 	<tr>
 		<td align='center'>{{index}}</td>
 		<td>
-			{{#if_phw qa_level}}
+			{{#if_phw info}}
 			&nbsp;<img class='answer_icon' alt='icon' src='/Jungkosta/resources/images/auction/AnswerLine.gif'>
 			{{/if_phw}}
 			{{content}}
@@ -292,7 +292,7 @@
 		<td align='center'>{{email}}</td>
 		<td align='center'>{{time}}</td>
 		<td align='center'>
-			{{#if_phw qa_level}}
+			{{#if_phw info}}
 			<button class="btn btn-primary">답변 달기</button>
 			{{/if_phw}}
 			<input type='hidden' name='sale_id' value='{{sale_id}}' >
@@ -306,7 +306,7 @@
 	<tr>
 		<td colspan='5'>
 			<form>
-				<input type='hidden' name='email' value='qkrgusdn93@naver.com' >
+				<input type='hidden' name='email' value='{{email}}' >
 				<input type='hidden' name='sale_id' value='{{sale_id}}' >
 				<input type='hidden' name='qa_level' value='1' >
 				<input type='hidden' name='ref' value='{{ref}}' >

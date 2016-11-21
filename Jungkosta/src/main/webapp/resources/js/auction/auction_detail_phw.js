@@ -2,10 +2,18 @@ $(function() {
 
 	var template = Handlebars.compile($("#template").html());
 	
+	var $email = $("#email");
+	
 	var $status = $("#status").val();
 	var $end_date = $("#end_date").val();
 	var $sale_id = $("#sale_id").val();
 	var timeId = "";
+	
+	var $content = $("#content");
+	
+	if($email.val() == "" || $email.val() == null){
+		$content.attr("placeholder", "로그인을 해주세요.");
+	}
 	
 	
 	$("#auction_record")
@@ -60,9 +68,8 @@ $(function() {
 
 	$("#reply_phw").submit(function(event) {
 		event.preventDefault();
-		var email = $("#email").val();
 
-		if (email == "" || email == null) {
+		if ($email.val() == "" || $email.val() == null) {
 			alert("로그인해 주세요.");
 			$("#content").val("")
 		} else {
@@ -99,7 +106,10 @@ $(function() {
 						time : time,
 						sale_id : entry.sale_id,
 						item_qa_id : entry.item_qa_id,
-						qa_level : entry.qa_level
+						info : {
+							qa_level : entry.qa_level,
+							email : $email.val()
+						}
 				}
 				
 				var html = template(info);
@@ -159,14 +169,16 @@ $(function() {
 	
 	var templateReply = Handlebars.compile($("#templateReply").html());
 	
-	Handlebars.registerHelper("if_phw", function(qa_level, block) {
+	Handlebars.registerHelper("if_phw", function(info, block) {
 		var accum = "";
+		
+		var saler = $("#saler").val();
 
-		if (qa_level != 1) {
+		if (info.qa_level != 1 && info.email == saler) {
 			if(block.fn().lastIndexOf("button") != -1){
 				accum += block.fn();
 			}
-		}else{
+		}else if(info.qa_level == 1){
 			if(block.fn().lastIndexOf("img") != -1){
 				accum += block.fn();
 			}
@@ -188,7 +200,8 @@ $(function() {
 			
 			var info = {
 					sale_id : $(this).next().val(),
-					ref : ref
+					ref : ref,
+					email : $email.val()
 				};
 			
 			var html = templateReply(info);

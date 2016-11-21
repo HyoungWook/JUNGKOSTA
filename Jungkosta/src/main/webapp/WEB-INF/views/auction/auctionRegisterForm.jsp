@@ -52,6 +52,7 @@
 
 	<div class="container">
 		<form id="add_btn" method="post" role="form">
+			<input type="hidden" name="email" value="${email }">
 
 			<!-- start 현우 추가 부분 -->
 			<div id="file_area"></div>

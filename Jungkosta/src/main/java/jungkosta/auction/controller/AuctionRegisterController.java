@@ -32,9 +32,6 @@ public class AuctionRegisterController {
 	public String auctionRegister(AuctionVO auction, HttpServletRequest request) throws Exception {
 
 		auction.setSale_id(service.sale_id() + 1);
-		//auction.setEmail("aaa@aaaa.com");
-		auction.setEmail("qkrgusdn93@naver.com");
-		
 
 		String buy_time = request.getParameter("buy_time_temp");
 		String auction_end_date = request.getParameter("auction_end_date_temp");
