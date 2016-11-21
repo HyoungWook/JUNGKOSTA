@@ -13,8 +13,8 @@ $(function() {
 	
 
 	$(".payment_phw").click(function() {
-		var $table = $(".bank").find("table");
-		$table.hide();
+		var $div = $(".bank").find("div");
+		$div.hide();
 		$("." + this.id).fadeIn("slow");
 		chargeType(this.id);
 	});

@@ -283,7 +283,6 @@
 				result += array[i] + ",";
 			}
 		}
-
 		return result;
 
 	});
