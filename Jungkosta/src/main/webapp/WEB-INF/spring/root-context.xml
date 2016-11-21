@@ -47,6 +47,10 @@
 	<context:component-scan base-package="jungkosta.main.service"/>
 
 	
+	<!-- 2016/11/21 util componet-scan 우성 -->
+	
+	<context:component-scan base-package="jungkosta.commons.util"/>
+	
 	<!--우성 Tiles setting -->
 	<bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
 		<property name="definitions">

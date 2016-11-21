@@ -105,15 +105,15 @@ public class SMTPController {
 				// 발송하기
 				Transport.send(msg);
 
-				entity = new ResponseEntity<>("success", HttpStatus.OK);
+				entity = new ResponseEntity<String>("success", HttpStatus.OK);
 				System.out.println(entity.getBody().toString());
 			} else {
-				entity = new ResponseEntity<>("0", HttpStatus.OK);
+				entity = new ResponseEntity<String>("0", HttpStatus.OK);
 			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+			entity = new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
 		}
 		return entity;
 	}
@@ -128,14 +128,14 @@ public class SMTPController {
 		try {
 			if(session.getAttribute("connum") != null){
 				if(number.equals((String)session.getAttribute("connum"))){
-					entity = new ResponseEntity<>("1", HttpStatus.OK);
+					entity = new ResponseEntity<String>("1", HttpStatus.OK);
 				}
 				else
-					entity = new ResponseEntity<>("0", HttpStatus.OK);
+					entity = new ResponseEntity<String>("0", HttpStatus.OK);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+			entity = new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
 		}
 		return entity;
 	}
@@ -148,10 +148,10 @@ public class SMTPController {
 		
 		try {
 			session.removeAttribute("connum");
-			entity = new ResponseEntity<>("", HttpStatus.OK);
+			entity = new ResponseEntity<String>("", HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();
-			entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+			entity = new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
 		}
 		return entity;
 	}

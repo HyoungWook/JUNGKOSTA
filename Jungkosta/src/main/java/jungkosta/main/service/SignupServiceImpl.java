@@ -19,7 +19,7 @@ public class SignupServiceImpl implements SignupService {
 	public void signupProc(MemberVO vo, String pass) throws Exception {
 		char[] password = pass.toCharArray(); 
 
-		ArrayList<Long> num = new ArrayList<>();
+		ArrayList<Long> num = new ArrayList<Long>();
 		String hexa = "";
 		
 		for(int i=0; i<password.length; i++){

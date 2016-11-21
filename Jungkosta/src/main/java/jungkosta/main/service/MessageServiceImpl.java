@@ -52,7 +52,6 @@ public class MessageServiceImpl implements MessageService {
 		
 		int is_Not_Read = messageDao.messageCheck(email);
 		
-		
 		return is_Not_Read;
 	}
 }

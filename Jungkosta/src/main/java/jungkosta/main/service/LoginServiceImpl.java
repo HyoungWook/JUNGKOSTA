@@ -8,6 +8,9 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
 
+import jungkosta.commons.util.AvlTree;
+import jungkosta.commons.util.DataStructure;
+import jungkosta.commons.util.Node;
 import jungkosta.main.domain.BlackListVO;
 import jungkosta.main.domain.MemberVO;
 import jungkosta.main.persistence.LoginDao;
@@ -32,6 +35,24 @@ public class LoginServiceImpl implements LoginService {
 		if (ret_vo == null) {
 			ret_Value = "아이디나 비밀번호가 틀렸습니다.";
 		}else {
+			
+			//2016/11/21 우성 중복 로그인 수정.
+			
+			AvlTree tree = DataStructure.getTree();
+			
+			Node pNew = new Node();
+			
+			pNew.setEmail(vo.getEmail());
+			pNew.setSession(session);
+			
+			
+			int result = tree.insertNode(pNew);
+			
+			if(result == AvlTree.FAIL){
+				tree.deleteNode(vo.getEmail());
+				tree.insertNode(pNew);
+			}
+			
 			BlackListVO b_Vo = loginDao.checkBlackList(vo.getEmail()); 
 			
 			if(b_Vo == null){
