@@ -17,7 +17,7 @@ public class AucPurServiceImpl implements AucPurService {
 	public void registerPurService(BidVO vo) throws Exception {
 		vo.setBid_id(dao.selectBid_id() + 1);
 		vo.setBid_status("입금 대기");
-		
+
 		dao.insertAuctionPurchase(vo);
 	}
 
@@ -28,9 +28,9 @@ public class AucPurServiceImpl implements AucPurService {
 	}
 
 	@Override
-	public BidVO readBid(int bid_id) throws Exception {
+	public BidVO readBid(int bidding_id) throws Exception {
 
-		return dao.readBid(bid_id);
+		return dao.readBid(bidding_id);
 	}
 
 }

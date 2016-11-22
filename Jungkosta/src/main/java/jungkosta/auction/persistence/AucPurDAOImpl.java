@@ -32,9 +32,9 @@ public class AucPurDAOImpl implements AucPurDAO {
 	}
 
 	@Override
-	public BidVO readBid(int bid_id) throws Exception {
+	public BidVO readBid(int bidding_id) throws Exception {
 
-		return sqlSession.selectOne(namespace + ".readBid", bid_id);
+		return sqlSession.selectOne(namespace + ".readBid", bidding_id);
 	}
 
 }

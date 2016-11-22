@@ -8,6 +8,6 @@ public interface AucPurDAO {
 
 	public int selectBid_id() throws Exception;
 
-	public BidVO readBid(int bid_id) throws Exception;
+	public BidVO readBid(int bidding_id) throws Exception;
 
 }

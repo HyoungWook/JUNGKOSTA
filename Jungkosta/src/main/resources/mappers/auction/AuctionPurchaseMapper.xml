@@ -5,7 +5,7 @@
 
 <mapper namespace="jungkosta.main.mappers.auction.AuctionPurchaseMapper">
 
-	<insert id="insertAuctionPurchase" parameterType="BidVo">
+	<insert id="insertAuctionPurchase" parameterType="BidVO">
 		insert into bid
 		(
 			bid_id, bidding_id, payment_method, del_address, bid_status, total_cost,
@@ -21,8 +21,8 @@
 		select max(bid_id) from bid
 	</select>
 	
-	<select id="readBid" resultType="BidVo">
-		select * from bid where bid_id = #{bid_id}
+	<select id="readBid" resultType="BidVO">
+		select * from bid where bidding_id = #{bidding_id}
 	</select>
 	
 

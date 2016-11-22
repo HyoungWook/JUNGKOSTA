@@ -38,4 +38,10 @@ public class BiddingDAOImpl implements BiddingDAO {
 		return sqlSession.selectOne(namespace + ".countBidding", auction_id);
 	}
 
+	@Override
+	public BiddingVO readBidding(int bidding_id) throws Exception {
+		
+		return sqlSession.selectOne(namespace + ".readBidding", bidding_id);
+	}
+
 }

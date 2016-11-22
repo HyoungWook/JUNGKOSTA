@@ -23,6 +23,11 @@
 		select count(*) from auction_bidding
 		where auction_id = #{auction_id}
 	</select>
+	
+	<select id="readBidding" parameterType="int" resultType="BiddingVO" >
+		select * from auction_bidding
+			where bidding_id = #{bidding_id}
+	</select>
 
 
 </mapper>

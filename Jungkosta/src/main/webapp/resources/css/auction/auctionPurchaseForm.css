@@ -15,13 +15,6 @@
 	background-color: #EEEEEE;
 }
 
-#payment_info table label{
-	font-size: 12px;
-}
-
-#payment_info tr td {
-	padding-right: 20px;
-}
 
 #pay_method{
 	position: relative;
@@ -48,4 +41,16 @@
 	font-size: 13px;
 }
 
+#item_info{
+	border-top: 1px solid;
+}
+
+#item_info th{
+	text-align: center;
+}
+
+#item_info td{
+	vertical-align: middle;
+	text-align: center;
+}
 

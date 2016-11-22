@@ -3,6 +3,8 @@ $(function() {
 	var $product_cost = $("#product_cost");// 총 상품 가격
 
 	var $radio = $("input[type=radio]"); //radio button
+	
+	var total_cost = 0; //총 가격
 
 	// radio Button Event
 	$radio.change(function() {
@@ -23,7 +25,18 @@ $(function() {
 	//form submit event
 	$("#auctoin_purchase").submit(function(event){
 		
+		event.preventDefault();
 		
+		var that = $(this);
+		
+		var bidding_id = $("#bidding_id").text();
+		
+		var html = "<input type='hidden' name='total_cost' value='"+ total_cost + "' >";
+		html += "<input type='hidden' name='bidding_id' value='"+ bidding_id + "' >";
+		
+		that.append(html);
+		
+		that.get(0).submit();
 	});
 
 	function getCharge(id) {
@@ -44,7 +57,7 @@ $(function() {
 
 		var $cost = $("#charge_cost");
 
-		var total_cost = Math.floor(product_cost + 2500
+		total_cost = Math.floor(product_cost + 2500
 				+ (product_cost * charge.ch_per));
 		
 		var mailge = Math.floor(total_cost * 0.01);

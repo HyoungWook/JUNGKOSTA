@@ -35,7 +35,8 @@
 <div class=container>
 
 	<div class="main">
-		<form id="auctoin_purchase" method="post">
+		<form id="auctoin_purchase" action="auctionPurchaseForm" method="post">
+			<input type="hidden" name="sale_id" value="${item.sale_id }" >
 
 			<h2>경매 낙찰 상품 주문</h2>
 
@@ -43,37 +44,48 @@
 
 			<div class="product_info">
 				<div class="row">
-					<div class="col-md-offset-2">
+					<div class="col-md-offset-2 col-md-8">
 						<h4>상품 정보</h4>
 
-						<br>
+						<hr>
 
-						<table id="payment_date">
-							<tr>
-								<td width="200px" align="center">낙찰일 : <b> <span>날짜</span>
+						<div class="payment_date">
+							<div class="bidding_num">
+								입찰 번호 : <strong id="bidding_id"> ${bidding.bidding_id }</strong>
+							</div>
+
+							<br>
+
+							<div class="bidding_date">
+								입찰일 : <b> <fmt:formatDate value="${bidding.bidding_time}"
+										dateStyle="long" />
 								</b>
-								</td>
-								<td width="200px" align="center">낙찰 번호 : <b> <span>번호</span> </b>
-								</td>
-							</tr>
-						</table>
+							</div>
+						</div>
 
 						<br>
 
-						<table id="item_info">
-							<tr>
-								<th width="150"></th>
-								<th width="450"></th>
-							</tr>
-							<tr>
-								<td align="center"><img alt="thumbnale" src=""></td>
-								<td>
-									<div class="row">
-										<div class="col-md-offset-2">${sale.item_name }/1개</div>
-									</div>
-								</td>
-							</tr>
-						</table>
+						<div class="row">
+							<div class="col-md-10">
+								<table id="item_info" class="table">
+									<tr>
+										<th width="300">상품 이미지</th>
+										<th>상품 명/ 개수</th>
+									</tr>
+									<tr>
+										<td align="center"><img alt="thumbnale"
+											src="displayFile?fileName=${item.item_pic1}"></td>
+										<td>
+											<div class="row">
+												<div class="col-md-offset-2">${item.item_name }/1개</div>
+											</div>
+										</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+
+
 					</div>
 				</div>
 			</div>
@@ -95,7 +107,8 @@
 								<td width="600">
 									<div class="row">
 										<div class="col-md-offset-1">
-											<input class="form-control" type="text" value="${member.name }">
+											<input class="form-control" type="text"
+												value="${member.name }">
 										</div>
 									</div>
 								</td>
@@ -109,7 +122,8 @@
 								</td>
 								<td><div class="row">
 										<div class="col-md-offset-1">
-											<input class="form-control" type="text" value="${member.phone_num }">
+											<input class="form-control" type="text"
+												value="${member.phone_num }">
 										</div>
 									</div></td>
 							</tr>
@@ -121,7 +135,8 @@
 								</td>
 								<td><div class="row">
 										<div class="col-md-offset-1">
-											<input class="form-control" type="text" name="del_address" value="${member.address }"> 
+											<input class="form-control" type="text" name="del_address"
+												value="${member.address }">
 										</div>
 									</div></td>
 							</tr>
@@ -153,46 +168,45 @@
 									class="payment_phw" type="radio" name="payment_method"
 									value="카드결제" id="card"></td>
 								<td width="500" rowspan="2" class="payment_info_style">
-									
+
 									<div class="col-md-offset-1">
-										<br>
-										<b>주문 가격 정보</b>
-									</div>
-									
-									<br>
-									
+										<br> <b>주문 가격 정보</b>
+									</div> <br>
+
 									<div class="row">
 										<div class="col-md-offset-3 col-md-3">
 											<p align="right">총 상품 가격 :</p>
 										</div>
 										<div class="col-md-offset-1 col-md-5">
-											<p align="right" id="product_cost">500,000 원</p>
+											<p align="right" id="product_cost">${item.item_cost }</p>
 										</div>
 									</div>
-									
+
 									<div class="row">
 										<div class="col-md-offset-3 col-md-3">
-											<p align="right" >배송료 :</p>
+											<p align="right">배송료 :</p>
 										</div>
 										<div class="col-md-offset-1 col-md-5">
 											<p align="right">2,500 원</p>
 										</div>
 									</div>
-									
+
 									<div class="row">
 										<div class="col-md-offset-3 col-md-3">
-											<p align="right" >수수료(<span id="charge_type"></span>) :</p>
+											<p align="right">
+												수수료(<span id="charge_type"></span>) :
+											</p>
 										</div>
 										<div class="col-md-offset-1 col-md-5">
-											<p align="right" id="charge_cost">3,000 원</p>
+											<p align="right" id="charge_cost"></p>
 										</div>
 									</div>
-									
+
 									<hr>
-									
+
 									<div class="row">
 										<div class="col-md-offset-3 col-md-3">
-											<p align="right" >총 주문 금액 :</p>
+											<p align="right">총 주문 금액 :</p>
 										</div>
 										<div class="col-md-offset-1 col-md-5">
 											<p align="right" id="total_cost"></p>
