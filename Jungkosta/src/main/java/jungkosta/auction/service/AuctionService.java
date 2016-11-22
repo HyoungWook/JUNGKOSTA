@@ -15,4 +15,5 @@ public interface AuctionService {
 	public AuctionVO read(int sale_id) throws Exception; 
 	public CategoryVO selectCategory(int subca_id) throws Exception;
 	
+	public void updateDetail(AuctionVO auction)throws Exception;
 }

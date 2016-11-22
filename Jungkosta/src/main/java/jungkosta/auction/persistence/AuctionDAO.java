@@ -19,4 +19,6 @@ public interface AuctionDAO {
 	public AuctionVO read(int sale_id) throws Exception;
 	public CategoryVO selectCategory(int subca_id) throws Exception;
 
+	public void updateItemCost(AuctionVO auction) throws Exception;
+	public void updateAuctionSt(AuctionVO auction)throws Exception;
 }

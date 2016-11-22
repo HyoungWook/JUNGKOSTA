@@ -2,6 +2,7 @@ package jungkosta.auction.controller;
 
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,18 +36,29 @@ public class BidController {
 	public String biddingForm_GET(@PathVariable("sale_id") int sale_id,  Model model) throws Exception{
 		
 		AuctionVO auction = auctionService.read(sale_id);
-		
 		model.addAttribute("auction", auction);
-		
-		return "/bidRegisterForm";
+			
+		return "bidRegisterForm";
 	}
 	
-	@RequestMapping(value="/bidRegisterForm", method=RequestMethod.POST)
-	public void biddingForm_POST(BiddingVO vo) throws Exception{
+	@RequestMapping(value="bidRegisterForm/bidRegister", method=RequestMethod.POST)
+	public String biddingForm_POST(BiddingVO vo,AuctionVO auction,HttpServletRequest request) throws Exception{
+		int item_cost = Integer.parseInt(request.getParameter("bidding_cost"));
+		
+		vo.setBidding_id(bidService.selectBidding_id());
 		
 		bidService.registerBid(vo);
 		
+		
+		auction.setItem_cost(item_cost);
+		auction.setAuction_stcost(item_cost);
+		
+		auctionService.updateDetail(auction);
+		
+		return "pageProc";
+		
 	}
 	
+
 
 }

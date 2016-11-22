@@ -47,4 +47,10 @@ public class AuctionServiceImpl implements AuctionService {
 		return dao.selectCategory(subca_id);
 	}
 
+	@Override
+	public void updateDetail(AuctionVO auction) throws Exception {
+		dao.updateItemCost(auction);
+		dao.updateAuctionSt(auction);
+	}
+
 }

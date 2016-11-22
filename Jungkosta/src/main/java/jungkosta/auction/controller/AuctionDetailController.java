@@ -40,5 +40,4 @@ public class AuctionDetailController {
 	}
 	
 	//end 현우 수정 부분
-
 }

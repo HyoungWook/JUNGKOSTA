@@ -23,11 +23,11 @@
 	$(function() {
 
 		$("#sendBidding_phw").click(function() {
-			var email = "${email}";
+			var email = "${auction.email}";//테스트를위해 수정
 			var input_cost = Number($("#bidding_cost").val());
 			var now_cost = Number("${auction.item_cost + 1000}");
 			var immediate_cost = Number("${auction.immediate_bid_cost}");
-
+			
 			if (!email) {
 				alert("로그인 해 주세요.");
 				window.self.close();
@@ -42,19 +42,22 @@
 					$("#bidding_cost").val("");
 					return false;
 				}
+				
 			}
-
+	
+		
 		});
-
+		
 	});
 </script>
 
 
 
 <div class="container">
-	<form action="bid_Proc.jsp" method="post">
-		<input type="hidden" name="email" value="${email }"> <input
-			type="hidden" name="auction_id" value="${auction.auction_id }">
+	<form action="bidRegister" method="post">
+		<input type="hidden" name="email" value="${auction.email}"> <input
+			type="hidden" name="auction_id" value="${auction.auction_id }"><!-- 테스트를위해 수정 -->
+		<input type="hidden" name="sale_id" value="${auction.sale_id }">
 		<table class="table table-bordered">
 			<p>입찰 상품</p>
 			<tbody>

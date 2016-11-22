@@ -15,13 +15,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import jungkosta.auction.domain.AuctionVO;
+import jungkosta.auction.domain.BiddingVO;
 import jungkosta.auction.service.AuctionListService;
+import jungkosta.auction.service.BiddingService;
 
 @RestController
 public class AuctionListController {
 
 	@Inject
 	private AuctionListService service;
+	
+	@Inject
+	private BiddingService bservice;
 
 
 	@RequestMapping(value = "/auctionListSort", method = RequestMethod.GET)
@@ -29,9 +34,7 @@ public class AuctionListController {
 		ResponseEntity<List<AuctionVO>> entity = null;
 
 		try {
-			
 			List<AuctionVO> list = service.auctionList(sort);
-			
 			entity = new ResponseEntity<>(list, HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();
