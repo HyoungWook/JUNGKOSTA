@@ -206,7 +206,54 @@
 					<br /> <br />
 				</div>
 
-				<div class="tab-pane" id="comment">상품평</div>
+				<div class="tab-pane" id="comment">
+					<div class="row">
+						<div class="panel-group" id="accordion">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<div class="row">
+										<div class="col-md-10">
+											<h4 id="comment_title_si">상품평</h4>
+										</div>
+										<div class="col-md-2">
+											<h4 class="panel-title">
+											</h4>
+										</div>
+									</div>
+								</div>
+								<div id="collapseOne" class="panel-collapse collapse">
+									<div class="panel-body">
+
+
+
+
+
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="reply_table_si">
+							<table class="table table-hover">
+								<thead>
+									<tr>
+										<th width="80">글번호</th>
+										<th width="400">내용</th>
+										<th width="200">글쓴이</th>
+										<th width="100">작성일자</th>
+										<th width="100">비고</th>
+									</tr>
+								</thead>
+								<tbody id="listReply">
+
+								</tbody>
+							</table>
+						</div>
+
+					</div>
+				
+				
+				
+				</div>
 
 				<div class="tab-pane" id="qAnda">
 					<div class="row">
