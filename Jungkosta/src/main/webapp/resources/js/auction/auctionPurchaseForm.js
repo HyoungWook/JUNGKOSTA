@@ -19,6 +19,12 @@ $(function() {
 		changeDoc(product_cost, charge);
 
 	});
+	
+	//form submit event
+	$("#auctoin_purchase").submit(function(event){
+		
+		
+	});
 
 	function getCharge(id) {
 		if (id == "deposit") {

@@ -8,13 +8,6 @@
 <title>경매 메인 페이지</title>
 
 <!-- bootstrap -->
-<link href="/Jungkosta/resources/bootstrap/css/bootstrap.min.css"
-	rel="stylesheet">
-<link href="/Jungkosta/resources/bootstrap/css/kfonts2.css"
-	rel="stylesheet">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-
 <script src="/Jungkosta/resources/bootstrap/js/bootstrap.min.js"></script>
 
 
@@ -38,7 +31,6 @@
 	<br> <br>
 
 	<!-- jQuery -->
-	<script type="/Jungkosta/resources/lib/jquery-3.1.1.min.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<script type="text/javascript"
 		src="/Jungkosta/resources/js/auction/auction_main_phw.js"></script>
@@ -248,7 +240,7 @@
 	var template = Handlebars.compile($("#template").html());
 
 	//start 현우 추가 부분
-	
+
 	Handlebars.registerHelper("if_phw", function(auction_end_status, block) {
 		var accum = "";
 
@@ -286,7 +278,7 @@
 		return result;
 
 	});
-	
+
 	//end 현우 추가 부분
 
 	$.getJSON("auctionListSort?sort=null", function(data) {
