@@ -102,8 +102,7 @@
 					<h4 class="modal-title" id="myModalLabel">LOGIN</h4>
 				</div>
 					<div class="modal-body">
-					<form action="../main/information_action.jsp" method="post">
-					<form action="../main/login_action.jsp" method="post">
+					<form action="memberInfoForm" method="post">
 						<div class="form-group">
 							<label for="email" class="col-xs-2 col-lg-2 control-label">이메일</label>
 							<div class="col-xs-10 col-lg-10">
