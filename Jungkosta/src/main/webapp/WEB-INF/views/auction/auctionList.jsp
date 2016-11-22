@@ -8,13 +8,6 @@
 <title>경매 메인 페이지</title>
 
 <!-- bootstrap -->
-<link href="/Jungkosta/resources/bootstrap/css/bootstrap.min.css"
-	rel="stylesheet">
-<link href="/Jungkosta/resources/bootstrap/css/kfonts2.css"
-	rel="stylesheet">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-
 <script src="/Jungkosta/resources/bootstrap/js/bootstrap.min.js"></script>
 
 
@@ -37,7 +30,6 @@
 	<br> <br>
 
 	<!-- jQuery -->
-	<script type="/Jungkosta/resources/lib/jquery-3.1.1.min.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<script type="text/javascript"
 		src="/Jungkosta/resources/js/auction/auction_main_phw.js"></script>
@@ -246,6 +238,47 @@
 </script>
 <script>
 	var template = Handlebars.compile($("#template").html());
+	//start 현우 추가 부분
+
+	Handlebars.registerHelper("if_phw", function(auction_end_status, block) {
+		var accum = "";
+
+		if (auction_end_status == 'true') {
+			accum += block.fn();
+		}
+		return accum;
+	});
+
+	Handlebars.registerHelper("money_fomat", function(money) {
+
+		var value = "" + money;
+
+		var result = "";
+		var array = [];
+
+		for (var i = value.length; i >= 3; i = i - 3) {
+			array.push(value.substring(i - 3, i));
+		}
+
+		var last = value.length % 3;
+
+		if (last != 0) {
+			array.push(value.substr(0, last));
+		}
+
+		for (var i = array.length - 1; i >= 0; i--) {
+
+			if (i == 0) {
+				result += array[i] + "원";
+			} else {
+				result += array[i] + ",";
+			}
+		}
+		return result;
+
+	});
+
+	//end 현우 추가 부분
 
 	$.getJSON("auctionListSort?sort=null", function(data) {
 		$.each(data, function(index, entry) {

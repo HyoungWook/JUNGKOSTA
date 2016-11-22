@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="jungkosta.main.mappers.auction.AuctionPurchaseMapper">
+
+	<insert id="insertAuctionPurchase" parameterType="BidVo">
+		insert into bid
+		(
+			bid_id, bidding_id, payment_method, del_address, bid_status, total_cost,
+			purchase_deadline, purchase_date
+		) values 
+		(
+			#{bid_id}, #{bidding_id}, #{payment_method}, #{del_address},
+			#{bid_status}, #{total_cost}, sysdate + 3, sysdate
+		)
+	</insert>
+	
+	<select id="selectBid_id" resultType="Integer">
+		select max(bid_id) from bid
+	</select>
+	
+	<select id="readBid" resultType="BidVo">
+		select * from bid where bid_id = #{bid_id}
+	</select>
+	
+
+</mapper>

@@ -35,7 +35,7 @@
 <div class=container>
 
 	<div class="main">
-		<form method="post">
+		<form id="auctoin_purchase" method="post">
 
 			<h2>경매 낙찰 상품 주문</h2>
 
@@ -94,7 +94,9 @@
 								</td>
 								<td width="600">
 									<div class="row">
-										<div class="col-md-offset-1">이름 </div>
+										<div class="col-md-offset-1">
+											<input class="form-control" type="text" value="${member.name }">
+										</div>
 									</div>
 								</td>
 							</tr>
@@ -106,7 +108,9 @@
 									</div>
 								</td>
 								<td><div class="row">
-										<div class="col-md-offset-1">연락처</div>
+										<div class="col-md-offset-1">
+											<input class="form-control" type="text" value="${member.phone_num }">
+										</div>
 									</div></td>
 							</tr>
 							<tr height="50px">
@@ -116,7 +120,9 @@
 									</div>
 								</td>
 								<td><div class="row">
-										<div class="col-md-offset-1">주소</div>
+										<div class="col-md-offset-1">
+											<input class="form-control" type="text" name="del_address" value="${member.address }"> 
+										</div>
 									</div></td>
 							</tr>
 						</table>
@@ -239,13 +245,6 @@
 				</div>
 
 			</div>
-
-
-			<input type="hidden" id="cost" name="cost" value="${total_cost }">
-			<input type="hidden" id="point" name="point"
-				value="${total_cost * 0.01}"> <input type="hidden"
-				name="email" value="${bidding.email }"> <input type="hidden"
-				name="bid_id" value="${bid.bid_id }">
 			<hr>
 			<div align="right" id="payment_btn">
 				<button class="btn btn-lg" type="submit">주문하기</button>
