@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <title>입찰 페이지</title>
 
@@ -41,7 +41,7 @@
 					alert("즉시 입찰 가능한 가격을 적어주세요.");
 					$("#bidding_cost").val("");
 					return false;
-				}
+				} 
 				
 			}
 	
@@ -54,10 +54,14 @@
 
 
 <div class="container">
-	<form action="bidRegister" method="post">
+	<form action="/Jungkosta/auction/bidRegisterForm" method="post">
 		<input type="hidden" name="email" value="${auction.email}"> <input
 			type="hidden" name="auction_id" value="${auction.auction_id }"><!-- 테스트를위해 수정 -->
 		<input type="hidden" name="sale_id" value="${auction.sale_id }">
+		<input type="hidden" name="immediate_bid_cost" value="${auction.immediate_bid_cost }">
+	<%-- 	<c:if test="${auction.immediate_bid_cost } == ${param.bidding_cost}">
+			<input type="hidden" name="flag" value="1"/>
+		</c:if> --%>
 		<table class="table table-bordered">
 			<p>입찰 상품</p>
 			<tbody>

@@ -24,7 +24,6 @@
 	src="/Jungkosta/resources/js/auction/upload.js"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
-<!-- end 현우 추가 부분 -->
 
 <div class="container">
 

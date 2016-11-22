@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import jungkosta.auction.domain.AuctionVO;
 import jungkosta.auction.domain.BiddingVO;
@@ -41,24 +42,28 @@ public class BidController {
 		return "bidRegisterForm";
 	}
 	
-	@RequestMapping(value="bidRegisterForm/bidRegister", method=RequestMethod.POST)
-	public String biddingForm_POST(BiddingVO vo,AuctionVO auction,HttpServletRequest request) throws Exception{
-		int item_cost = Integer.parseInt(request.getParameter("bidding_cost"));
+	@RequestMapping(value="/bidRegisterForm",method=RequestMethod.POST)
+	public String bidRegister(AuctionVO auction, BiddingVO vo,HttpServletRequest request) throws Exception{
 		
-		vo.setBidding_id(bidService.selectBidding_id());
+		if(auction.getImmediate_bid_cost()==vo.getBidding_cost()){
+			return "biddingpageProc";
+		}else{
+			int item_cost = Integer.parseInt(request.getParameter("bidding_cost"));
+			
+			vo.setBidding_id(bidService.selectBidding_id());
+			
+			bidService.registerBid(vo);
+			
+			auction.setItem_cost(item_cost);
+			auction.setAuction_stcost(item_cost);
+			
+			auctionService.updateDetail(auction);
 		
-		bidService.registerBid(vo);
-		
-		
-		auction.setItem_cost(item_cost);
-		auction.setAuction_stcost(item_cost);
-		
-		auctionService.updateDetail(auction);
-		
-		return "pageProc";
-		
+			return "bidpageProc";
+		}
+			
 	}
 	
-
-
 }
+
+
