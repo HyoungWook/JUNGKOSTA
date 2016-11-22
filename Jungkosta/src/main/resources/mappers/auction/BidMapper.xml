@@ -16,12 +16,13 @@
 	</insert>
 	
 	<select id="selectBidding_id" resultType="Integer">
-		select max(*) form auction_bidding
+		select max(bidding_id) from auction_bidding
 	</select>
 	
 	<select id="countBidding" parameterType="int" resultType="int">
 		select count(*) from auction_bidding
 		where auction_id = #{auction_id}
 	</select>
+
 
 </mapper>

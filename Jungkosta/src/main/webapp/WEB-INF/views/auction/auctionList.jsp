@@ -18,13 +18,13 @@
 	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
 
-
+<!-- start 현우 추가 부분 -->
 <!-- template -->
 <script type="text/javascript"
 	src="/Jungkosta/resources/js/auction/upload.js"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
-
+<!-- end 현우 추가 부분 -->
 
 <div class="container">
 
@@ -198,7 +198,7 @@
 		<div class="item_container_phw">
 
 			<div id="loading_phw">
-				<img alt="" src="/Jungkosta/resources/images/auction/loading.gif">
+				<img alt="" src="/Jungkosta/resources/auction/images/loading.gif">
 			</div>
 
 			<div class="row item_list_phw"></div>
@@ -209,15 +209,16 @@
 	<br> <br> <br>
 
 </div>
+<!-- 이수진 즉시구매가 추가 -->
 <script id="template" type="text/x-handlebars-template">
 		<div class="col-md-3 item_info_phw" onclick="sendDetail({{sale_id}})">
 			<br> 
 			<b>무료배송</b> <img id="icon_auc_phw" alt="auction_icon" src="/Jungkosta/resources/images/auction/icon_auc.png">
 			<div class="item_img_phw">
 				<img id="item_main_img" alt="main_image" src="{{main_image}}">
-					{{#if_phw auction_end_status}}
+					<c:if test="{{auction_end_status}} == true">
 						<img id="close_auc_phw" alt="auction_close" src="/Jungkosta/resources/images/auction/auction_close.png">
-					{{/if_phw}}
+					</c:if>
 			</div>
 			<div>
 				<a>관심상품 담기</a> | <a>미리 보기</a>
@@ -227,18 +228,17 @@
 			<br> <br> 
 			<span>현재가 </span> &nbsp;&nbsp; 
 			<strong class="product_price_phw">
-				{{money_fomat item_cost}}
+				{{item_cost}}
 			</strong></br></br>
 			<span>즉시구매가</span>
 			<strong class="product_price_phw"> &nbsp; 
-				{{money_fomat immediate_bid_cost}}
+				{{immediate_bid_cost}}
 			</strong>
 			<br> <br>
 		</div>
 </script>
-<script type="text/javascript">
+<script>
 	var template = Handlebars.compile($("#template").html());
-
 	//start 현우 추가 부분
 
 	Handlebars.registerHelper("if_phw", function(auction_end_status, block) {
@@ -290,7 +290,6 @@
 			$(".item_list_phw").append(html);
 		});
 	});
-
 	//start 현우 추가 부분
 	$(".button_radio").each(function() {
 		$(this).change(function() {
@@ -320,6 +319,8 @@
 
 	});
 	//end 현우 추가 부분
+	
+	
 </script>
 
 

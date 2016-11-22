@@ -252,7 +252,7 @@
 
 </body>
 <script type="text/javascript"
-	src="/Jungkosta/resources/auction/js/upload.js"></script>
+	src="/Jungkosta/resources/js/auction/upload.js"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
 

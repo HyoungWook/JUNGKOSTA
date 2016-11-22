@@ -78,4 +78,15 @@ public class AuctionDAOImpl implements AuctionDAO {
 		return sqlSession.selectOne(namespace + ".selectCategory", subca_id);
 	}
 
+	@Override
+	public void updateItemCost(AuctionVO auction) throws Exception {
+
+		sqlSession.update(namespace+".updateItemCost",auction);
+	}
+
+	@Override
+	public void updateAuctionSt(AuctionVO auction) throws Exception {
+		sqlSession.update(namespace+".updateAuctionSt", auction);
+	}
+
 }
