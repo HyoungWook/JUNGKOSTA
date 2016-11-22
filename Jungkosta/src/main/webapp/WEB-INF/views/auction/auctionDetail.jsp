@@ -23,39 +23,24 @@
 <script type="/Jungkosta/resources/lib/jquery-3.1.1.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script type="text/javascript"
-	src="/Jungkosta/resources/auction/js/auction_detail_phw.js"></script>
+	src="/Jungkosta/resources/js/auction/auction_detail_phw.js"></script>
+
+<!-- template -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
 
 
-<link href="/Jungkosta/resources/auction/css/auction_detail_phw.css"
+<link href="/Jungkosta/resources/css/auction/auction_detail_phw.css"
 	rel="stylesheet">
 
 <div class="container">
 	<input type="hidden" id="sale_id" value="${auction.sale_id }">
 	<input type="hidden" id="status" value="${auction.auction_end_status}">
 	<input type="hidden" id="end_date" value="${auction.auction_end_date}">
+	<input type="hidden" id="saler" value="${auction.email }">
 
 
 	<br> <br>
-
-<script id="template" type="text/x-handlebars-template">
-		<br/><br/>
-		<div>{{item_pic1}}</div>&nbsp;&nbsp;<div>{{item_pic2}}</div>&nbsp;&nbsp;
-		<div>{{item_pic3}}</div>&nbsp;&nbsp;<div>{{item_pic4}}</div>
-</script><!-- 이수진 변경 -->
-
-<script>
-	var template = Handlebars.compile($("#template").html());
-
-	$.getJSON("auctionDetailImg", function(data) {
-		$.each(data, function(index, entry) {
-
-			var listInfo = getListInfo(entry);
-			var html = template(listInfo);
-
-			$(".item_list_phw").append(html);
-		});
-	});
-</script><!-- 이수진 변경 -->
 
 	<div class="main_phw">
 
@@ -64,22 +49,24 @@
 
 		<div class="category_phw">
 			<label>${category.ca_name } <img alt=""
-				src="/Jungkosta/resources/auction/images/down.PNG">
+				src="/Jungkosta/resources/images/auction/down.PNG">
 			</label> &nbsp;&nbsp;>&nbsp;&nbsp; <label>${category.subca_name } <img
-				alt="" src="/Jungkosta/resources/auction/images/down.PNG">
+				alt="" src="/Jungkosta/resources/images/auction/down.PNG">
 			</label>
 		</div>
 
 		<div class="info_phw">
 			<div class="row">
-				<div class="col-md-offset-1 col-md-3 item_detail_phw">
+				<div class="col-md-offset-1 col-md-4 item_detail_phw">
 					<div class="item_imgs_phw">
-						<c:set var="headName" value="images_address" />
-						<c:set var="pattern" value="images_address" />
-						<img id="item_main_phw" alt="main_Image" src="/Jungkosta/auction/displayFile?fileName=${auction.item_pic1}">
-						<!-- src변경 -->
+						<img id="item_main_phw" alt="main_Image" src="">
+
+						<hr>
+
 						<div id="item_sub_imgs_phw">
-							<img alt="Thumbnail" src="">
+							<c:forEach var="thumb" items="${thumbnail }">
+								<img alt="thumb" src="displayFile?fileName=${thumb}">
+							</c:forEach>
 						</div>
 
 						<br>
@@ -87,13 +74,13 @@
 
 					</div>
 				</div>
-				<div class="col-md-6 col-md-offset-2">
+				<div class="col-md-6 col-md-offset-1">
 
 					<div>
 						<img id="good_phw" alt=""
-							src="/Jungkosta/resources/auction/images/good.png"> &nbsp;
+							src="/Jungkosta/resources/images/auction/good.png"> &nbsp;
 						&nbsp; <strong>중코스타</strong> &nbsp;&nbsp;<img id="check_phw"
-							alt="" src="/Jungkosta/resources/auction/images/check.jpg">
+							alt="" src="/Jungkosta/resources/images/auction/check.jpg">
 						<br>
 						<div class="row">
 							<div class="col-md-offset-2 message_phw">
@@ -193,7 +180,7 @@
 
 		<br> <br>
 		<hr>
-		
+
 		<div class="detail_phw">
 
 			<ul class="nav nav-tabs detail_select_phw">
@@ -207,9 +194,10 @@
 			<div class="tab-content">
 				<br /> <br /> <br />
 				<div class="tab-pane active" id="product_info">
-					<label>상품 정보</label> <br /> <br /> <img id="item_main_phw2"
-						alt="아이템 상품 이미지" src="/Jungkosta/auction/displayFile?fileName=${auction.item_pic1}"> <br /> <br /> <span id="info">제품구입
-						일자:</span>&nbsp;<!-- src변경 -->
+					<label>상품 정보</label> <br /> <br />
+					<div id="item_pic_list"></div>
+					<br /> <br /> <span id="info">제품구입 일자:</span>&nbsp;
+					<!-- src변경 -->
 					<fmt:formatDate value="${auction.buy_time}" pattern="yyyy년 MM월 dd일" />
 					<br /> <br /> <span id="info">상품 상태:</span>&nbsp;${auction.item_status}
 					<br /> <br /> <span id="info">제품 흠집 정도:</span>&nbsp;${auction.item_scratch}
@@ -245,15 +233,12 @@
 										<form id="reply_phw">
 											<input type="hidden" id="email" name="email"
 												value="${email }"> <input type="hidden"
-												name="sale_id" value="${auction.sale_id }">
+												name="sale_id" value="${auction.sale_id }"> <input
+												type="hidden" name="qa_level" value="0">
 											<div class="qAnda form-group">
 
-												<c:if test="${email == null }">
-													<c:set var="login_no" value="로그인 후 이용가능 합니다." />
-												</c:if>
 
-												<textarea class="form-control" id="content" name="content"
-													placeholder="${login_no }"></textarea>
+												<textarea class="form-control" id="content" name="content"></textarea>
 											</div>
 											<div class="reply_button_si">
 												<button type="submit" class="btn btn-default"
@@ -276,21 +261,11 @@
 										<th width="400">내용</th>
 										<th width="200">글쓴이</th>
 										<th width="100">작성일자</th>
+										<th width="100">비고</th>
 									</tr>
 								</thead>
 								<tbody id="listReply">
-									<c:set var="seq" value="${replySize}" />
-									<c:forEach var="temp" items="${reply }">
-										<tr>
 
-											<td align="center">${seq}</td>
-											<td>${temp.content }</td>
-											<td align="center">${temp.email }</td>
-											<td align="center"><fmt:formatDate
-													value="${temp.register_date }" pattern="yyyy-MM-dd" /></td>
-										</tr>
-										<c:set var="seq" value="${seq - 1}" />
-									</c:forEach>
 								</tbody>
 							</table>
 						</div>
@@ -305,3 +280,44 @@
 
 	</div>
 </div>
+<script id="template" type="text/x-handlebars-template">
+	<tr>
+		<td align='center'>{{index}}</td>
+		<td>
+			{{#if_phw info}}
+			&nbsp;<img class='answer_icon' alt='icon' src='/Jungkosta/resources/images/auction/AnswerLine.gif'>
+			{{/if_phw}}
+			{{content}}
+		</td>
+		<td align='center'>{{email}}</td>
+		<td align='center'>{{time}}</td>
+		<td align='center'>
+			{{#if_phw info}}
+			<button class="btn btn-primary">답변 달기</button>
+			{{/if_phw}}
+			<input type='hidden' name='sale_id' value='{{sale_id}}' >
+			<input type='hidden' name='item_qa_id' value='{{item_qa_id}}' >
+		</td>
+	</tr>
+</script>
+
+<!-- start 현우 추가 부분 -->
+<script id="templateReply" type="text/x-handlebars-template">
+	<tr>
+		<td colspan='5'>
+			<form>
+				<input type='hidden' name='email' value='{{email}}' >
+				<input type='hidden' name='sale_id' value='{{sale_id}}' >
+				<input type='hidden' name='qa_level' value='1' >
+				<input type='hidden' name='ref' value='{{ref}}' >
+				<textarea class="form-control" name="content"></textarea>
+				<div class='row'>
+					<div class='col-md-offset-11'>
+						<input class="btn btn-primary" type='submit' value='답변 완료'>
+					</div>
+				</div>
+			</form>
+		</td>
+	</tr>
+</script>
+<!-- end 현우 추가 부분 -->

@@ -5,11 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- bootstrap -->
-<link href="/Jungkosta/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<link href="/Jungkosta/resources/bootstrap/css/kfonts2.css" rel="stylesheet">
-<script src="/Jungkosta/resources/bootstrap/js/bootstrap.min.js"></script>
 <link href="/Jungkosta/resources/css/main/signupcss.css" rel="stylesheet">
-<script src="/Jungkosta/resources/lib/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="/Jungkosta/resources/js/main/signupform1.js"></script>
 <!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
 

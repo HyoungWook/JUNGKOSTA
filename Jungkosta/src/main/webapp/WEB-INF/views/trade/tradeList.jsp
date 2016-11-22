@@ -45,18 +45,16 @@
 
 <script type="text/javascript">
    function sendDetail(id) {
-      location.href = "itemDetail.jsp?sale_id=" + id;
+      location.href = "tradeDetail?sale_id=" + id;
    }
 </script>
 
 </head>
 <body>
-
+	
 
 
 	<div class="container">
-
-
 
 		<%--    <div class="header_ktw">
          <jsp:include page="../header&footer/header.jsp" />
@@ -215,30 +213,31 @@
 				<h3 id="realTime_item_ktw">실시간 상품</h3>
 				&nbsp;&nbsp;
 
-				<div class="btn-group radio_button" data-toggle="buttons">
-					<label class="btn btn-info active"> <input type="radio"
-						name="options" id="option1"> 신규등록순
-					</label> <label class="btn btn-info"> <input type="radio"
-						name="options" id="option2"> 마감임박순
-					</label>
-				</div>
+			<fieldset id="radio_btn">
+					<label for="radio-1">신규 등록순</label> <input type="radio"
+						name="radio-1" class="button_radio" checked="checked" id="radio-1"
+						value="add_sort"> <label for="radio-2">최저 가격순</label> <input
+						type="radio" name="radio-1" class="button_radio" id="radio-2"
+						value="end_sort">
+				</fieldset>
 
 				<hr>
 
 				<div class="item_list_ktw">
 					<div class="row">
 						<c:forEach var="temp" items="${ list}">
-
+					 	 <a href="tradeList?subca_id=${temp.subca_id }">${temp.subca_id }</a>
+						 <%--<input type="hidden" name="subca_id" value="${temp.subca_id }"> --%>
 							<div class="col-md-2 col-md-offset-2 item_info_ktw"
 								onclick="sendDetail(${temp.sale_id})">
-								<img id="good_ktw" src="/resources/images/trade/good.png" />&nbsp;
-								<span name="email">중코스타</span>&nbsp; <img id="check_ktw"
-									src="/resources/images/trade/check.jpg" />
+								<img id="good_ktw" src="/Jungkosta/resources/images/trade/good.png" />&nbsp;
+								<span name="email">중코스타</span>&nbsp; 
+								<img id="check_ktw" src="/Jungkosta/resources/images/trade/check.jpg" />
 								<div class="item_img_ktw">
 									<c:if test="${temp.item_pic1!=null }">
-										<%--      <c:set var="head" value="${fn:substring(temp.item_pic, 0 ,fn:length(temp.item_pic)-4) }"></c:set>
+			<%-- 		<c:set var="head" value="${fn:substring(temp.item_pic, 0 ,fn:length(temp.item_pic)-4) }"></c:set>
             <c:set var="pattern" value="${fn:substringAfter(temp.item_pic,head) }"></c:set> --%>
-										<%-- <img src="../upload/${head}_small${pattern}"> --%>
+										 <img src="displayFile?fileName=${temp.item_pic1}">
 									</c:if>
 								</div>
 								<!-- <div>
@@ -259,6 +258,9 @@
 			</div>
 		</div>
 
+		<div>
+			
+		</div>
 		<br> <br> <br>
 
 		<div class="footer_ktw">

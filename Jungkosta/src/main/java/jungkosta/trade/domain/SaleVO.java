@@ -1,21 +1,27 @@
 package jungkosta.trade.domain;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
+import java.util.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 public class SaleVO implements Serializable{
 	private int sale_id;
 	private String item_name;
-	private String item_cost;
-	private Timestamp buy_time;
+	private int item_cost;
+	
+	@DateTimeFormat(pattern = "yyyy/MM/dd")
+	private Date buy_time;
+	
 	private String item_status;
 	private String item_scratch;
 	private String additional_info;
 	private String buy_info;
-	private Timestamp sale_date;
-	private String email;
+	private Date sale_date;
+
+	private String email = "test2@test2.com";
 	private int subca_id;
-	private String flag;
+	private char flag = '0';
 	private String sale_status;
 	private String item_pic1;
 	private String item_pic2;
@@ -24,10 +30,9 @@ public class SaleVO implements Serializable{
 	
 	public SaleVO(){}
 
-	public SaleVO(int sale_id, String item_name, String item_cost, Timestamp buy_time, String item_status,
-			String item_scratch, String additional_info, String buy_info, Timestamp sale_date, String email,
-			int subca_id, String flag, String sale_status, String item_pic1, String item_pic2, String item_pic3,
-			String item_pic4) {
+	public SaleVO(int sale_id, String item_name, int item_cost, Date buy_time, String item_status, String item_scratch,
+			String additional_info, String buy_info, Date sale_date, String email, int subca_id, char flag,
+			String sale_status, String item_pic1, String item_pic2, String item_pic3, String item_pic4) {
 		super();
 		this.sale_id = sale_id;
 		this.item_name = item_name;
@@ -64,19 +69,19 @@ public class SaleVO implements Serializable{
 		this.item_name = item_name;
 	}
 
-	public String getItem_cost() {
+	public int getItem_cost() {
 		return item_cost;
 	}
 
-	public void setItem_cost(String item_cost) {
+	public void setItem_cost(int item_cost) {
 		this.item_cost = item_cost;
 	}
 
-	public Timestamp getBuy_time() {
+	public Date getBuy_time() {
 		return buy_time;
 	}
 
-	public void setBuy_time(Timestamp buy_time) {
+	public void setBuy_time(Date buy_time) {
 		this.buy_time = buy_time;
 	}
 
@@ -112,11 +117,11 @@ public class SaleVO implements Serializable{
 		this.buy_info = buy_info;
 	}
 
-	public Timestamp getSale_date() {
+	public Date getSale_date() {
 		return sale_date;
 	}
 
-	public void setSale_date(Timestamp sale_date) {
+	public void setSale_date(Date sale_date) {
 		this.sale_date = sale_date;
 	}
 
@@ -136,11 +141,11 @@ public class SaleVO implements Serializable{
 		this.subca_id = subca_id;
 	}
 
-	public String getFlag() {
+	public char getFlag() {
 		return flag;
 	}
 
-	public void setFlag(String flag) {
+	public void setFlag(char flag) {
 		this.flag = flag;
 	}
 
@@ -193,5 +198,5 @@ public class SaleVO implements Serializable{
 				+ item_pic1 + ", item_pic2=" + item_pic2 + ", item_pic3=" + item_pic3 + ", item_pic4=" + item_pic4
 				+ "]";
 	}
-	
+
 }

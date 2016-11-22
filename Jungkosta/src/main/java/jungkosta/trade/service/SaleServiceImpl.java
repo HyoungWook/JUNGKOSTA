@@ -16,26 +16,19 @@ public class SaleServiceImpl implements SaleService {
 	@Inject
 	private SaleDAO saleDAO;
 	
-	
-	@Override
-	public int insertSale(SaleVO saleVO) {
-		return 0;
-	}
-
-	@Override
-	public Integer selectS_id() throws Exception{
-		return saleDAO.selectS_id();
-	}
-
 	@Override
 	public List<SaleVO> listSale() throws Exception {
 		return saleDAO.listSale();
 	}
-
+	
 	@Override
-	public SubCategoryVO searchSubCategory(int subca_id) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<SaleVO> listSalesub(Integer subca_id) throws Exception {
+		return saleDAO.listSalesub(subca_id);
+	}
+	
+	@Override
+	public SubCategoryVO searchSubCategory(int subca_id) throws Exception {
+		return saleDAO.searchSubCategory(subca_id);
 	}
 
 	@Override
@@ -44,15 +37,10 @@ public class SaleServiceImpl implements SaleService {
 	}
 
 	@Override
-	public String searchTotalCategory(int subca_id) {
-		// TODO Auto-generated method stub
-		return null;
+	public String searchTotalCategory(int subca_id) throws Exception {
+		return saleDAO.searchTotalCategory(subca_id);
 	}
 
-	@Override
-	public List<SaleVO> listSalesub(int subca_id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 
 }

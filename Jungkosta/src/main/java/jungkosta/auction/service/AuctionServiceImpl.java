@@ -1,5 +1,8 @@
 package jungkosta.auction.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
@@ -53,4 +56,21 @@ public class AuctionServiceImpl implements AuctionService {
 		dao.updateAuctionSt(auction);
 	}
 
+
+		// start 현우 추가 부분
+	@Override
+	public List<String> getThunbnail(int sale_id) throws Exception {
+		AuctionVO vo = dao.read(sale_id);
+
+		List<String> list = new ArrayList<>();
+
+		list.add(vo.getItem_pic1());
+		list.add(vo.getItem_pic2());
+		list.add(vo.getItem_pic3());
+		list.add(vo.getItem_pic4());
+
+		return list;
+	}
+	// end 현우 추가 부분
+	
 }

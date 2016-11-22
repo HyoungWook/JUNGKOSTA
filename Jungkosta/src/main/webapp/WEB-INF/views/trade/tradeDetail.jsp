@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,18 +10,13 @@
 <script src="/Jungkosta/resources/lib/jquery-3.1.1.min.js"></script>
 
 <!-- javaScript -->
-<<<<<<< HEAD
 <script type="text/javascript" src="/Jungkosta/resources/js/trade/qna.js"></script>
 
 <!-- css -->
-<script type="text/javascript" src="/Jungkosta/resources/css/trade/tradeDetail.css"></script>
+<style ></style>
+<link href="/Jungkosta/resources/css/trade/tradeDetail.css" rel="stylesheet"> 
 <script type="text/javascript" src="/Jungkosta/resources/js/trade/qna.js"></script>
 
-<script type="text/javascript" src="/resources/js/trade/qna.js"></script>
-
-<!-- css -->
-<script type="text/javascript" src="/resources/css/trade/tradeDetail.css"></script>
-<script type="text/javascript" src="/resources/js/trade/qna.js"></script>
 
 
 <!-- bootstrap -->
@@ -30,6 +27,19 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Insert title here</title>
+<script type="text/javascript">
+
+	$(function(){
+		var subimg = $('.subImg');
+		var mainimg = $('.item_ktw');
+		subimg.on('click', function(){	
+			var source = $(this).attr('src');
+			$('.item_ktw').attr('src', source);
+			
+		})
+		
+	})
+</script>
 </head>
 <body>
 
@@ -41,45 +51,59 @@
 		<div class="container">
 
 			<a href="#">${totalcategoryName}&nbsp;</a><img
-				id="category_button_ktw" src="/resources/images/trade/category_direct.png">
-			<img src="../image_ktw/direct_tw.png">&nbsp;<a href="#">&nbsp;${subcategory.subca_name}</a>
-			<img id="category_button_ktw" src="../image_ktw/category_direct.png">
+				id="category_button_ktw" src="/Jungkosta/resources/images/trade/category_direct.png">
+			<img src="/Jungkosta/resources/images/trade/direct_tw.png">&nbsp;<a href="#">&nbsp;${subcategory.subca_name}</a>
+			<img id="category_button_ktw" src="/Jungkosta/resources/images/trade/category_direct.png">
 			<div class="row">
-
+ 
 				<div class="col-md-offset-1 col-md-3 left_ktw">
-					<img class="item_ktw" src="C:/upload/${register.item_pic }" />
+					 <img class="item_ktw" src="displayFile?fileName=${register.item_pic1}" />
 					<div class="row">
-						<div class="col-md-6 col-md-offset-6">
+						<div class="col-md-2 col-md-offset-1">
 							<div id="item_sub_imgs_ktw">
-								<img alt="" src="/resources/images/trade/gier2.jpg">
-							</div>
-							<br> <br> <br> <br> <br>
+								<img alt="" src="displayFile?fileName=${register.item_pic1}" class="subImg">
+							</div>	
 						</div>
-						<br>
+						<div class="col-md-2 col-md-offset-1">
+							<div id="item_sub_imgs_ktw">
+								<img alt="" src="/Jungkosta/resources/images/trade/gier2.jpg" class="subImg">
+							</div>	
+						</div>
+						<div class="col-md-2 col-md-offset-1">
+							<div id="item_sub_imgs_ktw">
+								<img alt="" src="displayFile?fileName=${register.item_pic3}"  class="subImg">
+							</div>	
+						</div>
+						<div class="col-md-2 col-md-offset-1">
+							<div id="item_sub_imgs_ktw">
+								<img alt="" src="displayFile?fileName=${register.item_pic4}"  class="subImg">
+							</div>	
+						</div>
+						<br> <br> <br> <br> <br>
 
 						<div class="row">
 							<div class="col-md-6 col-md-offset-6">
 								<div id="nav_ktw">
-									<a href="#" id="prev_ktw"> <img alt=""
-										src="/resources/images/trade/prev_.png">
+								<!-- 	<a href="#" id="prev_ktw"> <img alt=""
+										src="/Jungkosta/resources/images/trade/prev_.png">
 									</a> <a href="#" id="nav_dot_ktw"> <img alt=""
-										src="/resources/images/trade/dot_.png">
+										src="/Jungkosta/resources/images/trade/dot_.png">
 									</a> <a href="#" id="next_ktw"> <img alt=""
-										src="/resources/images/trade/next_.png">
-									</a>
+										src="/Jungkosta/resources/images/trade/next_.png">
+									</a> -->
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 				<div class="col-md-6 col-md-offset-2 right_ktw">
-					<form action="itemOrder.jsp?sale_id=${register.sale_id }"
-						method="post">
+					<form action="/Jungkosta/trade/tradeOrder" method="get">
+						<input type="hidden" name="sale_id" value="${register.sale_id }">
 						<div class="row">
 							<div class="col-md-12">
-								<img id="good_ktw" src="/resources/images/trade/good.png" />&nbsp;<span
-									name="email">중코스타</span>&nbsp; <img id="check_ktw"
-									src="/resources/images/trade/check.jpg" />
+								<img id="good_ktw" src="/Jungkosta/resources/images/trade/good.png" />&nbsp;
+								<span id="email">중코스타</span>&nbsp; <img id="check_ktw"
+									src="/Jungkosta/resources/images/trade/check.jpg" />
 								<hr>
 							</div>
 							<br> <br> <br> <br>
@@ -119,7 +143,7 @@
 							<br> <br> <br> <br>
 
 							<button type="submit" class="btn btn-primary btn-lg"
-								name="Buyitem_ktw">주문하기</button>
+								>주문하기</button>
 
 						</div>
 					</form>

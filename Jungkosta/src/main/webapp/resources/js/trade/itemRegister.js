@@ -69,29 +69,32 @@ $(function(){
       }
    })
    
-   $('form').submit(function(event){
-      var $category = $('#category_ktw');
-      var $sub_category = $('#sub_category_ktw');
-      var $item_name = $('#item_name_si');
-      var $buy_date = $('#buy_date');
-      var $buy_info = $('#buy_info_si');
-      var $item_scratch = $('#item_scratch_si');
-      var $item_status = $('#item_status_si');
-      var $additional_info = $('#additional_info_si');
-      var $userfile = $('#userfile');
-      var $item_cost = $('#item_cost_si');
-      var $bank_name = $('#bank_name_si');
-      var $Account_no = $('#Account_no_si');
-      
+   $('#itemRegister').submit(function(event){
+ 
+	   var $category = $('#category_ktw');
+	   var $sub_category = $('#sub_category_ktw');
+	   var $item_name = $('#item_name_si');
+	   var $buy_date = $('#buy_date');
+	   var $buy_info = $('#buy_info_si');
+	   var $item_scratch = $('#item_scratch_si');
+	   var $item_status = $('#item_status_si');
+	   var $additional_info = $('#additional_info_si');
+	   var $uploadedList = $('.uploadedList').find('li');
+	   var $item_cost = $('#item_cost_si');
+	   var $bank_name = $('#bank_name_si');
+	   var $Account_no = $('#Account_no_si');
+	   
       if($category.val() == 'null'){
          alert('카테고리를 선택해주세요');
+         
+    	  /*$('.category_list_ktw').append($("<b>카테고리를 선택해주세요</b>");*/
          
          return false;
       }
       
       if($sub_category.val() == 'null'){
          alert('서브 카테고리를 선택해주세요');
-         
+
          return false;
       }
       
@@ -131,11 +134,19 @@ $(function(){
          return false;
       }
       
-      if($userfile.val().length == 0){
+      /*if($userfile.val().length == 0){
          alert('상품의 사진을 업로드해주세요');
          
          return false;
+      }*/
+      
+      if($uploadedList.length < 4){
+    	  alert('상품의 사진 4개를 업로드 해주세요');
+    	  
+    	  return false;
       }
+      
+      console.log($uploadedList);
       
       if(($item_cost.val().length == 0 || numReg.test($item_cost.val())==false)){
          alert('상품의 가격을 입력해주세요');
@@ -155,6 +166,19 @@ $(function(){
          return false;
       }
       
-   })
+      	event.preventDefault();
+      
+      	var that = $(this);
+  	
+  		var str ="";
+  		$(".uploadedList .delbtn").each(function(index){
+  			str += "<input type='hidden' name='item_pic"+ (index + 1) +"' value='"+$(this).attr("href") +"'> ";
+  		});
+  	
+  		that.append(str);
+
+  		that.get(0).submit();
+      
+   });
    
-})
+});

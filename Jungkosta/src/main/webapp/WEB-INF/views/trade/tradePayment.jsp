@@ -292,7 +292,6 @@
 		</div>
 
 	</div>
->>>>>>> branch 'trade' of https://github.com/HyoungWook/JUNGKOSTA.git
 
 </body>
 </html>

@@ -73,8 +73,9 @@
 				order by auction_end_date
 			</when>
 		</choose>
-
 	</select>
+	
+	
 
 	<update id="updateItemCost" parameterType="AuctionVO">
 		update sale set item_cost = #{item_cost}

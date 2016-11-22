@@ -1,3 +1,24 @@
+ /* 파일 drop_ysi */
+ .fileDrop {
+  width: 80%;
+  height: 100px;
+  border: 1px dotted gray;
+  background-color: lightslategrey;
+  margin: auto;
+  
+}
+
+/* 파일 Label_ysi */
+#fileLabel{
+	font-size: 1.2em;
+	margin-left: 87px;
+}
+
+/* 파일 list_ysi */
+.uploadedList li{
+	list-style: none;
+}
+
 .saleTotal_ktw {
    font-family: "Helvetica Neue", Helvetica, Arial, "맑은 고딕",
       "Malgun gothic", sans-serif;

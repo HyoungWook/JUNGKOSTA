@@ -19,7 +19,7 @@
 
 
 <!-- style -->
-<link href="/Jungkosta/resources/auction/css/auction_main_phw.css"
+<link href="/Jungkosta/resources/css/auction/auction_main_phw.css"
 	rel="stylesheet">
 <link rel="stylesheet"
 	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -28,7 +28,7 @@
 <!-- start 현우 추가 부분 -->
 <!-- template -->
 <script type="text/javascript"
-	src="/Jungkosta/resources/auction/js/upload.js"></script>
+	src="/Jungkosta/resources/js/auction/upload.js"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
 <!-- end 현우 추가 부분 -->
@@ -41,7 +41,7 @@
 	<script type="/Jungkosta/resources/lib/jquery-3.1.1.min.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<script type="text/javascript"
-		src="/Jungkosta/resources/auction/js/auction_main_phw.js"></script>
+		src="/Jungkosta/resources/js/auction/auction_main_phw.js"></script>
 
 	<div class="main_phw">
 		<div class="top_phw">
@@ -221,11 +221,11 @@
 <script id="template" type="text/x-handlebars-template">
 		<div class="col-md-3 item_info_phw" onclick="sendDetail({{sale_id}})">
 			<br> 
-			<b>무료배송</b> <img id="icon_auc_phw" alt="auction_icon" src="/Jungkosta/resources/auction/images/icon_auc.png">
+			<b>무료배송</b> <img id="icon_auc_phw" alt="auction_icon" src="/Jungkosta/resources/images/auction/icon_auc.png">
 			<div class="item_img_phw">
 				<img id="item_main_img" alt="main_image" src="{{main_image}}">
 					<c:if test="{{auction_end_status}} == true">
-						<img id="close_auc_phw" alt="auction_close" src="/Jungkosta/resources/auction/images/auction_close.png">
+						<img id="close_auc_phw" alt="auction_close" src="/Jungkosta/resources/images/auction/auction_close.png">
 					</c:if>
 			</div>
 			<div>
@@ -257,7 +257,35 @@
 			$(".item_list_phw").append(html);
 		});
 	});
-	
+	//start 현우 추가 부분
+	$(".button_radio").each(function() {
+		$(this).change(function() {
+			$('.item_list_phw').empty().hide();
+			$('#loading_phw').stop();
+			$('#loading_phw').fadeIn();
+
+			$('#loading_phw').stop();
+			$('#loading_phw').fadeIn();
+			if ($(this).is(":checked")) {
+				var sort = $(this).val();
+				$.getJSON("auctionListSort?sort=" + sort, function(data) {
+					$.each(data, function(index, entry) {
+
+						var listInfo = getListInfo(entry);
+						var html = template(listInfo);
+
+						$(".item_list_phw").append(html);
+					});
+				});
+			}
+
+			$('.item_list_phw').fadeIn();
+			$('#loading_phw').fadeOut();
+
+		});
+
+	});
+	//end 현우 추가 부분
 	
 	
 </script>
