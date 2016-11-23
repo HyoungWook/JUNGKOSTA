@@ -68,9 +68,6 @@ public class AuctionDAOImpl implements AuctionDAO {
 		sqlSession.update(namespace+".updateItemCost",auction);
 	}
 
-	@Override
-	public void updateAuctionSt(AuctionVO auction) throws Exception {
-		sqlSession.update(namespace+".updateAuctionSt", auction);
-	}
+
 
 }

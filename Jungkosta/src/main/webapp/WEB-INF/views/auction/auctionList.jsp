@@ -197,7 +197,7 @@
 		<div class="item_container_phw">
 
 			<div id="loading_phw">
-				<img alt="" src="/Jungkosta/resources/auction/images/loading.gif">
+				<img alt="" src="/Jungkosta/resources/images/auction/loading.gif">
 			</div>
 
 			<div class="row item_list_phw"></div>
@@ -215,9 +215,9 @@
 			<b>무료배송</b> <img id="icon_auc_phw" alt="auction_icon" src="/Jungkosta/resources/images/auction/icon_auc.png">
 			<div class="item_img_phw">
 				<img id="item_main_img" alt="main_image" src="{{main_image}}">
-					<c:if test="{{auction_end_status}} == true">
+					{{#if_phw auction_end_status}}
 						<img id="close_auc_phw" alt="auction_close" src="/Jungkosta/resources/images/auction/auction_close.png">
-					</c:if>
+					{{/if_phw}}
 			</div>
 			<div>
 				<a>관심상품 담기</a> | <a>미리 보기</a>
@@ -227,11 +227,11 @@
 			<br> <br> 
 			<span>현재가 </span> &nbsp;&nbsp; 
 			<strong class="product_price_phw">
-				{{item_cost}}
+				{{money_fomat item_cost}}
 			</strong></br></br>
 			<span>즉시구매가</span>
 			<strong class="product_price_phw"> &nbsp; 
-				{{immediate_bid_cost}}
+				{{money_fomat immediate_bid_cost}}
 			</strong>
 			<br> <br>
 		</div>
@@ -318,8 +318,6 @@
 
 	});
 	//end 현우 추가 부분
-	
-	
 </script>
 
 

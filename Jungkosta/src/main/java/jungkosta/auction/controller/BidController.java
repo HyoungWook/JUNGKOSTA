@@ -1,6 +1,5 @@
 package jungkosta.auction.controller;
 
-
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 
@@ -19,51 +18,48 @@ import jungkosta.commons.util.BidThread;
 
 @Controller
 public class BidController {
-	
+
 	@Inject
 	private BiddingService bidService;
-	
+
 	@Inject
 	private AuctionService auctionService;
-	
+
 	public BidController() {
-		
+
 		new BidThread().start();
-		
+
 	}
-	
-	
-	@RequestMapping(value="/bidRegisterForm/{sale_id}", method=RequestMethod.GET)
-	public String biddingForm_GET(@PathVariable("sale_id") int sale_id,  Model model) throws Exception{
-		
+
+	@RequestMapping(value = "/bidRegisterForm/{sale_id}", method = RequestMethod.GET)
+	public String biddingForm_GET(@PathVariable("sale_id") int sale_id, Model model) throws Exception {
+
 		AuctionVO auction = auctionService.read(sale_id);
 		model.addAttribute("auction", auction);
-			
+
 		return "bidRegisterForm";
 	}
-	
-	@RequestMapping(value="/bidRegisterForm",method=RequestMethod.POST)
-	public String bidRegister(AuctionVO auction, BiddingVO vo,HttpServletRequest request) throws Exception{
-		
-		if(auction.getImmediate_bid_cost()==vo.getBidding_cost()){
+
+	@RequestMapping(value = "/bidRegisterForm", method = RequestMethod.POST)
+	public String bidRegister(BiddingVO vo, HttpServletRequest request, Model model) throws Exception {
+
+		AuctionVO auction = auctionService.read(Integer.parseInt(request.getParameter("sale_id")));
+
+		int bidding_cost = Integer.parseInt(request.getParameter("bidding_cost"));
+
+		bidService.registerBid(vo);
+
+		auction.setItem_cost(bidding_cost);
+
+		auctionService.updateDetail(auction);
+
+		if (auction.getImmediate_bid_cost() == vo.getBidding_cost()) {
+
 			return "biddingpageProc";
-		}else{
-			int item_cost = Integer.parseInt(request.getParameter("bidding_cost"));
-			
-			vo.setBidding_id(bidService.selectBidding_id());
-			
-			bidService.registerBid(vo);
-			
-			auction.setItem_cost(item_cost);
-			auction.setAuction_stcost(item_cost);
-			
-			auctionService.updateDetail(auction);
-		
+		} else {
 			return "bidpageProc";
 		}
-			
+
 	}
-	
+
 }
-
-

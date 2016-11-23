@@ -27,7 +27,7 @@
 			var input_cost = Number($("#bidding_cost").val());
 			var now_cost = Number("${auction.item_cost + 1000}");
 			var immediate_cost = Number("${auction.immediate_bid_cost}");
-			
+
 			if (!email) {
 				alert("로그인 해 주세요.");
 				window.self.close();
@@ -41,13 +41,12 @@
 					alert("즉시 입찰 가능한 가격을 적어주세요.");
 					$("#bidding_cost").val("");
 					return false;
-				} 
-				
+				}
+
 			}
-	
-		
+
 		});
-		
+
 	});
 </script>
 
@@ -55,13 +54,10 @@
 
 <div class="container">
 	<form action="/Jungkosta/auction/bidRegisterForm" method="post">
-		<input type="hidden" name="email" value="${auction.email}"> <input
-			type="hidden" name="auction_id" value="${auction.auction_id }"><!-- 테스트를위해 수정 -->
-		<input type="hidden" name="sale_id" value="${auction.sale_id }">
-		<input type="hidden" name="immediate_bid_cost" value="${auction.immediate_bid_cost }">
-	<%-- 	<c:if test="${auction.immediate_bid_cost } == ${param.bidding_cost}">
-			<input type="hidden" name="flag" value="1"/>
-		</c:if> --%>
+		<input type="hidden" name="auction_id" value="${auction.auction_id }">
+		<input type="hidden" name="email" value="${email }"> <input
+			type="hidden" name="sale_id" value="${auction.sale_id }">
+
 		<table class="table table-bordered">
 			<p>입찰 상품</p>
 			<tbody>
@@ -115,15 +111,3 @@
 		</div>
 	</form>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-

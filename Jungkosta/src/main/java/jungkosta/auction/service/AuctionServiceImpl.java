@@ -53,7 +53,6 @@ public class AuctionServiceImpl implements AuctionService {
 	@Override
 	public void updateDetail(AuctionVO auction) throws Exception {
 		dao.updateItemCost(auction);
-		dao.updateAuctionSt(auction);
 	}
 
 

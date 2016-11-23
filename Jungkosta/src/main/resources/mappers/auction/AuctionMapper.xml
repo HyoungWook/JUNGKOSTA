@@ -82,10 +82,5 @@
 				where sale_id=#{sale_id}
 	</update>
 	
-	<update id="updateAuctionSt" parameterType="AuctionVO">
-		update auction_register set auction_stcost = #{auction_stcost}
-				where sale_id=#{sale_id}
-	</update>
-
 
 </mapper>
