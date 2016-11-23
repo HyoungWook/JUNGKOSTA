@@ -24,10 +24,25 @@
 	<!-- 우성 intercepter 추가 -->
 	<beans:bean id="LoginInterceptor" class="jungkosta.commons.interceptor.LoginInterceptor"/>
 	
+	<!-- 2016/11/22 우성 interceptor 추가 및 수정 -->
+	
+	<beans:bean id="ManagerInterceptor" class="jungkosta.commons.interceptor.ManagerInterceptor"/>
+	<!-- 2016/11/23 우성 수정 -->
 	<interceptors>
 		<interceptor>
-			<mapping path="/logout"/>
+			<mapping path="/messageSendForm"/>
+			<mapping path="/messageReceiveForm"/>
+			<mapping path="/purchaseList"/>
+			<mapping path="/saleList"/>
+			<mapping path="/auctionList"/>
 			<beans:ref bean="LoginInterceptor"/>
+		</interceptor>
+		
+		<interceptor>
+			<mapping path="/customSearchForm"/>
+			<mapping path="/blackListForm"/>
+			<mapping path="/warningForm"/>
+			<beans:ref bean="ManagerInterceptor"/> 
 		</interceptor>
 	</interceptors>
 	

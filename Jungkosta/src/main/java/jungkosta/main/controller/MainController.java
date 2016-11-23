@@ -45,8 +45,12 @@ public class MainController {
 	@RequestMapping(value="/mainSignupForm", method=RequestMethod.GET)
 	public void go(){ }
 	
+	//2016/11/23 우성 수정       
 	@RequestMapping(value="/mainSignupForm2", method=RequestMethod.GET)
-	public void mainSignupForm2(){ }
+	public String mainSignupForm2(){
+		
+		return "/mainSignupForm2";
+	}
 	
 	//회원가입 처리
 	@RequestMapping(value="/mainSignupForm2", method=RequestMethod.POST)
@@ -68,5 +72,19 @@ public class MainController {
 
 	}
 	
+	@RequestMapping(value="/purchaseList", method=RequestMethod.GET)
+	public void purchase(){
+		
+	}
+	
+	@RequestMapping(value="/saleList", method=RequestMethod.GET)
+	public void sale(){
+		
+	}
+	
+	@RequestMapping(value="/auctionList", method=RequestMethod.GET)
+	public void auction(){
+		
+	}
 }
 

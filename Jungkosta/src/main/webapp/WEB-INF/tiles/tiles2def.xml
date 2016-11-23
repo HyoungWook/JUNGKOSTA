@@ -63,6 +63,20 @@
 		<put-attribute name="body" value="/WEB-INF/views/main/warningForm.jsp"/>
 	</definition>
 	<!-- 우성 끝 -->
+	
+	<!-- 2016/11/23 우성 추가 -->
+	<definition name="purchaseList" extends="base_layout">
+		<put-attribute name="body" value="/WEB-INF/views/main/purchaseList.jsp"/>
+	</definition>
+	<definition name="saleList" extends="base_layout">
+		<put-attribute name="body" value="/WEB-INF/views/main/saleList.jsp"/>
+	</definition>
+	<definition name="auctionList" extends="base_layout">
+		<put-attribute name="body" value="/WEB-INF/views/main/auctionList.jsp"/>
+	</definition>
+	
+	<!-- 우성 끝 -->
+	
 </tiles-definitions>
 
 
