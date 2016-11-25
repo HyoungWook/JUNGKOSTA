@@ -230,7 +230,7 @@ $(function(){
 								<div class="col-md-6">
 									<p align="right" id="total_cost">
 										<c:set var="total_cost"
-											value="${payment_cost}" />
+											value="${purchase_ktw.purchase_cost}" />
 										<fmt:formatNumber value="${total_cost }" pattern="#,###" />
 										원
 									</p>
@@ -249,7 +249,7 @@ $(function(){
 								</div>
 								<div class="col-md-6">
 									<p align="right">
-										<fmt:formatNumber value="${payment_cost * 0.01}"
+										<fmt:formatNumber value="${purchase_ktw.purchase_cost * 0.01}"
 											pattern="#,###" />
 										원
 									</p>
@@ -264,21 +264,20 @@ $(function(){
 
 	</div>
 
-	<form action="/tradepayment" method="post">
+	<form action="/tradepaymentProc" method="post">
 		<input type="hidden" name="payment_cost" value="${payment_cost}"> 
 		<input type="hidden" name="point" id = "pointnum" value="">
 		<input type="hidden" name="payment_status" value="배송완료">
-		<input type="hidden" name="purchase_id" value="${purchase.purchase_id }">
+		
 				<hr>
-				<div align="right" id="payment_btn">
-					<button class="btn btn-lg" type="submit">결제하기</button>
-				</div>
-
-			</form>
-
-		</div>
-
+			<div align="right" id="payment_btn">
+				<button class="btn btn-lg" type="submit">결제하기</button>
+				<button class="btn btn-lg" type="submit">취소</button>
+			</div>
+		</form>
 	</div>
+
+</div>
 
 </body>
 </html>

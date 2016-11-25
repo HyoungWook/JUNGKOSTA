@@ -60,7 +60,7 @@ public class TradeOrderController {
 			System.out.println("구매 : " + purchaseVO);
 			
 			SaleVO salevo = service_tw.searchSale(saleVO.getSale_id());
-			
+			MemberVO member = memberService.selectMemberService(saleVO.getEmail());
 			if(purchaseVO.getPayment_method().equals("실시간계좌이체")){//실시간계좌이체
 					purchaseVO.setPurchase_status("입금대기중");
 					purchaseService.insertPurchase(purchaseVO);
@@ -70,6 +70,7 @@ public class TradeOrderController {
 				
 					service_tw.updateSaleStatusFirst(salevo);
 				
+					model.addAttribute("member", member);
 					model.addAttribute("register", salevo);
 					model.addAttribute("purchase_ktw", purchaseVO);
 				
