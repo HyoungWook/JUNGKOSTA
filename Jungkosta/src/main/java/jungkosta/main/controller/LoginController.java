@@ -49,11 +49,12 @@ public class LoginController {
 							@RequestParam("password") String password) throws Exception {
 		
 		MemberVO vo = new MemberVO();
-		ResponseEntity<String> entity = null;
-		vo.setEmail(email);
-		vo.setPassword(password);
 		
-		String result = service.check_Login(request,vo);
+		ResponseEntity<String> entity = null;
+		
+		vo.setEmail(email);
+		
+		String result = service.check_Login(request, vo, password);
 		
 		entity = new ResponseEntity<String>(result,HttpStatus.OK);
 		

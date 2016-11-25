@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
 
+import jungkosta.commons.util.Decryption;
 import jungkosta.main.domain.BlackListVO;
 import jungkosta.main.domain.MemberVO;
 import jungkosta.main.persistence.LoginDao;
@@ -21,9 +22,10 @@ public class LoginServiceImpl implements LoginService {
 	
 	//2016/11/19 우성 수정
 	@Override
-	public String check_Login(HttpServletRequest request,MemberVO vo)throws Exception{
-		
+	public String check_Login(HttpServletRequest request,MemberVO vo, String pass)throws Exception{
 		MemberVO ret_vo = loginDao.check_Login(vo);
+		Decryption decrypt = new Decryption();
+		
 		
 		HttpSession session = request.getSession();
 		

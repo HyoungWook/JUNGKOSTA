@@ -25,7 +25,7 @@
 		<put-attribute name="body" value="/WEB-INF/views/main/mainSignupForm.jsp"/>
 	</definition>
 	<definition name="mainSignupForm2" extends="base_layout">
-		<put-attribute name="body" value="/WEB-INF/views/main/mainSignupForm.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/main/mainSignupForm2.jsp"/>
 	</definition>
 	
 	<!-- 우성 2016/11월/18일 추가 -->

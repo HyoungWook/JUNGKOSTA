@@ -18,24 +18,12 @@ public class SignupServiceImpl implements SignupService {
 
 	@Override
 	public void signupProc(MemberVO vo, String pass) throws Exception {
-		Encryption encrypt = new Encryption();
+		Encryption encrypt = new Encryption();				//암호화 객체
 		
-		char[] chrPass = pass.toCharArray(); 
-		String[] bryPass = new String[chrPass.length];
-		char[] bryChr = new char[bryPass.length];
-		String shiftResult = "";
+		String password = encrypt.passEcnript(pass);
+		vo.setPassword(password);
 		
-		for(int i=0; i<chrPass.length; i++){
-			bryPass[i] = Long.toBinaryString(chrPass[i]);
-		}
-		
-		for(int i=0; i<bryPass.length; i++){
-			bryChr = bryPass[i].toCharArray();
-			
-			shiftResult += "#"+encrypt.refactoring(bryChr);
-		}
-		
-		dao.createMember(vo);		
+		dao.createMember(vo);
 	}
 
 	@Override

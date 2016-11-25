@@ -30,7 +30,7 @@ public class MainController {
 	 */
 	@RequestMapping(value = "/", method = {RequestMethod.GET,RequestMethod.POST})
 	public String home(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
+		logger.info("메인 컨트롤러 실행 완료....", locale);
 		
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
@@ -43,10 +43,14 @@ public class MainController {
 	}
 	
 	@RequestMapping(value="/mainSignupForm", method=RequestMethod.GET)
-	public void go(){ }
+	public void go(){}
 	
 	@RequestMapping(value="/mainSignupForm2", method=RequestMethod.GET)
-	public void mainSignupForm2(){ }
+	public void mainSignupForm2(){ 
+		
+		
+		
+	}
 	
 	//회원가입 처리
 	@RequestMapping(value="/mainSignupForm2", method=RequestMethod.POST)
