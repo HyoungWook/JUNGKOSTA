@@ -1,37 +1,36 @@
 package jungkosta.commons.interceptor;
 
-import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-import jungkosta.commons.util.Path;
-import jungkosta.main.service.LoginService;
-
-public class LoginInterceptor extends HandlerInterceptorAdapter {
-	
-	@Inject
-	private LoginService service;
+public class ManagerInterceptor extends HandlerInterceptorAdapter {
 	
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		
-		System.out.println("죽어 임마");
-		
 		HttpSession session = request.getSession();
 		
-		if(session.getAttribute("email") == null){
+		String email = (String)session.getAttribute("email");
+		
+		if(email == null){
 			
 			response.sendRedirect("/Jungkosta/");
+			
 			return false;
+			
+		}else if(!email.equals("admin@admin.com")){
+			
+			response.sendRedirect("/Jungkosta/");
+			
+			return false;
+			
 		}
-		
 		
 		return true;
 	}
-
+	
 }

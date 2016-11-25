@@ -9,7 +9,8 @@
 	rel="stylesheet">
 <link href="/Jungkosta/resources/css/auction/auction_add_lsj.css"
 	rel="stylesheet">
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="/Jungkosta/resources/bootstrap/js/bootstrap.min.js"></script>
 <title>경매물품 등록</title>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script type="text/javascript"

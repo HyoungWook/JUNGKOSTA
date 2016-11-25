@@ -10,7 +10,8 @@
 
 
 <script src="/Jungkosta/resources/lib/jquery-3.1.1.min.js"></script>
-<script type="text/javascript" src="/Jungkosta/resources/js/main/signupform2.js"></script>
+<script src="/Jungkosta/resources/js/main/signupform2.js"></script>
+
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js?autoload=false"></script>
 
