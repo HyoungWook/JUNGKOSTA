@@ -31,251 +31,213 @@
 <script type="text/javascript"
 	src="/Jungkosta/resources/js/auction/auctionPurchaseForm.js"></script>
 
+<!-- daum map api -->
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script
+	src="http://dmaps.daum.net/map_js_init/postcode.v2.js?autoload=false"></script>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script
+	src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<script type="text/javascript"
+	src="/Jungkosta/resources/js/auction/daumApi.js"></script>
 
-<div class=container>
 
-	<div class="main">
-		<form id="auctoin_purchase" action="auctionPurchaseForm" method="post">
-			<input type="hidden" name="sale_id" value="${item.sale_id }">
+<body>
+	<div class="container">
+		<form id="auctoin_purchase" method="post">
+			<input type="hidden" name="sale_id" id="sale_id" value="${item.sale_id }">
+			<input type="hidden" name="sale_id" id="bidding_id" value="${bidding.bidding_id }">
+			<h2>낙찰 상품 주문하기</h2>
+			<div class="row">
+				<div class="col-md-offset-1 col-md-4 left_ktw">
+					<h3>배송 정보</h3>
+					<br> <br>
 
-			<h2>경매 낙찰 상품 주문</h2>
+					<h4>이름</h4>
+					<h4>
+						<input type="text" class="form-control korean"
+							placeholder="이름(한글만 가능)" value="${member.name }" name="name">
+					</h4>
+					<br>
+					<h4>전화번호</h4>
+					<h5 class="tel form-group">
+						<input type="text" class="form-control phone_num"
+							placeholder="'-'없이 입력" value="${member.phone_num }"
+							name="phone_num">
+					</h5>
+					<br>
+					<div class="addressForm_ktw form-group">
+						<h4>주소</h4>
 
-			<hr>
+						<div class="row">
+							<div class="col-md-9 addressForm_ktw">
+								<input type="text" class="form-control address_ktw"
+									id="sample4_postcode" name="postCode" placeholder="우편번호"
+									value="${address1 }" />
 
-			<div class="product_info">
-				<div class="row">
-					<div class="col-md-offset-2 col-md-8">
-						<h4>상품 정보</h4>
 
-						<hr>
-
-						<div class="payment_date">
-							<div class="bidding_num">
-								입찰 번호 : <strong id="bidding_id"> ${bidding.bidding_id }</strong>
 							</div>
+							<div class="col-md-3">
+								<input type="button" id="sample4_postcode"
+									class="btn btn-primary" value="우편번호 찾기"
+									onClick="sample4_execDaumPostcode()">
 
+							</div>
+						</div>
+
+						<h4>상세주소</h4>
+						<h5>
+							<input type="text" class="form-control" id="sample4_roadAddress"
+								name="address" placeholder="도로명주소" value="${address2 }" /><br>
+							<input type="text" class="form-control" id="sample4_jibunAddress"
+								name="address" placeholder="상세주소" value="${address3 }" /><br>
+						</h5>
+						<div id="layer">
+							<img
+								src="//i1.daumcdn.net/localimg/localimage_ktws/07/postcode/320/close.png"
+								id="btnCloseLayer" alt="닫기 버튼">
+						</div>
+					</div>
+					<br>
+					<hr>
+
+					<h4>결제수단</h4>
+					<!-- 	<br> <br>
+					 -->
+					<div class="row" align="center">
+						<br> <label class="pay_method" for="deposit">무통장 입금</label> <input
+							class="payment_phw" type="radio" name="payment_method"
+							value="무통장입금" id="deposit" checked="checked"> <label
+							class="pay_method" for="transfer">실시간 계좌이체</label> <input
+							class="payment_phw" type="radio" name="payment_method"
+							value="실시간계좌이체" id="transfer"> <label class="pay_method"
+							for="card">카드 결제</label> <input class="payment_phw" type="radio"
+							name="payment_method" value="카드결제" id="card"> <br>
+						<hr>
+					</div>
+					<div class="bank">
+						<div class="deposit apper_phw">
+							<label for="deposit_bank">은행 : </label> <select name="bank"
+								id="deposit_bank">
+								<option>신한 은행</option>
+								<option>국민 은행</option>
+								<option>농협</option>
+							</select> <br> <label>예금주 :</label> <input type="text" name="name"
+								size="20">
+						</div>
+
+						<div class="transfer hide_phw">
+							<label for="transfer_bank">은행 : </label> <select name="bank"
+								id="transfer_bank">
+								<option>신한 은행</option>
+								<option>국민 은행</option>
+								<option>농협</option>
+							</select>
+						</div>
+
+						<div class="card hide_phw">
+							<label for="card_company ">카드사 : </label> <select name="bank"
+								id="card_company">
+								<option>신한 카드</option>
+								<option>국민 카드</option>
+								<option>농협 카드</option>
+							</select>
+						</div>
+
+					</div>
+
+					<br>
+				</div>
+				<div class="col-md-offset-1 col-md-6 right_ktw">
+					<h3>주문 상품</h3>
+					<br>
+					<div class="row">
+						<div class="col-md-offset-1 col-md-2">
+							<div id="item_sub_imgs_ktw">
+								<img alt="" src="displayFile?fileName=${item.item_pic1}">
+							</div>
 							<br>
-
-							<div class="bidding_date">
+						</div>
+						<div class="col-md-offset-2 col-md-7">
+							<div id="item_num_name_ktw">입찰 번호 : ${bidding.bidding_id }</div>
+							<br>
+							<div>
 								입찰일 : <b> <fmt:formatDate value="${bidding.bidding_time}"
 										dateStyle="long" />
 								</b>
 							</div>
+							<br>
+
+							<div>상품명 : ${item.item_name } / 1개</div>
 						</div>
 
+						<br>
+
+					</div>
+					<br> <br> <br>
+					<hr>
+					<div class="row">
+						<div class="col-md-offset-1">
+							<br>
+							<h3>주문 가격 정보</h3>
+						</div>
 						<br>
 
 						<div class="row">
-							<div class="col-md-10">
-								<table id="item_info" class="table">
-									<tr>
-										<th width="300">상품 이미지</th>
-										<th>상품 명/ 개수</th>
-									</tr>
-									<tr>
-										<td align="center"><img alt="thumbnale"
-											src="displayFile?fileName=${item.item_pic1}"></td>
-										<td>
-											<div class="row">
-												<div class="col-md-offset-2">${item.item_name }/1개</div>
-											</div>
-										</td>
-									</tr>
-								</table>
+							<div class="col-md-offset-3 col-md-3">
+								<p align="right">총 상품 가격 :</p>
+							</div>
+							<div class="col-md-offset-1 col-md-5">
+								<p align="right" id="product_cost">${item.item_cost }</p>
 							</div>
 						</div>
 
+						<div class="row">
+							<div class="col-md-offset-3 col-md-3">
+								<p align="right">배송료 :</p>
+							</div>
+							<div class="col-md-offset-1 col-md-5">
+								<p align="right">2,500 원</p>
+							</div>
+						</div>
 
+						<div class="row">
+							<div class="col-md-offset-3 col-md-3">
+								<p align="right">
+									수수료(<span id="charge_type"></span>) :
+								</p>
+							</div>
+							<div class="col-md-offset-1 col-md-5">
+								<p align="right" id="charge_cost"></p>
+							</div>
+						</div>
+
+						<hr>
+
+						<div class="row">
+							<div class="col-md-offset-3 col-md-3">
+								<p align="right">총 주문 금액 :</p>
+							</div>
+							<div class="col-md-offset-1 col-md-5">
+								<p align="right" id="total_cost"></p>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-offset-7 col-md-5">
+								<div class="mileage_info_style" align="right">
+									<span>적립금 : </span><b id="mileage"></b>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
-			</div>
-
-			<br> <br>
-
-			<div class="member_info">
-				<div class="row">
-					<div class="col-md-offset-2">
-						<h4>받는 사람 정보</h4>
-						<br>
-						<table>
-							<tr height="50px">
-								<td width="200">
-									<div class="row">
-										<div class="col-md-offset-3">수령인</div>
-									</div>
-								</td>
-								<td width="600">
-									<div class="row">
-										<div class="col-md-offset-1">
-											<input class="form-control" type="text"
-												value="${member.name }">
-										</div>
-									</div>
-								</td>
-							</tr>
-							<tr height="50px">
-
-								<td>
-									<div class="row">
-										<div class="col-md-offset-3">연락처</div>
-									</div>
-								</td>
-								<td><div class="row">
-										<div class="col-md-offset-1">
-											<input class="form-control" type="text"
-												value="${member.phone_num }">
-										</div>
-									</div></td>
-							</tr>
-							<tr height="50px">
-								<td>
-									<div class="row">
-										<div class="col-md-offset-3">주소</div>
-									</div>
-								</td>
-								<td><div class="row">
-										<div class="col-md-offset-1">
-											<input class="form-control" type="text" name="del_address"
-												value="${member.address }">
-										</div>
-									</div></td>
-							</tr>
-						</table>
-					</div>
-				</div>
-			</div>
-
-			<br> <br> <br>
-
-			<div id="payment_info">
-				<div class="row">
-					<div class="col-md-offset-2">
-						<h4>주문 정보</h4>
-						<br>
-						<table>
-							<tr>
-								<td colspan="3">결제 수단</td>
-								<td></td>
-							</tr>
-							<tr>
-								<td height="100"><label for="deposit">무통장 입금</label> <input
-									class="payment_phw" type="radio" name="payment_method"
-									value="무통장입금" id="deposit" checked="checked"></td>
-								<td><label for="transfer">실시간 계좌이체</label> <input
-									class="payment_phw" type="radio" name="payment_method"
-									value="실시간계좌이체" id="transfer"></td>
-								<td><label for="card">카드 결제</label> <input
-									class="payment_phw" type="radio" name="payment_method"
-									value="카드결제" id="card"></td>
-								<td width="500" rowspan="2" class="payment_info_style">
-
-									<div class="col-md-offset-1">
-										<br> <b>주문 가격 정보</b>
-									</div> <br>
-
-									<div class="row">
-										<div class="col-md-offset-3 col-md-3">
-											<p align="right">총 상품 가격 :</p>
-										</div>
-										<div class="col-md-offset-1 col-md-5">
-											<p align="right" id="product_cost">${item.item_cost }</p>
-										</div>
-									</div>
-
-									<div class="row">
-										<div class="col-md-offset-3 col-md-3">
-											<p align="right">배송료 :</p>
-										</div>
-										<div class="col-md-offset-1 col-md-5">
-											<p align="right">2,500 원</p>
-										</div>
-									</div>
-
-									<div class="row">
-										<div class="col-md-offset-3 col-md-3">
-											<p align="right">
-												수수료(<span id="charge_type"></span>) :
-											</p>
-										</div>
-										<div class="col-md-offset-1 col-md-5">
-											<p align="right" id="charge_cost"></p>
-										</div>
-									</div>
-
-									<hr>
-
-									<div class="row">
-										<div class="col-md-offset-3 col-md-3">
-											<p align="right">총 주문 금액 :</p>
-										</div>
-										<div class="col-md-offset-1 col-md-5">
-											<p align="right" id="total_cost"></p>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-md-offset-7 col-md-5">
-											<div class="mileage_info_style" align="right">
-												<span>적립금 : </span><b id="mileage"></b>
-											</div>
-										</div>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td colspan="3" id="pay_method"><br>
-									<div class="bank">
-										<div class="deposit apper_phw">
-											<label for="deposit_bank">은행 : </label> <select name="bank"
-												id="deposit_bank">
-												<option>신한 은행</option>
-												<option>국민 은행</option>
-												<option>농협</option>
-											</select> <br> <label>예금주 :</label> <input type="text"
-												name="name" size="20">
-										</div>
-
-										<div class="transfer hide_phw">
-											<label for="transfer_bank">은행 : </label> <select name="bank"
-												id="transfer_bank">
-												<option>신한 은행</option>
-												<option>국민 은행</option>
-												<option>농협</option>
-											</select>
-										</div>
-
-										<div class="card hide_phw">
-											<label for="card_company ">카드사 : </label> <select name="bank"
-												id="card_company">
-												<option>신한 카드</option>
-												<option>국민 카드</option>
-												<option>농협 카드</option>
-											</select>
-										</div>
-
-									</div></td>
-							</tr>
-						</table>
-					</div>
-				</div>
-
 			</div>
 			<hr>
 			<div align="right" id="payment_btn">
 				<button class="btn btn-lg" type="submit">주문하기</button>
+				<button class="btn btn-lg" type="button" id="cancel">취소</button>
 			</div>
 
-
-
 		</form>
-
 	</div>
-</div>
-
-
-
-
-
-
-
-
-
+</body>

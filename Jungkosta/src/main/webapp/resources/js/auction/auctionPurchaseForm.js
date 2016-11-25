@@ -14,7 +14,7 @@ $(function() {
 		$(".bank").find("div").removeClass("apper_phw");
 		$(".bank").find("div").addClass("hide_phw");
 		$("." + this.id).removeClass("hide_phw");
-		$("." + this.id).addClass("apper_phw").fadeIn();
+		$("." + this.id).addClass("apper_phw");
 
 		status = this.id;
 
@@ -27,32 +27,48 @@ $(function() {
 	});
 
 	// form submit event
-	$("#auctoin_purchase")
-			.submit(
-					function(event) {
+	$("#auctoin_purchase").submit(
+			function(event) {
 
-						event.preventDefault();
+				event.preventDefault();
 
-						var that = $(this);
+				var that = $(this);
 
-						var bidding_id = $("#bidding_id").text();
+				var bidding_id = $("#bidding_id").text();
 
-						var html = "<input type='hidden' name='total_cost' value='"
-								+ total_cost + "' >";
-						html += "<input type='hidden' name='bidding_id' value='"
-								+ bidding_id + "' >";
+				var html = "<input type='hidden' name='total_cost' value='"
+						+ total_cost + "' >";
+				html += "<input type='hidden' name='bidding_id' value='"
+						+ bidding_id + "' >";
 
-						that.append(html);
+				that.append(html);
 
-						if (status != deposit) {
-							window
-									.open("/Jungkosta/auction/aucPaymentForm", "newWindow",
-											'width=550, height=500, menubar=yes, status=yes, scrollbar = yes');
-						} else {
-							that.get(0).submit();
-						}
+				that.get(0).submit();
 
-					});
+			});
+	
+	//cancel 버튼 이벤트
+	$("#cancel").click(function(){
+		var sale_id = $("#sale_id").val();
+		var bidding_id = $("#bidding_id").val();
+		
+		var data = "sale_id=" + sale_id + "&bidding_id=" + bidding_id;
+		
+		$.ajax({
+			url : "purchaseCancel",
+			type : "post",
+			data : data,
+			dataType : "text",
+			success : function(){
+				alert("주문 취소");
+				self.location = "auctionList";
+			},
+			error : function(){
+				alert("주문 취소 중 에러 발생!! -관리자에게 문의하세요-");
+				self.location = "auctionList";
+			}
+		});
+	});
 
 	function getCharge(id) {
 		if (id == "deposit") {
@@ -135,6 +151,20 @@ $(function() {
 		var num = getNumber($product_cost.text());
 
 		changeDoc(num, getCharge("deposit"));
+
+		
+		// BackSpace 키 방지 이벤트
+		$(document).keydown(
+				function(e) {
+					if (e.target.nodeName != "INPUT"
+							&& e.target.nodeName != "TEXTAREA") {
+						if (e.keyCode === 8) {
+							return false;
+						}
+					}
+				});
+
+		window.history.forward();
 
 	}
 

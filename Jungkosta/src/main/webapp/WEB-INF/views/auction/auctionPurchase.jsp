@@ -6,8 +6,12 @@
 
 <title>경매 주문 완료 페이지</title>
 
+<script type="text/javascript"
+	src="/Jungkosta/resources/js/auction/auctionPurchase.js"></script>
+
 <link href="/Jungkosta/resources/css/auction/auctionPurchase.css"
 	rel="stylesheet">
+
 
 
 <div class="container">
@@ -45,7 +49,8 @@
 						</tr>
 						<tr>
 							<td>입금 계좌 :</td>
-							<td><strong>${admin.bank_name } / ${admin.account_num }</strong></td>
+							<td><strong>${admin.bank_name } /
+									${admin.account_num }</strong></td>
 						</tr>
 						<tr>
 							<td>입금 금액 :</td>
@@ -90,10 +95,11 @@
 
 		<div class="row">
 			<div class="button_phw">
-				<form method="post">
-					<button  type="button" class="btn btn-primary btn-lg">확인</button>
-				</form>
-				
+				<input type="hidden" id="payment_method"
+					value="${purchase.payment_method }"> <input type="hidden"
+					id="bid_id" value="${purchase.bid_id }">
+				<button type="button" id="pay_btn" class="btn btn-primary btn-lg">확인</button>
+
 			</div>
 		</div>
 
