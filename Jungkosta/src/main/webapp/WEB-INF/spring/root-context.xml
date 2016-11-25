@@ -78,11 +78,12 @@
 			<mvc:mapping path="/messageSendForm"/>
 			<mvc:mapping path="/messageReceiveForm"/>
 			<mvc:mapping path="/purchaseList"/>
-			<mvc:mapping path="/auction/auctionRegisterForm"/>
 			<mvc:mapping path="/saleList"/>
 			<mvc:mapping path="/aucList"/>
 			<bean class="jungkosta.commons.interceptor.LoginInterceptor"/>
 		</mvc:interceptor>
+		
+		
 		
 		<mvc:interceptor>
 			<mvc:mapping path="/customSearchForm"/>

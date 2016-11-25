@@ -27,13 +27,15 @@ public class AuctionRegisterController {
 	@RequestMapping(value = "/auctionRegisterForm", method = RequestMethod.GET)
 	public String auctionRegisterForm(HttpServletRequest request) {
 		
-		HttpSession session = request.getSession();
+		/*HttpSession session = request.getSession();
 		
 		if(session.getAttribute("email") == null){
 			return "redirect:/";
 		}else{
 			return "/auctionRegisterForm";
-		}
+		}*/
+		
+		return "/auctionRegisterForm";
 		
 	}
 
