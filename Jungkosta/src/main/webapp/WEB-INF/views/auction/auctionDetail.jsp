@@ -118,7 +118,7 @@
 
 							<div class="col-md-10">
 								<b id="bid_count_phw">${countBidding } 회 (총 판매수량 : 1개)</b>
-								&nbsp;&nbsp;&nbsp; <a id="auction_record" href="#">경매기록</a>
+								&nbsp;&nbsp;&nbsp; <a id="auction_record" href="${auction.sale_id}">경매기록</a>
 							</div>
 
 						</div>
@@ -200,81 +200,77 @@
 
 				<div class="tab-pane" id="comment"></div>
 
-
-
-			</div>
-
-			<div class="tab-pane" id="qAnda">
-				<div class="row">
-					<div class="panel-group" id="accordion">
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<div class="row">
-									<div class="col-md-10">
-										<h4 id="reply_title_si">상품문의</h4>
-									</div>
-									<div class="col-md-2">
-										<h4 class="panel-title">
-											<a data-toggle="collapse" data-parent="#accordion"
-												href="#collapseOne" class="sellerReply_si btn btn-default"
-												role="button">글쓰기</a>
-										</h4>
+				<div class="tab-pane" id="qAnda">
+					<div class="row">
+						<div class="panel-group" id="accordion">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<div class="row">
+										<div class="col-md-10">
+											<h4 id="reply_title_si">상품문의</h4>
+										</div>
+										<div class="col-md-2">
+											<h4 class="panel-title">
+												<a data-toggle="collapse" data-parent="#accordion"
+													href="#collapseOne" class="sellerReply_si btn btn-default"
+													role="button">글쓰기</a>
+											</h4>
+										</div>
 									</div>
 								</div>
-							</div>
-							<div id="collapseOne" class="panel-collapse collapse">
-								<div class="panel-body">
+								<div id="collapseOne" class="panel-collapse collapse">
+									<div class="panel-body">
 
 
-									<form id="reply_phw">
-										<input type="hidden" id="email" name="email" value="${email }">
-										<input type="hidden" name="sale_id"
-											value="${auction.sale_id }"> <input type="hidden"
-											name="qa_level" value="0">
-										<div class="qAnda form-group">
+										<form id="reply_phw">
+											<input type="hidden" id="email" name="email"
+												value="${email }"> <input type="hidden"
+												name="sale_id" value="${auction.sale_id }"> <input
+												type="hidden" name="qa_level" value="0">
+											<div class="qAnda form-group">
 
 
-											<textarea class="form-control" id="content" name="content"></textarea>
-										</div>
-										<div class="reply_button_si">
-											<button type="submit" class="btn btn-default"
-												name="reply_confirm_si">확인</button>
-											<button type="reset" class="btn btn-default"
-												id="reply_reset_si">취소</button>
-										</div>
-									</form>
+												<textarea class="form-control" id="content" name="content"></textarea>
+											</div>
+											<div class="reply_button_si">
+												<button type="submit" class="btn btn-default"
+													name="reply_confirm_si">확인</button>
+												<button type="reset" class="btn btn-default"
+													id="reply_reset_si">취소</button>
+											</div>
+										</form>
 
 
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-					<div class="reply_table_si">
-						<table class="table table-hover">
-							<thead>
-								<tr>
-									<th width="80">글번호</th>
-									<th width="400">내용</th>
-									<th width="200">글쓴이</th>
-									<th width="100">작성일자</th>
-									<th width="100">비고</th>
-								</tr>
-							</thead>
-							<tbody id="listReply">
+						<div class="reply_table_si">
+							<table class="table table-hover">
+								<thead>
+									<tr>
+										<th width="80">글번호</th>
+										<th width="400">내용</th>
+										<th width="200">글쓴이</th>
+										<th width="100">작성일자</th>
+										<th width="100">비고</th>
+									</tr>
+								</thead>
+								<tbody id="listReply">
 
-							</tbody>
-						</table>
-					</div>
+								</tbody>
+							</table>
+						</div>
 
+					</div>
 				</div>
 			</div>
+
 		</div>
 
+		<br> <br>
+
 	</div>
-
-	<br> <br>
-
-</div>
 </div>
 <script id="template" type="text/x-handlebars-template">
 	<tr>

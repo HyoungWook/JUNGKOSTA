@@ -2,9 +2,11 @@ $(function() {
 
 	var $product_cost = $("#product_cost");// 총 상품 가격
 
-	var $radio = $("input[type=radio]"); //radio button
-	
-	var total_cost = 0; //총 가격
+	var $radio = $("input[type=radio]"); // radio button
+
+	var total_cost = 0; // 총 가격
+
+	var status = "deposit";
 
 	// radio Button Event
 	$radio.change(function() {
@@ -14,6 +16,8 @@ $(function() {
 		$("." + this.id).removeClass("hide_phw");
 		$("." + this.id).addClass("apper_phw").fadeIn();
 
+		status = this.id;
+
 		var charge = getCharge(this.id);
 
 		var product_cost = getNumber($product_cost.text());
@@ -21,23 +25,34 @@ $(function() {
 		changeDoc(product_cost, charge);
 
 	});
-	
-	//form submit event
-	$("#auctoin_purchase").submit(function(event){
-		
-		event.preventDefault();
-		
-		var that = $(this);
-		
-		var bidding_id = $("#bidding_id").text();
-		
-		var html = "<input type='hidden' name='total_cost' value='"+ total_cost + "' >";
-		html += "<input type='hidden' name='bidding_id' value='"+ bidding_id + "' >";
-		
-		that.append(html);
-		
-		that.get(0).submit();
-	});
+
+	// form submit event
+	$("#auctoin_purchase")
+			.submit(
+					function(event) {
+
+						event.preventDefault();
+
+						var that = $(this);
+
+						var bidding_id = $("#bidding_id").text();
+
+						var html = "<input type='hidden' name='total_cost' value='"
+								+ total_cost + "' >";
+						html += "<input type='hidden' name='bidding_id' value='"
+								+ bidding_id + "' >";
+
+						that.append(html);
+
+						if (status != deposit) {
+							window
+									.open("/Jungkosta/auction/aucPaymentForm", "newWindow",
+											'width=550, height=500, menubar=yes, status=yes, scrollbar = yes');
+						} else {
+							that.get(0).submit();
+						}
+
+					});
 
 	function getCharge(id) {
 		if (id == "deposit") {
@@ -59,10 +74,11 @@ $(function() {
 
 		total_cost = Math.floor(product_cost + 2500
 				+ (product_cost * charge.ch_per));
-		
+
 		var mailge = Math.floor(total_cost * 0.01);
 
-		var charge_cost = numberAddComma(Math.floor(product_cost * charge.ch_per));
+		var charge_cost = numberAddComma(Math.floor(product_cost
+				* charge.ch_per));
 
 		$cost.text(charge_cost);
 		$("#charge_type").text(charge.type);
@@ -99,7 +115,11 @@ $(function() {
 	}
 
 	function getNumber(num) {
-		var result = num.trim().replace("원", "").replace(",", "");
+
+		var pattern = /,/g;
+
+		var result = num.trim().replace("원", "").replace(pattern, "");
+
 		result = Number(result);
 
 		return result;
@@ -109,7 +129,9 @@ $(function() {
 		$radio.checkboxradio({
 			icon : false
 		});
-		
+
+		$product_cost.text(numberAddComma($product_cost.text()));
+
 		var num = getNumber($product_cost.text());
 
 		changeDoc(num, getCharge("deposit"));

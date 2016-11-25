@@ -80,6 +80,7 @@
 			<mvc:mapping path="/purchaseList"/>
 			<mvc:mapping path="/saleList"/>
 			<mvc:mapping path="/aucList"/>
+			<mvc:mapping path="/auction/*"/>
 			<bean class="jungkosta.commons.interceptor.LoginInterceptor"/>
 		</mvc:interceptor>
 		
