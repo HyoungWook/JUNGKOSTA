@@ -25,8 +25,8 @@ public class TradeServiceImpl implements TradeService {
 
 	//일반판매물품list_ysi
 	@Override
-	public List<SaleVO> listSale(Integer subca_id) throws Exception {
-		return dao.listAll(subca_id);
+	public List<SaleVO> listSale(Integer subca_id, String sort) throws Exception {
+		return dao.listAll(subca_id, sort);
 	}
 
 }
