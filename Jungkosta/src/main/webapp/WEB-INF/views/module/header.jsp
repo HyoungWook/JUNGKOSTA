@@ -212,7 +212,7 @@
 										<li role="presentation" class="dropdown-header">list</li>
 										<li role="presentation"><a href='/Jungkosta/purchaseList' role="menuitem" tabindex="-1">구매 내역</a></li>
 										<li role="presentation"><a href='/Jungkosta/saleList' role="menuitem" tabindex="-1">판매 내역</a></li>
-										<li role="presentation"><a href='/Jungkosta/auctionList' role="menuitem" tabindex="-1">경매 내역</a></li>
+										<li role="presentation"><a href='/Jungkosta/aucList' role="menuitem" tabindex="-1">경매 내역</a></li>
 									</c:when>
 									<c:otherwise>
 										<li role="presentation" class="dropdown-header">Manage</li>

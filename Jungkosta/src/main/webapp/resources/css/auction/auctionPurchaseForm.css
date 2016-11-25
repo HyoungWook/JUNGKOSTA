@@ -1,0 +1,56 @@
+.apper_phw{
+	display: block;
+}
+
+.hide_phw{
+	display: none;
+}
+
+.member_info table {
+	border-top: 1px solid;
+	border-bottom: 2px solid;
+}
+
+.member_info table tr td:nth-child(1) {
+	background-color: #EEEEEE;
+}
+
+
+#pay_method{
+	position: relative;
+}
+
+#pay_method .bank{
+	position: absolute;
+	top : 0px;
+	left : 20px;
+}
+
+.payment_info_style{
+	border-top: 1px solid;
+	border-bottom: 1px solid;
+}
+
+#total_cost{
+	color: red;
+	font-size: 22px;
+	font-weight: bold;
+}
+
+.mileage_info_style{
+	font-size: 13px;
+}
+
+#item_info{
+	border-top: 1px solid;
+}
+
+#item_info th{
+	text-align: center;
+}
+
+#item_info td{
+	vertical-align: middle;
+	text-align: center;
+}
+

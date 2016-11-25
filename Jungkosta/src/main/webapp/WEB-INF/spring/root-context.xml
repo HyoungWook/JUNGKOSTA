@@ -72,6 +72,27 @@
 	<!-- 옥션 service, DAO -->
 	<context:component-scan base-package="jungkosta.auction.persistence" />
 	<context:component-scan base-package="jungkosta.auction.service" />
-
+	<!-- 2016 11 23 우성 인터셉터 추가 -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/messageSendForm"/>
+			<mvc:mapping path="/messageReceiveForm"/>
+			<mvc:mapping path="/purchaseList"/>
+			<mvc:mapping path="/auction/auctionRegisterForm"/>
+			<mvc:mapping path="/saleList"/>
+			<mvc:mapping path="/aucList"/>
+			<bean class="jungkosta.commons.interceptor.LoginInterceptor"/>
+		</mvc:interceptor>
+		
+		<mvc:interceptor>
+			<mvc:mapping path="/customSearchForm"/>
+			<mvc:mapping path="/blackListForm"/>
+			<mvc:mapping path="/warningForm"/>
+			<bean class="jungkosta.commons.interceptor.ManagerInterceptor"/>
+		</mvc:interceptor>
+	</mvc:interceptors>
+	
+	<!-- 종료 -->
+	
 </beans>
 

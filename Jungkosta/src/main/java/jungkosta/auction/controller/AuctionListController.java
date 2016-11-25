@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import jungkosta.auction.domain.AuctionVO;
+import jungkosta.auction.domain.BiddingVO;
 import jungkosta.auction.service.AuctionListService;
 import jungkosta.auction.service.AuctionService;
+import jungkosta.auction.service.BiddingService;
 
 @RestController
 public class AuctionListController {
@@ -44,7 +46,7 @@ public class AuctionListController {
 
 		return entity;
 	}
-
+	
 	@RequestMapping(value = "/item_pic/{sale_id}", method = RequestMethod.GET)
 	public ResponseEntity<List<String>> item_picList(@PathVariable("sale_id") int sale_id) throws Exception {
 		ResponseEntity<List<String>> entity = null;
@@ -60,5 +62,6 @@ public class AuctionListController {
 
 		return entity;
 	}
+	
 
 }

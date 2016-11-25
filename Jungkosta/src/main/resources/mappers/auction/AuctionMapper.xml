@@ -77,5 +77,10 @@
 	
 	
 
+	<update id="updateItemCost" parameterType="AuctionVO">
+		update sale set item_cost = #{item_cost}
+				where sale_id=#{sale_id}
+	</update>
+	
 
 </mapper>

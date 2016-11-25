@@ -8,40 +8,31 @@
 <title>경매 메인 페이지</title>
 
 <!-- bootstrap -->
-<link href="/Jungkosta/resources/bootstrap/css/bootstrap.min.css"
-	rel="stylesheet">
-<link href="/Jungkosta/resources/bootstrap/css/kfonts2.css"
-	rel="stylesheet">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-
 <script src="/Jungkosta/resources/bootstrap/js/bootstrap.min.js"></script>
 
 
 <!-- style -->
-<link href="/Jungkosta/resources/auction/css/auction_main_phw.css"
+<link href="/Jungkosta/resources/css/auction/auction_main_phw.css"
 	rel="stylesheet">
 <link rel="stylesheet"
 	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
 
-
+<!-- start 현우 추가 부분 -->
 <!-- template -->
 <script type="text/javascript"
-	src="/Jungkosta/resources/auction/js/upload.js"></script>
+	src="/Jungkosta/resources/js/auction/upload.js"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
-
 
 <div class="container">
 
 	<br> <br>
 
 	<!-- jQuery -->
-	<script type="/Jungkosta/resources/lib/jquery-3.1.1.min.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<script type="text/javascript"
-		src="/Jungkosta/resources/auction/js/auction_main_phw.js"></script>
+		src="/Jungkosta/resources/js/auction/auction_main_phw.js"></script>
 
 	<div class="main_phw">
 		<div class="top_phw">
@@ -206,7 +197,7 @@
 		<div class="item_container_phw">
 
 			<div id="loading_phw">
-				<img alt="" src="/Jungkosta/resources/auction/images/loading.gif">
+				<img alt="" src="/Jungkosta/resources/images/auction/loading.gif">
 			</div>
 
 			<div class="row item_list_phw"></div>
@@ -217,14 +208,15 @@
 	<br> <br> <br>
 
 </div>
+<!-- 이수진 즉시구매가 추가 -->
 <script id="template" type="text/x-handlebars-template">
 		<div class="col-md-3 item_info_phw" onclick="sendDetail({{sale_id}})">
 			<br> 
-			<b>무료배송</b> <img id="icon_auc_phw" alt="auction_icon" src="/Jungkosta/resources/auction/images/icon_auc.png">
+			<b>무료배송</b> <img id="icon_auc_phw" alt="auction_icon" src="/Jungkosta/resources/images/auction/icon_auc.png">
 			<div class="item_img_phw">
 				<img id="item_main_img" alt="main_image" src="{{main_image}}">
 					{{#if_phw auction_end_status}}
-						<img id="close_auc_phw" alt="auction_close" src="/Jungkosta/resources/auction/images/auction_close.png">
+						<img id="close_auc_phw" alt="auction_close" src="/Jungkosta/resources/images/auction/auction_close.png">
 					{{/if_phw}}
 			</div>
 			<div>
@@ -244,11 +236,10 @@
 			<br> <br>
 		</div>
 </script>
-<script type="text/javascript">
+<script>
 	var template = Handlebars.compile($("#template").html());
-
 	//start 현우 추가 부분
-	
+
 	Handlebars.registerHelper("if_phw", function(auction_end_status, block) {
 		var accum = "";
 
@@ -283,11 +274,10 @@
 				result += array[i] + ",";
 			}
 		}
-
 		return result;
 
 	});
-	
+
 	//end 현우 추가 부분
 
 	$.getJSON("auctionListSort?sort=null", function(data) {
@@ -299,7 +289,6 @@
 			$(".item_list_phw").append(html);
 		});
 	});
-
 	//start 현우 추가 부분
 	$(".button_radio").each(function() {
 		$(this).change(function() {

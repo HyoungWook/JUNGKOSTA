@@ -1,5 +1,7 @@
 package jungkosta.auction.service;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
@@ -30,6 +32,11 @@ public class BiddingServiceImpl implements BiddingService {
 	@Override
 	public int countBidding(int auction_id) throws Exception {
 		return dao.countBidding(auction_id);
+	}
+
+	@Override
+	public BiddingVO readBidding(int bidding_id) throws Exception {
+		return dao.readBidding(bidding_id);
 	}
 
 }

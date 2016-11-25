@@ -17,14 +17,14 @@ public class AuctionServiceImpl implements AuctionService {
 
 	@Inject
 	private AuctionDAO dao;
-
+	
 	@Transactional
 	@Override
 	public void register(AuctionVO auction) throws Exception {
-
+		
 		dao.insertSale(auction);
 		dao.insertAuction(auction);
-
+		
 	}
 
 	@Override
@@ -38,7 +38,7 @@ public class AuctionServiceImpl implements AuctionService {
 
 		return dao.selectSale_id();
 	}
-
+	
 	@Override
 	public AuctionVO read(int sale_id) throws Exception {
 		return dao.read(sale_id);
@@ -50,7 +50,13 @@ public class AuctionServiceImpl implements AuctionService {
 		return dao.selectCategory(subca_id);
 	}
 
-	// start 현우 추가 부분
+	@Override
+	public void updateDetail(AuctionVO auction) throws Exception {
+		dao.updateItemCost(auction);
+	}
+
+
+		// start 현우 추가 부분
 	@Override
 	public List<String> getThunbnail(int sale_id) throws Exception {
 		AuctionVO vo = dao.read(sale_id);
@@ -65,5 +71,5 @@ public class AuctionServiceImpl implements AuctionService {
 		return list;
 	}
 	// end 현우 추가 부분
-
+	
 }

@@ -7,20 +7,21 @@
 
 <link href="/Jungkosta/resources/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
-<link href="/Jungkosta/resources/auction/css/auction_add_lsj.css"
+<link href="/Jungkosta/resources/css/auction/auction_add_lsj.css"
 	rel="stylesheet">
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="/Jungkosta/resources/bootstrap/js/bootstrap.min.js"></script>
 <title>경매물품 등록</title>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script type="text/javascript"
-	src="/Jungkosta/resources/auction/js/main.js"></script>
+	src="/Jungkosta/resources/js/auction/main.js"></script>
 <script type="text/javascript"
-	src="/Jungkosta/resources/auction/js/category.js"></script>
+	src="/Jungkosta/resources/js/auction/category.js"></script>
 <link rel="stylesheet"
 	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
-<script src="/Jungkosta/resources/auction/js/valid_check_lsj.js"></script>
-<link href="/Jungkosta/resources/auction/dist/css/AdminLTE.min.css"
+<script src="/Jungkosta/resources/js/auction/valid_check_lsj.js"></script>
+<link href="/Jungkosta/resources/dist/css/AdminLTE.min.css"
 	rel="stylesheet" type="text/css" />
 <link
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
@@ -46,12 +47,13 @@
 
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-	<script src="/Jungkosta/resources/auction/js/date.js"></script>
+	<script src="/Jungkosta/resources/js/auction/date.js"></script>
 
 	<span id="top_lsj">경매 물품 등록</span>
 
 	<div class="container">
 		<form id="add_btn" method="post" role="form">
+			<input type="hidden" name="email" value="${email }">
 
 			<!-- start 현우 추가 부분 -->
 			<div id="file_area"></div>
@@ -251,7 +253,7 @@
 
 </body>
 <script type="text/javascript"
-	src="/Jungkosta/resources/auction/js/upload.js"></script>
+	src="/Jungkosta/resources/js/auction/upload.js"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
 

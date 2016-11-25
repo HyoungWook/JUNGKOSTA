@@ -82,7 +82,7 @@ public class MainController {
 		
 	}
 	
-	@RequestMapping(value="/auctionList", method=RequestMethod.GET)
+	@RequestMapping(value="/aucList", method=RequestMethod.GET)
 	public void auction(){
 		
 	}
