@@ -8,14 +8,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Insert title here</title>
 
-
-
 <!-- Bootstrap -->
 <link href="/Jungkosta/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <link href="/Jungkosta/resources/bootstrap/css/kfonts2.css" rel="stylesheet">
-
-
-
 
 <!-- jQuery -->
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -213,13 +208,14 @@
 				<h3 id="realTime_item_ktw">실시간 상품</h3>
 				&nbsp;&nbsp;
 
-			<fieldset id="radio_btn">
-					<label for="radio-1">신규 등록순</label> <input type="radio"
-						name="radio-1" class="button_radio" checked="checked" id="radio-1"
-						value="add_sort"> <label for="radio-2">최저 가격순</label> <input
-						type="radio" name="radio-1" class="button_radio" id="radio-2"
-						value="end_sort">
-				</fieldset>
+				<div class="btn-group radio_button" data-toggle="buttons">
+					<label class="btn btn-info"> <input type="radio"
+						name="newRegister" id="option1"> 신규등록순
+					</label>
+					<label class="btn btn-info"> <input type="radio"
+						name="lowPrice" id="option2"> 최저가격순
+					</label>
+				</div>
 
 				<hr>
 

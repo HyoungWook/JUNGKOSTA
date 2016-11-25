@@ -1,13 +1,20 @@
 package jungkosta.trade.controller;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import jungkosta.trade.domain.SaleVO;
 import jungkosta.trade.service.SaleService;
 import jungkosta.trade.service.TradeService;
 
@@ -19,9 +26,29 @@ public class TradeListController {
 	
 	//카테고리별 목록_ysi
 	@RequestMapping(value = "/tradeList", method=RequestMethod.GET)
-	public void tradelistSub(Model model, @RequestParam("subca_id") Integer subca_id) throws Exception{
+	public void tradelistSub(Model model, @RequestParam("subca_id") Integer subca_id, String sort) throws Exception{
 		System.out.println("subca_id : " + subca_id);
+		
+		model.addAttribute("list", service.listSale(subca_id, sort));
+	}
 	
-		model.addAttribute("list", service.listSale(subca_id));
+	//searchTest_ysi
+	@RequestMapping(value= "/test", method=RequestMethod.GET)
+	public void test(Model model, @RequestParam("subca_id") Integer subca_id, String sort)throws Exception {
+		System.out.println("subca_id : " + subca_id);
+
+		model.addAttribute("list", service.listSale(subca_id, sort));
+	}
+	
+	@ResponseBody
+	@RequestMapping(value= "/listSale/{subca_id}/{sort}")
+	public List<SaleVO> testAjax( 
+			@PathVariable("sort") String sort, 
+			@PathVariable("subca_id") Integer subca_id) throws Exception {
+		
+		System.out.println("sort : " + sort);
+		System.out.println("subca_id : " + subca_id);
+		
+		return service.listSale(subca_id, sort);
 	}
 }
