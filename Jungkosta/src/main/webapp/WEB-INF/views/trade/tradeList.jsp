@@ -56,15 +56,15 @@
 
 	<div class="container">
 
-		<%--    <div class="header_ktw">
-         <jsp:include page="../header&footer/header.jsp" />
-      </div> --%>
+		    <div class="header_ktw">
+         <jsp:include page="../module/header.jsp" />
+      	</div>
 
 		<br> <br>
 
-		<%--    <div class="menu_ktw">
-         <jsp:include page="../header&footer/nav.jsp" />
-      </div> --%>
+		    <div class="menu_ktw">
+         <jsp:include page="../module/nav.jsp" />
+      </div>
 
 		<br> <br>
 		<div class="main_ktw">
@@ -264,7 +264,7 @@
 		<br> <br> <br>
 
 		<div class="footer_ktw">
-			<%--   <jsp:include page="../header&footer/footer.jsp" /> --%>
+			   <jsp:include page="../module/footer.jsp" />
 		</div>
 
 

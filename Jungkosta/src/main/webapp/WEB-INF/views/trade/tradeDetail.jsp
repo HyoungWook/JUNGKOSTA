@@ -52,8 +52,8 @@
 	물품 상세 페이지
 
 	<div id="section">
-		<%-- <jsp:include page="../header&footer/header.jsp"></jsp:include>
-		<jsp:include page="../header&footer/nav.jsp"></jsp:include> --%>
+		<jsp:include page="../module/header.jsp"/>
+		<jsp:include page="../module/nav.jsp"/>
 		<div class="container">
 
 			<a href="#">${totalcategoryName}&nbsp;</a><img
@@ -287,7 +287,7 @@
 
 	</div>
 
-<%-- 	<jsp:include page="../header&footer/footer.jsp"></jsp:include> --%>
+ 	<jsp:include page="../module/footer.jsp"/>
 	<script type="text/javascript">
 		$(function() {
 			$('#collapseFour').collapse({

@@ -203,14 +203,13 @@ function sample4_execDaumPostcode() {
 		<form action="/Jungkosta/trade/tradeOrderProc" method="post">
 			<h2>주문하기</h2>
 			<input type="hidden" name="item_name" value="${register.item_name} ">
-			<%-- <input type="hidden" name="buy_time" value="${register.buy_time} "> --%>
 			<input type="hidden" name="item_status" value="${register.item_status} ">
 			<input type="hidden" name="item_scratch" value="${register.item_scratch} ">
 			<input type="hidden" name="additional_info" value="${register.additional_info} ">
 			<input type="hidden" name="buy_info" value="${register.buy_info} ">
-			<%-- <input type="hidden" name="sale_date" value="${register.sale_date} "> --%>
+			
 			<input type="hidden" name="subca_id" value="${register.subca_id} ">
-		<%-- 	<input type="hidden" name="flag" value="${register.flag} "> --%>
+	
 			<input type="hidden" name="sale_status" value="${register.sale_status} ">
 			<input type="hidden" name="item_pic1" value="${register.item_pic1} ">
 			<input type="hidden" name="item_pic2" value="${register.item_pic2} ">
@@ -224,13 +223,13 @@ function sample4_execDaumPostcode() {
 			<h4>이름</h4>
 			<h4>
 				<input type="text" class="form-control korean"
-					placeholder="이름(한글만 가능)" value="김태완" name="name">
+					placeholder="이름(한글만 가능)" value="${member.name }" name="name">
 			</h4>
 			<br>
 			<h4>전화번호</h4>
 			<h5 class="tel form-group">
 				<input type="text" class="form-control phone_num"
-					placeholder="'-'없이 입력" value="01037083094"
+					placeholder="'-'없이 입력" value="${member.phone_num }"
 					name="phone_num">
 			</h5>
 			<br>
@@ -241,7 +240,7 @@ function sample4_execDaumPostcode() {
 					<div class="col-md-9 addressForm_ktw">
 						<input type="text" class="form-control address_ktw"
 							id="sample4_postcode" name="postCode" placeholder="우편번호"
-							value="서울시" />
+							value="${address1}" />
 
 
 					</div>
@@ -257,9 +256,9 @@ function sample4_execDaumPostcode() {
 				<h4>상세주소</h4>
 				<h5>
 					<input type="text" class="form-control" id="sample4_roadAddress"
-						name="address" placeholder="도로명주소" value="구로구" /><br>
+						name="address" placeholder="도로명주소" value="${address2}" /><br>
 					<input type="text" class="form-control" id="sample4_jibunAddress"
-						name="address" placeholder="상세주소" value="개봉동" /><br>
+						name="address" placeholder="상세주소" value="${address3}" /><br>
 				</h5>
 				<div id="layer">
 					<img
@@ -301,11 +300,6 @@ function sample4_execDaumPostcode() {
 			<div class="row">
 				<div class="col-md-offset-1 col-md-2">
 					<div id="item_sub_imgs_ktw">
-						<%-- <c:set var="head"
-							value="${fn:substring(register.item_pic, 0 ,fn:length(register.item_pic)-4) }"></c:set>
-						<c:set var="pattern"
-							value="${fn:substringAfter(register.item_pic,head) }"></c:set> --%>
-						<%-- <img src="../upload/${head}_small${pattern}"> --%>
 						<img alt="" src="displayFile?fileName=${register.item_pic1}">
 					</div>
 					<br>
@@ -388,24 +382,24 @@ function sample4_execDaumPostcode() {
 					+ register.item_cost*0.01}" pattern="#,###"/>원</h4>
 					<br> <input type="hidden" name="purchase_cost" id="cost"
 						value="${deliveryPrice + register.item_cost + register.item_cost*0.01}">
-
-								
 							<br>
 						</div>
 					</div>
 					<br>
 					<hr>	
 
-					<button type="button" class="btn btn-primary btn-lg"
-						data-target="#myModal" data-toggle="modal" id="orderButton_ktw">주문하기</button>
-					<a href="tradelist"><button type="button"
+					<button type="submit" class="btn btn-primary btn-lg">주문하기</button>
+					<a href="/Jungkosta/trade/tradeList?subca_id=${register.subca_id }"><button type="button"
 							class="btn btn-danger btn-lg" id="signbutton_khw">취소</button></a>
+				<!-- 	<button type="button" class="btn btn-primary btn-lg payProc"
+						data-target="#myModal" data-toggle="modal" id="orderButton_ktw">주문하기</button> -->
+					
 
 
 				</div>
 			</div>
 
-			<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+	<!-- 		<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
 				aria-labelledby="myModalLabel" aria-hidden="true">
 				<div class="modal-dialog">
 					<div class="modal-content">
@@ -456,7 +450,7 @@ function sample4_execDaumPostcode() {
 	<tr>
 		<td align="right"><label>예금주 : &nbsp;</label></td>
 		<td align="left"><label>중코스타</label></td>
-		<!-- <td><input type="text" name="name" size="20" value=""></td> -->
+		<td><input type="text" name="name" size="20" value=""></td>
 	</tr>
 	<tr>
 		<td align="right"><label>내 계좌번호 :</label></td>
@@ -482,11 +476,11 @@ function sample4_execDaumPostcode() {
 								data-dismiss="modal">취소</button>
 						</div>
 					</div>
-					<!-- /.modal-content -->
+					/.modal-content
 		</div>
-		<!-- /.modal-dialog -->
+		/.modal-dialog
 	</div>
-	<!-- /.modal -->
+	/.modal -->
 		</form>
 	
 

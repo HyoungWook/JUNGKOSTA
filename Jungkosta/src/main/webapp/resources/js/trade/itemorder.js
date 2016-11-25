@@ -89,12 +89,14 @@ $(function() {
 
 		chargeType(this.id);
 
-		$('#orderButton_ktw').click(function() {
+		$('#orderButton_ktw').click(function(event) {
 			if (btn_radio == "실시간계좌이체") {
-				
-				var $table = $('.transfer');
+				event.preventDefault();
+			/*	var $table = $('.transfer');
 				$('.deposit').hide();
-				$table.show();
+				$table.show();*/
+				$(this).attr('type','submit');
+			//	return false;
 				
 			} else if (btn_radio == "무통장입금") {
 				

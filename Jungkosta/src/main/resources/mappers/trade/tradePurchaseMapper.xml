@@ -5,7 +5,7 @@
 
 <mapper namespace="jungkosta.mappers.trade.TradePurchaseMapper">
 
-	
+	<!-- insertPurchase_tw -->
 	<insert id="insertPurchase" parameterType="PurchaseVO">
 		insert into Purchase(
 		PURCHASE_ID,PURCHASE_COST,PAYMENT_METHOD,PURCHASE_DATE,
@@ -14,6 +14,7 @@
 			#{sale_id}, sysdate +1, #{purchase_status})
 	</insert>
 	
+	<!-- selectPurchaseId_tw -->
 	<select id="selectP_id" resultType="Integer">
 		select max(purchase_id) from purchase
 	</select>

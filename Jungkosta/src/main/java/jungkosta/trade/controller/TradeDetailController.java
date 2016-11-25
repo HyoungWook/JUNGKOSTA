@@ -18,6 +18,7 @@ public class TradeDetailController {
 	@Inject
 	private SaleService service_tw;
 	
+	//물품상세_tw
 	@RequestMapping(value = "/tradeDetail", method=RequestMethod.GET)
 	public void tradeDetail(@RequestParam("sale_id") int sale_id, Model model) throws Exception{
 		System.out.println("sale_id : " + sale_id);

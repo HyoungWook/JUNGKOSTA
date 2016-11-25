@@ -72,10 +72,10 @@
 							data-target="#sale_Modal">판매하기</a>
 					<a href="/Jungkosta/boardList/1" class="a_nav">커뮤니티</a>
 					<a href="../main/main.jsp" class="a_nav">JUNGKOSTA 홈</a>
-					<a href="../trade/itemlist.jsp?subca_id=8" class="a_nav">스마트폰</a>
-					<a href="../trade/itemlist.jsp?subca_id=2" class="a_nav">태플릿 PC</a>
-					<a href="../trade/itemlist.jsp?subca_id=1" class="a_nav">노트북/PC</a>
-					<a href="../trade/itemlist.jsp?subca_id=9" class="a_nav">카메라</a>
+					<a href="/Jungkosta/trade/tradeList?subca_id=8" class="a_nav">스마트폰</a>
+					<a href="/Jungkosta/trade/tradeList?subca_id=2" class="a_nav">태플릿 PC</a>
+					<a href="/Jungkosta/trade/tradeList?subca_id=1" class="a_nav">노트북/PC</a>
+					<a href="/Jungkosta/trade/tradeList?subca_id=9" class="a_nav">카메라</a>
 					<a href="../auction/Auction_main_phw.jsp" class="a_nav">경매</a>
 					<a href="#" class="a_nav" data-toggle="collapse" data-target="#more_nav_ws">더보기▽</a>
 					<div id="more_nav_ws" class="collapse">
@@ -89,28 +89,28 @@
           						<div class="row">
           							<div class="col-md-6">
           								<div class="content_nav_ws">
-          									<a href="../trade/itemlist.jsp?subca_id=8" class="content_link_nav_ws">스마트폰</a>
+          									<a href="/Jungkosta/trade/tradeList?subca_id=8" class="content_link_nav_ws">스마트폰</a>
           								</div>
           								<div class="content_nav_ws">
-          									<a href="#" class="content_link_nav_ws">컴퓨터</a>
+          									<a href="/Jungkosta/trade/tradeList?subca_id=3" class="content_link_nav_ws">컴퓨터</a>
           								</div>
           								<div class="content_nav_ws">
-          									<a href="../trade/itemlist.jsp?subca_id=1" class="content_link_nav_ws">노트북</a>
+          									<a href="/Jungkosta/trade/tradeList?subca_id=1" class="content_link_nav_ws">노트북</a>
           								</div>
           								<div class="content_nav_ws">
-          									<a href="../trade/itemlist.jsp?subca_id=2" class="content_link_nav_ws">테블릿</a>
+          									<a href="/Jungkosta/trade/tradeList?subca_id=2" class="content_link_nav_ws">테블릿</a>
           								</div>
           								<div class="content_nav_ws">
-          									<a href="../trade/itemlist.jsp?subca_id=3" class="content_link_nav_ws">노트북/pc 주변기기</a>
+          									<a href="/Jungkosta/trade/tradeList?subca_id=3" class="content_link_nav_ws">노트북/pc 주변기기</a>
           								</div>
           								<div class="content_nav_ws">
-          									<a href="../trade/itemlist.jsp?subca_id=9" class="content_link_nav_ws">카메라</a>
+          									<a href="/Jungkosta/trade/tradeList?subca_id=9" class="content_link_nav_ws">카메라</a>
           								</div>
           								<div class="content_nav_ws">
-          									<a href="#" class="content_link_nav_ws">음향 기기</a>
+          									<a href="/Jungkosta/trade/tradeList?subca_id=12" class="content_link_nav_ws">음향 기기</a>
           								</div>
           								<div class="content_nav_ws">
-          									<a href="#" class="content_link_nav_ws">웨어러블</a>
+          									<a href="/Jungkosta/trade/tradeList?subca_id=12" class="content_link_nav_ws">웨어러블</a>
           								</div>
           								<div class="content_nav_ws">
           									<a href="#" class="content_link_nav_ws">영상가전</a>
@@ -118,13 +118,13 @@
           							</div>
           							<div class="col-md-6">
           								<div class="content_nav_ws">
-          									<a href="#" class="content_link_nav_ws">게임/타이틀</a>
+          									<a href="/Jungkosta/trade/tradeList?subca_id=10" class="content_link_nav_ws">게임/타이틀</a>
           								</div>
           								<div class="content_nav_ws">
-          									<a href="#" class="content_link_nav_ws">자동차 기기</a>
+          									<a href="/Jungkosta/trade/tradeList?subca_id=11" class="content_link_nav_ws">자동차 기기</a>
           								</div>
           								<div class="content_nav_ws">
-          									<a href="#" class="content_link_nav_ws">기타 전자 기기</a>
+          									<a href="/Jungkosta/trade/tradeList?subca_id=12" class="content_link_nav_ws">기타 전자 기기</a>
           								</div>
           							</div>
           						</div>

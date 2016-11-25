@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="jungkosta.mappers.trade.TradePaymentMapper">
+
+	<!-- insertPurchase_tw -->
+	<insert id="insertPayment" parameterType="PaymentVO">
+		insert into payment(PAYMENT_ID,PAYMENT_COST, PAYMENT_STATUS,PAYMENT_DATE, PURCHASE_ID )
+		values(#{payment_id}, #{payment_cost}, #{payment_status}, sysdate, #{purchase_id})
+	</insert>
+	
+	<!-- selectPurchaseId_tw -->
+	<select id="selectPayment_id" resultType="Integer">
+		select max(payment_id) from purchase
+	</select>
+	
+
+</mapper>
