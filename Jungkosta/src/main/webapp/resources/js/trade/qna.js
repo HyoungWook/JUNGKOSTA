@@ -33,11 +33,11 @@ $(function() {
 
 	}
 	
-	$('#item_sub_imgs_ktw').find('img').on('click', function() {
+	$('#item_sub_imgs').find('img').on('click', function() {
 		
-		var that = $(this).attr('src');
+		var that = $(this);
 		
-		$('.item_ktw').attr('src', that);
+		$('.item_ktw').attr('src', that.attr('src'));
 	});
 
 });

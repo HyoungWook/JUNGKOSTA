@@ -11,6 +11,6 @@ public interface TradeDAO {
 	
 	public Integer selectS_id() throws Exception;
 	
-	public List<SaleVO> listAll(Integer subca_id) throws Exception;
+	public List<SaleVO> listAll(Integer subca_id, String sort) throws Exception;
 
 }

@@ -25,10 +25,9 @@ public class TradeRegisterController {
 	
 	//물품등록(Post)_ysi
 	@RequestMapping(value= "/tradeRegisterForm", method= RequestMethod.POST)
-	public String registPost(Model model, SaleVO saleVO) throws Exception{
+	public String registPost(SaleVO saleVO) throws Exception{
 		System.out.println(saleVO);
 		service.regist(saleVO);
-		model.addAttribute("item_pic1", saleVO.getItem_pic1());
 		
 		return "redirect:/trade/tradeList?subca_id=8";
 	}

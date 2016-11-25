@@ -13,7 +13,9 @@
 <script type="text/javascript" src="/Jungkosta/resources/js/trade/qna.js"></script>
 
 <!-- css -->
-<style ></style>
+<style type="text/css">
+
+</style>
 <link href="/Jungkosta/resources/css/trade/tradeDetail.css" rel="stylesheet"> 
 <script type="text/javascript" src="/Jungkosta/resources/js/trade/qna.js"></script>
 
@@ -43,28 +45,23 @@
 			<img id="category_button_ktw" src="/Jungkosta/resources/images/trade/category_direct.png">
 			<div class="row">
 
-				<div class="col-md-offset-1 col-md-3 left_ktw">
+				<div class="col-md-offset-1 col-md-4 left_ktw">
 					 <img class="item_ktw" src="displayFile?fileName=${register.item_pic1 }" />
 					<div class="row">
-						<div class="col-md-2 col-md-offset-1">
-							<div id="item_sub_imgs_ktw">
-								<img alt="" src="displayFile?fileName=${register.item_pic2 }">
-							</div>	
-						</div>
-						<div class="col-md-2 col-md-offset-1">
-							<div id="item_sub_imgs_ktw">
+						<div id="item_sub_imgs">
+						<hr id="imgs_line">
+							<div class="col-md-2" id="item_sub_imgs_1">
 								<img alt="" src="displayFile?fileName=${register.item_pic1 }">
-							</div>	
-						</div>
-						<div class="col-md-2 col-md-offset-1">
-							<div id="item_sub_imgs_ktw">
+							</div>
+							<div class="col-md-2" id="item_sub_imgs_2">
+								<img alt="" src="displayFile?fileName=${register.item_pic2 }">
+							</div>
+							<div class="col-md-2" id="item_sub_imgs_3">
 								<img alt="" src="displayFile?fileName=${register.item_pic3 }">
-							</div>	
-						</div>
-						<div class="col-md-2 col-md-offset-1">
-							<div id="item_sub_imgs_ktw">
+							</div>
+							<div class="col-md-2" id="item_sub_imgs_4">
 								<img alt="" src="displayFile?fileName=${register.item_pic4 }">
-							</div>	
+							</div>
 						</div>
 						<br> <br> <br> <br> <br>
 
@@ -83,7 +80,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-md-6 col-md-offset-2 right_ktw">
+				<div class="col-md-5 col-md-offset-2 right_ktw">
 					<form action="/Jungkosta/trade/tradeOrder" method="get">
 						<input type="hidden" name="sale_id" value="${register.sale_id }">
 						<div class="row">
@@ -91,7 +88,7 @@
 								<img id="good_ktw" src="/Jungkosta/resources/images/trade/good.png" />&nbsp;
 								<span id="email">중코스타</span>&nbsp; <img id="check_ktw"
 									src="/Jungkosta/resources/images/trade/check.jpg" />
-								<hr>
+								<hr id="line">
 							</div>
 							<br> <br> <br> <br>
 							<div class="row">

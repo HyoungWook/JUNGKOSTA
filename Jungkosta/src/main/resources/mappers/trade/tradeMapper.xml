@@ -22,15 +22,25 @@
 	</select>
 
 	<!-- 일반판매물품 listAll_ysi -->
-	<select id="listAll" parameterType="Integer" resultType="SaleVO">
+	<select id="listSale" parameterType="java.util.HashMap" resultType="SaleVO">
 		select * from sale 
 			where subca_id = #{subca_id}
+		<if test="sort != null">
+			<choose>
+				<when test="sort == 'n'.toString()">
+					order by buy_time asc
+				</when>
+				<when test="sort == 'l'.toString()">
+					order by item_cost asc
+				</when>
+			</choose>
+		</if>
 	</select>
 
 <!-- listAll_tw -->
-	<select id="listSale" resultType="SaleVO">
+<!-- 	<select id="listSale" resultType="SaleVO">
 	 select * from sale 
- 	</select>
+ 	</select> -->
 
 <!-- listSub_tw -->
  	<select id="listSalesub" parameterType="Integer" resultType="SaleVO"> 
@@ -53,6 +63,5 @@
 	 select distinct ca_name from SUB_CATEGORY, CATEGORY 
  	where SUB_CATEGORY.CA_ID = CATEGORY.CA_ID and 
  	category.ca_id =#{ca_id} </select>
-
 
 </mapper>

@@ -8,6 +8,6 @@ public interface TradeService {
 	
 	public void regist(SaleVO saleVO) throws Exception;
 	
-	public List<SaleVO> listSale(Integer subca_id) throws Exception;
+	public List<SaleVO> listSale(Integer subca_id, String sort) throws Exception;
 
 }
