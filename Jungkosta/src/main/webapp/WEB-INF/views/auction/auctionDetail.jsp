@@ -118,7 +118,7 @@
 
 							<div class="col-md-10">
 								<b id="bid_count_phw">${countBidding } 회 (총 판매수량 : 1개)</b>
-								&nbsp;&nbsp;&nbsp; <a id="auction_record" href="#">경매기록</a>
+								&nbsp;&nbsp;&nbsp; <a id="auction_record" href="${auction.sale_id}">경매기록</a>
 							</div>
 
 						</div>
@@ -199,10 +199,6 @@
 				</div>
 
 				<div class="tab-pane" id="comment"></div>
-
-
-
-			</div>
 
 			<div class="tab-pane" id="qAnda">
 				<div class="row">
