@@ -1,14 +1,20 @@
 package jungkosta.auction.controller;
 
+import java.util.List;
+
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import jungkosta.auction.domain.AuctionVO;
+import jungkosta.auction.domain.BiddingVO;
 import jungkosta.auction.domain.CategoryVO;
 import jungkosta.auction.service.AuctionService;
 import jungkosta.auction.service.BiddingService;
@@ -42,5 +48,19 @@ public class AuctionDetailController {
 		//end 현우 추가 부분
 	}
 	
-	//end 현우 수정 부분
+	@RequestMapping(value = "auctionbidList", method = RequestMethod.GET)
+	public void auctionbidList_GET(@RequestParam("sale_id") int sale_id,Model model) throws Exception {
+	
+		AuctionVO auction = auctionService.read(sale_id);
+		
+		int auction_id = auction.getAuction_id();
+		
+		List<BiddingVO> list = bidService.biddingList(auction_id);
+				
+		model.addAttribute("auction", auction);
+		model.addAttribute("listBidding", list);
+		
+		
+	}
+	
 }
