@@ -39,4 +39,9 @@ public class BiddingServiceImpl implements BiddingService {
 		return dao.readBidding(bidding_id);
 	}
 
+	@Override
+	public BiddingVO bid_person(int auction_id) throws Exception {
+		return dao.bid_person(auction_id);
+	}
+
 }

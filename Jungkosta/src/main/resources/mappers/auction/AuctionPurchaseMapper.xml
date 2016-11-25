@@ -17,6 +17,11 @@
 		)
 	</insert>
 	
+	<update id="endAuction" parameterType="int">
+		update auction_register set auction_end_status = 'true'
+		where autcion_id = #{auction_id}
+	</update>
+	
 	<select id="selectBid_id" resultType="Integer">
 		select max(bid_id) from bid
 	</select>

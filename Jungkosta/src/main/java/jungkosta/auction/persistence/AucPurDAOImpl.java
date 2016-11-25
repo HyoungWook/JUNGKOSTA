@@ -37,4 +37,10 @@ public class AucPurDAOImpl implements AucPurDAO {
 		return sqlSession.selectOne(namespace + ".readBid", bidding_id);
 	}
 
+	@Override
+	public void endAuction(int auction_id) throws Exception {
+		sqlSession.update(namespace + ".endAuction", auction_id);
+
+	}
+
 }

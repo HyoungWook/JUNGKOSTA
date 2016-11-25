@@ -13,4 +13,6 @@ public interface BiddingDAO {
 	public int countBidding(int auction_id) throws Exception;
 
 	public BiddingVO readBidding(int bidding_id) throws Exception;
+	
+	public BiddingVO bid_person(int auction_id) throws Exception;
 }

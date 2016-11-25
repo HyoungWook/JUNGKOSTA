@@ -23,7 +23,7 @@
 	$(function() {
 
 		$("#sendBidding_phw").click(function() {
-			var email = "${auction.email}";//테스트를위해 수정
+			var email = "${email}";
 			var input_cost = Number($("#bidding_cost").val());
 			var now_cost = Number("${auction.item_cost + 1000}");
 			var immediate_cost = Number("${auction.immediate_bid_cost}");
