@@ -15,17 +15,20 @@ $(function() {
 		$content.attr("placeholder", "로그인을 해주세요.");
 	}
 	
+	$('#auction_record').click(function(event){
+		event.preventDefault();
+		sendIdDetail($(this).attr('href'));
+	});
 	
-	$("#auction_record")
-			.click(
-					function() {
-
-						var listBid_page = window
-								.open("listBidding_phw.jsp/", "newWindow",
-										'width=550, height=500, menubar=yes, status=yes, scrollbar = yes');
-
-						return false;
-					});
+	function sendIdDetail(id) {
+					var listBid_page = window
+					.open("auctionbidList?sale_id="+id, "newWindow",
+					'width=550, height=500, menubar=yes, status=yes, scrollbar = yes');
+					
+					return false;
+	}
+	
+	
 
 	function getTime() {
 		var now = new Date();

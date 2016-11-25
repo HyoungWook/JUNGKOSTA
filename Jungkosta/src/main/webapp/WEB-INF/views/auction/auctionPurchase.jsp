@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 
 <title>경매 주문 완료 페이지</title>
@@ -37,19 +38,27 @@
 						</thead>
 						<tr>
 							<td>구매 일자 :</td>
-							<td><span> ${purchase.purchase_date} </span></td>
+							<td><span> <fmt:formatDate
+										value="${purchase.purchase_date}" type="both"
+										pattern="yyyy년 MM월 dd일 aa hh시 mm분" />
+							</span></td>
 						</tr>
 						<tr>
 							<td>입금 계좌 :</td>
-							<td><strong>입금 계좌</strong></td>
+							<td><strong>${admin.bank_name } / ${admin.account_num }</strong></td>
 						</tr>
 						<tr>
 							<td>입금 금액 :</td>
-							<td><strong> ${purchase.total_cost } </strong></td>
+							<td><strong> <fmt:formatNumber
+										value="${purchase.total_cost }" pattern="#,### 원" />
+							</strong></td>
 						</tr>
 						<tr>
 							<td>입금 기한 :</td>
-							<td><strong> ${purchase.purchase_deadline } </strong></td>
+							<td><strong> <fmt:formatDate
+										value="${purchase.purchase_deadline }" type="both"
+										pattern="yyyy년 MM월 dd일 aa hh시 mm분" /> 까지
+							</strong></td>
 						</tr>
 					</table>
 				</div>
@@ -81,7 +90,10 @@
 
 		<div class="row">
 			<div class="button_phw">
-				<button type="button" class="btn btn-primary btn-lg">확인</button>
+				<form method="post">
+					<button  type="button" class="btn btn-primary btn-lg">확인</button>
+				</form>
+				
 			</div>
 		</div>
 

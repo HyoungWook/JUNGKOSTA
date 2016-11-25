@@ -71,9 +71,12 @@ public class AuctionPurchaseController {
 		BidVO purchase = purchaseService.readBid(vo.getBidding_id());
 
 		AuctionVO item = auctionService.read(sale_id);
-		
+
+		MemberVO admin = memberService.selectMemberService("admin@admin.com");
+
 		model.addAttribute("purchase", purchase);
 		model.addAttribute("item", item);
+		model.addAttribute("admin", admin);
 	}
 
 }
