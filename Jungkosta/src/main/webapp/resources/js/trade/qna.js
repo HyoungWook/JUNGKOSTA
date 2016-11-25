@@ -32,6 +32,7 @@ $(function() {
 		$(".reply_table_si textarea").focus();
 
 	}
+
 	
 	$('#item_sub_imgs').find('img').on('click', function() {
 		
@@ -40,4 +41,7 @@ $(function() {
 		$('.item_ktw').attr('src', that.attr('src'));
 	});
 
-});
+})
+
+
+

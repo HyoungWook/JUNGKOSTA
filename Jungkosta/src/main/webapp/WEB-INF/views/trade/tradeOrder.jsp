@@ -292,7 +292,7 @@ body {
 								<c:set var="pattern"
 									value="${fn:substringAfter(register.item_pic,head) }"></c:set> --%>
 								<%-- <img src="../upload/${head}_small${pattern}"> --%>
-								<img alt="" src="/Jungkosta/resources/images/trade/gier2.jpg">
+								<img alt="" src="displayFile?fileName=${register.item_pic1}">
 							</div>
 							<br>
 						</div>
@@ -449,7 +449,7 @@ body {
 
 	<tr>
 		<td align="right"><label>비밀번호 : &nbsp;</label></td>
-		<td><input type="text" name="account_no" size="30"></td>
+		<td><input type="password" name="account_no" size="30"></td>
 	</tr>
 
 	<tr>
