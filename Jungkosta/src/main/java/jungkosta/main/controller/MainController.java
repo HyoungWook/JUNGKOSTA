@@ -46,9 +46,9 @@ public class MainController {
 	public void go(){}
 	
 	@RequestMapping(value="/mainSignupForm2", method=RequestMethod.GET)
-	public void mainSignupForm2(){ 
+	public String mainSignupForm2(){ 
 		
-		
+		return "/mainSignupForm2";
 		
 	}
 	
@@ -67,7 +67,7 @@ public class MainController {
 		vo.setInterests_3(inter[2]);
 		
 		service.signupProc(vo, pass);
-		return "main";
+		return "redirect:/";
 	}
 	
 }

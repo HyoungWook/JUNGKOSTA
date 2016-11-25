@@ -38,9 +38,9 @@ public class ManagerServiceImpl implements ManagerService {
 		List<MemberVO> list = managerDao.customSearch(vo);
 		
 		if(list != null){
+			
 			JSONArray jsonArray =  JSONArray.fromObject(list);
 			json = jsonArray.toString();
-			System.out.println(json);
 			
 			try {
 				json = URLEncoder.encode(json,"utf-8");

@@ -13,39 +13,38 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd">
 
+
 	<!-- Root Context: defines shared resources visible to all other web components -->
-	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 
-	<bean id="transactionManager"
-		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-		<property name="dataSource" ref="dataSource" />
+	 <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+   	
+   <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+      <property name="dataSource" ref="dataSource"/>
+   </bean>
+   
+   <tx:annotation-driven/>
+      
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+		<property name="url" value="jdbc:oracle:thin:@localhost:1521:XE"/>
+		<property name="username" value="jungkosta"/>
+ 		<property name="password" value="1234"/>
 	</bean>
 
-	<tx:annotation-driven />
-	
-	
-	<bean id="dataSource"
-		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
-		<property name="url" value="jdbc:oracle:thin:@localhost:1521:XE" />
-		<property name="username" value="jungkosta" />
-		<property name="password" value="1234" />
-	</bean>
 
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="dataSource" ref="dataSource"/>
-		<property name="mapperLocations" value="classpath:mappers/**/*Mapper.xml"/>
+		<property name="dataSource" ref="dataSource" />
+		<property name="mapperLocations" value="classpath:mappers/**/*Mapper.xml" />
 		<property name="configLocation" value="classpath:/mybatis-config.xml"></property>
 	</bean>
 
-   <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
-      <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"/>
-   </bean>	
-   
-   <!-- 메인 Service, Persistence-->
-	<context:component-scan base-package="jungkosta.main.persistence"/>
-	<context:component-scan base-package="jungkosta.main.service"/>
-
+	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	
+	<!-- 2016/11/21 util componet-scan 우성 -->
+	
+	<context:component-scan base-package="jungkosta.commons.util"/>
 	
 	<!--우성 Tiles setting -->
 	<bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
@@ -56,11 +55,44 @@
 		</property>
 	</bean>
 	
-	<!--우성 tiles view Resolver 추가 --> 
+	<!--우성 tiles view Resolver 추가 -->
 	<bean id="viewResolver1" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
 		<property name="viewClass" value="org.springframework.web.servlet.view.tiles2.TilesView"/>
 		<property name="order" value="1"/>
 	</bean>
-
+	
+	<!-- 메인 서비스, DAO-->
+	<context:component-scan base-package="jungkosta.main.service"/>
+	<context:component-scan base-package="jungkosta.main.persistence"/>
+	
+	<!-- 거래 service, DAO -->
+	<context:component-scan base-package="jungkosta.trade.service"/>
+	<context:component-scan base-package="jungkosta.trade.persistence"/>
+	
+	<!-- 옥션 service, DAO -->
+	<context:component-scan base-package="jungkosta.auction.persistence" />
+	<context:component-scan base-package="jungkosta.auction.service" />
+	<!-- 2016 11 23 우성 인터셉터 추가 -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/messageSendForm"/>
+			<mvc:mapping path="/messageReceiveForm"/>
+			<mvc:mapping path="/purchaseList"/>
+			<mvc:mapping path="/auction/auctionRegisterForm"/>
+			<mvc:mapping path="/saleList"/>
+			<mvc:mapping path="/aucList"/>
+			<bean class="jungkosta.commons.interceptor.LoginInterceptor"/>
+		</mvc:interceptor>
+		
+		<mvc:interceptor>
+			<mvc:mapping path="/customSearchForm"/>
+			<mvc:mapping path="/blackListForm"/>
+			<mvc:mapping path="/warningForm"/>
+			<bean class="jungkosta.commons.interceptor.ManagerInterceptor"/>
+		</mvc:interceptor>
+	</mvc:interceptors>
+	
+	<!-- 종료 -->
 	
 </beans>
+

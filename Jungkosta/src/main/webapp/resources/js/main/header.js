@@ -33,7 +33,7 @@ $(function() {
 		
 		$.ajax({
 			
-			url:"loginProc",
+			url:"/Jungkosta/loginProc",
 			type:"post",
 			datatype:"text",
 			cache:false,
