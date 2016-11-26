@@ -8,6 +8,8 @@ $(function() {
 
 	var status = "deposit";
 
+	var flag = false;
+
 	// radio Button Event
 	$radio.change(function() {
 
@@ -24,6 +26,10 @@ $(function() {
 
 		changeDoc(product_cost, charge);
 
+	});
+
+	$("#pur_btn").click(function() {
+		flag = true;
 	});
 
 	// form submit event
@@ -46,28 +52,29 @@ $(function() {
 				that.get(0).submit();
 
 			});
-	
-	//cancel 버튼 이벤트
-	$("#cancel").click(function(){
+
+	// cancel 버튼 이벤트
+	$("#cancel").click(function() {
 		var sale_id = $("#sale_id").val();
 		var bidding_id = $("#bidding_id").val();
-		
+		flag = true;
 		var data = "sale_id=" + sale_id + "&bidding_id=" + bidding_id;
-		
+
 		$.ajax({
 			url : "purchaseCancel",
 			type : "post",
 			data : data,
 			dataType : "text",
-			success : function(){
+			success : function() {
 				alert("주문 취소");
 				self.location = "auctionList";
 			},
-			error : function(){
+			error : function() {
 				alert("주문 취소 중 에러 발생!! -관리자에게 문의하세요-");
 				self.location = "auctionList";
 			}
 		});
+
 	});
 
 	function getCharge(id) {
@@ -152,7 +159,6 @@ $(function() {
 
 		changeDoc(num, getCharge("deposit"));
 
-		
 		// BackSpace 키 방지 이벤트
 		$(document).keydown(
 				function(e) {
@@ -167,6 +173,46 @@ $(function() {
 		window.history.forward();
 
 	}
+
+	// F5 등 새로고침 이벤트 제거
+	$(document).keydown(function(e) {
+
+		if (e.which === 116) {
+			if (typeof event == "object") {
+				event.keyCode = 0;
+			}
+			alert("'새로고침'이 금지되어 메인페이지로 이동합니다.");
+			self.location = "auctionList";
+			return false;
+		} else if (e.which === 82 && e.ctrlKey) {
+			alert("'새로고침'이 금지되어 메인페이지로 이동합니다.");
+			self.location = "auctionList";
+			return false;
+		}
+	});
+
+	// 브라우저 종료시 발생하는 이벤트
+	window.addEventListener("beforeunload", function(event) {
+
+		var confirmationMessage = "\o/";
+
+		var sale_id = $("#sale_id").val();
+		var bidding_id = $("#bidding_id").val();
+
+		var data = "sale_id=" + sale_id + "&bidding_id=" + bidding_id;
+
+		if (flag == false) {
+			$.ajax({
+				url : "closePur",
+				post : "post",
+				data : data
+			});
+
+			(event || window.event).returnValue = confirmationMessage; // IE
+			return confirmationMessage; // chrome and fireFox
+		}
+
+	});
 
 	getStart();
 

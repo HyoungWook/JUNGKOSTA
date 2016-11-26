@@ -12,10 +12,6 @@ public class BidThread extends Thread {
 
 		while (true) {
 			try {
-				
-				
-				
-				
 				sleep(1000);
 			} catch (InterruptedException e) {
 				e.printStackTrace();

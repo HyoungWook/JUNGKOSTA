@@ -234,7 +234,7 @@
 			</div>
 			<hr>
 			<div align="right" id="payment_btn">
-				<button class="btn btn-lg" type="submit">주문하기</button>
+				<button class="btn btn-lg" type="submit" id="pur_btn">주문하기</button>
 				<button class="btn btn-lg" type="button" id="cancel">취소</button>
 			</div>
 

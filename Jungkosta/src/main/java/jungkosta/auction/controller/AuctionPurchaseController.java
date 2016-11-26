@@ -3,6 +3,7 @@ package jungkosta.auction.controller;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -40,9 +41,6 @@ public class AuctionPurchaseController {
 
 	@Inject
 	private AuctionService auctionService;
-
-	@Inject
-	private AucPayService aucPayService;
 
 	@RequestMapping(value = "/auctionPurchaseForm", method = RequestMethod.GET)
 	public void paymentRegisterForm_get(HttpServletRequest request, Model model) throws Exception {
@@ -95,8 +93,6 @@ public class AuctionPurchaseController {
 
 		MemberVO admin = memberService.selectMemberService("admin@admin.com");
 
-		AucAndBidVO aab = aucPayService.readPurchase(item.getAuction_id());
-
 		model.addAttribute("sale_id", sale_id);
 		model.addAttribute("purchase", purchase);
 		model.addAttribute("item", item);
@@ -107,14 +103,36 @@ public class AuctionPurchaseController {
 	@RequestMapping(value = "/purchaseCancel", method = RequestMethod.POST)
 	public ResponseEntity<String> purchaseCancel(@RequestParam("sale_id") int sale_id,
 			@RequestParam("bidding_id") int bidding_id) throws Exception {
+
 		ResponseEntity<String> entity = null;
 
 		try {
 
 			purchaseService.cancelPurchase(sale_id, bidding_id);
-			
+
 			entity = new ResponseEntity<>("success", HttpStatus.OK);
 
+		} catch (Exception e) {
+			e.printStackTrace();
+			entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
+
+		return entity;
+	}
+
+	@ResponseBody
+	@RequestMapping("/closePur")
+	public ResponseEntity<String> browserClose(@RequestParam("sale_id") int sale_id,
+			@RequestParam("bidding_id") int bidding_id) throws Exception {
+
+		System.out.println("브라우저 종료 or 새로고침");
+
+		ResponseEntity<String> entity = null;
+
+		try {
+
+			purchaseService.cancelPurchase(sale_id, bidding_id);
+			entity = new ResponseEntity<>("success", HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();
 			entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);

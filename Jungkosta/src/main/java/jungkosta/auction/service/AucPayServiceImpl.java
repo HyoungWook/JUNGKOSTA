@@ -1,9 +1,5 @@
 package jungkosta.auction.service;
 
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,6 +13,7 @@ import jungkosta.auction.domain.AucPayVO;
 import jungkosta.auction.domain.AuctionVO;
 import jungkosta.auction.persistence.AucPayDAO;
 import jungkosta.auction.persistence.AuctionDAO;
+import jungkosta.commons.util.AuctionCheck;
 
 @Service
 public class AucPayServiceImpl implements AucPayService {
@@ -41,7 +38,6 @@ public class AucPayServiceImpl implements AucPayService {
 		dao.registerPay(vo);
 		dao.updatebid_status(vo.getBid_id());
 		dao.updateSale_status(sale_id);
-
 	}
 
 	@Override
@@ -63,9 +59,7 @@ public class AucPayServiceImpl implements AucPayService {
 	@Transactional
 	@Override
 	public void cancelPay(AucAndBidVO vo) throws Exception {
-
-		System.out.println(vo);
-
+		System.out.println("결제 취소");
 		Map<String, Integer> map = new HashMap<>();
 
 		map.put("auction_id", vo.getAuction_id());
@@ -73,31 +67,14 @@ public class AucPayServiceImpl implements AucPayService {
 
 		dao.deleteBid(vo.getBid_id());
 
-		AuctionVO auction = auctionDao.read(vo.getBid_id());
+		AuctionVO auction = auctionDao.read(vo.getAuction_id());
 
-		if (compareTime(auction.getAuction_end_date())) {
+		if (AuctionCheck.compareTime(auction.getAuction_end_date())) {
 			dao.deleteBidding(vo.getBidding_id());
 			dao.updateAuction_status(vo.getAuction_id());
 			dao.update_del_sale(map);
 		}
-		
 
-	}
-
-	private boolean compareTime(Timestamp time) {
-
-		Calendar cal = Calendar.getInstance();
-
-		Date date = new Date(cal.getTimeInMillis());
-		SimpleDateFormat data = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-
-		String now = data.format(date);
-
-		if (time.toString().compareTo(now) > 0) {
-			return true;
-		} else {
-			return false;
-		}
 	}
 
 }
