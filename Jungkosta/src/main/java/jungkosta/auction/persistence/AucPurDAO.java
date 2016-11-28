@@ -1,5 +1,7 @@
 package jungkosta.auction.persistence;
 
+import java.util.Map;
+
 import jungkosta.auction.domain.BidVO;
 
 public interface AucPurDAO {
@@ -11,5 +13,11 @@ public interface AucPurDAO {
 	public BidVO readBid(int bidding_id) throws Exception;
 	
 	public void endAuction(int auction_id) throws Exception;
+	
+	public void updateSale_status(int sale_id) throws Exception;
+	
+	public void deleteBidding(int bidding_id) throws Exception;
+	
+	public void updateSale_cost(Map<String, Integer> map) throws Exception;
 
 }

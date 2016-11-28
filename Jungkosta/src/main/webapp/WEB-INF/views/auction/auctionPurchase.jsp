@@ -5,6 +5,10 @@
 
 
 <title>경매 주문 완료 페이지</title>
+<!-- bootstrap -->
+<script src="/Jungkosta/resources/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript"
+	src="/Jungkosta/resources/js/auction/auctionPurchase.js"></script>
 
 <link href="/Jungkosta/resources/css/auction/auctionPurchase.css"
 	rel="stylesheet">
@@ -45,7 +49,8 @@
 						</tr>
 						<tr>
 							<td>입금 계좌 :</td>
-							<td><strong>${admin.bank_name } / ${admin.account_num }</strong></td>
+							<td><strong>${admin.bank_name } /
+									${admin.account_num }</strong></td>
 						</tr>
 						<tr>
 							<td>입금 금액 :</td>
@@ -90,14 +95,99 @@
 
 		<div class="row">
 			<div class="button_phw">
-				<form method="post">
-					<button  type="button" class="btn btn-primary btn-lg">확인</button>
-				</form>
-				
+				<input type="hidden" id="payment_method"
+					value="${purchase.payment_method }">
+				<c:choose>
+					<c:when test="${purchase.payment_method == '무통장입금' }">
+						<a href="auctionList" class="btn btn-primary" id="check">확인</a>
+					</c:when>
+					<c:otherwise>
+						<a href="#AucPay_modal" class="btn btn-primary"
+							data-toggle="modal">결제하기</a>
+					</c:otherwise>
+				</c:choose>
 			</div>
 		</div>
 
 
 
+	</div>
+
+	<div class="modal fade" id="AucPay_modal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form id="payForm" method="post">
+					<input type="hidden" id="total_cost"
+						value="${purchase.total_cost }"> <input type="hidden"
+						name="bid_id" id="bid_id" value="${purchase.bid_id }">
+					<div class="modal-header">
+						<h4 class="modal-title" id="myModalLabel">결제 하기</h4>
+					</div>
+					<div class="modal-body">
+
+
+						<div class="bank">
+							<div class="row">
+								<div class="col-md-offset-2 col-md-3">
+									<p>은행 명 :</p>
+								</div>
+								<div class="col-md-5">
+									<select class="form-control">
+										<option>선택</option>
+										<option>국민은행</option>
+										<option>신한은행</option>
+										<option>농협</option>
+									</select>
+								</div>
+							</div>
+
+							<br>
+
+							<div class="row">
+								<div class="col-md-offset-2 col-md-3">
+									<p>계좌번호 :</p>
+								</div>
+								<div class="col-md-5">
+									<input class="form-control" type="text"
+										placeholder="'-'를 생략하고 입력하세요">
+								</div>
+							</div>
+							<br>
+							<div class="row">
+								<div class="col-md-offset-2 col-md-3">
+									<p>비밀번호 :</p>
+								</div>
+								<div class="col-md-5">
+									<input maxlength="4" class="form-control" type="password"
+										placeholder="비밀번호 4자리 입력">
+								</div>
+							</div>
+							<br>
+							<div class="row">
+								<div class="col-md-offset-2 col-md-3">
+									<p>금액 :</p>
+								</div>
+								<div class="col-md-5">
+									<div class="input-group">
+										<input class="form-control" id="cost" name="cost" type="text"
+											placeholder="금액을 입력하세요."><span
+											class="input-group-addon"> 원 </span>
+									</div>
+								</div>
+							</div>
+							<br>
+						</div>
+					</div>
+
+					<div class="modal-footer">
+						<button type="button" class="payForm_btn btn btn-default"
+							id="complete_btn">완료</button>
+						<button type="button" class="payForm_btn btn btn-primary"
+							id="fail_btn">취소</button>
+					</div>
+				</form>
+			</div>
+		</div>
 	</div>
 </div>

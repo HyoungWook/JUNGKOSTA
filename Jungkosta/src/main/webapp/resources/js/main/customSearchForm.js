@@ -40,7 +40,7 @@ $(function(){
 							'data-container' : "body",
 							'data-toggle' : "popover",
 							'data-placement' : "right",
-							'data-content' : "<a href='blackListForm?id="+item.email+"'>블랙리스트 등록</a><br>" +
+							'data-content' : "<a href='/Jungkosta/blackListForm?id="+item.email+"'>블랙리스트 등록</a><br>" +
 									"<a href='#'>회원 정보 관리</a><br>" + "<a href='/Jungkosta/warningForm?id="+item.email+"'>회원 경고</a><br>",
 							'class' : 'dynamic_a_tag_ws'
 						});

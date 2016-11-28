@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="jungkosta.main.mappers.auction.AuctionPaymentMapper">
+
+	<select id="readPurchase" parameterType="int" resultType="AucAndBidVO">
+		select * from auc_bid_view
+		where bid_id = #{bid_id}
+	</select>
+	
+	<insert id="registerPay" parameterType="AucPayVO">
+		insert into auction_payment
+		(
+			auctionpay_id, cost, pay_status, pay_date, bid_id
+		) values(
+			#{auctionpay_id}, #{cost}, #{pay_status}, sysdate, #{bid_id} 
+		)
+	</insert>
+	
+	<select id="selectPay_id" resultType="Integer">
+		select max(auctionpay_id) from auction_payment
+	</select>
+	
+	<update id="updatebid_status">
+		update bid set bid_status = '배송 완료' 
+		where bid_id = #{bid_id}
+	</update>
+	
+	<update id="updateSale_status">
+		update sale set sale_status = '거래완료'
+		where sale_id = #{sale_id}
+	</update>
+	
+	<delete id="deleteBid">
+		delete from bid
+		where bid_id = #{bid_id}
+	</delete>
+	
+	<delete id="deleteBidding">
+		delete from auction_bidding
+		where bidding_id = #{bidding_id}
+	</delete>
+	
+	<update id="update_del_sale" parameterType="java.util.Map">
+		update sale set sale_status = '거래가능', item_cost = bidding_fn(#{auction_id})
+		where sale_id = #{sale_id}
+	</update>
+	
+	<update id="updateAuction_status">
+		update auction_register set auction_end_status = 'false'
+		where autcion_id = #{auction_id}
+	</update>
+	
+	
+
+</mapper>

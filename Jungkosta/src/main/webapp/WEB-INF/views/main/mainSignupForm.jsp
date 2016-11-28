@@ -6,8 +6,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- bootstrap -->
 <link href="/Jungkosta/resources/css/main/signupcss.css" rel="stylesheet">
-<script type="text/javascript" src="/Jungkosta/resources/js/main/signupform1.js"></script>
-<!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
+
+<script src="/Jungkosta/resources/lib/jquery-3.1.1.min.js"></script>
+<script src="/Jungkosta/resources/js/main/signupform1.js"></script>
+
 
 <title>중코스타 - 회원가입 이용약관</title>
 </head>

@@ -25,7 +25,7 @@ import jungkosta.auction.service.BiddingService;
 public class AuctionListController {
 
 	@Inject
-	private AuctionListService service;
+	private AuctionListService auctionListService;
 	
 	@Inject
 	private AuctionService auctionService;
@@ -35,11 +35,13 @@ public class AuctionListController {
 		ResponseEntity<List<AuctionVO>> entity = null;
 
 		try {
-			List<AuctionVO> list = service.auctionList(sort);
-			entity = new ResponseEntity<>(list, HttpStatus.OK);
+
+			List<AuctionVO> list = auctionListService.auctionList(sort);
+
+			entity = new ResponseEntity<List<AuctionVO>>(list, HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();
-			entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+			entity = new ResponseEntity<List<AuctionVO>>(HttpStatus.BAD_REQUEST);
 		}
 
 		return entity;
@@ -52,10 +54,10 @@ public class AuctionListController {
 		try {
 
 			List<String> item_list = auctionService.getThunbnail(sale_id);
-			entity = new ResponseEntity<>(item_list, HttpStatus.OK);
+			entity = new ResponseEntity<List<String>>(item_list, HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();
-			entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+			entity = new ResponseEntity<List<String>>(HttpStatus.BAD_REQUEST);
 		}
 
 		return entity;

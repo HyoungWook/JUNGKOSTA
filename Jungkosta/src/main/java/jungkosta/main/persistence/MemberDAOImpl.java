@@ -20,12 +20,16 @@ public class MemberDAOImpl implements MemberDAO {
 		sqlSession.insert(namespace+".createMember", vo);
 	}
 
-	//start 현우 수정 부분
 	@Override
 	public MemberVO selectMember(String email) throws Exception {
-		return sqlSession.selectOne(namespace + ".selectMember", email);
+		return sqlSession.selectOne(namespace+".selectMember", email);
 	}
-	//end 현우 수정 부분
+
+	@Override
+	public void updateMember(MemberVO vo) throws Exception {
+		sqlSession.update(namespace+".updateMember", vo);
+		
+	}
 
 	
 
