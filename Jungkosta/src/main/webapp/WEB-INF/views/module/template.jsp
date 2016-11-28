@@ -14,10 +14,8 @@
 </head>
 <body>
 	
-	<!-- 우성 header 수정 -->
 	<tiles:insertAttribute name="header"/>
 	
-	<!-- 우성 nav 부분 추가 -->
 	<tiles:insertAttribute name="nav"/>
 
 	<tiles:insertAttribute name="body"/>

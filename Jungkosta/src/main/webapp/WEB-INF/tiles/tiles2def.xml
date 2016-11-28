@@ -87,7 +87,7 @@
 	</definition>
 	
 	<definition name="auctionRegisterForm" extends="base_layout">
-		<put-attribute name="body" value="/WEB-INF/views/auction/auctionRegisterForm.jsp"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/auction/auctionRegisterForm.jsp"/>
 	</definition>
 	
 	<definition name="auctionPurchaseForm" extends="base_layout">

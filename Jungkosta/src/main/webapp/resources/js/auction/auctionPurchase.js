@@ -19,10 +19,6 @@ $(function() {
 		}
 	});
 
-	$("#total_cost").submit(function(event) {
-		event.preventDefault();
-	});
-
 	$(".payForm_btn").click(function() {
 
 		flag = true;
@@ -61,6 +57,16 @@ $(function() {
 		});
 
 	});
+	
+	$("#check").click(function(event){
+		
+		event.preventDefault();
+		
+		flag = true;
+		
+		self.location = "auctionList";
+	});
+	
 
 	// F5 등 새로고침 이벤트 제거
 	$(document).keydown(function(e) {
