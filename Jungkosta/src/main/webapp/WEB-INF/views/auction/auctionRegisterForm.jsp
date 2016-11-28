@@ -14,17 +14,32 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script type="text/javascript"
 	src="/Jungkosta/resources/js/auction/main.js"></script>
-<script type="text/javascript"
-	src="/Jungkosta/resources/js/auction/category.js"></script>
+
 <link rel="stylesheet"
 	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
+<script src="/Jungkosta/resources/js/auction/category.js"></script>
 <script src="/Jungkosta/resources/js/auction/valid_check_lsj.js"></script>
 <link href="/Jungkosta/resources/dist/css/AdminLTE.min.css"
 	rel="stylesheet" type="text/css" />
 <link
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
 	rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+	//이수진 추가 start
+	$(function(){
+		var email="${email}";
+		
+		$('#add_btn').submit(function(event){
+			if(!email){
+				alert("로그인 해주세요.");
+				return false;
+			}
+		});
+		
+	});
+	//이수진 추가 end
+</script>
 <style>
 .input_error_phw {
 	display: none;

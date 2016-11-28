@@ -45,7 +45,8 @@
 	
 	<select id="biddingList" parameterType="int" resultType="BiddingVO">
 		select * from auction_bidding
-			where auction_id=#{auction_id} order by bidding_cost desc
+			where auction_id=#{auction_id} 
+			order by bidding_cost desc
 	</select>
 	
 

@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import jungkosta.auction.domain.AuctionVO;
 import jungkosta.auction.domain.BiddingVO;
 import jungkosta.auction.domain.CategoryVO;
+import jungkosta.auction.domain.SellerReviewVO;
+import jungkosta.auction.service.AuctionReviewService;
 import jungkosta.auction.service.AuctionService;
 import jungkosta.auction.service.BiddingService;
 
@@ -29,11 +31,16 @@ public class AuctionDetailController {
 	
 	@Inject
 	private BiddingService bidService;
+	
+	@Inject
+	private AuctionReviewService reviewService;
 
 	@RequestMapping(value = "/auctionDetail", method = RequestMethod.GET)
 	public void auctionDetail(@RequestParam("sale_id") int sale_id, Model model) throws Exception {
 
 		AuctionVO auction = auctionService.read(sale_id);
+		
+		List<SellerReviewVO> reviewList = reviewService.reviewList(auction.getEmail());
 		
 		CategoryVO category = auctionService.selectCategory(auction.getSubca_id());
 		
@@ -42,10 +49,8 @@ public class AuctionDetailController {
 		model.addAttribute("auction", auction);
 		model.addAttribute("category", category);
 		model.addAttribute("countBidding", count);
-
-		//start 현우 추가 부분
 		model.addAttribute("thumbnail", auctionService.getThunbnail(auction.getSale_id()));
-		//end 현우 추가 부분
+		model.addAttribute("reviewList", reviewList);
 	}
 	
 	@RequestMapping(value = "auctionbidList", method = RequestMethod.GET)
@@ -62,5 +67,4 @@ public class AuctionDetailController {
 		
 		
 	}
-	
 }
