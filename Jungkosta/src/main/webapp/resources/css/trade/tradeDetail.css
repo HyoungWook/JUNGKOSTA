@@ -80,3 +80,28 @@
 #reply_reset_si {
 	margin-left: 7px;
 }
+
+#item_sub_imgs_1 {
+	margin-left: -3px;
+}
+
+#item_sub_imgs_2 {
+	margin-left: 40px;
+}
+
+#item_sub_imgs_3 {
+	margin-left: 40px;
+}
+
+#item_sub_imgs_4 {
+	margin-left: 40px;
+}
+
+#item_sub_imgs img{
+	width: 90px;
+	height: 90px;
+}
+
+#imgs_line {
+	margin-left: 35px;
+}

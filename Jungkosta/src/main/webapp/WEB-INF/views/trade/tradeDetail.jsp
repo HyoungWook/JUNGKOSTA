@@ -10,14 +10,14 @@
 <script src="/Jungkosta/resources/lib/jquery-3.1.1.min.js"></script>
 
 <!-- javaScript -->
-<script type="text/javascript" src="/Jungkosta/resources/js/trade/qna.js"></script>
+<!-- <script type="text/javascript" src="/Jungkosta/resources/js/trade/qna.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
 
 <!-- css -->
 <style type="text/css">
 
 </style>
 <link href="/Jungkosta/resources/css/trade/tradeDetail.css" rel="stylesheet"> 
-<script type="text/javascript" src="/Jungkosta/resources/js/trade/qna.js"></script>
 
 
 
@@ -236,10 +236,9 @@
 									</div>
 									<div id="collapseOne" class="panel-collapse collapse in">
 										<div class="panel-body">
-											<form id="reply">
-												<input type='hidden' name="email" value="${email }">
-												<input type="hidden" name="sale_id"
-													value="${param.sale_id }">
+											<form id="reply" method="post">
+												<%-- <input type="hidden" name="email" value="${email }">
+												<input type="hidden" name="sale_id" value="${sale_id }"> --%>
 												<div class="qAnda form-group">
 													<textarea id="reply_contents_si" name="content"
 														class="form-control" placeholder="로그인 후 이용 가능합니다."></textarea>
@@ -281,6 +280,111 @@
 		$(function() {
 			$('#collapseOne').collapse('hide')
 		});
+	</script>
+	
+	<script id = "template" type="text/x-handlebars-template">
+	<tr>
+	<td>{{(index + 1)}}</td>
+	<td>{{content}}</td>
+	<td>{{email}}</td>
+	</tr>
+</script>
+	
+	<script type="text/javascript">
+	$(function(){
+		
+		//uri내 parameter 값 저장 function 
+		$.urlParam = function(name){
+		    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+		    if (results==null){
+		       return null;
+		    } else {
+		       return results[1] || 0;
+		    }
+		};
+		
+		var sale_id = $.urlParam('sale_id');
+		
+		
+		var template = Handlebars.compile($('#template').html());
+		
+		$("#reply").submit(function(event) {
+			event.preventDefault();
+
+			console.log("sale_id(tradeDetail.jsp) : " + sale_id);
+			
+			$.ajax({
+				url : "/Jungkosta/trade/itemQa/" + sale_id,
+				type : "post",
+				data : $(this).serialize(),
+				dataType : "text",
+				success : successHandler,
+				error : function() {
+					alert("실패");
+				}
+
+			});
+		
+		});//itemQA form submit ajax end
+		
+		function successHandler(result) {
+			console.log('result : ' + result);
+			
+			if(result == 'SUCCESS') {
+				
+				$.getJSON("/Jungkosta/trade/listQa/" + sale_id, function(list) {
+					$(".reply_table_si tbody").empty().hide();
+					
+					$(list).each(function(index) {
+						
+						/* var html = template(list[index]); */
+						
+						/* var html = "<tr>";
+						html += "<td>" + (index + 1) + "</td>";
+						html += "<td>" + list[index].content + "</td>";
+						html += "<td>" + list[index].email + "</td>";
+						html += "</tr>";
+						$('.reply_table_si tbody').append(html); */
+						
+					});
+					
+					$(".reply_table_si tbody").fadeIn();
+					$(".reply_table_si textarea").focus();
+					
+				});//getJSON end
+			}
+			
+		}//successHandler end
+		
+		$('#itemQa').on('click', function(event) {
+			$.getJSON("/Jungkosta/trade/listQa/" + sale_id, function(list) {
+				$(".reply_table_si tbody").empty().hide();
+				
+				$(list).each(function(index) {
+					
+					var html = "<tr>";
+					html += "<td>" + (index + 1) + "</td>";
+					html += "<td>" + list[index].content + "</td>";
+					html += "<td>" + list[index].email + "</td>";
+					html += "</tr>";
+					$('.reply_table_si tbody').append(html);
+					
+				});
+				
+				$(".reply_table_si tbody").fadeIn();
+				$(".reply_table_si textarea").focus();
+				
+			});
+		});
+		
+		$('#item_sub_imgs').find('img').on('click', function() {
+			
+			var that = $(this);
+			
+			$('.item_ktw').attr('src', that.attr('src'));
+		});
+
+	});
 	</script>
 
 </body>
