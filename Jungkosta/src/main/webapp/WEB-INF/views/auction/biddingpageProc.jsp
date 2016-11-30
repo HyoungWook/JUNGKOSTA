@@ -9,7 +9,7 @@
 <script type="text/javascript">
 		alert("낙찰이 완료되었습니다.");
 		window.self.close();
-		window.opener.location.href = "auctionPurchaseForm?";
+		window.opener.location.href = "auctionPurchaseForm?sale_id=${sale_id}&bidding_id=${bidding_id}";
 </script>
 </head>
 <body>

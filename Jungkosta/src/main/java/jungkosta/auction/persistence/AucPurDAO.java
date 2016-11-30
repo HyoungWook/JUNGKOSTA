@@ -9,5 +9,7 @@ public interface AucPurDAO {
 	public int selectBid_id() throws Exception;
 
 	public BidVO readBid(int bidding_id) throws Exception;
+	
+	public void endAuction(int auction_id) throws Exception;
 
 }

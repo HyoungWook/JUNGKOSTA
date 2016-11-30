@@ -39,6 +39,17 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
+	<beans:bean id="LoginIntercepter" class="jungkosta.commons.interceptor.LoginInterceptor"/>
+	
+	<interceptors>
+		<interceptor>
+			<mapping path="/auctionRegisterForm"/>
+			<mapping path="/aucPaymentForm"/>
+			<mapping path="/auctionPurchaseForm"/>
+			<beans:ref bean="LoginIntercepter"/>
+		</interceptor>
+	</interceptors>
+	
 	<context:component-scan base-package="jungkosta.auction.controller" />
 	
 </beans:beans>

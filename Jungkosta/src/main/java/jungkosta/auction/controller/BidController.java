@@ -4,6 +4,7 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,10 +41,13 @@ public class BidController {
 		return "bidRegisterForm";
 	}
 
+	@Transactional
 	@RequestMapping(value = "/bidRegisterForm", method = RequestMethod.POST)
 	public String bidRegister(BiddingVO vo, HttpServletRequest request, Model model) throws Exception {
 
-		AuctionVO auction = auctionService.read(Integer.parseInt(request.getParameter("sale_id")));
+		int sale_id = Integer.parseInt(request.getParameter("sale_id"));
+
+		AuctionVO auction = auctionService.read(sale_id);
 
 		int bidding_cost = Integer.parseInt(request.getParameter("bidding_cost"));
 
@@ -54,7 +58,12 @@ public class BidController {
 		auctionService.updateDetail(auction);
 
 		if (auction.getImmediate_bid_cost() == vo.getBidding_cost()) {
-
+			
+			BiddingVO bid_person = bidService.bid_person(auction.getAuction_id());
+			
+			model.addAttribute("sale_id", sale_id);
+			model.addAttribute("bidding_id", bid_person.getBidding_id());
+			
 			return "biddingpageProc";
 		} else {
 			return "bidpageProc";

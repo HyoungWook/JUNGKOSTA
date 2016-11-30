@@ -36,7 +36,7 @@
 
 	<div class="main">
 		<form id="auctoin_purchase" action="auctionPurchaseForm" method="post">
-			<input type="hidden" name="sale_id" value="${item.sale_id }" >
+			<input type="hidden" name="sale_id" value="${item.sale_id }">
 
 			<h2>경매 낙찰 상품 주문</h2>
 
