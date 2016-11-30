@@ -35,4 +35,27 @@ public class TradeDetailController {
 		model.addAttribute("register", salevo);
 
 	}
+	
+	/*//ItemQa_Ajax_ysi
+	@ResponseBody
+	@RequestMapping(value= "/itemQa/{sale_id}", method=RequestMethod.POST)
+	public String itemQaAjax(@PathVariable("sale_id") Integer sale_id, ItemQAVO itemQa) throws Exception {
+		ItemQAVO itemQa = new ItemQAVO(); 
+		itemQa.setSale_id(sale_id);
+		System.out.println("sale_id(Controller) : " + sale_id);
+		System.out.println("itemQa(Controller) : " + itemQa);
+		service.insertQA(itemQa);
+		
+		return "SUCCESS";
+	}
+	
+	//ItemQa_getJSON_ysi
+	@ResponseBody
+	@RequestMapping(value= "/listQa/{sale_id}")
+	public List<ItemQAVO> itemQaList(@PathVariable("sale_id") Integer sale_id) throws Exception{
+		List<ItemQAVO> list = service.listItemQa(sale_id);
+		System.out.println("sale_id(Controller) : " + list.get(0).getSale_id());
+		return list;
+	}*/
+	
 }

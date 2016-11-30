@@ -83,3 +83,7 @@
 	position: relative;
 	z-index: 1;
 }
+#listImg_ysi {
+	max-width: 100%;
+	max-height: 100%;
+}

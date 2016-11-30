@@ -25,19 +25,21 @@
 	</select>
 
 	<!-- 일반판매물품 listAll_ysi -->
-	<select id="listSale" parameterType="java.util.HashMap"
-		resultType="SaleVO">
-		select * from sale
-		where subca_id = #{subca_id}
+	<select id="listSale" parameterType="java.util.HashMap" resultType="SaleVO">
+		select * from sale 
+			where subca_id = #{subca_id} and flag = '0' 
 		<if test="sort != null">
 			<choose>
 				<when test="sort == 'n'.toString()">
-					order by buy_time asc
+					order by sale_date asc
 				</when>
 				<when test="sort == 'l'.toString()">
 					order by item_cost asc
 				</when>
 			</choose>
+		</if>
+		<if test="sort == null">
+			order by sale_date asc
 		</if>
 	</select>
 
@@ -77,4 +79,21 @@
 	<update id="updateReadCount" parameterType="int">
 		update Sale set view_cnt = view_cnt +1 where sale_id = #{sale_id}
 	</update>
+	 	<!-- itemQA_insert_ysi -->
+	<select id="insertQA" parameterType="ItemQAVO">
+		insert into item_qa(item_qa_id, content, register_date, sale_id, email) 
+			values(#{item_qa_id}, #{content}, sysdate, #{sale_id}, #{email})
+	</select>
+	
+	<!-- itemQA_selectQa_Id_ysi -->
+	<select id="selectQa_id" resultType="Integer">
+		select max(item_qa_id) from item_qa
+	</select>
+	
+	<!-- itemQA_List_ysi -->
+	<select id="listItemQa" parameterType="Integer" resultType="ItemQAVO">
+		select * from item_qa 
+			where sale_id = #{sale_id}
+			order by item_qa_id desc
+	</select>
 </mapper>
