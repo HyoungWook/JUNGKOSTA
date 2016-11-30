@@ -71,12 +71,12 @@
 					<a href="#" class="a_nav" data-toggle="modal"
 							data-target="#sale_Modal">판매하기</a>
 					<a href="/Jungkosta/boardList/1" class="a_nav">커뮤니티</a>
-					<a href="../main/main.jsp" class="a_nav">JUNGKOSTA 홈</a>
+					<a href="/Jungkosta" class="a_nav">JUNGKOSTA 홈</a>
 					<a href="/Jungkosta/trade/tradeList?subca_id=8" class="a_nav">스마트폰</a>
 					<a href="/Jungkosta/trade/tradeList?subca_id=2" class="a_nav">태플릿 PC</a>
 					<a href="/Jungkosta/trade/tradeList?subca_id=1" class="a_nav">노트북/PC</a>
 					<a href="/Jungkosta/trade/tradeList?subca_id=9" class="a_nav">카메라</a>
-					<a href="../auction/Auction_main_phw.jsp" class="a_nav">경매</a>
+					<a href="/Jungkosta/auction/auctionList" class="a_nav">경매</a>
 					<a href="#" class="a_nav" data-toggle="collapse" data-target="#more_nav_ws">더보기▽</a>
 					<div id="more_nav_ws" class="collapse">
           				<div class="row">

@@ -19,6 +19,7 @@ public interface SaleService {
 	
 	public void updateSaleStatusFirst(SaleVO salevo)throws Exception;
 
+	public void updateReadCount(int sale_id)throws Exception;
 
 
 	

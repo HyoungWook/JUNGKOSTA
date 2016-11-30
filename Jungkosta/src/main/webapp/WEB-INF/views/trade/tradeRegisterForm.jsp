@@ -81,7 +81,7 @@
                         id="item_name_si" placeholder="예)갤럭시 노트5">
                   </div>
                   <br>
-
+				<input type="hidden" name="email" value="${member.email }">
                   <h3 class="saleCategory_ktw">구매시기는 언제인가요?</h3>
                   <div class="buy_date form-group">
                      <input type="text" id="buy_date" name="buy_time"
@@ -114,7 +114,7 @@
 
                   <h3 class="saleCategory_ktw">상품에 대한 추가정보를 입력해주세요</h3>
                   <div class="additional_info form-group">
-                  <textarea rows="5" class="form-control cate_ktw" name="additional_info" id="additional_info_si"
+                  <textarea rows="2" class="form-control cate_ktw" name="additional_info" id="additional_info_si"
                      placeholder="추가 정보를 입력해주세요"></textarea>
                   </div><br>
 

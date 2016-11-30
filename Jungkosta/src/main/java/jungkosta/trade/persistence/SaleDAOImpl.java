@@ -52,5 +52,10 @@ public class SaleDAOImpl implements SaleDAO {
 		
 	}
 
+	@Override
+	public void updateReadCount(int sale_id) throws Exception {
+		sqlSession.update(namespace+".updateReadCount", sale_id);
+	}
+
 
 }

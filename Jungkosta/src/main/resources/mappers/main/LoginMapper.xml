@@ -6,7 +6,7 @@
 <mapper namespace="jungkosta.mappers.main.LoginMapper">
 
 	<select id="check_Login_ws" parameterType="MemberVO" resultType="MemberVO">
-		select * from member where email = #{email} and password = #{password}
+		select * from member where email = #{email}
 	</select>
 
 	<select id="checkBlackList" parameterType="String" resultType="BlackListVO">

@@ -69,8 +69,12 @@
 		category.ca_id =#{ca_id}
 	</select>
 
-	<update parameterType="SaleVO" id="changeSaleStateFirst">
+	<update id="changeSaleStateFirst" parameterType="SaleVO" >
 		update sale set sale_status = #{sale_status} where sale_id IN
 		(select sale_id from PURCHASE)
+	</update>
+	
+	<update id="updateReadCount" parameterType="int">
+		update Sale set view_cnt = view_cnt +1 where sale_id = #{sale_id}
 	</update>
 </mapper>

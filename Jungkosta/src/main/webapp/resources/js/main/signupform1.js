@@ -16,7 +16,7 @@ $(function(){
    $('#next_khw').click(function(){
       if($('#inlineCheckbox2').is(":checked") && $('#inlineCheckbox3').is(":checked") &&
             $('#inlineCheckbox4').is(":checked") == true){
-         $(location).attr("href", "mainSignupForm2");  
+         $(location).attr('href', 'mainSignupForm2');  
       }
       else
          alert('약관에 동의해주세요');

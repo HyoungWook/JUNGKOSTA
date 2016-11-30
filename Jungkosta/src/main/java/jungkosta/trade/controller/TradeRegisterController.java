@@ -41,7 +41,7 @@ public class TradeRegisterController {
 	}
 	
 	@RequestMapping(value= "/tradeRegisterForm", method= RequestMethod.POST)
-	public String registPost(SaleVO saleVO) throws Exception{
+	public String registPost(SaleVO saleVO, HttpServletRequest request) throws Exception{
 		System.out.println(saleVO);
 		int subca_id = saleVO.getSubca_id();
 		service.regist(saleVO);

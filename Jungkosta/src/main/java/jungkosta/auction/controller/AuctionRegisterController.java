@@ -4,6 +4,7 @@ import java.sql.Timestamp;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,17 +25,22 @@ public class AuctionRegisterController {
 	
 
 	@RequestMapping(value = "/auctionRegisterForm", method = RequestMethod.GET)
-	public void auctionRegisterForm() {
-
+	public String auctionRegisterForm(HttpServletRequest request) {
+		
+		HttpSession session = request.getSession();
+		
+		if(session.getAttribute("email") == null){
+			return "redirect:/";
+		}else{
+			return "/auctionRegisterForm";
+		}
+		
 	}
 
 	@RequestMapping(value = "/auctionRegisterForm", method = RequestMethod.POST)
 	public String auctionRegister(AuctionVO auction, HttpServletRequest request) throws Exception {
 
 		auction.setSale_id(service.sale_id() + 1);
-		auction.setEmail("aaa@aaaa.com");
-		//auction.setEmail("qkrgusdn93@naver.com");
-		
 
 		String buy_time = request.getParameter("buy_time_temp");
 		String auction_end_date = request.getParameter("auction_end_date_temp");

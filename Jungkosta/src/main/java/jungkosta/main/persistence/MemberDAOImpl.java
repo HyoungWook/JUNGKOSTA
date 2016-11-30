@@ -25,6 +25,12 @@ public class MemberDAOImpl implements MemberDAO {
 		return sqlSession.selectOne(namespace+".selectMember", email);
 	}
 
+	@Override
+	public void updateMember(MemberVO vo) throws Exception {
+		sqlSession.update(namespace+".updateMember", vo);
+		
+	}
+
 	
 
 }

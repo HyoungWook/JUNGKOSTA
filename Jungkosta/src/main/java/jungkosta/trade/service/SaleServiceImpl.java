@@ -46,6 +46,11 @@ public class SaleServiceImpl implements SaleService {
 		saleDAO.updateSaleStatusFirst(salevo);
 	}
 
+	@Override
+	public void updateReadCount(int sale_id) throws Exception {
+		saleDAO.updateReadCount(sale_id);
+	}
+
 
 
 }

@@ -8,10 +8,10 @@
 	<!-- insertPurchase_tw -->
 	<insert id="insertPurchase" parameterType="PurchaseVO">
 		insert into Purchase(
-		PURCHASE_ID,PURCHASE_COST,PAYMENT_METHOD,PURCHASE_DATE,
-		EMAIL,SALE_ID,PURCHASE_DEADLINE, PURCHASE_STATUS
-		)values(#{purchase_id}, #{purchase_cost}, #{payment_method}, sysdate, #{email}, 
-			#{sale_id}, sysdate +1, #{purchase_status})
+		PURCHASE_ID,PURCHASE_COST,PAYMENT_METHOD,PURCHASE_DATE,EMAIL,SALE_ID,
+		PURCHASE_DEADLINE,PURCHASE_STATUS, USE_POINT
+		)values(#{purchase_id}, #{purchase_cost}, #{payment_method}, sysdate, #{email},
+		 #{sale_id}, sysdate +1, #{purchase_status}, #{use_point})
 	</insert>
 	
 	<!-- selectPurchaseId_tw -->
@@ -19,5 +19,26 @@
 		select max(purchase_id) from purchase
 	</select>
 	
-
+	<select id="selectPurchase" parameterType="int" resultType="PurchaseVO">
+		select * from purchase where purchase_id = #{purchase_id}
+	</select>
+	
+	<update id="updatePurchase" parameterType="PurchaseVO">
+		update purchase set purchase_status = #{purchase_status} 
+		where purchase_id = #{purchase_id}
+	</update>
+	
+	<delete id="deletePurchase" parameterType="PurchaseVO">
+		delete from purchase where purchase_id = #{purchase_id}
+	</delete>
+	
+	<update id="usePoint" parameterType="MemberVO">
+		update member set point = point - #{point} where email = #{email}
+	</update>
+	
+	<update id="backPoint" parameterType="MemberVO">
+		update member set point = point + #{point} where email = #{email}
+	</update>
+	
+	
 </mapper>

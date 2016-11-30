@@ -6,4 +6,6 @@ public interface MemberDAO {
 	public void createMember(MemberVO vo)throws Exception;
 	
 	public MemberVO selectMember(String email)throws Exception;
+	
+	public void updateMember(MemberVO vo)throws Exception;
 }

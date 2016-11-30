@@ -1,0 +1,25 @@
+.form_phw {
+	background: #DCEBFF;
+	border-radius: 20px;
+}
+
+.form_phw tr {
+	height: 30px;
+}
+
+.form_phw th {
+	text-align: center;
+}
+
+.form_phw td {
+	text-align: center;
+}
+
+#product_info_phw td {
+	text-align: center;
+	vertical-align: middle;
+}
+
+.button_phw {
+	text-align: center;
+}

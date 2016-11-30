@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -26,10 +27,12 @@ public class TradeListController {
 	
 	//카테고리별 목록_ysi
 	@RequestMapping(value = "/tradeList", method=RequestMethod.GET)
-	public void tradelistSub(Model model, @RequestParam("subca_id") Integer subca_id, String sort) throws Exception{
+	public void tradelistSub(Model model, @RequestParam("subca_id") 
+	Integer subca_id, String sort) throws Exception{
 		System.out.println("subca_id : " + subca_id);
 		
 		model.addAttribute("list", service.listSale(subca_id, sort));
+			
 	}
 	
 	//searchTest_ysi
@@ -51,4 +54,8 @@ public class TradeListController {
 		
 		return service.listSale(subca_id, sort);
 	}
+	
+	//조회수 +1-tw
+	
+
 }

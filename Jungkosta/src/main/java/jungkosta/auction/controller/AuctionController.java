@@ -10,6 +10,7 @@ public class AuctionController {
 
 	@RequestMapping(value = "/auctionList", method = RequestMethod.GET)
 	public void auctionList_GET(Model model) throws Exception {
+	
 	}
 
 }

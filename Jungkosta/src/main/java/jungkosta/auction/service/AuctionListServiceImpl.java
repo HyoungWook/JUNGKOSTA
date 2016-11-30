@@ -20,7 +20,7 @@ public class AuctionListServiceImpl implements AuctionListService {
 	@Override
 	public List<AuctionVO> auctionList(String sort) throws Exception {
 
-		Map<String, String> map = new HashMap<>();
+		Map<String, String> map = new HashMap<String,String>();
 
 		map.put("sort", sort);
 		return dao.auctionList(map);

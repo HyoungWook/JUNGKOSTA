@@ -11,6 +11,7 @@
 
 <!-- javaScript -->
 <script type="text/javascript" src="/Jungkosta/resources/js/trade/qna.js"></script>
+<script type="text/javascript" src="/Jungkosta/resources/js/trade/itemDetail.js"></script>
 
 <!-- css -->
 <style type="text/css">
@@ -47,6 +48,9 @@
 
 				<div class="col-md-offset-1 col-md-4 left_ktw">
 					 <img class="item_ktw" src="displayFile?fileName=${register.item_pic1 }" />
+					 <c:if test="${register.sale_status =='거래완료'}">
+									<img id="close_auc_ktw" alt="trade_close" src="/Jungkosta/resources/images/trade/auction_close.png">
+					</c:if>
 					<div class="row">
 						<div id="item_sub_imgs">
 						<hr id="imgs_line">
@@ -126,7 +130,7 @@
 							</div>
 							<br> <br> <br> <br>
 
-							<button type="submit" class="btn btn-primary btn-lg"
+							<button type="submit" class="btn btn-primary btn-lg btn_check"
 								>주문하기</button>
 
 						</div>
@@ -170,7 +174,7 @@
 							<div class="col-md-offset-1 col-md-9">
 								<span id="ITEM_SCRATCH_Result_ktw">${register.item_scratch}</span>
 							</div>
-
+						<input type="hidden" id="status" value="${register.sale_status }">
 							<br> <br> <br>
 							<div class="col-md-offset-1 col-md-1">
 								<span id="ADDITIONAL_INFO_ktw" class="item_info_Quest_ktw">추가정보</span>
@@ -178,8 +182,8 @@
 							<div class="col-md-offset-1 col-md-9">
 								<!-- 		<span class="ADDITIONAL_INFO_Result_ktw">1.액정에 기스가 있습니다.</span><br>
 								<span class="ADDITIONAL_INFO_Result_ktw">2.상태가 좋습니다.</span><br> -->
-								<label class="form-control" name="additional_info">
-									${register.additional_info } </label>
+								<span class="form-control" name="additional_info">
+									${register.additional_info } </span>
 							</div>
 							<br> <br> <br>
 							<div class="col-md-offset-1 col-md-1">

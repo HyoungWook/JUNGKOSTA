@@ -35,11 +35,11 @@ public class AuctionReplyController {
 			
 			List<AuctionReplyVO> list = service.replyList(sale_id);
 			
-			entity = new ResponseEntity<>(list, HttpStatus.OK);
+			entity = new ResponseEntity<List<AuctionReplyVO>>(list, HttpStatus.OK);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
-			entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+			entity = new ResponseEntity<List<AuctionReplyVO>>(HttpStatus.BAD_REQUEST);
 		}
 		
 		return entity;

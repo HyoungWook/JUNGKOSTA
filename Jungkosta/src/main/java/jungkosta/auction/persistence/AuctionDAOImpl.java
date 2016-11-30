@@ -52,22 +52,6 @@ public class AuctionDAOImpl implements AuctionDAO {
 	}
 
 	@Override
-	public List<AuctionVO> listAuction() throws Exception {
-		return null;
-	}
-
-	@Override
-	public AuctionVO selectSale(int sale_id) throws Exception {
-		return null;
-	}
-
-	@Override
-	public AuctionVO selectAuction(int auction_id) throws Exception {
-		return null;
-
-	}
-
-	@Override
 	public AuctionVO read(int sale_id) throws Exception {
 
 		return sqlSession.selectOne(namespace + ".read", sale_id);
@@ -77,5 +61,13 @@ public class AuctionDAOImpl implements AuctionDAO {
 	public CategoryVO selectCategory(int subca_id) throws Exception {
 		return sqlSession.selectOne(namespace + ".selectCategory", subca_id);
 	}
+
+	@Override
+	public void updateItemCost(AuctionVO auction) throws Exception {
+
+		sqlSession.update(namespace+".updateItemCost",auction);
+	}
+
+
 
 }

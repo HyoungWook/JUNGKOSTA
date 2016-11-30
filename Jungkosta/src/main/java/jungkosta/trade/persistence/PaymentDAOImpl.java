@@ -18,9 +18,19 @@ public class PaymentDAOImpl implements PaymentDAO {
 	
 	//주문_결제-tw
 	@Override
-	public void insertPaymentTx(PaymentVO paymentvo) throws Exception {
-	
+	public void insertPayment(PaymentVO paymentvo) throws Exception {
+			sqlSession.insert(namespace+".insertPayment", paymentvo);
 
+	}
+
+	//payment_Id-tw
+	@Override
+	public Integer selectPayment_id() throws Exception {
+		if ((sqlSession.selectOne(namespace + ".selectPayment_id")) == null) {
+			return 0;
+		} else {
+			return sqlSession.selectOne(namespace + ".selectPayment_id");
+		}
 	}
 
 }

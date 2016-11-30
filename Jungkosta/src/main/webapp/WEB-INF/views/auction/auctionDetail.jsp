@@ -7,39 +7,32 @@
 
 <head>
 <title>경매 상품 상세 페이지</title>
+
 </head>
 
 <!-- bootstrap -->
-<link href="/Jungkosta/resources/bootstrap/css/bootstrap.min.css"
-	rel="stylesheet">
-<link href="/Jungkosta/resources/bootstrap/css/kfonts2.css"
-	rel="stylesheet">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="/Jungkosta/resources/bootstrap/js/bootstrap.min.js"></script>
 
 
 <!-- jQuery -->
-<script type="/Jungkosta/resources/lib/jquery-3.1.1.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script type="text/javascript"
-	src="/Jungkosta/resources/auction/js/auction_detail_phw.js"></script>
+	src="/Jungkosta/resources/js/auction/auction_detail_phw.js"></script>
 
 <!-- template -->
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
 
 
-<link href="/Jungkosta/resources/auction/css/auction_detail_phw.css"
+<link href="/Jungkosta/resources/css/auction/auction_detail_phw.css"
 	rel="stylesheet">
 
 <div class="container">
 	<input type="hidden" id="sale_id" value="${auction.sale_id }">
 	<input type="hidden" id="status" value="${auction.auction_end_status}">
 	<input type="hidden" id="end_date" value="${auction.auction_end_date}">
-
-
-	<br> <br>
+	<input type="hidden" id="saler" value="${auction.email }"> <br>
+	<br>
 
 	<div class="main_phw">
 
@@ -48,9 +41,9 @@
 
 		<div class="category_phw">
 			<label>${category.ca_name } <img alt=""
-				src="/Jungkosta/resources/auction/images/down.PNG">
+				src="/Jungkosta/resources/images/auction/down.PNG">
 			</label> &nbsp;&nbsp;>&nbsp;&nbsp; <label>${category.subca_name } <img
-				alt="" src="/Jungkosta/resources/auction/images/down.PNG">
+				alt="" src="/Jungkosta/resources/images/auction/down.PNG">
 			</label>
 		</div>
 
@@ -77,9 +70,9 @@
 
 					<div>
 						<img id="good_phw" alt=""
-							src="/Jungkosta/resources/auction/images/good.png"> &nbsp;
+							src="/Jungkosta/resources/images/auction/good.png"> &nbsp;
 						&nbsp; <strong>중코스타</strong> &nbsp;&nbsp;<img id="check_phw"
-							alt="" src="/Jungkosta/resources/auction/images/check.jpg">
+							alt="" src="/Jungkosta/resources/images/auction/check.jpg">
 						<br>
 						<div class="row">
 							<div class="col-md-offset-2 message_phw">
@@ -125,7 +118,7 @@
 
 							<div class="col-md-10">
 								<b id="bid_count_phw">${countBidding } 회 (총 판매수량 : 1개)</b>
-								&nbsp;&nbsp;&nbsp; <a id="auction_record" href="#">경매기록</a>
+								&nbsp;&nbsp;&nbsp; <a id="auction_record" href="${auction.sale_id}">경매기록</a>
 							</div>
 
 						</div>
@@ -205,7 +198,7 @@
 					<br /> <br />
 				</div>
 
-				<div class="tab-pane" id="comment">상품평</div>
+				<div class="tab-pane" id="comment"></div>
 
 				<div class="tab-pane" id="qAnda">
 					<div class="row">
@@ -231,14 +224,13 @@
 
 										<form id="reply_phw">
 											<input type="hidden" id="email" name="email"
-												value="aaa@aaaa.com"> <input type="hidden"
+												value="${email }"> <input type="hidden"
 												name="sale_id" value="${auction.sale_id }"> <input
 												type="hidden" name="qa_level" value="0">
 											<div class="qAnda form-group">
 
 
-												<textarea class="form-control" id="content" name="content"
-													placeholder="${login_no }"></textarea>
+												<textarea class="form-control" id="content" name="content"></textarea>
 											</div>
 											<div class="reply_button_si">
 												<button type="submit" class="btn btn-default"
@@ -265,7 +257,7 @@
 									</tr>
 								</thead>
 								<tbody id="listReply">
-					
+
 								</tbody>
 							</table>
 						</div>
@@ -284,15 +276,15 @@
 	<tr>
 		<td align='center'>{{index}}</td>
 		<td>
-			{{#if_phw qa_level}}
-			&nbsp;<img class='answer_icon' alt='icon' src='/Jungkosta/resources/auction/images/AnswerLine.gif'>
+			{{#if_phw info}}
+			&nbsp;<img class='answer_icon' alt='icon' src='/Jungkosta/resources/images/auction/AnswerLine.gif'>
 			{{/if_phw}}
 			{{content}}
 		</td>
 		<td align='center'>{{email}}</td>
 		<td align='center'>{{time}}</td>
 		<td align='center'>
-			{{#if_phw qa_level}}
+			{{#if_phw info}}
 			<button class="btn btn-primary">답변 달기</button>
 			{{/if_phw}}
 			<input type='hidden' name='sale_id' value='{{sale_id}}' >
@@ -306,7 +298,7 @@
 	<tr>
 		<td colspan='5'>
 			<form>
-				<input type='hidden' name='email' value='aaa@aaaa.com' >
+				<input type='hidden' name='email' value='{{email}}' >
 				<input type='hidden' name='sale_id' value='{{sale_id}}' >
 				<input type='hidden' name='qa_level' value='1' >
 				<input type='hidden' name='ref' value='{{ref}}' >

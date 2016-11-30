@@ -11,6 +11,7 @@
 <!-- Bootstrap -->
 <link href="/Jungkosta/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <link href="/Jungkosta/resources/bootstrap/css/kfonts2.css" rel="stylesheet">
+<script src="/Jungkosta/resources/bootstrap/js/bootstrap.min.js"></script>
 
 <!-- jQuery -->
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -50,7 +51,7 @@
 
 
 	<div class="container">
-
+<%-- 
 		    <div class="header_ktw">
          <jsp:include page="../module/header.jsp" />
       	</div>
@@ -59,7 +60,7 @@
 
 		    <div class="menu_ktw">
          <jsp:include page="../module/nav.jsp" />
-      </div>
+      </div> --%>
 
 		<br> <br>
 		<div class="main_ktw">
@@ -207,38 +208,43 @@
 
 				<h3 id="realTime_item_ktw">실시간 상품</h3>
 				&nbsp;&nbsp;
-
+<!-- 
 				<div class="btn-group radio_button" data-toggle="buttons">
-					<label class="btn btn-info"> <input type="radio"
+					<label class="btn btn-info radiobutton"> <input type="radio"
 						name="newRegister" id="option1"> 신규등록순
 					</label>
-					<label class="btn btn-info"> <input type="radio"
+					<label class="btn btn-info radiobutton"> <input type="radio"
 						name="lowPrice" id="option2"> 최저가격순
 					</label>
-				</div>
-
+				</div> -->
+				
+				<!--신규,최저-태완  -->
+			<fieldset id="radio_btn">
+					<label for="radio-1">신규 등록순</label> <input type="radio"
+						name="radio-1" class="button_radio" checked="checked" id="radio-1"
+						value="add_sort"> <label for="radio-2">최저 가격순</label> <input
+						type="radio" name="radio-1" class="button_radio" id="radio-2"
+						value="end_sort">
+				</fieldset>
 				<hr>
 
 				<div class="item_list_ktw">
 					<div class="row">
 						<c:forEach var="temp" items="${ list}">
-					 	 <a href="tradeList?subca_id=${temp.subca_id }">${temp.subca_id }</a>
-						 <%--<input type="hidden" name="subca_id" value="${temp.subca_id }"> --%>
-							<div class="col-md-2 col-md-offset-2 item_info_ktw"
+				
+							<div class="col-md-3 item_info_ktw"
 								onclick="sendDetail(${temp.sale_id})">
 								<img id="good_ktw" src="/Jungkosta/resources/images/trade/good.png" />&nbsp;
 								<span name="email">중코스타</span>&nbsp; 
 								<img id="check_ktw" src="/Jungkosta/resources/images/trade/check.jpg" />
 								<div class="item_img_ktw">
-									<c:if test="${temp.item_pic1!=null }">
-			<%-- 		<c:set var="head" value="${fn:substring(temp.item_pic, 0 ,fn:length(temp.item_pic)-4) }"></c:set>
-            <c:set var="pattern" value="${fn:substringAfter(temp.item_pic,head) }"></c:set> --%>
-										 <img src="displayFile?fileName=${temp.item_pic1}">
+								
+									<img id="item_main_img" src="displayFile?fileName=${temp.item_pic1}">
+									<c:if test="${temp.sale_status =='거래완료'}">
+									<img id="close_auc_ktw" alt="trade_close" src="/Jungkosta/resources/images/trade/auction_close.png">
 									</c:if>
+					
 								</div>
-								<!-- <div>
-                           <a>관심상품 담기</a> | <a>미리 보기</a>
-                        </div> -->
 								<br> <br> <b class="item_name_ktw">${temp.item_name }</b>
 								<br> <br> <span></span> &nbsp;&nbsp; <b><strong
 									class="product_price_ktw">${temp.item_cost } 원</strong></b><br>
@@ -259,9 +265,9 @@
 		</div>
 		<br> <br> <br>
 
-		<div class="footer_ktw">
+<%-- 		<div class="footer_ktw">
 			   <jsp:include page="../module/footer.jsp" />
-		</div>
+		</div> --%>
 
 
 	</div>

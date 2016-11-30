@@ -13,7 +13,7 @@
 	
 	<!-- selectPurchaseId_tw -->
 	<select id="selectPayment_id" resultType="Integer">
-		select max(payment_id) from purchase
+		select max(payment_id) from payment
 	</select>
 	
 

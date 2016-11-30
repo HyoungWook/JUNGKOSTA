@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+import jungkosta.commons.util.Encryption;
 import jungkosta.main.domain.MemberVO;
 import jungkosta.main.persistence.MemberDAO;
 
@@ -17,29 +18,23 @@ public class SignupServiceImpl implements SignupService {
 
 	@Override
 	public void signupProc(MemberVO vo, String pass) throws Exception {
-		char[] password = pass.toCharArray(); 
-
-		ArrayList<Long> num = new ArrayList<>();
-		String hexa = "";
+		Encryption encrypt = new Encryption();				//암호화 객체
 		
-		for(int i=0; i<password.length; i++){
-			
-			num.add((long)password[i]);
-			hexa = Long.toHexString(num.get(i)+1);
-
-		}
+		String password = encrypt.passEcnript(pass);
+		vo.setPassword(password);
 		
-		password = hexa.toCharArray();
-		for(int i=0; i<password.length; i++){
-			System.out.println(password[i] + 1);
-		}
-		
-		dao.createMember(vo);		
+		dao.createMember(vo);
 	}
 
 	@Override
 	public MemberVO selectMemberService(String email) throws Exception {
 		return dao.selectMember(email);
+	}
+
+	@Override
+	public void updateMember(MemberVO vo) throws Exception {
+		dao.updateMember(vo);
+		
 	}
 
 }

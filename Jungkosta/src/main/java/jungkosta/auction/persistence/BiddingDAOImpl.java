@@ -1,5 +1,7 @@
 package jungkosta.auction.persistence;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -34,6 +36,22 @@ public class BiddingDAOImpl implements BiddingDAO {
 	@Override
 	public int countBidding(int auction_id) throws Exception {
 		return sqlSession.selectOne(namespace + ".countBidding", auction_id);
+	}
+
+	@Override
+	public BiddingVO readBidding(int bidding_id) throws Exception {
+		
+		return sqlSession.selectOne(namespace + ".readBidding", bidding_id);
+	}
+
+	@Override
+	public List<BiddingVO> biddingList(int auction_id) throws Exception {
+		return sqlSession.selectList(namespace+".biddingList", auction_id);
+	}
+
+	@Override
+	public BiddingVO bid_person(int auction_id) throws Exception {
+		return sqlSession.selectOne(namespace + ".bid_person", auction_id);
 	}
 
 }

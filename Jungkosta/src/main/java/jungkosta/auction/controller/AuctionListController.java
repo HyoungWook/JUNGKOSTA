@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import jungkosta.auction.domain.AuctionVO;
+import jungkosta.auction.domain.BiddingVO;
 import jungkosta.auction.service.AuctionListService;
 import jungkosta.auction.service.AuctionService;
+import jungkosta.auction.service.BiddingService;
 
 @RestController
 public class AuctionListController {
@@ -36,15 +38,15 @@ public class AuctionListController {
 
 			List<AuctionVO> list = auctionListService.auctionList(sort);
 
-			entity = new ResponseEntity<>(list, HttpStatus.OK);
+			entity = new ResponseEntity<List<AuctionVO>>(list, HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();
-			entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+			entity = new ResponseEntity<List<AuctionVO>>(HttpStatus.BAD_REQUEST);
 		}
 
 		return entity;
 	}
-
+	
 	@RequestMapping(value = "/item_pic/{sale_id}", method = RequestMethod.GET)
 	public ResponseEntity<List<String>> item_picList(@PathVariable("sale_id") int sale_id) throws Exception {
 		ResponseEntity<List<String>> entity = null;
@@ -52,13 +54,14 @@ public class AuctionListController {
 		try {
 
 			List<String> item_list = auctionService.getThunbnail(sale_id);
-			entity = new ResponseEntity<>(item_list, HttpStatus.OK);
+			entity = new ResponseEntity<List<String>>(item_list, HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();
-			entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+			entity = new ResponseEntity<List<String>>(HttpStatus.BAD_REQUEST);
 		}
 
 		return entity;
 	}
+	
 
 }

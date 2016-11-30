@@ -19,7 +19,7 @@ public class SaleVO implements Serializable{
 	private String buy_info;
 	private Date sale_date;
 
-	private String email = "test2@test2.com";
+	private String email;
 	private int subca_id;
 	private char flag = '0';
 	private String sale_status;
@@ -27,12 +27,13 @@ public class SaleVO implements Serializable{
 	private String item_pic2;
 	private String item_pic3;
 	private String item_pic4;
+	private int view_cnt;
 	
 	public SaleVO(){}
 
 	public SaleVO(int sale_id, String item_name, int item_cost, Date buy_time, String item_status, String item_scratch,
 			String additional_info, String buy_info, Date sale_date, String email, int subca_id, char flag,
-			String sale_status, String item_pic1, String item_pic2, String item_pic3, String item_pic4) {
+			String sale_status, String item_pic1, String item_pic2, String item_pic3, String item_pic4, int view_cnt) {
 		super();
 		this.sale_id = sale_id;
 		this.item_name = item_name;
@@ -51,6 +52,7 @@ public class SaleVO implements Serializable{
 		this.item_pic2 = item_pic2;
 		this.item_pic3 = item_pic3;
 		this.item_pic4 = item_pic4;
+		this.view_cnt = view_cnt;
 	}
 
 	public int getSale_id() {
@@ -189,6 +191,14 @@ public class SaleVO implements Serializable{
 		this.item_pic4 = item_pic4;
 	}
 
+	public int getView_cnt() {
+		return view_cnt;
+	}
+
+	public void setView_cnt(int view_cnt) {
+		this.view_cnt = view_cnt;
+	}
+
 	@Override
 	public String toString() {
 		return "SaleVO [sale_id=" + sale_id + ", item_name=" + item_name + ", item_cost=" + item_cost + ", buy_time="
@@ -196,7 +206,7 @@ public class SaleVO implements Serializable{
 				+ additional_info + ", buy_info=" + buy_info + ", sale_date=" + sale_date + ", email=" + email
 				+ ", subca_id=" + subca_id + ", flag=" + flag + ", sale_status=" + sale_status + ", item_pic1="
 				+ item_pic1 + ", item_pic2=" + item_pic2 + ", item_pic3=" + item_pic3 + ", item_pic4=" + item_pic4
-				+ "]";
+				+ ", view_cnt=" + view_cnt + "]";
 	}
 
 }

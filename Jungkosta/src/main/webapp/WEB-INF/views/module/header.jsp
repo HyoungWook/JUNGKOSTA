@@ -102,8 +102,7 @@
 					<h4 class="modal-title" id="myModalLabel">LOGIN</h4>
 				</div>
 					<div class="modal-body">
-					<form action="../main/information_action.jsp" method="post">
-					<form action="../main/login_action.jsp" method="post">
+					<form action="memberInfoForm" method="post">
 						<div class="form-group">
 							<label for="email" class="col-xs-2 col-lg-2 control-label">이메일</label>
 							<div class="col-xs-10 col-lg-10">
@@ -210,9 +209,9 @@
 										<li role="presentation"><a href='#' role="menuitem" tabindex="-1">회원 탈퇴</a></li>
 										<li role="presentation" class="divider"></li>
 										<li role="presentation" class="dropdown-header">list</li>
-										<li role="presentation"><a href='#' role="menuitem" tabindex="-1">구매 내역</a></li>
-										<li role="presentation"><a href='#' role="menuitem" tabindex="-1">판매 내역</a></li>
-										<li role="presentation"><a href='#' role="menuitem" tabindex="-1">경매 내역</a></li>
+										<li role="presentation"><a href='/Jungkosta/purchaseList' role="menuitem" tabindex="-1">구매 내역</a></li>
+										<li role="presentation"><a href='/Jungkosta/saleList' role="menuitem" tabindex="-1">판매 내역</a></li>
+										<li role="presentation"><a href='/Jungkosta/aucList' role="menuitem" tabindex="-1">경매 내역</a></li>
 									</c:when>
 									<c:otherwise>
 										<li role="presentation" class="dropdown-header">Manage</li>

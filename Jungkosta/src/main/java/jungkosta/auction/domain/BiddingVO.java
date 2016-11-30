@@ -8,7 +8,7 @@ public class BiddingVO {
 	private int bidding_cost;
 	private Timestamp bidding_time;
 	private String email;
-	private int Auction_id;
+	private int auction_id;
 
 	public int getBidding_id() {
 		return bidding_id;
@@ -43,17 +43,17 @@ public class BiddingVO {
 	}
 
 	public int getAuction_id() {
-		return Auction_id;
+		return auction_id;
 	}
 
 	public void setAuction_id(int auction_id) {
-		Auction_id = auction_id;
+		this.auction_id = auction_id;
 	}
 
 	@Override
 	public String toString() {
 		return "BiddingVO [bidding_id=" + bidding_id + ", bidding_cost=" + bidding_cost + ", bidding_time="
-				+ bidding_time + ", email=" + email + ", Auction_id=" + Auction_id + "]";
+				+ bidding_time + ", email=" + email + ", auction_id=" + auction_id + "]";
 	}
 
 }

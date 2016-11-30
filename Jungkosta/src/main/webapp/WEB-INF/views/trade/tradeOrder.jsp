@@ -18,6 +18,7 @@
 
 <!-- Javascript -->
 <script type="text/javascript" src="/Jungkosta/resources/js/trade/itemorder.js"></script>
+<script type="text/javascript" src="/Jungkosta/resources/js/trade/itemOrderPoint.js"></script>
 
 <!-- Css -->
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -65,78 +66,6 @@ body {
 	z-index: 1;
 }
 </style>
-	
-<script type="text/javascript">
-$(function() {
-
-	$('#pointbtn_tw').on('click', function(event) {
-		var $point = $('.point_tw').val();//사용할 마일리지
-		var hp = $('#havingpoint').val(); //보유 마일리지
-		alert(hp);
-		alert($point);
-
-		if (hp >= $point) {
-			var result = hp - $point; //보유 마일리지 - 마일리지
-
-			alert('남은 마일리지 : ' + result);
-			$('#havingpoint').val(result);
-
-			$('#Havingpoint_tw').text(result); //나머지 마일리지
-
-		} else {
-			alert('보유 마일리지가 부족합니다.');
-			$('.point_tw').val("");
-			//$('#Havingpoint_tw').text(hp);
-		}
-		$('#cancelbtn_tw').on('click', function(event) {
-			alert(hp);
-			$('#Havingpoint_tw').text(hp);
-			$('#havingpoint').val(hp);
-
-		})
-	})
-});
-/* 	 $('.radio_btn').checkboxradio();
- $('.radio_btn').click(function(event){
- var btn_radio = $(this).val();
-
- // alert($itemPrice);
- alert(btn_radio);
-
- chargeType(this.id);
- });
-
- function chargeType(id) {
- var $itemPrice = ('#itemcost').val();
- var type = "";
- var persent;
-
-
- if (id == "radio-2") {
- persent = 0.01;
-
- } else {
- persent = 0.03;
-
- }
-
- var charge = ($itemPrice * persent);
- var total = $itemPrice + charge + 2500;
- var charge_str = addComma(charge);
- var total_str = addComma(total);
-
-
- $('#extraPriceRst_ktw').text(charge_str + " 원"); 
- $("#total_Price_ktw").text(total_str + " 원");
- $("#cost").val(total);
-
-
- }
-
- function addComma(data_value) {
- return Number(data_value).toLocaleString('en');
- } */
-</script>
 	
 <title>Insert title here</title>
 
@@ -290,7 +219,7 @@ function sample4_execDaumPostcode() {
 
 
 
-				<input type="hidden" value="500" id="havingpoint">
+				<input type="hidden" value="${member.point }" id="havingpoint">
 			</div>
 			<br>
 		</div>
@@ -308,9 +237,8 @@ function sample4_execDaumPostcode() {
 					<div id="item_num_name_ktw">${register.sale_id }/
 						${register.item_name }</div>
 				</div>
-				<input type="hidden" name="sale_id" value="${register.sale_id }">
 				<br>
-
+			<input type="hidden" name="sale_id" value="${register.sale_id }">
 			</div>
 			<br> <br> <br>
 			<hr>
@@ -322,7 +250,7 @@ function sample4_execDaumPostcode() {
 					<br>
 					<h4>마일리지</h4>
 					<br>
-					<h5>보유 마일리지</h5>
+					<h5>현재 마일리지</h5>
 					<br> <br>
 					<h4>배송료</h4>
 					<br> <br>
@@ -345,23 +273,25 @@ function sample4_execDaumPostcode() {
 					<div class="row">
 						<div class="col-md-5 form_point">
 							<h4>
-								<input type="text" size="3" class="form-control point_tw"
-									name="point">
-
+								<input type="text" size="4" class="form-control point_tw"
+									name="use_point">
 							</h4>
 						</div>
 						<div class="col-md-7">
-							<!-- 	<h4>
-								<button type="button" class="btn btn-primary"
+							 	<h4>
+							 	<button type="button" class="btn btn-primary"
 									name="mileage_button_ktw" id="pointbtn_tw">사용</button>
-								<button type="button" class="btn btn-primary"
+							 	
+						<!-- 	<div class="col-md-5 col-md-offset-1">
+							 	<button type="button" class="btn btn-primary"
 									name="mileage_button_ktw" id="cancelbtn_tw">취소</button>
-							</h4> -->
+							 	</div> -->		
+							</h4>
 						</div>
 						<br> <br> <br>
 					</div>
 					<h5 id="Havingpoint_tw">
-						<fmt:formatNumber value="100" pattern="#,###" />
+						<fmt:formatNumber value="${member.point }" pattern="#,###" />
 						원
 					</h5>
 					<br> <br>
@@ -371,8 +301,8 @@ function sample4_execDaumPostcode() {
 						<input type="hidden" name="delivery_cost" value="${deliveryPrice }">
 					</h4>
 					<input type="hidden" name="delivery_cost"
-						value="${deliveryPrice}"> <input type="hidden"
-						name="email" value="xodhks77@naver.com"> <br> <br>
+						value="${deliveryPrice}"> <input type="hidden" id="member_email"
+						name="email" value="${member.email }"> <br> <br>
 
 
 					<%-- <h4 id="total_Price_ktw">${deliveryPrice + register.item_cost}원</h4> --%>
@@ -387,12 +317,10 @@ function sample4_execDaumPostcode() {
 					</div>
 					<br>
 					<hr>	
-
-					<button type="submit" class="btn btn-primary btn-lg">주문하기</button>
+					<input type="hidden" id="resultPoint" name="point2">
+					<button type="submit" class="btn btn-primary btn-lg ktw">주문하기</button>
 					<a href="/Jungkosta/trade/tradeList?subca_id=${register.subca_id }"><button type="button"
 							class="btn btn-danger btn-lg" id="signbutton_khw">취소</button></a>
-				<!-- 	<button type="button" class="btn btn-primary btn-lg payProc"
-						data-target="#myModal" data-toggle="modal" id="orderButton_ktw">주문하기</button> -->
 					
 
 

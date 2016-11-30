@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <title>입찰 페이지</title>
 
@@ -42,6 +42,7 @@
 					$("#bidding_cost").val("");
 					return false;
 				}
+
 			}
 
 		});
@@ -52,9 +53,11 @@
 
 
 <div class="container">
-	<form action="bid_Proc.jsp" method="post">
+	<form action="/Jungkosta/auction/bidRegisterForm" method="post">
+		<input type="hidden" name="auction_id" value="${auction.auction_id }">
 		<input type="hidden" name="email" value="${email }"> <input
-			type="hidden" name="auction_id" value="${auction.auction_id }">
+			type="hidden" name="sale_id" value="${auction.sale_id }">
+
 		<table class="table table-bordered">
 			<p>입찰 상품</p>
 			<tbody>
@@ -108,15 +111,3 @@
 		</div>
 	</form>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1,6 +1,16 @@
 .item_ktw {
-   width: 400px;
+   padding-top: 10px;
+   position: relative;
+   width: 100%;
    height: 400px;
+}
+
+#close_auc_ktw {
+	position: absolute;
+	top: 10px;
+	left: 0;
+	width: 100%;
+	height: 400px;
 }
 
 #good_ktw {
