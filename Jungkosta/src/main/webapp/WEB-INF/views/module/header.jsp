@@ -20,8 +20,11 @@
 #header {
 	margin-top: 4.0em;
 }
-
-.a_header {
+#logo_ws{
+	text-decoration: none;
+	color:black;
+}
+.a_header{
 	text-decoration: none;
 	color: gray;
 }
@@ -178,7 +181,7 @@
 				<div class="col-md-9">
 					<form role="form" class="form-inline">
 						<div class="form-group">
-							<label for="Name"><span id="span_header">JUNGKOSTA</span></label>
+							<label for="Name"><span id="span_header"><a id="logo_ws" href="/Jungkosta/">JUNGKOSTA</a></span></label>
 							<input type="text" class="form-control" placeholder="검색">
 
 							<button type="submit" class="btn btn-primary"

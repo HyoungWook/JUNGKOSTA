@@ -68,124 +68,124 @@
       <div id="nav">
          <div class="row">
            <div class="col-md-12">
-					<a href="#" class="a_nav" data-toggle="modal"
-							data-target="#sale_Modal">판매하기</a>
-					<a href="/Jungkosta/boardList/1" class="a_nav">커뮤니티</a>
-					<a href="../main/main.jsp" class="a_nav">JUNGKOSTA 홈</a>
-					<a href="../trade/itemlist.jsp?subca_id=8" class="a_nav">스마트폰</a>
-					<a href="../trade/itemlist.jsp?subca_id=2" class="a_nav">태플릿 PC</a>
-					<a href="../trade/itemlist.jsp?subca_id=1" class="a_nav">노트북/PC</a>
-					<a href="../trade/itemlist.jsp?subca_id=9" class="a_nav">카메라</a>
-					<a href="/Jungkosta/auction/auctionList" class="a_nav">경매</a>
-					<a href="#" class="a_nav" data-toggle="collapse" data-target="#more_nav_ws">더보기▽</a>
-					<div id="more_nav_ws" class="collapse">
-          				<div class="row">
-          					<div class="col-md-5 category_nav_ws">
-          						<div class="row">
-          							<div class="col-md-12 title_nav_ws">
-          								전자제품
-          							</div>
-          						</div>
-          						<div class="row">
-          							<div class="col-md-6">
-          								<div class="content_nav_ws">
-          									<a href="../trade/itemlist.jsp?subca_id=8" class="content_link_nav_ws">스마트폰</a>
-          								</div>
-          								<div class="content_nav_ws">
-          									<a href="#" class="content_link_nav_ws">컴퓨터</a>
-          								</div>
-          								<div class="content_nav_ws">
-          									<a href="../trade/itemlist.jsp?subca_id=1" class="content_link_nav_ws">노트북</a>
-          								</div>
-          								<div class="content_nav_ws">
-          									<a href="../trade/itemlist.jsp?subca_id=2" class="content_link_nav_ws">테블릿</a>
-          								</div>
-          								<div class="content_nav_ws">
-          									<a href="../trade/itemlist.jsp?subca_id=3" class="content_link_nav_ws">노트북/pc 주변기기</a>
-          								</div>
-          								<div class="content_nav_ws">
-          									<a href="../trade/itemlist.jsp?subca_id=9" class="content_link_nav_ws">카메라</a>
-          								</div>
-          								<div class="content_nav_ws">
-          									<a href="#" class="content_link_nav_ws">음향 기기</a>
-          								</div>
-          								<div class="content_nav_ws">
-          									<a href="#" class="content_link_nav_ws">웨어러블</a>
-          								</div>
-          								<div class="content_nav_ws">
-          									<a href="#" class="content_link_nav_ws">영상가전</a>
-          								</div>
-          							</div>
-          							<div class="col-md-6">
-          								<div class="content_nav_ws">
-          									<a href="#" class="content_link_nav_ws">게임/타이틀</a>
-          								</div>
-          								<div class="content_nav_ws">
-          									<a href="#" class="content_link_nav_ws">자동차 기기</a>
-          								</div>
-          								<div class="content_nav_ws">
-          									<a href="#" class="content_link_nav_ws">기타 전자 기기</a>
-          								</div>
-          							</div>
-          						</div>
-          					</div>
-          					<div class="col-md-3 category_nav_ws">
-          						<div class="row">
-          							<div class="col-md-12 title_nav_ws">
-          								여행/문화
-          							</div>
-          						</div>
-          						<div class="row">
-          							<div class="col-md-12">
-          								<div class="content_nav_ws">
-          									<a href="#" class="content_link_nav_ws">지류 카드 상품권</a>
-          								</div>
-          								<div class="content_nav_ws">
-          									<a href="#" class="content_link_nav_ws">공연/티켓</a>
-          								</div>
-          								<div class="content_nav_ws">
-          									<a href="#" class="content_link_nav_ws">모바일쿠폰/상품권</a>
-          								</div>
-          								<div class="content_nav_ws">
-          									<a href="#" class="content_link_nav_ws">여행/항공권</a>
-          								</div>
-          							</div>
-          						</div>
-          					</div>
-          					<div class="col-md-4 category_nav_ws" id="last_category_ws">
-          						<div class="row">
-          							<div class="col-md-12 title_nav_ws">
-          								해외 명품
-          							</div>
-          						</div>
-          						<div class="row">
-          							<div class="col-md-12">
-          								<div class="content_nav_ws">
-          									<a href="#" class="content_link_nav_ws">명품 가방</a>
-          								</div>
-          								<div class="content_nav_ws">
-          									<a href="#" class="content_link_nav_ws">명품 지갑</a>
-          								</div>
-          								<div class="content_nav_ws">
-          									<a href="#" class="content_link_nav_ws">명품 시계</a>
-          								</div>
-          								<div class="content_nav_ws">
-          									<a href="#" class="content_link_nav_ws">명품 신발</a>
-          								</div>
-          								<div class="content_nav_ws">
-          									<a href="#" class="content_link_nav_ws">명품 악세사리</a>
-          								</div>
-          							</div>
-          						</div>
-          					</div>
-          				</div>
-      				</div>
+               <a href="#" class="a_nav" data-toggle="modal"
+                     data-target="#sale_Modal">판매하기</a>
+               <a href="/Jungkosta/boardList/1" class="a_nav">커뮤니티</a>
+               <a href="/Jungkosta" class="a_nav">JUNGKOSTA 홈</a>
+               <a href="/Jungkosta/trade/tradeList?subca_id=8" class="a_nav">스마트폰</a>
+               <a href="/Jungkosta/trade/tradeList?subca_id=2" class="a_nav">태플릿 PC</a>
+               <a href="/Jungkosta/trade/tradeList?subca_id=1" class="a_nav">노트북/PC</a>
+               <a href="/Jungkosta/trade/tradeList?subca_id=9" class="a_nav">카메라</a>
+               <a href="/Jungkosta/auction/Auction_main_phw.jsp" class="a_nav">경매</a>
+               <a href="#" class="a_nav" data-toggle="collapse" data-target="#more_nav_ws">더보기▽</a>
+               <div id="more_nav_ws" class="collapse">
+                      <div class="row">
+                         <div class="col-md-5 category_nav_ws">
+                            <div class="row">
+                               <div class="col-md-12 title_nav_ws">
+                                  전자제품
+                               </div>
+                            </div>
+                            <div class="row">
+                               <div class="col-md-6">
+                                  <div class="content_nav_ws">
+                                     <a href="/Jungkosta/trade/tradeList?subca_id=8" class="content_link_nav_ws">스마트폰</a>
+                                  </div>
+                                  <div class="content_nav_ws">
+                                     <a href="/Jungkosta/trade/tradeList?subca_id=3" class="content_link_nav_ws">컴퓨터</a>
+                                  </div>
+                                  <div class="content_nav_ws">
+                                     <a href="/Jungkosta/trade/tradeList?subca_id=1" class="content_link_nav_ws">노트북</a>
+                                  </div>
+                                  <div class="content_nav_ws">
+                                     <a href="/Jungkosta/trade/tradeList?subca_id=2" class="content_link_nav_ws">테블릿</a>
+                                  </div>
+                                  <div class="content_nav_ws">
+                                     <a href="/Jungkosta/trade/tradeList?subca_id=3" class="content_link_nav_ws">노트북/pc 주변기기</a>
+                                  </div>
+                                  <div class="content_nav_ws">
+                                     <a href="/Jungkosta/trade/tradeList?subca_id=9" class="content_link_nav_ws">카메라</a>
+                                  </div>
+                                  <div class="content_nav_ws">
+                                     <a href="/Jungkosta/trade/tradeList?subca_id=12" class="content_link_nav_ws">음향 기기</a>
+                                  </div>
+                                  <div class="content_nav_ws">
+                                     <a href="/Jungkosta/trade/tradeList?subca_id=12" class="content_link_nav_ws">웨어러블</a>
+                                  </div>
+                                  <div class="content_nav_ws">
+                                     <a href="#" class="content_link_nav_ws">영상가전</a>
+                                  </div>
+                               </div>
+                               <div class="col-md-6">
+                                  <div class="content_nav_ws">
+                                     <a href="/Jungkosta/trade/tradeList?subca_id=10" class="content_link_nav_ws">게임/타이틀</a>
+                                  </div>
+                                  <div class="content_nav_ws">
+                                     <a href="/Jungkosta/trade/tradeList?subca_id=11" class="content_link_nav_ws">자동차 기기</a>
+                                  </div>
+                                  <div class="content_nav_ws">
+                                     <a href="/Jungkosta/trade/tradeList?subca_id=12" class="content_link_nav_ws">기타 전자 기기</a>
+                                  </div>
+                               </div>
+                            </div>
+                         </div>
+                         <div class="col-md-3 category_nav_ws">
+                            <div class="row">
+                               <div class="col-md-12 title_nav_ws">
+                                  여행/문화
+                               </div>
+                            </div>
+                            <div class="row">
+                               <div class="col-md-12">
+                                  <div class="content_nav_ws">
+                                     <a href="#" class="content_link_nav_ws">지류 카드 상품권</a>
+                                  </div>
+                                  <div class="content_nav_ws">
+                                     <a href="#" class="content_link_nav_ws">공연/티켓</a>
+                                  </div>
+                                  <div class="content_nav_ws">
+                                     <a href="#" class="content_link_nav_ws">모바일쿠폰/상품권</a>
+                                  </div>
+                                  <div class="content_nav_ws">
+                                     <a href="#" class="content_link_nav_ws">여행/항공권</a>
+                                  </div>
+                               </div>
+                            </div>
+                         </div>
+                         <div class="col-md-4 category_nav_ws" id="last_category_ws">
+                            <div class="row">
+                               <div class="col-md-12 title_nav_ws">
+                                  해외 명품
+                               </div>
+                            </div>
+                            <div class="row">
+                               <div class="col-md-12">
+                                  <div class="content_nav_ws">
+                                     <a href="#" class="content_link_nav_ws">명품 가방</a>
+                                  </div>
+                                  <div class="content_nav_ws">
+                                     <a href="#" class="content_link_nav_ws">명품 지갑</a>
+                                  </div>
+                                  <div class="content_nav_ws">
+                                     <a href="#" class="content_link_nav_ws">명품 시계</a>
+                                  </div>
+                                  <div class="content_nav_ws">
+                                     <a href="#" class="content_link_nav_ws">명품 신발</a>
+                                  </div>
+                                  <div class="content_nav_ws">
+                                     <a href="#" class="content_link_nav_ws">명품 악세사리</a>
+                                  </div>
+                               </div>
+                            </div>
+                         </div>
+                      </div>
+                  </div>
             </div>
          </div>
       </div>
    </div>
-	
-		<%-- <div class="modal fade" id="sale_Modal" tabindex="-1" role="dialog"
+   
+      <%-- <div class="modal fade" id="sale_Modal" tabindex="-1" role="dialog"
                aria-labelledby="saleModalLabel" aria-hidden="true">
                <div class="modal-dialog">
                   <div class="modal-content">
