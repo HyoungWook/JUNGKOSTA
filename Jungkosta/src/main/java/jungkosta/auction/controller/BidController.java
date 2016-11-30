@@ -27,7 +27,7 @@ public class BidController {
 
 	public BidController() {
 
-		new BidThread().start();
+		//new BidThread().start();
 
 	}
 

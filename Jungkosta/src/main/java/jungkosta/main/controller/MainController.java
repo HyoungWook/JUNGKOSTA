@@ -70,5 +70,14 @@ public class MainController {
 		return "redirect:/";
 	}
 	
+	@RequestMapping(value="/clientTest", method=RequestMethod.GET)
+	public void clientTest(){
+		
+	}
+	@RequestMapping(value="/clientTest2", method=RequestMethod.GET)
+	public void clientTest2(){
+		
+	}
+	
 }
 

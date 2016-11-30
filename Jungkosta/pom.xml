@@ -228,6 +228,24 @@
          <version>2.4</version>
          <classifier>jdk15</classifier>
       </dependency>
+      
+      <!-- 2016/11/28 형욱 웹소켓 추가 -->
+      <dependency>
+    		<groupId>javax.websocket</groupId>
+    		<artifactId>javax.websocket-api</artifactId>
+    		<version>1.0</version>
+	  </dependency>
+	  <dependency>
+    		<groupId>javax.websocket</groupId>
+    		<artifactId>javax.websocket-client-api</artifactId>
+    		<version>1.0</version>
+		</dependency>
+		
+	<dependency>
+    	<groupId>javax.json</groupId>
+    	<artifactId>javax.json-api</artifactId>
+    	<version>1.0</version>
+	</dependency>
    </dependencies>
     <build>
         <plugins>

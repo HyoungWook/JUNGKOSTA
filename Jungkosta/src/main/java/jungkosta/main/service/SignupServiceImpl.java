@@ -18,7 +18,7 @@ public class SignupServiceImpl implements SignupService {
 
 	@Override
 	public void signupProc(MemberVO vo, String pass) throws Exception {
-		Encryption encrypt = new Encryption();				//암호화 객체
+		Encryption encrypt = new Encryption();				//암호화 객체	
 		
 		String password = encrypt.passEcnript(pass);
 		vo.setPassword(password);
