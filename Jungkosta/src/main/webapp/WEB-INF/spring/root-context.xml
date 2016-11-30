@@ -70,8 +70,9 @@
 	<context:component-scan base-package="jungkosta.trade.persistence"/>
 	
 	<!-- 옥션 service, DAO -->
-	<context:component-scan base-package="jungkosta.auction.persistence" />
 	<context:component-scan base-package="jungkosta.auction.service" />
+	<context:component-scan base-package="jungkosta.auction.persistence" />
+	
 	<!-- 2016 11 23 우성 인터셉터 추가 -->
 	<mvc:interceptors>
 		<mvc:interceptor>
@@ -80,7 +81,6 @@
 			<mvc:mapping path="/purchaseList"/>
 			<mvc:mapping path="/saleList"/>
 			<mvc:mapping path="/aucList"/>
-			<mvc:mapping path="/auction/*"/>
 			<bean class="jungkosta.commons.interceptor.LoginInterceptor"/>
 		</mvc:interceptor>
 		

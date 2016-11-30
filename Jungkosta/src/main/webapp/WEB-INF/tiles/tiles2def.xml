@@ -78,27 +78,27 @@
 	<!-- 우성 끝 -->
 	
 	<!-- start 현우 auction view 추가 -->
-	<definition name="auctionList" extends="base_layout">
-		<put-attribute name="body" value="/WEB-INF/views/auction/auctionList.jsp"></put-attribute>
-	</definition>
-	
-	<definition name="auctionDetail" extends="base_layout">
-		<put-attribute name="body" value="/WEB-INF/views/auction/auctionDetail.jsp"></put-attribute>
-	</definition>
-	
-	<definition name="auctionRegisterForm" extends="base_layout">
-		<put-attribute name="body" value="/WEB-INF/views/auction/auctionRegisterForm.jsp"></put-attribute>
-	</definition>
-	
-	<definition name="auctionPurchaseForm" extends="base_layout">
-		<put-attribute name="body" value="/WEB-INF/views/auction/auctionPurchaseForm.jsp"></put-attribute>
-	</definition>
-	
-	<definition name="auctionPurchase" extends="base_layout">
-		<put-attribute name="body" value="/WEB-INF/views/auction/auctionPurchase.jsp"></put-attribute>
-	</definition>
-	
-	<!-- end 현우 auction view 추가 -->
+   <definition name="auctionList" extends="base_layout">
+      <put-attribute name="body" value="/WEB-INF/views/auction/auctionList.jsp"></put-attribute>
+   </definition>
+   
+   <definition name="auctionDetail" extends="base_layout">
+      <put-attribute name="body" value="/WEB-INF/views/auction/auctionDetail.jsp"></put-attribute>
+   </definition>
+   
+   <definition name="auctionRegisterForm" extends="base_layout">
+      <put-attribute name="body" value="/WEB-INF/views/auction/auctionRegisterForm.jsp"></put-attribute>
+   </definition>
+   
+   <definition name="auctionPurchaseForm" extends="base_layout">
+      <put-attribute name="body" value="/WEB-INF/views/auction/auctionPurchaseForm.jsp"></put-attribute>
+   </definition>
+   
+   <definition name="auctionPurchase" extends="base_layout">
+      <put-attribute name="body" value="/WEB-INF/views/auction/auctionPurchase.jsp"></put-attribute>
+   </definition>
+   
+   <!-- end 현우 auction view 추가 -->
 	
 	<!-- start 태완 trade view 추가 -->
    <definition name="tradeDetail" extends="base_layout">

@@ -81,6 +81,5 @@
 		update sale set item_cost = #{item_cost}
 				where sale_id=#{sale_id}
 	</update>
-	
 
 </mapper>

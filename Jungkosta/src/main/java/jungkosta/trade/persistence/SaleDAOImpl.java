@@ -32,6 +32,7 @@ public class SaleDAOImpl implements SaleDAO {
 	@Override
 	//물품 찾기_tw
 	public SaleVO searchSale(int sale_id)throws Exception {
+		
 		return sqlSession.selectOne(namespace+".searchSale", sale_id);
 	}
 

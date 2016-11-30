@@ -32,7 +32,6 @@ public class AuctionDetailController {
 
 	@RequestMapping(value = "/auctionDetail", method = RequestMethod.GET)
 	public void auctionDetail(@RequestParam("sale_id") int sale_id, Model model) throws Exception {
-
 		AuctionVO auction = auctionService.read(sale_id);
 		
 		CategoryVO category = auctionService.selectCategory(auction.getSubca_id());

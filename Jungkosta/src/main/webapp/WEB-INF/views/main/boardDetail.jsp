@@ -11,22 +11,6 @@
 
 <title>Insert title here</title>
 
-<%
-	
-	/* int board_id = Integer.parseInt(request.getParameter("board_id"));
-	
-	BoardService_ws service =  BoardService_ws.getInstance();
-	
-	service.hit_ws(board_id);
-	
-	pageContext.setAttribute("board", service.detail_Board_ws(board_id));
-	
-	ArrayList<ReplyList_ws> list = service.reply_List_ws(board_id);	
-	
-	pageContext.setAttribute("list", list); */
-	
-	
-%>
 <style type="text/css">
 
 .detail_ws{

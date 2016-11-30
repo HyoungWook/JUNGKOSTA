@@ -54,6 +54,6 @@
 	 select distinct ca_name from SUB_CATEGORY, CATEGORY 
  	where SUB_CATEGORY.CA_ID = CATEGORY.CA_ID and 
  	category.ca_id =#{ca_id} </select>
-
+	
 
 </mapper>
