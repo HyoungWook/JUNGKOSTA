@@ -76,13 +76,13 @@
 					<a href="#" class="a_nav" data-toggle="modal"
 						data-target="#sale_Modal">판매하기</a> <a
 						href="/Jungkosta/boardList/1" class="a_nav">커뮤니티</a> <a
-						href="../main/main.jsp" class="a_nav">JUNGKOSTA 홈</a> <a
-						href="../trade/itemlist.jsp?subca_id=8" class="a_nav">스마트폰</a> <a
-						href="../trade/itemlist.jsp?subca_id=2" class="a_nav">태플릿 PC</a> <a
-						href="../trade/itemlist.jsp?subca_id=1" class="a_nav">노트북/PC</a> <a
-						href="../trade/itemlist.jsp?subca_id=9" class="a_nav">카메라</a> <a
-						href="/Jungkosta/auction/auctionList" class="a_nav">경매</a> <a
-						href="#" class="a_nav" data-toggle="collapse"
+						href="/Jungkosta" class="a_nav">JUNGKOSTA 홈</a> <a
+						href="/Jungkosta/trade/tradeList?subca_id=8" class="a_nav">스마트폰</a>
+					<a href="/Jungkosta/trade/tradeList?subca_id=2" class="a_nav">태플릿
+						PC</a> <a href="/Jungkosta/trade/tradeList?subca_id=1" class="a_nav">노트북/PC</a>
+					<a href="/Jungkosta/trade/tradeList?subca_id=9" class="a_nav">카메라</a>
+					<a href="/Jungkosta/auction/auctionList" class="a_nav">경매</a>
+					<a href="#" class="a_nav" data-toggle="collapse"
 						data-target="#more_nav_ws">더보기▽</a>
 					<div id="more_nav_ws" class="collapse">
 						<div class="row">
@@ -93,33 +93,36 @@
 								<div class="row">
 									<div class="col-md-6">
 										<div class="content_nav_ws">
-											<a href="../trade/itemlist.jsp?subca_id=8"
+											<a href="/Jungkosta/trade/tradeList?subca_id=8"
 												class="content_link_nav_ws">스마트폰</a>
 										</div>
 										<div class="content_nav_ws">
-											<a href="#" class="content_link_nav_ws">컴퓨터</a>
+											<a href="/Jungkosta/trade/tradeList?subca_id=3"
+												class="content_link_nav_ws">컴퓨터</a>
 										</div>
 										<div class="content_nav_ws">
-											<a href="../trade/itemlist.jsp?subca_id=1"
+											<a href="/Jungkosta/trade/tradeList?subca_id=1"
 												class="content_link_nav_ws">노트북</a>
 										</div>
 										<div class="content_nav_ws">
-											<a href="../trade/itemlist.jsp?subca_id=2"
+											<a href="/Jungkosta/trade/tradeList?subca_id=2"
 												class="content_link_nav_ws">테블릿</a>
 										</div>
 										<div class="content_nav_ws">
-											<a href="../trade/itemlist.jsp?subca_id=3"
+											<a href="/Jungkosta/trade/tradeList?subca_id=3"
 												class="content_link_nav_ws">노트북/pc 주변기기</a>
 										</div>
 										<div class="content_nav_ws">
-											<a href="../trade/itemlist.jsp?subca_id=9"
+											<a href="/Jungkosta/trade/tradeList?subca_id=9"
 												class="content_link_nav_ws">카메라</a>
 										</div>
 										<div class="content_nav_ws">
-											<a href="#" class="content_link_nav_ws">음향 기기</a>
+											<a href="/Jungkosta/trade/tradeList?subca_id=12"
+												class="content_link_nav_ws">음향 기기</a>
 										</div>
 										<div class="content_nav_ws">
-											<a href="#" class="content_link_nav_ws">웨어러블</a>
+											<a href="/Jungkosta/trade/tradeList?subca_id=12"
+												class="content_link_nav_ws">웨어러블</a>
 										</div>
 										<div class="content_nav_ws">
 											<a href="#" class="content_link_nav_ws">영상가전</a>
@@ -127,13 +130,16 @@
 									</div>
 									<div class="col-md-6">
 										<div class="content_nav_ws">
-											<a href="#" class="content_link_nav_ws">게임/타이틀</a>
+											<a href="/Jungkosta/trade/tradeList?subca_id=10"
+												class="content_link_nav_ws">게임/타이틀</a>
 										</div>
 										<div class="content_nav_ws">
-											<a href="#" class="content_link_nav_ws">자동차 기기</a>
+											<a href="/Jungkosta/trade/tradeList?subca_id=11"
+												class="content_link_nav_ws">자동차 기기</a>
 										</div>
 										<div class="content_nav_ws">
-											<a href="#" class="content_link_nav_ws">기타 전자 기기</a>
+											<a href="/Jungkosta/trade/tradeList?subca_id=12"
+												class="content_link_nav_ws">기타 전자 기기</a>
 										</div>
 									</div>
 								</div>
@@ -190,27 +196,29 @@
 		</div>
 	</div>
 
-	<!-- 현우 수정 부분(판매등록 모달) -->
-	<div class="modal fade" id="sale_Modal">
+
+	<!-- start 현우 판매등록 모달 -->
+	<div class="modal fade" id="sale_Modal" tabindex="-1" role="dialog"
+		aria-labelledby="saleModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<button type="button" class="close">
-						<span class="sr-only">Close</span>
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
 					</button>
 					<h4 class="modal-title" id="saleModalLabel">판매 등록</h4>
 				</div>
-				<div class="modal-body" align="center"
-					style="vertical-align: middle;">
-
-					<a href="#" class="btn btn-default">일반 판매 등록</a> <br> <br>
+				<div class="modal-body" align="center">
+					<a href="#" class="btn btn-default">일반 상품 등록</a> <br> <br>
 					<a href="/Jungkosta/auction/auctionRegisterForm"
-						class="btn btn-default">경매 물품 등록</a>
+						class="btn btn-default">경매 상품 등록</a>
 				</div>
 			</div>
+
 		</div>
+
 	</div>
-	<!-- 현우 수정 부분(판매등록 모달) -->
+	<!-- end 현우 판매등록 모달 -->
 
 </body>
 </html>

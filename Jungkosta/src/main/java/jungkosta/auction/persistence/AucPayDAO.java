@@ -24,5 +24,7 @@ public interface AucPayDAO {
 	public void update_del_sale(Map<String, Integer> map) throws Exception;
 	
 	public void updateAuction_status(int auction_id) throws Exception;
+	
+	public void plusPoint(Map<String, Object> map) throws Exception;
 
 }

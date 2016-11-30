@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
-	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
-	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.1.xsd
+	xmlns:websocket="http://www.springframework.org/schema/websocket"
+	xsi:schemaLocation="http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket-4.3.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.1.xsd
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
 		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
@@ -18,10 +22,10 @@
 
 	 <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
    	
-   <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+   <bean id="transactionManager" 
+   class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
       <property name="dataSource" ref="dataSource"/>
    </bean>
-   
    <tx:annotation-driven/>
       
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
@@ -70,19 +74,21 @@
 	<context:component-scan base-package="jungkosta.trade.persistence"/>
 	
 	<!-- 옥션 service, DAO -->
-	<context:component-scan base-package="jungkosta.auction.persistence" />
 	<context:component-scan base-package="jungkosta.auction.service" />
+	<context:component-scan base-package="jungkosta.auction.persistence" />
+	
 	<!-- 2016 11 23 우성 인터셉터 추가 -->
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/messageSendForm"/>
 			<mvc:mapping path="/messageReceiveForm"/>
 			<mvc:mapping path="/purchaseList"/>
-			<mvc:mapping path="/auction/auctionRegisterForm"/>
 			<mvc:mapping path="/saleList"/>
 			<mvc:mapping path="/aucList"/>
 			<bean class="jungkosta.commons.interceptor.LoginInterceptor"/>
 		</mvc:interceptor>
+		
+		
 		
 		<mvc:interceptor>
 			<mvc:mapping path="/customSearchForm"/>
@@ -91,8 +97,8 @@
 			<bean class="jungkosta.commons.interceptor.ManagerInterceptor"/>
 		</mvc:interceptor>
 	</mvc:interceptors>
-	
 	<!-- 종료 -->
+	
 	
 </beans>
 

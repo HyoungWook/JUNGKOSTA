@@ -16,4 +16,8 @@ public interface SaleDAO {
 	public String searchTotalCategory(int subca_id)throws Exception;
 
 	public List<SaleVO> listSalesub(Integer subca_id)throws Exception;
+	
+	public void updateSaleStatusFirst(SaleVO salevo)throws Exception;
+
+	public void updateReadCount(int sale_id)throws Exception;
 }

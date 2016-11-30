@@ -1,82 +1,117 @@
 .item_ktw {
-	width: 400px;
+   padding-top: 10px;
+   position: relative;
+   width: 100%;
+   height: 400px;
+}
+
+#close_auc_ktw {
+	position: absolute;
+	top: 10px;
+	left: 0;
+	width: 100%;
 	height: 400px;
 }
 
 #good_ktw {
-	width: 30px;
-	height: 30px;
+   width: 30px;
+   height: 30px;
 }
 
 #check_ktw {
-	width: 30px;
-	height: 30px;
+   width: 30px;
+   height: 30px;
 }
 
 .right_ktw {
-	width: 40%;
-	height: 100%;
-	margin-left: 150px;
+   width: 40%;
+   height: 100%;
+   margin-left: 150px;
 }
 
 .nav_ktw {
-	width: 30px;
-	height: 30px;
+   width: 30px;
+   height: 30px;
 }
 
 #prev_ktw>img {
-	width: 30px;
-	height: 30px;
+   width: 30px;
+   height: 30px;
 }
 
 #nav_dot_ktw>img {
-	width: 15px;
-	height: 15px;
+   width: 15px;
+   height: 15px;
 }
 
 #next_ktw>img {
-	width: 30px;
-	height: 30px;
+   width: 30px;
+   height: 30px;
 }
 
 .li_active li {
-	width: 33%;
-	position: center;
+   width: 33%;
+   position: center;
 }
 
 .item_info_Quest_ktw {
-	font-weight: bold;
+   font-weight: bold;
 }
 
 .sellerReply_si {
-	margin-left: 60px;
-	margin-top: 2px;
+   margin-left: 60px;
+   margin-top: 2px;
 }
 
 .panel-default {
-	width: 1000px;
-	margin-left: 70px;
+   width: 1000px;
+   margin-left: 70px;
 }
 
 .reply_table_si {
-	margin-bottom: 50px;
-	margin-left: 30px;
-	width: 1100px;
+   margin-bottom: 50px;
+   margin-left: 30px;
+   width: 1100px;
 }
 
 #reply_title_si {
-	font-family: "Helvetica Neue", Helvetica, Arial, "맑은 고딕",
-		"Malgun gothic", sans-serif;
-	font-weight: bold;
-	font-size: 1.2em;
-	color: #0092E0;
-	margin-left: 10px;
+   font-family: "Helvetica Neue", Helvetica, Arial, "맑은 고딕",
+      "Malgun gothic", sans-serif;
+   font-weight: bold;
+   font-size: 1.2em;
+   color: #0092E0;
+   margin-left: 10px;
 }
 
 .reply_button_si {
-	margin-left: 840px;
+   margin-left: 840px;
 }
 
 #reply_reset_si {
-	margin-left: 7px;
+   margin-left: 7px;
+}
+
+#item_sub_imgs_1 {
+   margin-left: -3px;
+}
+
+#item_sub_imgs_2 {
+   margin-left: 40px;
+}
+
+#item_sub_imgs_3 {
+   margin-left: 40px;
+}
+
+#item_sub_imgs_4 {
+   margin-left: 40px;
+}
+
+#item_sub_imgs img{
+   width: 90px;
+   height: 90px;
+}
+
+#imgs_line {
+   margin-left: 35px;
 }

@@ -149,6 +149,9 @@ $(function() {
 	}
 
 	function getStart() {
+		
+		checkPur();
+		
 		$radio.checkboxradio({
 			icon : false
 		});
@@ -213,6 +216,29 @@ $(function() {
 		}
 
 	});
+	
+	function checkPur(){
+		var bidding_id = $("#bidding_id").val();
+		
+		$.ajax({
+			url : "checkPur",
+			type : "post",
+			dataType : "text",
+			data : "bidding_id=" + bidding_id,
+			success : successHandler,
+			error : function(){
+				alert("불러오기 실패");
+				self.location = "auctionList";
+			}
+		});
+	}
+	
+	function successHandler(data){
+		if(data == "exist"){
+			alert("주문한 상품입니다.");
+			self.location = "auctionList";
+		}
+	}
 
 	getStart();
 

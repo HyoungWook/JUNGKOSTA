@@ -19,7 +19,7 @@ public class SaleVO implements Serializable{
 	private String buy_info;
 	private Date sale_date;
 
-	private String email = "test2@test2.com";
+	private String email;
 	private int subca_id;
 	private char flag = '0';
 	private String sale_status;
@@ -28,6 +28,12 @@ public class SaleVO implements Serializable{
 	private String item_pic3;
 	private String item_pic4;
 	
+	
+	//2016/11/27 우성 수정 조회수
+	private int view_cnt;
+	
+
+
 	public SaleVO(){}
 
 	public SaleVO(int sale_id, String item_name, int item_cost, Date buy_time, String item_status, String item_scratch,
@@ -188,7 +194,16 @@ public class SaleVO implements Serializable{
 	public void setItem_pic4(String item_pic4) {
 		this.item_pic4 = item_pic4;
 	}
+	
+	//2016/11/27 우성 getter setter 수정
+	public int getView_cnt() {
+		return view_cnt;
+	}
 
+	public void setView_cnt(int view_cnt) {
+		this.view_cnt = view_cnt;
+	}
+	
 	@Override
 	public String toString() {
 		return "SaleVO [sale_id=" + sale_id + ", item_name=" + item_name + ", item_cost=" + item_cost + ", buy_time="
@@ -196,7 +211,7 @@ public class SaleVO implements Serializable{
 				+ additional_info + ", buy_info=" + buy_info + ", sale_date=" + sale_date + ", email=" + email
 				+ ", subca_id=" + subca_id + ", flag=" + flag + ", sale_status=" + sale_status + ", item_pic1="
 				+ item_pic1 + ", item_pic2=" + item_pic2 + ", item_pic3=" + item_pic3 + ", item_pic4=" + item_pic4
-				+ "]";
+				+ ", view_cnt=" + view_cnt + "]";
 	}
 
 }

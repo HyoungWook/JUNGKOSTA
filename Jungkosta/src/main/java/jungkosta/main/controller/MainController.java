@@ -1,20 +1,22 @@
 package jungkosta.main.controller;
 
-import java.text.DateFormat;
-import java.util.Date;
 import java.util.Locale;
 
 import javax.inject.Inject;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import jungkosta.main.domain.MemberVO;
+import jungkosta.main.service.MainService;
 import jungkosta.main.service.SignupService;
 
 @Controller
@@ -22,6 +24,9 @@ public class MainController {
 	
 	@Inject
 	private SignupService service;
+	
+	@Inject
+	private MainService mainService;
 	
 	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 	
@@ -32,14 +37,23 @@ public class MainController {
 	public String home(Locale locale, Model model) {
 		logger.info("메인 컨트롤러 실행 완료....", locale);
 		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 		
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
 		
 		return "main";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/newItem",method=RequestMethod.GET)
+	public ResponseEntity<String> newItem(){
+		
+		ResponseEntity<String> entity = null;
+		
+		String json = mainService.newItem();
+				
+		entity = new ResponseEntity<String>(json,HttpStatus.OK);
+		
+		return entity;
+		
 	}
 	
 	@RequestMapping(value="/mainSignupForm", method=RequestMethod.GET)
@@ -68,6 +82,32 @@ public class MainController {
 		
 		service.signupProc(vo, pass);
 		return "redirect:/";
+	}
+	
+	@RequestMapping(value="aucList", method=RequestMethod.GET)
+	public void aucList(){
+		
+	}
+	
+	
+	@RequestMapping(value="purchaseList", method=RequestMethod.GET)
+	public void purchaseList(){
+		
+	}
+	
+	@RequestMapping(value="saleList", method=RequestMethod.GET)
+	public void saleList(){
+		
+	}
+	
+	
+	@RequestMapping(value="/clientTest", method=RequestMethod.GET)
+	public void clientTest(){
+		
+	}
+	@RequestMapping(value="/clientTest2", method=RequestMethod.GET)
+	public void clientTest2(){
+		
 	}
 	
 }

@@ -20,7 +20,7 @@
 	
 	<!-- Upload Path -->
 	<beans:bean id="uploadPath" class="java.lang.String">
-		<beans:constructor-arg value="C:\\local"></beans:constructor-arg>
+		<beans:constructor-arg value="C:\\upload"></beans:constructor-arg>
 	</beans:bean>
 
 	<!-- ViewResolver -->
@@ -29,9 +29,20 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
+	
+	
 	<!-- Controller Scan -->
 	<context:component-scan base-package="jungkosta.trade.controller"/>
 	
+	<beans:bean id="LoginIntercepter" class="jungkosta.commons.interceptor.LoginInterceptor"/>
 	
+	<interceptors>
+		<interceptor>
+			<mapping path="/tradeRegisterForm"/>
+			<mapping path="/tradeRegisterForm"/>
+			<mapping path="/tradeOrder"/>
+			<beans:ref bean="LoginIntercepter"/>
+		</interceptor>
+	</interceptors>
 	
 </beans:beans>

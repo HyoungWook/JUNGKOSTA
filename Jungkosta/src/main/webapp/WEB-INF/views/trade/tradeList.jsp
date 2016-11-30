@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>	
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -11,6 +12,7 @@
 <!-- Bootstrap -->
 <link href="/Jungkosta/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <link href="/Jungkosta/resources/bootstrap/css/kfonts2.css" rel="stylesheet">
+<script src="/Jungkosta/resources/bootstrap/js/bootstrap.min.js"></script>
 
 <!-- jQuery -->
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -21,6 +23,7 @@
 
 <!-- javascript -->
 <script src="/Jungkosta/resources/js/trade/itemlist_main_ktw.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
 
 <!-- css -->
 <link href="/Jungkosta/resources/css/trade/tradeList.css" rel="stylesheet">
@@ -50,15 +53,15 @@
 
 
 	<div class="container">
-
-		<%--    <div class="header_ktw">
-         <jsp:include page="../header&footer/header.jsp" />
-      </div> --%>
+<%-- 
+		    <div class="header_ktw">
+         <jsp:include page="../module/header.jsp" />
+      	</div>
 
 		<br> <br>
 
-		<%--    <div class="menu_ktw">
-         <jsp:include page="../header&footer/nav.jsp" />
+		    <div class="menu_ktw">
+         <jsp:include page="../module/nav.jsp" />
       </div> --%>
 
 		<br> <br>
@@ -207,38 +210,42 @@
 
 				<h3 id="realTime_item_ktw">실시간 상품</h3>
 				&nbsp;&nbsp;
-
+<!-- 
 				<div class="btn-group radio_button" data-toggle="buttons">
-					<label class="btn btn-info"> <input type="radio"
-						name="newRegister" id="option1"> 신규등록순
-					</label>
-					<label class="btn btn-info"> <input type="radio"
-						name="lowPrice" id="option2"> 최저가격순
-					</label>
-				</div>
-
+        <label class="btn btn-primary">
+          <input type="radio" name="sort" value="n" />신규등록순
+        </label>
+        <label class="btn btn-primary">
+          <input type="radio" name="sort" value="l" />최저가격순
+        </label>
+      </div> -->
+				
+				<fieldset id="radio_btn">
+					<label for="radio-1">신규 등록순</label> <input type="radio"
+                  	name="sort" class="button_radio" checked="checked" id="radio-1"
+                  	value="n"> <label for="radio-2">최저 가격순</label> <input
+                  	type="radio" name="sort" class="button_radio" id="radio-2"
+                  	value="l">
+            	</fieldset>
 				<hr>
 
 				<div class="item_list_ktw">
 					<div class="row">
 						<c:forEach var="temp" items="${ list}">
-					 	 <a href="tradeList?subca_id=${temp.subca_id }">${temp.subca_id }</a>
-						 <%--<input type="hidden" name="subca_id" value="${temp.subca_id }"> --%>
-							<div class="col-md-2 col-md-offset-2 item_info_ktw"
+				
+							<div class="col-md-3 item_info_ktw"
 								onclick="sendDetail(${temp.sale_id})">
 								<img id="good_ktw" src="/Jungkosta/resources/images/trade/good.png" />&nbsp;
 								<span name="email">중코스타</span>&nbsp; 
 								<img id="check_ktw" src="/Jungkosta/resources/images/trade/check.jpg" />
 								<div class="item_img_ktw">
-									<c:if test="${temp.item_pic1!=null }">
-			<%-- 		<c:set var="head" value="${fn:substring(temp.item_pic, 0 ,fn:length(temp.item_pic)-4) }"></c:set>
-            <c:set var="pattern" value="${fn:substringAfter(temp.item_pic,head) }"></c:set> --%>
-										 <img src="displayFile?fileName=${temp.item_pic1}">
+								
+									<img id="item_main_img" src="displayFile?fileName=${temp.item_pic1}">
+									<c:if test="${temp.sale_status =='거래완료'}">
+									<img id="close_auc_ktw" alt="trade_close" src="/Jungkosta/resources/images/trade/auction_close.png">
 									</c:if>
+					
 								</div>
-								<!-- <div>
-                           <a>관심상품 담기</a> | <a>미리 보기</a>
-                        </div> -->
 								<br> <br> <b class="item_name_ktw">${temp.item_name }</b>
 								<br> <br> <span></span> &nbsp;&nbsp; <b><strong
 									class="product_price_ktw">${temp.item_cost } 원</strong></b><br>
@@ -259,11 +266,73 @@
 		</div>
 		<br> <br> <br>
 
-		<div class="footer_ktw">
-			<%--   <jsp:include page="../header&footer/footer.jsp" /> --%>
-		</div>
+<%-- 		<div class="footer_ktw">
+			   <jsp:include page="../module/footer.jsp" />
+		</div> --%>
 
 
 	</div>
+	<script id="template" type="text/x-handlebars-template">
+<div class="col-md-2 col-md-offset-2 item_info_ktw"
+	onclick="sendDetail({{sale_id}})">
+	<img id="good_ktw" src="/Jungkosta/resources/images/trade/good.png" />&nbsp;
+	<span name="email">중코스타</span>&nbsp; 
+	<img id="check_ktw" src="/Jungkosta/resources/images/trade/check.jpg" />
+	<div class="item_img_ktw">
+		<img src="displayFile?fileName={{item_pic1 }}" id="listImg_ysi">
+	</div>
+		<br> <br> 
+			<b class="item_name_ktw">{{item_name }}</b>
+		<br> <br> 
+			<span></span> &nbsp;&nbsp;
+			<b><strong class="product_price_ktw">{{item_cost }} 원</strong></b><br>
+			<br>
+			<br>
+			<br>
+		</div>
+</script>
+
+<script type="text/javascript">
+$(function(){
+	
+	//uri내 parameter 값 저장 function 
+	$.urlParam = function(name){
+	    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+	    if (results==null){
+	       return null;
+	    }
+	    else{
+	       return results[1] || 0;
+	    }
+	}
+	
+	//핸들바 템플릿 컴파일, 가져오기
+	var template = Handlebars.compile($("#template").html());
+	
+	
+	$('.button_radio').click(function(){
+		var sort = $(this).val();
+		var subca_id = $.urlParam('subca_id');
+		
+		$.getJSON("/Jungkosta/trade/listSale/" + subca_id + "/" + sort, function(list) {
+			
+			$('.item_info_ktw').remove();
+			
+			$(list).each(function(index) {
+				
+				var html = template(list[index]);
+				
+				$('.item_list_ktw').append(html);
+				
+			});
+		});
+	});
+
+	
+});
+
+	
+	
+</script>
 </body>
 </html>
