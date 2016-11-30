@@ -8,13 +8,15 @@ $(function() {
 
 	var status = "deposit";
 
+	var flag = false;
+
 	// radio Button Event
 	$radio.change(function() {
 
 		$(".bank").find("div").removeClass("apper_phw");
 		$(".bank").find("div").addClass("hide_phw");
 		$("." + this.id).removeClass("hide_phw");
-		$("." + this.id).addClass("apper_phw").fadeIn();
+		$("." + this.id).addClass("apper_phw");
 
 		status = this.id;
 
@@ -26,33 +28,54 @@ $(function() {
 
 	});
 
+	$("#pur_btn").click(function() {
+		flag = true;
+	});
+
 	// form submit event
-	$("#auctoin_purchase")
-			.submit(
-					function(event) {
+	$("#auctoin_purchase").submit(
+			function(event) {
 
-						event.preventDefault();
+				event.preventDefault();
 
-						var that = $(this);
+				var that = $(this);
 
-						var bidding_id = $("#bidding_id").text();
+				var bidding_id = $("#bidding_id").text();
 
-						var html = "<input type='hidden' name='total_cost' value='"
-								+ total_cost + "' >";
-						html += "<input type='hidden' name='bidding_id' value='"
-								+ bidding_id + "' >";
+				var html = "<input type='hidden' name='total_cost' value='"
+						+ total_cost + "' >";
+				html += "<input type='hidden' name='bidding_id' value='"
+						+ bidding_id + "' >";
 
-						that.append(html);
+				that.append(html);
 
-						if (status != deposit) {
-							window
-									.open("/Jungkosta/auction/aucPaymentForm", "newWindow",
-											'width=550, height=500, menubar=yes, status=yes, scrollbar = yes');
-						} else {
-							that.get(0).submit();
-						}
+				that.get(0).submit();
 
-					});
+			});
+
+	// cancel 버튼 이벤트
+	$("#cancel").click(function() {
+		var sale_id = $("#sale_id").val();
+		var bidding_id = $("#bidding_id").val();
+		flag = true;
+		var data = "sale_id=" + sale_id + "&bidding_id=" + bidding_id;
+
+		$.ajax({
+			url : "purchaseCancel",
+			type : "post",
+			data : data,
+			dataType : "text",
+			success : function() {
+				alert("주문 취소");
+				self.location = "auctionList";
+			},
+			error : function() {
+				alert("주문 취소 중 에러 발생!! -관리자에게 문의하세요-");
+				self.location = "auctionList";
+			}
+		});
+
+	});
 
 	function getCharge(id) {
 		if (id == "deposit") {
@@ -126,6 +149,9 @@ $(function() {
 	}
 
 	function getStart() {
+		
+		checkPur();
+		
 		$radio.checkboxradio({
 			icon : false
 		});
@@ -136,6 +162,82 @@ $(function() {
 
 		changeDoc(num, getCharge("deposit"));
 
+		// BackSpace 키 방지 이벤트
+		$(document).keydown(
+				function(e) {
+					if (e.target.nodeName != "INPUT"
+							&& e.target.nodeName != "TEXTAREA") {
+						if (e.keyCode === 8) {
+							return false;
+						}
+					}
+				});
+
+		window.history.forward();
+
+	}
+
+	// F5 등 새로고침 이벤트 제거
+	$(document).keydown(function(e) {
+
+		if (e.which === 116) {
+			if (typeof event == "object") {
+				event.keyCode = 0;
+			}
+			alert("'새로고침'이 금지되어 메인페이지로 이동합니다.");
+			self.location = "auctionList";
+			return false;
+		} else if (e.which === 82 && e.ctrlKey) {
+			alert("'새로고침'이 금지되어 메인페이지로 이동합니다.");
+			self.location = "auctionList";
+			return false;
+		}
+	});
+
+	// 브라우저 종료시 발생하는 이벤트
+	window.addEventListener("beforeunload", function(event) {
+
+		var confirmationMessage = "\o/";
+
+		var sale_id = $("#sale_id").val();
+		var bidding_id = $("#bidding_id").val();
+
+		var data = "sale_id=" + sale_id + "&bidding_id=" + bidding_id;
+
+		if (flag == false) {
+			$.ajax({
+				url : "closePur",
+				post : "post",
+				data : data
+			});
+
+			(event || window.event).returnValue = confirmationMessage; // IE
+			return confirmationMessage; // chrome and fireFox
+		}
+
+	});
+	
+	function checkPur(){
+		var bidding_id = $("#bidding_id").val();
+		
+		$.ajax({
+			url : "checkPur",
+			type : "post",
+			dataType : "text",
+			data : "bidding_id=" + bidding_id,
+			success : successHandler,
+			error : function(){
+				alert("불러오기 실패");
+				self.location = "auctionList";
+			}
+		});
+	}
+	
+	function successHandler(data){
+		if(data == "exist"){
+			alert("주문한 상품입니다.");
+			self.location = "auctionList";
+		}
 	}
 
 	getStart();

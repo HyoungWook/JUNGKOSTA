@@ -12,7 +12,7 @@ $(function(){
 				datatype : "json",
 				cache : false,
 				data : "name="+name,
-				url : "customSearchProc",
+				url : "/Jungkosta/customSearchProc",
 				contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 				success : function(data) {
 					

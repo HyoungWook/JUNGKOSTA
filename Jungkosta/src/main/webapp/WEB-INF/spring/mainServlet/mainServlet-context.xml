@@ -20,12 +20,39 @@
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
+	<beans:bean id="LoginIntercepter" class="jungkosta.commons.interceptor.LoginInterceptor"/>
+	<beans:bean id="ManagerIntercepter" class="jungkosta.commons.interceptor.ManagerInterceptor"/>
 	
+	<interceptors>
+		<interceptor>
+			<mapping path="/messageSendForm"/>
+			<mapping path="/messageReceiveForm"/>
+			<mapping path="/purchaseList"/>
+			<mapping path="/saleList"/>
+			<mapping path="/aucList"/>
+			<beans:ref bean="LoginIntercepter"/>
+		</interceptor>
+		
+		<interceptor>
+			<mapping path="/customSearchForm"/>
+			<mapping path="/blackListForm"/>
+			<mapping path="/warningForm"/>
+			
+			<beans:ref bean="ManagerIntercepter"/>
+		</interceptor>
+	</interceptors>
+	
+	
+		
+		
+		
+		
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/main/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
+	
 	
 	<context:component-scan base-package="jungkosta.main.controller"/>
 	

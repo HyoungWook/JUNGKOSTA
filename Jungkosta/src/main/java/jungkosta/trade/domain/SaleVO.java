@@ -27,13 +27,18 @@ public class SaleVO implements Serializable{
 	private String item_pic2;
 	private String item_pic3;
 	private String item_pic4;
+	
+	
+	//2016/11/27 우성 수정 조회수
 	private int view_cnt;
 	
+
+
 	public SaleVO(){}
 
 	public SaleVO(int sale_id, String item_name, int item_cost, Date buy_time, String item_status, String item_scratch,
 			String additional_info, String buy_info, Date sale_date, String email, int subca_id, char flag,
-			String sale_status, String item_pic1, String item_pic2, String item_pic3, String item_pic4, int view_cnt) {
+			String sale_status, String item_pic1, String item_pic2, String item_pic3, String item_pic4) {
 		super();
 		this.sale_id = sale_id;
 		this.item_name = item_name;
@@ -52,7 +57,6 @@ public class SaleVO implements Serializable{
 		this.item_pic2 = item_pic2;
 		this.item_pic3 = item_pic3;
 		this.item_pic4 = item_pic4;
-		this.view_cnt = view_cnt;
 	}
 
 	public int getSale_id() {
@@ -190,7 +194,8 @@ public class SaleVO implements Serializable{
 	public void setItem_pic4(String item_pic4) {
 		this.item_pic4 = item_pic4;
 	}
-
+	
+	//2016/11/27 우성 getter setter 수정
 	public int getView_cnt() {
 		return view_cnt;
 	}
@@ -198,7 +203,7 @@ public class SaleVO implements Serializable{
 	public void setView_cnt(int view_cnt) {
 		this.view_cnt = view_cnt;
 	}
-
+	
 	@Override
 	public String toString() {
 		return "SaleVO [sale_id=" + sale_id + ", item_name=" + item_name + ", item_cost=" + item_cost + ", buy_time="

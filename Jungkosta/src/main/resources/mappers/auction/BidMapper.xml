@@ -37,15 +37,17 @@
 
 	<select id="bid_person" parameterType="int" resultType="BiddingVO">
 		<![CDATA[
-		select * from auction_bidding
-		where auction_id = #{auction_id} and rownum <= 1
-		order by bidding_cost
+		select * from (select * from auction_bidding
+						where auction_id = #{auction_id}
+						order by bidding_cost desc)
+   		where rownum = 1
 		]]>
 	</select>
 	
 	<select id="biddingList" parameterType="int" resultType="BiddingVO">
 		select * from auction_bidding
-			where auction_id=#{auction_id} order by bidding_cost desc
+			where auction_id=#{auction_id} 
+			order by bidding_cost desc
 	</select>
 	
 

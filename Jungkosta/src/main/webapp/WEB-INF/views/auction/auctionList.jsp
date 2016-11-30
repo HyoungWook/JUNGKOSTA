@@ -18,7 +18,6 @@
 	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
 
-<!-- start 현우 추가 부분 -->
 <!-- template -->
 <script type="text/javascript"
 	src="/Jungkosta/resources/js/auction/upload.js"></script>
@@ -208,7 +207,6 @@
 	<br> <br> <br>
 
 </div>
-<!-- 이수진 즉시구매가 추가 -->
 <script id="template" type="text/x-handlebars-template">
 		<div class="col-md-3 item_info_phw" onclick="sendDetail({{sale_id}})">
 			<br> 
@@ -238,7 +236,6 @@
 </script>
 <script>
 	var template = Handlebars.compile($("#template").html());
-	//start 현우 추가 부분
 
 	Handlebars.registerHelper("if_phw", function(auction_end_status, block) {
 		var accum = "";
@@ -317,7 +314,8 @@
 		});
 
 	});
-	//end 현우 추가 부분
+	
+	
 </script>
 
 

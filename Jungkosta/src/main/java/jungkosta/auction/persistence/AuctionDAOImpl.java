@@ -52,8 +52,8 @@ public class AuctionDAOImpl implements AuctionDAO {
 	}
 
 	@Override
-	public AuctionVO read(int sale_id) throws Exception {
-
+	public AuctionVO read(int sale_id) throws Exception {		
+		
 		return sqlSession.selectOne(namespace + ".read", sale_id);
 	}
 
