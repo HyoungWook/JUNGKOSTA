@@ -7,7 +7,7 @@ public interface AucPayService {
 
 	public AucAndBidVO readPurchase(int bid_id) throws Exception;
 
-	public void registerPay(AucPayVO vo, int sale_id) throws Exception;
+	public void registerPay(AucPayVO vo, int sale_id, String email) throws Exception;
 
 	public int selectPay_id() throws Exception;
 
@@ -16,5 +16,7 @@ public interface AucPayService {
 	public void updateSale_status(int sale_id) throws Exception;
 	
 	public void cancelPay(AucAndBidVO vo) throws Exception;
+	
+	public void plusPoint(String email, int point) throws Exception;
 
 }

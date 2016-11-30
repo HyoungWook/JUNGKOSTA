@@ -17,6 +17,7 @@
 <div class="container">
 
 	<div class="main">
+		<input type="hidden" id="sale_id" value="${sale_id }">
 
 		<br> <br> <br>
 

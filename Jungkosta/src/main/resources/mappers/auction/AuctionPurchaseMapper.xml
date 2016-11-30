@@ -53,4 +53,5 @@
 		where
 		sale_id = #{sale_id}
 	</update>
+	
 </mapper>

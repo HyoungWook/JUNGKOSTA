@@ -75,4 +75,11 @@ public class AucPayDAOImpl implements AucPayDAO {
 		sqlSession.update(namespace + ".updateAuction_status", auction_id);
 	}
 
+	@Override
+	public void plusPoint(Map<String, Object> map) throws Exception {
+		
+		sqlSession.update(namespace + ".plusPoint", map);
+		
+	}
+
 }

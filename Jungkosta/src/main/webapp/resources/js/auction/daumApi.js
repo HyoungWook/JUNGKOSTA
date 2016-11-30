@@ -50,6 +50,8 @@ function sample4_execDaumPostcode() {
 					} else {
 						document.getElementById('guide').innerHTML = '';
 					}
+					
+					window.self.close();
 				}
 			}).open();
 }

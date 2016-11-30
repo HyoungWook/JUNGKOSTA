@@ -39,8 +39,10 @@ public class AucPurServiceImpl implements AucPurService {
 
 		dao.updateSale_status(sale_id);
 		dao.endAuction(bidding.getAuction_id());
-		
-		System.out.println("주문 완료");
+
+		AuctionVO auction = auctionDao.read(sale_id);
+
+		System.out.println(auction.getItem_name() + " 주문 완료");
 	}
 
 	@Override
@@ -68,8 +70,8 @@ public class AucPurServiceImpl implements AucPurService {
 			dao.deleteBidding(bidding_id);
 			dao.updateSale_cost(map);
 		}
-		
-		System.out.println("주문 취소");
+
+		System.out.println(auction.getItem_name() + " 주문 취소");
 	}
 
 }

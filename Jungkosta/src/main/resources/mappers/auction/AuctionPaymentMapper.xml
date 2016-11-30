@@ -53,6 +53,11 @@
 		where autcion_id = #{auction_id}
 	</update>
 	
+	<update id="plusPoint" parameterType="java.util.Map">
+		update member set point = point + ${point}
+		where email = '${email}'
+	</update>
+	
 	
 
 </mapper>

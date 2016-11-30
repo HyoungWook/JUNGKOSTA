@@ -6,10 +6,10 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
 
 import jungkosta.auction.domain.AuctionVO;
 import jungkosta.auction.domain.BiddingVO;
+import jungkosta.auction.service.AucPayService;
 import jungkosta.auction.service.BidManageService;
 import jungkosta.auction.service.BiddingService;
 import jungkosta.main.domain.MessageVO;
@@ -26,6 +26,9 @@ public class BidThread extends Thread {
 
 	@Inject
 	private BiddingService biddingService;
+	
+	@Inject
+	private AucPayService paymentService;
 
 	public BidThread() {
 		start();
@@ -76,6 +79,7 @@ public class BidThread extends Thread {
 
 		if (biddingList.size() == 0 || biddingList == null) {
 			saler = contentSaler(auction, false);
+			paymentService.updateSale_status(auction.getSale_id());
 		} else {
 			saler = contentSaler(auction, true);
 			costomer = contentCos(auction);

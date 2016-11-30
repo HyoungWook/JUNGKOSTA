@@ -32,12 +32,19 @@ public class AucPayServiceImpl implements AucPayService {
 
 	@Transactional
 	@Override
-	public void registerPay(AucPayVO vo, int sale_id) throws Exception {
+	public void registerPay(AucPayVO vo, int sale_id, String email) throws Exception {
+
+		AuctionVO auction = auctionDao.read(sale_id);
 
 		vo.setAuctionpay_id(selectPay_id() + 1);
 		dao.registerPay(vo);
-		dao.updatebid_status(vo.getBid_id());
-		dao.updateSale_status(sale_id);
+		updateBid_status(vo.getBid_id());
+
+		int point = (int) (vo.getCost() * 0.01);
+
+		plusPoint(email, point);
+
+		System.out.println(auction.getItem_name() + " 결제 완료");
 	}
 
 	@Override
@@ -53,13 +60,17 @@ public class AucPayServiceImpl implements AucPayService {
 
 	@Override
 	public void updateSale_status(int sale_id) throws Exception {
+		
 		dao.updateSale_status(sale_id);
+		
+		System.out.println(sale_id + " : 거래 상태 '거래 완료'");
+
 	}
 
 	@Transactional
 	@Override
 	public void cancelPay(AucAndBidVO vo) throws Exception {
-		System.out.println("결제 취소");
+
 		Map<String, Integer> map = new HashMap<>();
 
 		map.put("auction_id", vo.getAuction_id());
@@ -74,6 +85,21 @@ public class AucPayServiceImpl implements AucPayService {
 			dao.updateAuction_status(vo.getAuction_id());
 			dao.update_del_sale(map);
 		}
+
+		System.out.println(auction.getItem_name() + " 결제 취소");
+
+	}
+
+	@Override
+	public void plusPoint(String email, int point) throws Exception {
+		Map<String, Object> map = new HashMap<>();
+
+		map.put("point", point);
+		map.put("email", email);
+
+		dao.plusPoint(map);
+
+		System.out.println(email + " : " + point + " 적립 완료");
 
 	}
 

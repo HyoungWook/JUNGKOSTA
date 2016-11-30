@@ -140,5 +140,28 @@ public class AuctionPurchaseController {
 
 		return entity;
 	}
+	
+	@ResponseBody
+	@RequestMapping("/checkPur")
+	public ResponseEntity<String> checkPur(@RequestParam("bidding_id") int bidding_id) throws Exception{
+		ResponseEntity<String> entity = null;
+		
+		try {
+			
+			BidVO bid = purchaseService.readBid(bidding_id);
+			
+			if(bid != null){
+				entity = new ResponseEntity<>("exist", HttpStatus.OK);
+			}else{
+				entity = new ResponseEntity<>("not exist", HttpStatus.OK);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
+		
+		return entity;
+	}
 
 }
