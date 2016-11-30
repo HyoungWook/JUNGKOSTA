@@ -38,6 +38,7 @@ public class MainController {
 		logger.info("메인 컨트롤러 실행 완료....", locale);
 		
 		
+		
 		return "main";
 	}
 	

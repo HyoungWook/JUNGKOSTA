@@ -11,6 +11,8 @@
 
 <!-- javaScript -->
 <script type="text/javascript" src="/Jungkosta/resources/js/trade/qna.js"></script>
+<script type="text/javascript" src="/Jungkosta/resources/js/trade/itemDetail.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
 
 <!-- css -->
 <style type="text/css">
@@ -47,6 +49,9 @@
 
 				<div class="col-md-offset-1 col-md-4 left_ktw">
 					 <img class="item_ktw" src="displayFile?fileName=${register.item_pic1 }" />
+					 <c:if test="${register.sale_status =='거래완료'}">
+									<img id="close_auc_ktw" alt="trade_close" src="/Jungkosta/resources/images/trade/auction_close.png">
+					</c:if>
 					<div class="row">
 						<div id="item_sub_imgs">
 						<hr id="imgs_line">
@@ -126,7 +131,7 @@
 							</div>
 							<br> <br> <br> <br>
 
-							<button type="submit" class="btn btn-primary btn-lg"
+							<button type="submit" class="btn btn-primary btn-lg btn_check"
 								>주문하기</button>
 
 						</div>
@@ -170,7 +175,7 @@
 							<div class="col-md-offset-1 col-md-9">
 								<span id="ITEM_SCRATCH_Result_ktw">${register.item_scratch}</span>
 							</div>
-
+						<input type="hidden" id="status" value="${register.sale_status }">
 							<br> <br> <br>
 							<div class="col-md-offset-1 col-md-1">
 								<span id="ADDITIONAL_INFO_ktw" class="item_info_Quest_ktw">추가정보</span>
@@ -178,8 +183,8 @@
 							<div class="col-md-offset-1 col-md-9">
 								<!-- 		<span class="ADDITIONAL_INFO_Result_ktw">1.액정에 기스가 있습니다.</span><br>
 								<span class="ADDITIONAL_INFO_Result_ktw">2.상태가 좋습니다.</span><br> -->
-								<label class="form-control" name="additional_info">
-									${register.additional_info } </label>
+								<span class="form-control" name="additional_info">
+									${register.additional_info } </span>
 							</div>
 							<br> <br> <br>
 							<div class="col-md-offset-1 col-md-1">
@@ -264,8 +269,7 @@
 		</div>
 
 	</div>
-
-<%-- 	<jsp:include page="../header&footer/footer.jsp"></jsp:include> --%>
+<jsp:include page="../module/footer.jsp"/>
 	<script type="text/javascript">
 		$(function() {
 			$('#collapseFour').collapse({
@@ -282,6 +286,109 @@
 			$('#collapseOne').collapse('hide')
 		});
 	</script>
+	<script id = "template" type="text/x-handlebars-template">
+	<tr>
+	<td>{{(index + 1)}}</td>
+	<td>{{content}}</td>
+	<td>{{email}}</td>
+	</tr>
+</script>
+	
+	<script type="text/javascript">
+	$(function(){
+		
+		//uri내 parameter 값 저장 function 
+		$.urlParam = function(name){
+		    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+		    if (results==null){
+		       return null;
+		    } else {
+		       return results[1] || 0;
+		    }
+		};
+		
+		var sale_id = $.urlParam('sale_id');
+		
+		
+		var template = Handlebars.compile($('#template').html());
+		
+		$("#reply").submit(function(event) {
+			event.preventDefault();
 
+			console.log("sale_id(tradeDetail.jsp) : " + sale_id);
+			
+			$.ajax({
+				url : "/Jungkosta/trade/itemQa/" + sale_id,
+				type : "post",
+				data : $(this).serialize(),
+				dataType : "text",
+				success : successHandler,
+				error : function() {
+					alert("실패");
+				}
+
+			});
+		
+		});//itemQA form submit ajax end
+		
+		function successHandler(result) {
+			console.log('result : ' + result);
+			
+			if(result == 'SUCCESS') {
+				
+				$.getJSON("/Jungkosta/trade/listQa/" + sale_id, function(list) {
+					$(".reply_table_si tbody").empty().hide();
+					
+					$(list).each(function(index) {
+						
+						/* var html = template(list[index]); */
+						
+						/* var html = "<tr>";
+						html += "<td>" + (index + 1) + "</td>";
+						html += "<td>" + list[index].content + "</td>";
+						html += "<td>" + list[index].email + "</td>";
+						html += "</tr>";
+						$('.reply_table_si tbody').append(html); */
+						
+					});
+					
+					$(".reply_table_si tbody").fadeIn();
+					$(".reply_table_si textarea").focus();
+					
+				});//getJSON end
+			}
+			
+		}//successHandler end
+		
+		$('#itemQa').on('click', function(event) {
+			$.getJSON("/Jungkosta/trade/listQa/" + sale_id, function(list) {
+				$(".reply_table_si tbody").empty().hide();
+				
+				$(list).each(function(index) {
+					
+					var html = "<tr>";
+					html += "<td>" + (index + 1) + "</td>";
+					html += "<td>" + list[index].content + "</td>";
+					html += "<td>" + list[index].email + "</td>";
+					html += "</tr>";
+					$('.reply_table_si tbody').append(html);
+					
+				});
+				
+				$(".reply_table_si tbody").fadeIn();
+				$(".reply_table_si textarea").focus();
+				
+			});
+		});
+		
+		$('#item_sub_imgs').find('img').on('click', function() {
+			
+			var that = $(this);
+			
+			$('.item_ktw').attr('src', that.attr('src'));
+		});
+
+	});
+	</script>
 </body>
 </html>

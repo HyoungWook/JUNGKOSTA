@@ -7,7 +7,7 @@
 <!-- jquery -->
 <script src="/Jungkosta/resources/lib/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="/Jungkosta/resources/js/trade/upload.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script> 
 
 <!-- css -->
 <link href="/Jungkosta/resources/css/trade/tradeRegisterForm.css" rel="stylesheet">
@@ -29,7 +29,7 @@
 <script src="/Jungkosta/resources/bootstrap/js/bootstrap.min.js"></script>
 
 <!-- jquery-ui -->
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
@@ -39,11 +39,11 @@
 <body>
 	<h2>${test }</h2><br>
 	
-	 <form id="itemRegister" method="post"> <!-- enctype="multipart/form-data" -->
+	 <form id="itemRegister" method="post" action=""> <!-- enctype="multipart/form-data" -->
       <div class="container">
          <div id="section">
             <div class="row">
-               <h1 class="saleTotal_ktw">님 판매물품 등록</h1>
+               <h1 class="saleTotal_ktw">${member.name }님 판매물품 등록</h1>
                <div class="col-md-offset-3 col-md-9">
                   <h3 class="saleCategory_ktw">판매하실 물건의 카테고리를 선택해 주세요</h3>
 
@@ -81,7 +81,7 @@
                         id="item_name_si" placeholder="예)갤럭시 노트5">
                   </div>
                   <br>
-
+				<input type="hidden" name="email" value="${member.email }">
                   <h3 class="saleCategory_ktw">구매시기는 언제인가요?</h3>
                   <div class="buy_date form-group">
                      <input type="text" id="buy_date" name="buy_time"
@@ -114,7 +114,7 @@
 
                   <h3 class="saleCategory_ktw">상품에 대한 추가정보를 입력해주세요</h3>
                   <div class="additional_info form-group">
-                  <textarea rows="5" class="form-control cate_ktw" name="additional_info" id="additional_info_si"
+                  <textarea rows="2" class="form-control cate_ktw" name="additional_info" id="additional_info_si"
                      placeholder="추가 정보를 입력해주세요"></textarea>
                   </div><br>
 
@@ -172,26 +172,28 @@
                   </div>
                   <br>
 
-                  <h3 class="saleCategory_ktw">고객님의 계좌번호를 입력해주세요</h3>
+                  <h3 class="saleCategory_ktw">고객님의 계좌번호</h3>
                   <div class="col-md-3">
                      <div id="bankName">
                         <p>은행</p>
-                        <select class="form-control" name="bank_name" id="bank_name_si">
+                          <select class="form-control" name="bank_name" id="bank_name_si">
                            <option value="null">은행을 선택해주세요</option>
                            <option>국민은행</option>
                            <option>신한은행</option>
                            <option>하나은행</option>
                            <option>우리은행</option>
                         </select>
+                        <%--  <label>${member.bank_name }</label> --%>
+                       
                      </div>
                   </div>
                   <div class="col-md-9">
                      <div id="account">
                         <p>계좌번호</p>
                         <div class="form-group Account_no">
-                         <input type="text" class="form-control" name="Account_no" id="Account_no_si"
+                          <input type="text" class="form-control" name="Account_no" id="Account_no_si"
                            placeholder="'-'은 제외하고 입력해주세요">
-                           
+                          <%--  <label>${member.account_num }</label> --%>
                         </div>
                      </div>
                   </div>

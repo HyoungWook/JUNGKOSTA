@@ -4,7 +4,7 @@ $(function() {
 	var $sub_category = $("#sub_category_ktw");// 서브카테고리
 	var $subCategory_list = $sub_category.find("option");// 서브카테고리 리스트
 
-	var category_value = "ele";
+	var category_value = "";
 
 	$category.change(function() {
 		category_value = $category.val();
@@ -16,7 +16,6 @@ $(function() {
 	});
 
 	setting($subCategory_list, category_value);
-	
 
 });
 

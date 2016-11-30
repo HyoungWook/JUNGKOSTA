@@ -3,6 +3,7 @@ package jungkosta.trade.controller;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.mail.search.IntegerComparisonTerm;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import jungkosta.trade.domain.SaleVO;
 import jungkosta.trade.service.SaleService;
@@ -40,50 +42,16 @@ public class TradeListController {
 	//카테고리별 목록_ysi
 	@RequestMapping(value = "/tradeList", method=RequestMethod.GET)
 	public void tradelistSub(Model model, @RequestParam("subca_id") Integer subca_id, String sort) throws Exception{
-		System.out.println("subca_id : " + subca_id);
 		
 		model.addAttribute("list", service.listSale(subca_id, sort));
 	}
 	
-	//searchTest_ysi
-	@RequestMapping(value= "/test", method=RequestMethod.GET)
-	public void test(Model model, @RequestParam("subca_id") Integer subca_id, String sort)throws Exception {
-		System.out.println("subca_id : " + subca_id);
-
-		model.addAttribute("list", service.listSale(subca_id, sort));
-	}
-	
-	//getList_test_ysi
-	/*@ResponseBody
-	@RequestMapping(value= "/listSale/{subca_id}/{sort}")
-	public ResponseEntity<String> testAjax(Model model, 
-			@PathVariable("sort") String sort, 
-			@PathVariable("subca_id") Integer subca_id) throws Exception {
-		
-		System.out.println("sort : " + sort);
-		System.out.println("subca_id : " + subca_id);
-		
-		ResponseEntity<String> entity = null;
-		
-		try {
-			model.addAttribute("list", service.listSale(subca_id, sort));
-			entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
-		} catch (Exception e) {
-			e.printStackTrace();
-			entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
-		}
-		
-		return entity;
-	}*/
-	
+	//tradeList 정렬_ysi
 	@ResponseBody
 	@RequestMapping(value= "/listSale/{subca_id}/{sort}")
-	public List<SaleVO> testAjax( 
+	public List<SaleVO> sortAjax( 
 			@PathVariable("sort") String sort, 
 			@PathVariable("subca_id") Integer subca_id) throws Exception {
-		
-		System.out.println("sort : " + sort);
-		System.out.println("subca_id : " + subca_id);
 		
 		return service.listSale(subca_id, sort);
 	}
