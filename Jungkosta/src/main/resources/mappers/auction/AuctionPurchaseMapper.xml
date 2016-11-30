@@ -8,27 +8,50 @@
 	<insert id="insertAuctionPurchase" parameterType="BidVO">
 		insert into bid
 		(
-			bid_id, bidding_id, payment_method, del_address, bid_status, total_cost,
-			purchase_deadline, purchase_date
-		) values 
+		bid_id, bidding_id, payment_method, del_address, bid_status,
+		total_cost,
+		purchase_deadline, purchase_date
+		) values
 		(
-			#{bid_id}, #{bidding_id}, #{payment_method}, #{del_address},
-			#{bid_status}, #{total_cost}, sysdate + 3, sysdate
+		#{bid_id},
+		#{bidding_id}, #{payment_method}, #{del_address},
+		#{bid_status},
+		#{total_cost}, sysdate + 3, sysdate
 		)
 	</insert>
-	
+
 	<update id="endAuction" parameterType="int">
-		update auction_register set auction_end_status = 'true'
+		update auction_register
+		set auction_end_status = 'true'
 		where autcion_id = #{auction_id}
 	</update>
-	
+
+	<update id="updateSale_status" parameterType="int">
+		update sale set
+		sale_status = '거래중'
+		where sale_id = #{sale_id}
+	</update>
+
 	<select id="selectBid_id" resultType="Integer">
 		select max(bid_id) from bid
 	</select>
-	
-	<select id="readBid" resultType="BidVO">
-		select * from bid where bidding_id = #{bidding_id}
-	</select>
-	
 
+	<select id="readBid" resultType="BidVO">
+		select * from bid where
+		bidding_id = #{bidding_id}
+	</select>
+
+	<delete id="deleteBidding">
+		delete from auction_bidding
+		where bidding_id =
+		#{bidding}
+	</delete>
+
+	<update id="updateSale_cost" parameterType="java.util.Map">
+		update sale set
+		item_cost = bidding_fn(#{auction_id})
+		where
+		sale_id = #{sale_id}
+	</update>
+	
 </mapper>

@@ -1,5 +1,7 @@
 package jungkosta.auction.persistence;
 
+import java.util.Map;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -41,6 +43,24 @@ public class AucPurDAOImpl implements AucPurDAO {
 	public void endAuction(int auction_id) throws Exception {
 		sqlSession.update(namespace + ".endAuction", auction_id);
 
+	}
+
+	@Override
+	public void updateSale_status(int sale_id) throws Exception {
+		sqlSession.update(namespace + ".updateSale_status", sale_id);
+		
+	}
+
+	@Override
+	public void deleteBidding(int bidding_id) throws Exception {
+		sqlSession.delete(namespace + ".deleteBidding", bidding_id);
+		
+	}
+
+	@Override
+	public void updateSale_cost(Map<String, Integer> map) throws Exception {
+		sqlSession.update(namespace + ".updateSale_cost", map);
+		
 	}
 
 }

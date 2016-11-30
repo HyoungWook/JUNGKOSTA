@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="jungkosta.main.mappers.auction.AuctionReviewMapper">
+	<insert id="insertSellerReview" parameterType="SellerReviewVO">
+		insert into seller_review
+		(seller_review_id, content, satisfaction, purchaser, seller)
+		values
+		(#{seller_review_id},#{content},#{satisfaction},#{purchaser},#{seller})
+	</insert>
+	
+	<select id="selectReview_id" resultType="Integer">
+		select max(seller_review_id) 
+			from seller_review
+	</select>
+	
+	<select id="sellerReviewList" resultType="SellerReviewVO" parameterType="String">
+		select * from seller_review where seller = #{seller}
+	</select>
+
+
+</mapper>

@@ -7,6 +7,10 @@
 
 <head>
 <title>경매 상품 상세 페이지</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="/Jungkosta/resources/css/auction/star-rating-svg.css">
 
 </head>
 
@@ -118,7 +122,8 @@
 
 							<div class="col-md-10">
 								<b id="bid_count_phw">${countBidding } 회 (총 판매수량 : 1개)</b>
-								&nbsp;&nbsp;&nbsp; <a id="auction_record" href="${auction.sale_id}">경매기록</a>
+								&nbsp;&nbsp;&nbsp; <a id="auction_record"
+									href="${auction.sale_id}">경매기록</a>
 							</div>
 
 						</div>
@@ -198,7 +203,46 @@
 					<br /> <br />
 				</div>
 
-				<div class="tab-pane" id="comment"></div>
+				<div class="tab-pane" id="comment">
+					<div class="row">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<div class="row">
+									<div class="col-md-12">
+										<h4 id="comment_title_si">상품평</h4>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="comment_table_si">
+							<table class="table table-hover">
+								<thead>
+									<tr>
+										<th width="100">별점</th>
+										<th width="500">내용</th>
+										<th width="140">구매자</th>
+										<th width="140">판매자</th>
+									</tr>
+								</thead>
+								<tbody id="listComment">
+									<c:forEach var="temp" items="${reviewList}">
+										<tr>
+											<td align='center'><div class="content">
+													<p>${temp.satisfaction}</p>
+													<span class="my-rating-9"></span>
+												</div></td>
+											<td align='center'>${temp.content}</td>
+											<td align='center'>${temp.purchaser}</td>
+											<td align='center'>${temp.seller}</td>
+										</tr>
+									</c:forEach>
+								</tbody>
+							</table>
+						</div>
+
+					</div>
+				</div>
+				<!-- 판매자 상품평 -->
 
 				<div class="tab-pane" id="qAnda">
 					<div class="row">
@@ -312,4 +356,19 @@
 		</td>
 	</tr>
 </script>
-<!-- end 현우 추가 부분 -->
+<script src="/Jungkosta/resources/js/auction/jquery.star-rating-svg.js"></script>
+<script>
+	$(function() {
+		$(".my-rating-9").each(function(index){
+			var star = parseFloat($(this).parent().first().text());
+
+			$(this).starRating({
+				starSize : 20,
+				initialRating : star,
+				readOnly : true,
+				starShape : 'rounded',
+				disableAfterRate : false
+			});
+		});
+	});
+</script>
