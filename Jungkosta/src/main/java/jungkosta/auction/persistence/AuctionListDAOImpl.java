@@ -28,4 +28,11 @@ public class AuctionListDAOImpl implements AuctionListDAO {
 		return sqlSession.selectList(namespace + ".auctionList", map);
 	}
 
+	@Override
+	public List<AuctionVO> auctionCate(Map<String, Object> map) throws Exception {
+		return sqlSession.selectList(namespace+".auctionCate", map);
+	}
+
+
+
 }

@@ -26,4 +26,17 @@ public class AuctionListServiceImpl implements AuctionListService {
 		return dao.auctionList(map);
 	}
 
+	@Override
+	public List<AuctionVO> auctionCate(String categoryList,String statusList) throws Exception {
+		
+		String [] arr=statusList.split(",");
+		
+		Map<String,Object> m = new HashMap<String,Object>();
+		
+		m.put("categoryList", categoryList);
+		m.put("statusList", arr);
+		
+		return dao.auctionCate(m);
+	}
+
 }

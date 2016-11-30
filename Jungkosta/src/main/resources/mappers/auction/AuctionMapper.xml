@@ -74,17 +74,29 @@
 			</when>
 		</choose>
 	</select>
-	
-	
+
+
 
 	<update id="updateItemCost" parameterType="AuctionVO">
-		update sale set item_cost = #{item_cost}
-				where sale_id=#{sale_id}
+		update sale set
+		item_cost = #{item_cost}
+		where sale_id=#{sale_id}
 	</update>
-	
-	<select id="item_statusAucList" parameterType="String" resultType="AuctionVO">
-		select * from auctionlist_view where item_status=#{item_status}
+
+	<select id="item_statusAucList" parameterType="java.util.Map"
+		resultType="AuctionVO">
+		select * from auctionlist_view where
+		<if test="categoryList!=null or statusList!=null">
+			<if test="categoryList!=null">
+				subca_id in(#{categoryList})
+			</if>
+			<if test="statusList!=null">
+				<foreach collection="statusList" item="c" open="(" close=")">
+					item_status in (#{c});
+				</foreach>
+			</if>
+		</if>
 	</select>
-	
+
 
 </mapper>
