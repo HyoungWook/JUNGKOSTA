@@ -34,13 +34,8 @@
 </head>
 <body>
 
-	물품 상세 페이지
-
 	<div id="section">
-		<%-- <jsp:include page="../header&footer/header.jsp"></jsp:include>
-		<jsp:include page="../header&footer/nav.jsp"></jsp:include> --%>
 		<div class="container">
-
 			<a href="#">${totalcategoryName}&nbsp;</a><img
 				id="category_button_ktw" src="/Jungkosta/resources/images/trade/category_direct.png">
 			<img src="/Jungkosta/resources/images/trade/direct_tw.png">&nbsp;<a href="#">&nbsp;${subcategory.subca_name}</a>
