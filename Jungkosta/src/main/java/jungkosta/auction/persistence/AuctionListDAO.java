@@ -7,7 +7,9 @@ import jungkosta.auction.domain.AuctionCriteria;
 import jungkosta.auction.domain.AuctionVO;
 
 public interface AuctionListDAO {
-	
+
 	public List<AuctionVO> auctionList(AuctionCriteria cri) throws Exception;
+
+	public List<AuctionVO> auctionCate(Map<String, Object> map) throws Exception;
 
 }

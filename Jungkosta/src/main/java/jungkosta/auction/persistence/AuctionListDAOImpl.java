@@ -27,4 +27,11 @@ public class AuctionListDAOImpl implements AuctionListDAO {
 				new RowBounds(cri.getPageStart(), cri.getPerPageNum()));
 	}
 
+	@Override
+	public List<AuctionVO> auctionCate(Map<String, Object> map) throws Exception {
+		return sqlSession.selectList(namespace+".auctionCate", map);
+	}
+
+
+
 }

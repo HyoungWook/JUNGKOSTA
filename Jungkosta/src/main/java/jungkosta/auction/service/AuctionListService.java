@@ -10,5 +10,5 @@ public interface AuctionListService {
 	public List<AuctionVO> auctionList(AuctionCriteria cri) throws Exception;
 	
 	
-
+	public List<AuctionVO> listCategory(String categoryList,String statusList)throws Exception;
 }

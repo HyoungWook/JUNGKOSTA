@@ -54,9 +54,9 @@ $(function() {
 
 	$(".button_radio").each(function() {
 		$(this).change(function() {
-			
+
 			page = 1;
-			
+
 			$('.item_list_phw').empty().hide();
 			$('#loading_phw').stop();
 			$('#loading_phw').fadeIn();
@@ -92,7 +92,6 @@ $(function() {
 		if (currentHeight >= height) {
 			if (flag) {
 				flag = false;
-				
 
 				var data = "page=" + (++page) + "&";
 				data += "sort=" + sort;
@@ -125,4 +124,39 @@ $(function() {
 
 		flag = true;
 	}
+
+	$('#categoryCheck input:checkbox').click(
+			function() {
+
+				var $check = $("#categoryCheck input:checked");
+				var size = $check.size();
+				var categoryList = [];
+				var statusList = [];
+				for (var i = 0; i < size; i++) {
+
+					if ($check.eq(i).hasClass('category')) {
+						categoryList.push($check.eq(i).val());
+					} else if ($check.eq(i).hasClass('status')) {
+						statusList.push($check.eq(i).val());
+					}
+
+				}
+				alert(categoryList);
+				alert(statusList);
+
+				$.ajax({
+					url : "auctionCategory",
+					type : "POST",
+					dataType : "text",
+					data : "categoryList=" + categoryList + "&statusList="
+							+ statusList,
+					success : function() {
+						alert("성공");
+					},
+					error : function() {
+						alert("실패");
+					}
+				});
+			});
+
 });
