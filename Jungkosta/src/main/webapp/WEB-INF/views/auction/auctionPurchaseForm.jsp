@@ -44,7 +44,7 @@
 
 <body>
 	<div class="container">
-		<form id="auctoin_purchase" method="post">
+		<form id="auction_purchase" method="post">
 			<input type="hidden" name="sale_id" id="sale_id" value="${item.sale_id }">
 			<input type="hidden" name="sale_id" id="bidding_id" value="${bidding.bidding_id }">
 			<h2>낙찰 상품 주문하기</h2>

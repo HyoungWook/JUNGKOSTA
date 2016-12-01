@@ -62,7 +62,7 @@
 		where subca_id = #{subca_id}
 	</select>
 
-	<select id="auctionList" parameterType="java.util.Map"
+	<select id="auctionList" parameterType="AuctionCriteria"
 		resultType="AuctionVO">
 		select * from auctionlist_view
 		<choose>
