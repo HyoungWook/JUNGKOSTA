@@ -92,7 +92,7 @@
 			</if>
 			<if test="statusList!=null">
 				<foreach collection="statusList" item="c" open="(" close=")">
-					item_status in (#{c});
+					item_status in (#{c})
 				</foreach>
 			</if>
 		</if>

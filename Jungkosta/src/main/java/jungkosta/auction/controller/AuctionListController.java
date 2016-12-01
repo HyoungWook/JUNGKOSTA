@@ -64,9 +64,9 @@ public class AuctionListController {
 	}
 	
 	@RequestMapping(value = "auctionCategory", method = RequestMethod.POST)
-	public void auctionCategory(Model model,String categoryList,String statusList) throws Exception{
+	public List<AuctionVO> auctionCategory(Model model,String categoryList,String statusList) throws Exception{
 		
-		model.addAttribute("list", auctionListService.auctionCate(categoryList, statusList));
+		return auctionListService.auctionCate(categoryList, statusList);
 		
 	}
 	
