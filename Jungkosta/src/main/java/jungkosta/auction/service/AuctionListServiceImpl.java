@@ -1,13 +1,12 @@
 package jungkosta.auction.service;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+import jungkosta.auction.domain.AuctionCriteria;
 import jungkosta.auction.domain.AuctionVO;
 import jungkosta.auction.persistence.AuctionListDAO;
 
@@ -18,12 +17,9 @@ public class AuctionListServiceImpl implements AuctionListService {
 	private AuctionListDAO dao;
 
 	@Override
-	public List<AuctionVO> auctionList(String sort) throws Exception {
-
-		Map<String, String> map = new HashMap<String,String>();
-
-		map.put("sort", sort);
-		return dao.auctionList(map);
+	public List<AuctionVO> auctionList(AuctionCriteria cri) throws Exception {
+		
+		return dao.auctionList(cri);
 	}
 
 }

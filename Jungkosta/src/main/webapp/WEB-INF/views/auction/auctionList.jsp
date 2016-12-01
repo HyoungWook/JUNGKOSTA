@@ -32,6 +32,8 @@
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<script type="text/javascript"
 		src="/Jungkosta/resources/js/auction/auction_main_phw.js"></script>
+	<script type="text/javascript"
+		src="/Jungkosta/resources/js/auction/auctionList.js"></script>
 
 	<div class="main_phw">
 		<div class="top_phw">
@@ -234,90 +236,3 @@
 			<br> <br>
 		</div>
 </script>
-<script>
-	var template = Handlebars.compile($("#template").html());
-
-	Handlebars.registerHelper("if_phw", function(auction_end_status, block) {
-		var accum = "";
-
-		if (auction_end_status == 'true') {
-			accum += block.fn();
-		}
-		return accum;
-	});
-
-	Handlebars.registerHelper("money_fomat", function(money) {
-
-		var value = "" + money;
-
-		var result = "";
-		var array = [];
-
-		for (var i = value.length; i >= 3; i = i - 3) {
-			array.push(value.substring(i - 3, i));
-		}
-
-		var last = value.length % 3;
-
-		if (last != 0) {
-			array.push(value.substr(0, last));
-		}
-
-		for (var i = array.length - 1; i >= 0; i--) {
-
-			if (i == 0) {
-				result += array[i] + "원";
-			} else {
-				result += array[i] + ",";
-			}
-		}
-		return result;
-
-	});
-
-	//end 현우 추가 부분
-
-	$.getJSON("auctionListSort?sort=null", function(data) {
-		$.each(data, function(index, entry) {
-
-			var listInfo = getListInfo(entry);
-			var html = template(listInfo);
-
-			$(".item_list_phw").append(html);
-		});
-	});
-	//start 현우 추가 부분
-	$(".button_radio").each(function() {
-		$(this).change(function() {
-			$('.item_list_phw').empty().hide();
-			$('#loading_phw').stop();
-			$('#loading_phw').fadeIn();
-
-			$('#loading_phw').stop();
-			$('#loading_phw').fadeIn();
-			if ($(this).is(":checked")) {
-				var sort = $(this).val();
-				$.getJSON("auctionListSort?sort=" + sort, function(data) {
-					$.each(data, function(index, entry) {
-
-						var listInfo = getListInfo(entry);
-						var html = template(listInfo);
-
-						$(".item_list_phw").append(html);
-					});
-				});
-			}
-
-			$('.item_list_phw').fadeIn();
-			$('#loading_phw').fadeOut();
-
-		});
-
-	});
-	
-	
-</script>
-
-
-
-
