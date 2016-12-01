@@ -64,9 +64,21 @@ public class AuctionListController {
 	}
 	
 	@RequestMapping(value = "auctionCategory", method = RequestMethod.POST)
-	public List<AuctionVO> auctionCategory(Model model,String categoryList,String statusList) throws Exception{
-		
-		return auctionListService.auctionCate(categoryList, statusList);
+	public ResponseEntity<List<AuctionVO>> auctionCategory(String categoryList,String statusList) throws Exception{
+		ResponseEntity<List<AuctionVO>> entity = null;
+
+		try {
+			System.out.println(categoryList);
+			System.out.println(statusList);
+			List<AuctionVO> listCategory = auctionListService.listCategory(categoryList, statusList);
+			
+			entity = new ResponseEntity<List<AuctionVO>>(listCategory, HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+			entity = new ResponseEntity<List<AuctionVO>>(HttpStatus.BAD_REQUEST);
+		}
+
+		return entity;
 		
 	}
 	

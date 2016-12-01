@@ -9,5 +9,5 @@ public interface AuctionListService {
 	public List<AuctionVO> auctionList(String sort) throws Exception;
 	
 	
-	public List<AuctionVO> auctionCate(String categoryList,String statusList)throws Exception;
+	public List<AuctionVO> listCategory(String categoryList,String statusList)throws Exception;
 }

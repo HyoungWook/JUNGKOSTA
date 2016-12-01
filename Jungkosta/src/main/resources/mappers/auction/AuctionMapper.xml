@@ -83,19 +83,25 @@
 		where sale_id=#{sale_id}
 	</update>
 
-	<select id="item_statusAucList" parameterType="java.util.Map"
+	<select id="auctionCate" parameterType="java.util.Map"
 		resultType="AuctionVO">
-		select * from auctionlist_view where
-		<if test="categoryList!=null or statusList!=null">
-			<if test="categoryList!=null">
-				subca_id in(#{categoryList})
+		select * from auctionlist_view
+		<where>
+			<if test="categoryList!=null and statusList!=null">
+			subca_id in 
+			<foreach collection="categoryList" item="item" open="("
+						close=")" separator=",">
+						#{item}
+			</foreach> 
+			and item_status in
+					<foreach collection="statusList" item="item2" open="("
+						close=")" separator=",">
+						'#{item2}'
+					</foreach>
 			</if>
-			<if test="statusList!=null">
-				<foreach collection="statusList" item="c" open="(" close=")">
-					item_status in (#{c})
-				</foreach>
-			</if>
-		</if>
+		</where>
+
+	
 	</select>
 
 

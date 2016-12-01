@@ -27,14 +27,34 @@ public class AuctionListServiceImpl implements AuctionListService {
 	}
 
 	@Override
-	public List<AuctionVO> auctionCate(String categoryList,String statusList) throws Exception {
+	public List<AuctionVO>  listCategory(String categoryList,String statusList) throws Exception {
 		
-		String [] arr=statusList.split(",");
+		String [] arr = statusList.split(",");
+		
+		String[] temp  =categoryList.split(",");
+		
+		int[] arr2 = new int[temp.length];
+		
+		for(int i = 0 ; i < arr2.length ; i++){
+			arr2[i] = Integer.parseInt(temp[i]);
+		}
 		
 		Map<String,Object> m = new HashMap<String,Object>();
-		
-		m.put("categoryList", categoryList);
+		if(!categoryList.equals("") && categoryList!=null){			
+			m.put("categoryList",arr2);
+		}
+		if(!statusList.equals("") && statusList!=null){		
 		m.put("statusList", arr);
+		}
+		
+		if(m.get("statusList") != null){
+			String[] aa = (String[]) m.get("statusList");
+			
+			for(int i=0;i<aa.length;i++){
+				System.out.print(aa[i] + ", ");
+			}
+			System.out.println();
+		}
 		
 		return dao.auctionCate(m);
 	}
