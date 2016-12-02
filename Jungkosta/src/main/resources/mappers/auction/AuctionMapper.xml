@@ -62,14 +62,36 @@
 		where subca_id = #{subca_id}
 	</select>
 
-	<select id="auctionList" parameterType="AuctionCriteria"
+	<select id="auctionList" parameterType="java.util.Map"
 		resultType="AuctionVO">
 		select * from auctionlist_view
+
+		<if test="category != null or status != null">
+			<where>
+				<if test="category != null">
+					subca_id in
+					<foreach collection="category" item="ca" separator=","
+						open="(" close=")">
+						#{ca}
+					</foreach>
+
+					<if test="status != null">
+						and
+					</if>
+				</if>
+
+				<if test="status != null">
+					<foreach collection="status" item="st" separator="or">
+						item_status like '${st}%'
+					</foreach>
+				</if>
+			</where>
+		</if>
 		<choose>
-			<when test="sort == 'add_sort'.toString()">
+			<when test="cri.sort == 'add_sort'.toString()">
 				order by sale_date desc
 			</when>
-			<when test="sort == 'end_sort'.toString()">
+			<when test="cri.sort == 'end_sort'.toString()">
 				order by auction_end_date
 			</when>
 		</choose>
@@ -82,27 +104,5 @@
 		item_cost = #{item_cost}
 		where sale_id=#{sale_id}
 	</update>
-
-	<select id="auctionCate" parameterType="java.util.Map"
-		resultType="AuctionVO">
-		select * from auctionlist_view
-		<where>
-			<if test="categoryList!=null and statusList!=null">
-			subca_id in 
-			<foreach collection="categoryList" item="item" open="("
-						close=")" separator=",">
-						#{item}
-			</foreach> 
-			and item_status in
-					<foreach collection="statusList" item="item2" open="("
-						close=")" separator=",">
-						'#{item2}'
-					</foreach>
-			</if>
-		</where>
-
-	
-	</select>
-
 
 </mapper>

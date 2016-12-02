@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import jungkosta.auction.domain.AuctionCriteria;
@@ -26,12 +27,22 @@ public class AuctionListController {
 	private AuctionService auctionService;
 
 	@RequestMapping(value = "/auctionListSort", method = RequestMethod.GET)
-	public ResponseEntity<List<AuctionVO>> listSort(AuctionCriteria cri) throws Exception {
+	public ResponseEntity<List<AuctionVO>> listSort(AuctionCriteria cri,
+			@RequestParam("categoryList") String categoryList, @RequestParam("statusList") String statusList)
+			throws Exception {
 		ResponseEntity<List<AuctionVO>> entity = null;
+
+		if (categoryList.equals("")) {
+			categoryList = null;
+		}
+
+		if (statusList.equals("")) {
+			statusList = null;
+		}
 
 		try {
 
-			List<AuctionVO> list = auctionListService.auctionList(cri);
+			List<AuctionVO> list = auctionListService.auctionList(cri, categoryList, statusList);
 
 			entity = new ResponseEntity<List<AuctionVO>>(list, HttpStatus.OK);
 		} catch (Exception e) {
@@ -56,25 +67,6 @@ public class AuctionListController {
 		}
 
 		return entity;
-	}
-	
-	@RequestMapping(value = "auctionCategory", method = RequestMethod.POST)
-	public ResponseEntity<List<AuctionVO>> auctionCategory(String categoryList,String statusList) throws Exception{
-		ResponseEntity<List<AuctionVO>> entity = null;
-
-		try {
-			System.out.println(categoryList);
-			System.out.println(statusList);
-			List<AuctionVO> listCategory = auctionListService.listCategory(categoryList, statusList);
-			
-			entity = new ResponseEntity<List<AuctionVO>>(listCategory, HttpStatus.OK);
-		} catch (Exception e) {
-			e.printStackTrace();
-			entity = new ResponseEntity<List<AuctionVO>>(HttpStatus.BAD_REQUEST);
-		}
-
-		return entity;
-		
 	}
 
 }
