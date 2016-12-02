@@ -28,8 +28,7 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
 
 
-<link href="/Jungkosta/resources/css/auction/auction_detail_phw.css"
-	rel="stylesheet">
+<link href="/Jungkosta/resources/css/auction/auction_detail_phw.css" rel="stylesheet">
 
 <div class="container">
 	<input type="hidden" id="sale_id" value="${auction.sale_id }">

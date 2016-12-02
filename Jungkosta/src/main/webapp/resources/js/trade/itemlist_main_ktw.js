@@ -4,7 +4,6 @@ $(function(){
 		icon : false
 	});
 	
-
 	$("#radio_btn input").checkboxradio({
 		icon : false
 	});

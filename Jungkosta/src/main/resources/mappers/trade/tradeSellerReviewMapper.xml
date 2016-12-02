@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="jungkosta.mappers.trade.TradeSellerReviewMapper">
+
+
+	<!-- insertSellerReview_tw -->
+	<insert id="insertSellerReview" parameterType="Seller_ReviewVO">
+		insert into seller_review (SELLER_REVIEW_ID, CONTENT, SATISFACTION
+		,PURCHASER, SELLER)values (#{seller_review_id}, #{content}, #{satisfaction},
+		#{purchaser}, #{seller})
+	</insert>
+	
+	<!-- selectSellerReview_tw -->
+	<select id="selectSeller_id" resultType="Integer">
+		select max(seller_review_id) from seller_review
+	</select>
+</mapper>

@@ -87,6 +87,7 @@
                      <input type="text" id="buy_date" name="buy_time"
                         class="form-control cate_ktw">
                   </div>
+                  <input type="hidden" id="sysdate" value="${sysdate }">
                   <br>
 
                   <h3 class="saleCategory_ktw">구매하신 경로는 어떻게 되나요?</h3>
@@ -114,42 +115,12 @@
 
                   <h3 class="saleCategory_ktw">상품에 대한 추가정보를 입력해주세요</h3>
                   <div class="additional_info form-group">
-                  <textarea rows="2" class="form-control cate_ktw" name="additional_info" id="additional_info_si"
+                  <textarea cols="2" rows="2" class="form-control cate_ktw" name="additional_info" id="additional_info_si"
                      placeholder="추가 정보를 입력해주세요"></textarea>
                   </div><br>
 
                   <h3 class="saleCategory_ktw">상품의 이미지를 올려주세요</h3>
-                 <!--                     <div class="item_pic">
-                     <input type="text" class="form-control" name="item_pic" disabled
-                           placeholder= "제품 사진을 추가해주세요">
-                     <button type="button" class="btn btn-default">사진 추가</button>
-                  </div>
-                  <img alt="" src="../image/gearfit01.jpg"><br>
-                  <img alt="" src="../image/gearfit02.jpg"><br> <br> -->
-
-                  <div class="form-group" id="fileUpload">
-
-                     <!-- <input id="fileInput" filestyle="" type="file"
-                        data-class-button="btn btn-default" name="item_pic"
-                        data-class-input="form-control" data-button-text=""
-                        data-icon-name="fa fa-upload" class="form-control" tabindex="-1"
-                        style="position: absolute; clip: rect(0px, 0px, 0px, 0px);">
-
-                     <div class="bootstrap-filestyle input-group">
-
-                        <input type="text" id="userfile" class="form-control"
-                           disabled=""> <span
-                           class="group-span-filestyle input-group-btn" tabindex="0">
-
-                           <label for="fileInput" class="btn btn-info "> <span
-                              class="glyphicon fa fa-upload">업로드</span>
-
-                        </label>
-
-                        </span>
-
-                     </div> -->
-                     
+                  <div class="form-group" id="fileUpload">    
                      <!-- Drag&Drop Image Upload -->
                      <div class="form-group">
 						<label for="exampleInputEmail1" id="fileLabel">File DROP Here</label>
@@ -160,9 +131,7 @@
 						<ul class="mailbox-attachments clearfix uploadedList">
 			
 						</ul>
-					</div>
-                     
-
+					</div> 
                   </div>
                   <br /> <br />
                   <h3 class="saleCategory_ktw">원하시는 상품의 가격을 입력해주세요</h3>
@@ -263,21 +232,6 @@ $('.fileDrop').on('drop', function(event) {
 	});
 });
 
-//사진 submit
-/* $("#itemRegister").submit(function(event){
-	event.preventDefault();
-	
-	var that = $(this);
-	
-	var str ="";
-	$(".uploadedList .delbtn").each(function(index){
-		 str += "<input type='hidden' name='item_pic"+ (index + 1) +"' value='"+$(this).attr("href") +"'> ";
-	});
-	
-	that.append(str);
-
-	that.get(0).submit();
-}); */
 
 //사진 delete button
 $('.uploadedList').on('click', '.delbtn', function(event) {

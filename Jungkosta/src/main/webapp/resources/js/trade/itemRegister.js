@@ -70,7 +70,22 @@ $(function(){
    })
    
    $('#itemRegister').submit(function(event){
- 
+	   var today = new Date();
+		var dd = today.getDate();
+		var mm = today.getMonth()+1;
+		var yyyy = today.getFullYear();
+		
+		if(dd < 10){
+			dd = '0'+dd
+		}
+
+		if(mm < 10){
+			mm = '0'+mm
+		}
+
+		today = yyyy+'/'+mm+'/'+dd; 
+		
+	   var todaydate = [today];
 	   var $category = $('#category_ktw');
 	   var $sub_category = $('#sub_category_ktw');
 	   var $item_name = $('#item_name_si');
@@ -83,6 +98,8 @@ $(function(){
 	   var $item_cost = $('#item_cost_si');
 	   var $bank_name = $('#bank_name_si');
 	   var $Account_no = $('#Account_no_si');
+	   var sysdate = $('#sysdate').val();
+	   
 	   
       if($category.val() == 'null'){
          alert('카테고리를 선택해주세요');
@@ -108,6 +125,11 @@ $(function(){
          alert('날짜를 입력해주세요');
          
          return false;
+      }
+      
+      if($buy_date.val() > [todaydate]){
+    	  alert('올바른 날짜를 선택해주세요.');
+    	  return false;
       }
       
       if($buy_info.val().length == 0){
