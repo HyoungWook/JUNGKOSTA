@@ -45,10 +45,6 @@ public class TradeThread extends Thread {
 		this.purchase_id = purchase_id;
 	}
 
-
-
-
-
 	public SaleService getSaleService() {
 		return saleService;
 	}
@@ -85,7 +81,7 @@ public class TradeThread extends Thread {
 		try {
 			System.out.println("스레드 시작..");
 			//클릭시 처리 로직
-			for(int i = 0; i < 10 ; i++){
+			for(int i = 0; i < 30 ; i++){
 				Thread.sleep(1000);
 				if(flag == true){		
 						logic();
@@ -96,7 +92,6 @@ public class TradeThread extends Thread {
 								return;
 							}
 					}
-					
 				}
 				System.out.println("스레드 실행중.." + (i+1));
 			}
@@ -122,10 +117,9 @@ public class TradeThread extends Thread {
 			member.setPoint(extra_price);
 			System.out.println("적립할 마일리지 : " + extra_price);
 			purchaseService.backPoint(member);		
-			
+			saleService.updateDealCount(purchasevo.getEmail());
 			//마일리지 적립
 		} catch (Exception e) {
-			
 			e.printStackTrace();
 		}
 	

@@ -19,8 +19,6 @@
 
 </style>
 <link href="/Jungkosta/resources/css/trade/tradeDetail.css" rel="stylesheet"> 
-<script type="text/javascript" src="/Jungkosta/resources/js/trade/qna.js"></script>
-
 
 
 <!-- bootstrap -->
@@ -121,7 +119,16 @@
 									<span id="itemPrice_ktw" name="item_cost"><fmt:formatNumber
 											value="${register.item_cost }" pattern="#,###" />원</span>
 								</div>
-								<br>
+								<br><br>
+								<c:choose>
+								<c:when test="${register.sale_status=='거래중' &&purchase.email==email}">
+									<span id="status3">마이 페이지를 이용해 거래해 주세요.</span>
+								</c:when>
+								<c:when test="${register.sale_status=='거래중' &&purchase.email!=email}">
+								<span id="status2">다른 사람과 거래중 입니다.</span>
+								</c:when>
+								</c:choose>
+		
 								<hr>
 							</div>
 							<br> <br> <br> <br>
@@ -234,10 +241,12 @@
 											</div>
 										</div>
 									</div>
+				<input type="hidden" name="email" id="purchase_email" value="${purchase.email }">
+				
 									<div id="collapseOne" class="panel-collapse collapse in">
 										<div class="panel-body">
 											<form id="reply">
-												<input type='hidden' name="email" value="${email }">
+												<input type='hidden' id="session_email" name="email" value="${email }">
 												<input type="hidden" name="sale_id"
 													value="${param.sale_id }">
 												<div class="qAnda form-group">
@@ -335,16 +344,6 @@
 					$(".reply_table_si tbody").empty().hide();
 					
 					$(list).each(function(index) {
-						
-						/* var html = template(list[index]); */
-						
-						/* var html = "<tr>";
-						html += "<td>" + (index + 1) + "</td>";
-						html += "<td>" + list[index].content + "</td>";
-						html += "<td>" + list[index].email + "</td>";
-						html += "</tr>";
-						$('.reply_table_si tbody').append(html); */
-						
 					});
 					
 					$(".reply_table_si tbody").fadeIn();

@@ -51,6 +51,9 @@ public class SaleServiceImpl implements SaleService {
 		saleDAO.updateReadCount(sale_id);
 	}
 
-
+	@Override
+	public void updateDealCount(String email) throws Exception {
+		saleDAO.updateDealCount(email);
+	}
 
 }

@@ -43,6 +43,11 @@
 
 <script type="text/javascript">
    function sendDetail(id) {
+	   var status = $('#status').val();
+	   if(status=="거래완료"){
+		   alert('본 상품은 판매가 종료된 상품입니다');
+		   return false;
+	   }
       location.href = "tradeDetail?sale_id=" + id;
    }
 </script>
@@ -239,11 +244,17 @@
 								<span name="email">중코스타</span>&nbsp; 
 								<img id="check_ktw" src="/Jungkosta/resources/images/trade/check.jpg" />
 								<div class="item_img_ktw">
-								
+									<input type="hidden" id="status" value="${temp.sale_status }">
 									<img id="item_main_img" src="displayFile?fileName=${temp.item_pic1}">
-									<c:if test="${temp.sale_status =='거래완료'}">
-									<img id="close_auc_ktw" alt="trade_close" src="/Jungkosta/resources/images/trade/auction_close.png">
-									</c:if>
+									<c:choose>
+									<c:when test="${temp.sale_status =='거래완료'}">
+										<img id="close_auc_ktw" alt="trade_close" src="/Jungkosta/resources/images/trade/auction_close.png">	
+									</c:when>
+									<c:when test="${temp.sale_status =='거래중'}">
+										<img id="ing_tra_ktw" alt="trade_close" src="/Jungkosta/resources/images/trade/sale_status_ing.png">
+									</c:when>
+									</c:choose>
+									
 					
 								</div>
 								<br> <br> <b class="item_name_ktw">${temp.item_name }</b>
@@ -273,7 +284,7 @@
 
 	</div>
 	<script id="template" type="text/x-handlebars-template">
-<div class="col-md-2 col-md-offset-2 item_info_ktw"
+<div class="col-md-3 item_info_ktw"
 	onclick="sendDetail({{sale_id}})">
 	<img id="good_ktw" src="/Jungkosta/resources/images/trade/good.png" />&nbsp;
 	<span name="email">중코스타</span>&nbsp; 

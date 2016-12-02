@@ -87,6 +87,7 @@
                      <input type="text" id="buy_date" name="buy_time"
                         class="form-control cate_ktw">
                   </div>
+                  <input type="hidden" id="sysdate" value="${sysdate }">
                   <br>
 
                   <h3 class="saleCategory_ktw">구매하신 경로는 어떻게 되나요?</h3>

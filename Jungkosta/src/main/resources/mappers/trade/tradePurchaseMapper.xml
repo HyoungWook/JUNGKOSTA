@@ -39,6 +39,8 @@
 	<update id="backPoint" parameterType="MemberVO">
 		update member set point = point + #{point} where email = #{email}
 	</update>
-	
-	
+ 	
+	<select id="findPurchase" resultType="PurchaseVO" parameterType="int">
+		select * from purchase where sale_id = #{sale_id}
+	</select>
 </mapper>

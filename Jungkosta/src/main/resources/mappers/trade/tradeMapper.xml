@@ -96,4 +96,8 @@
 			where sale_id = #{sale_id}
 			order by item_qa_id desc
 	</select>
+	
+	<update id="updateDealCount" parameterType="String">
+		update member set deal_count = deal_count + 1 where email = #{email}
+	</update>
 </mapper>

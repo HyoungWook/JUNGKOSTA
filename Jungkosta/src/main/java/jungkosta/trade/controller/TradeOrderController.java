@@ -90,16 +90,18 @@ public class TradeOrderController {
 	//주문_tw
 	@RequestMapping(value="/tradeOrderProc", method=RequestMethod.POST)
 	public String tradeOrderProc(HttpServletRequest request, SaleVO saleVO, PurchaseVO purchaseVO, Model model)throws Exception{
+		System.out.println("test");
+		//System.out.println("주문창 -> 완료" + saleVO);
+		System.out.println("구매 : " + purchaseVO);
+		SaleVO salevo = service_tw.searchSale(saleVO.getSale_id());
 		
-			System.out.println("구매 : " + purchaseVO);
-			
-			SaleVO salevo = service_tw.searchSale(saleVO.getSale_id());
-			System.out.println("주문창 -> 완료" + salevo);
-			//MemberVO member = memberService.selectMemberService(saleVO.getEmail());
-			HttpSession session = request.getSession();
-			
-			MemberVO member = memberService.selectMemberService((String)session.getAttribute("email"));
-			
+	
+		HttpSession session = request.getSession();
+		
+		MemberVO member = memberService.selectMemberService((String)session.getAttribute("email"));
+		System.out.println(member);
+		System.out.println(salevo);
+		
 			if(purchaseVO.getPayment_method().equals("실시간계좌이체")){//실시간계좌이체
 					purchaseVO.setPurchase_status("입금대기중");
 					purchaseService.insertPurchase(purchaseVO);
@@ -126,12 +128,26 @@ public class TradeOrderController {
 				salevo.setSale_status(firstStatus);
 				
 				service_tw.updateSaleStatusFirst(salevo);
-				
 				System.out.println("구매완료 : " + purchaseVO);
 				
-				return "redirect:/trade/tradeList?subca_id=" + salevo.getSubca_id();
+				//return "redirect:/trade/tradeList?subca_id=" + salevo.getSubca_id();
+				return "redirect:/trade/tradePurchase?purchase_id=" + purchaseVO.getPurchase_id();
 			}
+		
+	}
+		@RequestMapping(value="/tradePurchase", method=RequestMethod.GET)
+	public void tradePurchase(Model model, @RequestParam("purchase_id") int purchase_id) throws Exception{
+		PurchaseVO purchasevo = purchaseService.selectPurchase(purchase_id);
+		SaleVO salevo = service_tw.searchSale(purchasevo.getSale_id());
+		System.out.println("무통장입금으로 주문된 구매번호 : "+ purchasevo);
+		System.out.println("무통장입금으로 주문된 물품 : " + salevo);
+		
+		model.addAttribute("purchase", purchasevo);
+		model.addAttribute("register", salevo);
+		model.addAttribute("admin", memberService.selectMemberService(admin));
 	}
 	
-	
 }
+	
+	
+

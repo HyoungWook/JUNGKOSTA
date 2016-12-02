@@ -58,5 +58,10 @@ public class PurchaseDAOImpl implements PurchaseDAO {
 		
 	}
 
+	@Override
+	public PurchaseVO findPurchase(int sale_id) throws Exception {
+		return sqlSession.selectOne(namespace+".findPurchase", sale_id);
+	}
+
 
 }

@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import jungkosta.trade.domain.SaleVO;
+import jungkosta.trade.service.PurchaseService;
 import jungkosta.trade.service.SaleService;
 import jungkosta.trade.service.TradeService;
 
@@ -29,20 +30,12 @@ public class TradeListController {
 	@Inject
 	private TradeService service;
 	
-	//카테고리별 목록_tw
-	/*@RequestMapping(value = "/tradeList", method=RequestMethod.GET)
-	public String tradelistSub(Model model, @RequestParam("subca_id") Integer subca_id) throws Exception{
-		System.out.println("subca_id : " + subca_id);
-		
-		model.addAttribute("list", service_tw.listSalesub(subca_id));
-	
-		return "tradeList";
-	}*/
-	
+	@Inject
+	private PurchaseService purchaseService;
+
 	//카테고리별 목록_ysi
 	@RequestMapping(value = "/tradeList", method=RequestMethod.GET)
 	public void tradelistSub(Model model, @RequestParam("subca_id") Integer subca_id, String sort) throws Exception{
-		
 		model.addAttribute("list", service.listSale(subca_id, sort));
 	}
 	

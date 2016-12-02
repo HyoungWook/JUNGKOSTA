@@ -3,7 +3,6 @@ package jungkosta.trade.persistence;
 import jungkosta.main.domain.MemberVO;
 import jungkosta.trade.domain.PurchaseVO;
 
-
 	public interface PurchaseDAO {
 		
 	public Integer selectP_id() throws Exception;
@@ -19,4 +18,6 @@ import jungkosta.trade.domain.PurchaseVO;
 	public void usePoint(MemberVO member)throws Exception;
 	
 	public void backPoint(MemberVO member)throws Exception;
+	
+	public PurchaseVO findPurchase(int sale_id)throws Exception;
 }
