@@ -16,8 +16,7 @@ public class Websocket {
 	
 	//웹 소켓으로부터 메시지가 오면 호출되는 이벤트
 	// @param message
-	// @return
-	
+	// @return	
 	@OnMessage
 	public String handleMessage(String message){
 		System.out.println("receive from client : " + message);
