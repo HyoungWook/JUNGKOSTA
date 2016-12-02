@@ -21,17 +21,12 @@ public class AuctionListDAOImpl implements AuctionListDAO {
 	private static final String namespace = "jungkosta.main.mappers.auction.AuctionMapper";
 
 	@Override
-	public List<AuctionVO> auctionList(AuctionCriteria cri) throws Exception {
+	public List<AuctionVO> auctionList(Map<String, Object> map) throws Exception {
 
-		return sqlSession.selectList(namespace + ".auctionList", cri,
+		AuctionCriteria cri = (AuctionCriteria) map.get("cri");
+
+		return sqlSession.selectList(namespace + ".auctionList", map,
 				new RowBounds(cri.getPageStart(), cri.getPerPageNum()));
 	}
-
-	@Override
-	public List<AuctionVO> auctionCate(Map<String, Object> map) throws Exception {
-		return sqlSession.selectList(namespace+".auctionCate", map);
-	}
-
-
 
 }

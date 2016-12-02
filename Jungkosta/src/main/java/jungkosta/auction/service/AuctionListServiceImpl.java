@@ -1,5 +1,6 @@
 package jungkosta.auction.service;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,42 +20,28 @@ public class AuctionListServiceImpl implements AuctionListService {
 	private AuctionListDAO dao;
 
 	@Override
-	public List<AuctionVO> auctionList(AuctionCriteria cri) throws Exception {
-		
-		return dao.auctionList(cri);
-	}
+	public List<AuctionVO> auctionList(AuctionCriteria cri, String categoryList, String statusList) throws Exception {
 
-	@Override
-	public List<AuctionVO>  listCategory(String categoryList,String statusList) throws Exception {
-		
-		String [] arr = statusList.split(",");
-		
-		String[] temp  =categoryList.split(",");
-		
-		int[] arr2 = new int[temp.length];
-		
-		for(int i = 0 ; i < arr2.length ; i++){
-			arr2[i] = Integer.parseInt(temp[i]);
-		}
-		
-		Map<String,Object> m = new HashMap<String,Object>();
-		if(!categoryList.equals("") && categoryList!=null){			
-			m.put("categoryList",arr2);
-		}
-		if(!statusList.equals("") && statusList!=null){		
-		m.put("statusList", arr);
-		}
-		
-		if(m.get("statusList") != null){
-			String[] aa = (String[]) m.get("statusList");
-			
-			for(int i=0;i<aa.length;i++){
-				System.out.print(aa[i] + ", ");
+		Map<String, Object> map = new HashMap<>();
+		map.put("cri", cri);
+
+		if (categoryList != null) {
+			String[] temp = categoryList.split(",");
+			int[] category = new int[temp.length];
+
+			for (int i = 0; i < temp.length; i++) {
+				category[i] = Integer.parseInt(temp[i]);
+
 			}
-			System.out.println();
+			map.put("category", category);
 		}
-		
-		return dao.auctionCate(m);
-	}
 
+		if (statusList != null) {
+			String[] status = statusList.split(",");
+
+			map.put("status", status);
+		}
+
+		return dao.auctionList(map);
+	}
 }

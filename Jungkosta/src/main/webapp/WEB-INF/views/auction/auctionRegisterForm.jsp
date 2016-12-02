@@ -27,16 +27,16 @@
 	rel="stylesheet" type="text/css" />
 <script type="text/javascript">
 	//이수진 추가 start
-	$(function(){
-		var email="${email}";
-		
-		$('#add_btn').submit(function(event){
-			if(!email){
+	$(function() {
+		var email = "${email}";
+
+		$('#add_btn').submit(function(event) {
+			if (!email) {
 				alert("로그인 해주세요.");
 				return false;
 			}
 		});
-		
+
 	});
 	//이수진 추가 end
 </script>

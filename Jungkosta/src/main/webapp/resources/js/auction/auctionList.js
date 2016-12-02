@@ -39,40 +39,19 @@ $(function() {
 
 	});
 
-	$.getJSON("auctionListSort?sort=null", function(data) {
-		$.each(data, function(index, entry) {
-
-			var listInfo = getListInfo(entry);
-			var html = template(listInfo);
-
-			$(".item_list_phw").append(html);
-		});
-	});
-
 	var sort = "add_sort"; // 정렬 문자열
 	var page = 1; // 현제 페이지
 
 	$(".button_radio").each(function() {
 		$(this).change(function() {
 
-			page = 1;
-
 			$('.item_list_phw').empty().hide();
 			$('#loading_phw').stop();
 			$('#loading_phw').fadeIn();
 
-			$('#loading_phw').stop();
-			$('#loading_phw').fadeIn();
 			if ($(this).is(":checked")) {
 				sort = $(this).val();
-				$.getJSON("auctionListSort?sort=" + sort, function(data) {
-					$.each(data, function(index, entry) {
-						var listInfo = getListInfo(entry);
-						var html = template(listInfo);
-
-						$(".item_list_phw").append(html);
-					});
-				});
+				getListData(sort);
 			}
 
 			$('.item_list_phw').fadeIn();
@@ -92,9 +71,13 @@ $(function() {
 		if (currentHeight >= height) {
 			if (flag) {
 				flag = false;
+				
+				var obj = getCaAndSta();
 
 				var data = "page=" + (++page) + "&";
-				data += "sort=" + sort;
+				data += "sort=" + sort + "&",
+				data += "categoryList=" + obj.category + "&",
+				data += "statusList=" + obj.status;
 
 				$.ajax({
 					url : "auctionListSort",
@@ -125,38 +108,103 @@ $(function() {
 		flag = true;
 	}
 
-	$('#categoryCheck input:checkbox').click(
-			function() {
+	// checkbox event start
+	var $all_item = $(".all_item");
+	var $checkbox = $(".check_phw input:checkbox");
 
-				var $check = $("#categoryCheck input:checked");
-				var size = $check.size();
-				var categoryList = [];
-				var statusList = [];
-				for (var i = 0; i < size; i++) {
+	$all_item.click(function(event) {
+		var type = (this.id).substring(0, (this.id).indexOf("_"));
 
-					if ($check.eq(i).hasClass('category')) {
-						categoryList.push($check.eq(i).val());
-					} else if ($check.eq(i).hasClass('status')) {
-						statusList.push($check.eq(i).val());
-					}
+		$("." + type).each(function(index) {
+			$(this).prop("checked", false);
+			checkLabelClass($(this), false);
+		});
+		
+		getListData("null");
 
-				}
-				alert(categoryList);
-				alert(statusList);
+	});
 
-				$.ajax({
-					url : "auctionCategory",
-					type : "POST",
-					dataType : "text",
-					data : "categoryList=" + categoryList + "&statusList="
-							+ statusList,
-					success : function() {
-						alert("성공");
-					},
-					error : function() {
-						alert("실패");
-					}
-				});
+	$checkbox.click(function(event) {
+		var type;
+
+		if ($(this).hasClass("category")) {
+			type = "category";
+		} else if ($(this).hasClass("status")) {
+			type = "status";
+		}
+
+		checkedAll_item(type);
+		getListData("null");
+	});
+
+	function checkedAll_item(type) {
+
+		var $all = $("#" + type + "_all");
+
+		if ($("." + type + ":checked").length == 0) {
+			$all_item.prop("checked", true);
+			checkLabelClass($all, true);
+		} else {
+			$all_item.prop("checked", false);
+			checkLabelClass($all, false);
+		}
+	}
+
+	function checkLabelClass(obj, flag) {
+		if (flag) {
+			obj.parent().addClass("ui-checkboxradio-checked");
+			obj.parent().addClass("ui-state-active");
+		} else {
+			obj.parent().removeClass("ui-checkboxradio-checked");
+			obj.parent().removeClass("ui-state-active");
+		}
+	}
+	// end checkbox event
+
+	function getListData(sort) {
+		page = 1;
+
+		var obj = getCaAndSta();
+
+		$('.item_list_phw').empty().hide();
+
+		var data = "sort=" + sort + "&";
+		data += "categoryList=" + obj.category + "&";
+		data += "statusList=" + obj.status;
+
+		$.getJSON("auctionListSort?" + data, function(data) {
+			$.each(data, function(index, entry) {
+				var listInfo = getListInfo(entry);
+				var html = template(listInfo);
+				$(".item_list_phw").append(html);
 			});
+		});
+
+		$('.item_list_phw').fadeIn();
+	}
+
+	function getCaAndSta() {
+		var categoryList = [];
+		var statusList = [];
+
+		$checkbox.each(function(index) {
+			if ($(this).prop("checked")) {
+				if ($(this).hasClass("category")) {
+					categoryList.push($(this).val());
+				} else if ($(this).hasClass("status")) {
+					statusList.push($(this).val());
+				}
+			}
+		});
+
+		return {
+			category : categoryList,
+			status : statusList
+		}
+	}
+
+	checkedAll_item("category");
+	checkedAll_item("status");
+	getListData("null")
 
 });

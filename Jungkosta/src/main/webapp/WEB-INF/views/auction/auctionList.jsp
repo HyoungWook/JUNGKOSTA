@@ -56,15 +56,15 @@
 
 					<br>
 
-					<div id="categoryCheck">
+					<div class="check_phw">
 						<div class="row item">
 							<div class="col-md-offset-1 col-md-1">
 								<label>카테고리</label>
 							</div>
 
 							<div class="col-md-10 item">
-								<label for="category_phw_1">모든 상품<input type="checkbox"
-									id="category_phw_1" checked="checked">
+								<label for="category_all">모든 상품<input type="checkbox"
+									id="category_all" class="all_item">
 								</label> <label for="category_phw_2">노트북<input type="checkbox"
 									id="category_phw_2" value="1" class="category">
 								</label> <label for="category_phw_3">컴퓨터<input type="checkbox"
@@ -108,8 +108,8 @@
 							</div>
 
 							<div class="col-md-10 item_status">
-								<label for="item_status_phw_1">모든 상품<input
-									type="checkbox" id="item_status_phw_1" checked="checked">
+								<label for="status_all">모든 상품<input type="checkbox"
+									id="status_all" class="all_item">
 								</label> <label for="item_status_phw_2"> 새상품 <input
 									type="checkbox" id="item_status_phw_2" value="미개봉"
 									class="status">
