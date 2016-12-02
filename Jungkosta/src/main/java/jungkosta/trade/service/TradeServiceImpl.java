@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+import jungkosta.trade.domain.ItemQAVO;
 import jungkosta.trade.domain.SaleVO;
 import jungkosta.trade.persistence.TradeDAO;
 
@@ -25,8 +26,27 @@ public class TradeServiceImpl implements TradeService {
 
 	//일반판매물품list_ysi
 	@Override
-	public List<SaleVO> listSale(Integer subca_id) throws Exception {
-		return dao.listAll(subca_id);
+	public List<SaleVO> listSale(Integer subca_id, String sort) throws Exception {
+		return dao.listAll(subca_id, sort);
 	}
+	
+	//물품문의댓글_ysi
+		@Override
+		public void insertQA(ItemQAVO itemQa) throws Exception {
+			System.out.println(itemQa);
+			if(itemQa.getItem_qa_id() == 0){
+				
+				itemQa.setItem_qa_id(dao.selectQa_id() + 1);
+			}
+			itemQa.setItem_qa_id(dao.selectQa_id() + 1);
+			System.out.println("입력 itemQa : " + itemQa);
+			dao.insertQA(itemQa);
+		}
+
+		//물품문의리스트_ysi
+		@Override
+		public List<ItemQAVO> listItemQa(Integer sale_id) throws Exception {
+			return dao.listItemQa(sale_id);
+		}
 
 }

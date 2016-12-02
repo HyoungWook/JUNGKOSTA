@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="jungkosta.main.mappers.auction.BidManageMapper">
+
+
+	<select id="endAuctionList" resultType="AuctionVO">
+		<![CDATA[
+		select * from auctionList_view
+		where auction_end_date <= sysdate
+			and auction_end_status = 'false'
+		]]>
+	</select>
+
+	<update id="endAuction" parameterType="int">
+		update auction_register
+		set auction_end_status = 'true'
+		where autcion_id = #{auction_id}
+	</update>
+
+	<update id="updateSale_status" parameterType="int">
+		update sale set
+		sale_status = '거래중'
+		where sale_id = #{sale_id}
+	</update>
+	
+	
+
+</mapper>

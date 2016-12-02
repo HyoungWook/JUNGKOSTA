@@ -46,29 +46,5 @@ $(function(){
 		return Number(data_value).toLocaleString('en');
 	}
 
-	
-	$(".button_radio").each(function() {
-		$(this).change(function() {
-			/*$('#loading_phw').stop();
-			$('#loading_phw').fadeIn();*/
-			
-			if ($(this).is(":checked")) {
-				var sort = $(this).val();
-				/*var data = "sort=" + sort;*/
-				$.ajax({
-					url : "/tradeAndList",
-					type : "POST",
-					dataType : "text",
-					data : sort,
-					success : successHandler,
-					error : function() {
-						alert("실패");
-					}
-				});
-			}
-
-		});
-
-	});
 
 });

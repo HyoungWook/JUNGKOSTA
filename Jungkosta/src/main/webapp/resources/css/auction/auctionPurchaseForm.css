@@ -1,56 +1,53 @@
-.apper_phw{
+body {
+	font-family: "Helvetica Neue", Helvetica, Arial, "맑은 고딕",
+		"Malgun gothic", sans-serif;
+}
+
+.right_ktw {
+	width: 40%;
+	height: 100%;
+	margin-left: 150px;
+}
+
+#item_sub_imgs_ktw {
+	width: 30px;
+	height: 30px;
+}
+
+#layer {
+	display: none;
+	position: fixed;
+	overflow: hidden;
+	z-index: 1;
+	-webkit-overflow-scrolling: touch;
+}
+
+#btnCloseLayer {
+	cursor: pointer;
+	position: absolute;
+	right: -3px;
+	top: -3px;
+	z-index: 1;
+}
+
+.apper_phw {
 	display: block;
 }
 
-.hide_phw{
+.hide_phw {
 	display: none;
 }
 
-.member_info table {
-	border-top: 1px solid;
-	border-bottom: 2px solid;
+.pay_method {
+	font-size: 13px;
 }
 
-.member_info table tr td:nth-child(1) {
-	background-color: #EEEEEE;
-}
-
-
-#pay_method{
-	position: relative;
-}
-
-#pay_method .bank{
-	position: absolute;
-	top : 0px;
-	left : 20px;
-}
-
-.payment_info_style{
-	border-top: 1px solid;
-	border-bottom: 1px solid;
-}
-
-#total_cost{
+#total_cost {
 	color: red;
 	font-size: 22px;
 	font-weight: bold;
 }
 
-.mileage_info_style{
+.mileage_info_style {
 	font-size: 13px;
 }
-
-#item_info{
-	border-top: 1px solid;
-}
-
-#item_info th{
-	text-align: center;
-}
-
-#item_info td{
-	vertical-align: middle;
-	text-align: center;
-}
-

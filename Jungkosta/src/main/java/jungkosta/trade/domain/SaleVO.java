@@ -6,6 +6,7 @@ import java.util.Date;
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class SaleVO implements Serializable{
+	
 	private int sale_id;
 	private String item_name;
 	private int item_cost;
@@ -19,7 +20,7 @@ public class SaleVO implements Serializable{
 	private String buy_info;
 	private Date sale_date;
 
-	private String email = "test2@test2.com";
+	private String email;
 	private int subca_id;
 	private char flag = '0';
 	private String sale_status;
@@ -27,6 +28,7 @@ public class SaleVO implements Serializable{
 	private String item_pic2;
 	private String item_pic3;
 	private String item_pic4;
+	
 	
 	//2016/11/27 우성 수정 조회수
 	private int view_cnt;
@@ -210,7 +212,7 @@ public class SaleVO implements Serializable{
 				+ additional_info + ", buy_info=" + buy_info + ", sale_date=" + sale_date + ", email=" + email
 				+ ", subca_id=" + subca_id + ", flag=" + flag + ", sale_status=" + sale_status + ", item_pic1="
 				+ item_pic1 + ", item_pic2=" + item_pic2 + ", item_pic3=" + item_pic3 + ", item_pic4=" + item_pic4
-				+ "]";
+				+ ", view_cnt=" + view_cnt + "]";
 	}
 
 }

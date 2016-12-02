@@ -81,5 +81,10 @@
 		update sale set item_cost = #{item_cost}
 				where sale_id=#{sale_id}
 	</update>
+	
+	<select id="item_statusAucList" parameterType="String" resultType="AuctionVO">
+		select * from auctionlist_view where item_status=#{item_status}
+	</select>
+	
 
 </mapper>

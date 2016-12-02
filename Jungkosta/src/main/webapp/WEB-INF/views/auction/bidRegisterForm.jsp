@@ -55,8 +55,8 @@
 <div class="container">
 	<form action="/Jungkosta/auction/bidRegisterForm" method="post">
 		<input type="hidden" name="auction_id" value="${auction.auction_id }">
-		<input type="hidden" name="email" value="${email }"> <input
-			type="hidden" name="sale_id" value="${auction.sale_id }">
+		<input type="hidden" name="email" value="${email }"> 
+		<input type="hidden" name="sale_id" value="${auction.sale_id }">
 
 		<table class="table table-bordered">
 			<p>입찰 상품</p>

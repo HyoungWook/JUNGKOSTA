@@ -8,19 +8,16 @@ public class PaymentVO implements Serializable{
 	private int payment_cost;
 	private String payment_status;
 	private Timestamp payment_date;
-	private Timestamp payment_deadline;
 	private int purchase_id;
 	
 	public PaymentVO(){}
 
-	public PaymentVO(int payment_id, int payment_cost, String payment_status, Timestamp payment_date,
-			Timestamp payment_deadline, int purchase_id) {
+	public PaymentVO(int payment_id, int payment_cost, String payment_status, Timestamp payment_date, int purchase_id) {
 		super();
 		this.payment_id = payment_id;
 		this.payment_cost = payment_cost;
 		this.payment_status = payment_status;
 		this.payment_date = payment_date;
-		this.payment_deadline = payment_deadline;
 		this.purchase_id = purchase_id;
 	}
 
@@ -56,14 +53,6 @@ public class PaymentVO implements Serializable{
 		this.payment_date = payment_date;
 	}
 
-	public Timestamp getPayment_deadline() {
-		return payment_deadline;
-	}
-
-	public void setPayment_deadline(Timestamp payment_deadline) {
-		this.payment_deadline = payment_deadline;
-	}
-
 	public int getPurchase_id() {
 		return purchase_id;
 	}
@@ -75,10 +64,9 @@ public class PaymentVO implements Serializable{
 	@Override
 	public String toString() {
 		return "PaymentVO [payment_id=" + payment_id + ", payment_cost=" + payment_cost + ", payment_status="
-				+ payment_status + ", payment_date=" + payment_date + ", payment_deadline=" + payment_deadline
-				+ ", purchase_id=" + purchase_id + "]";
+				+ payment_status + ", payment_date=" + payment_date + ", purchase_id=" + purchase_id + "]";
 	}
-	
+
 	
 	
 	

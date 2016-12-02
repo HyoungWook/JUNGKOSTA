@@ -23,3 +23,15 @@
 .button_phw {
 	text-align: center;
 }
+
+.bank select {
+	text-align: center;
+	vertical-align: middle;
+}
+
+#payForm p{
+	text-align: right;
+	vertical-align: middle;
+	font-weight: bold;
+}
+
