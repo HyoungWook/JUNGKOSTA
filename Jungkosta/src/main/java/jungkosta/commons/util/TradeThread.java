@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import jungkosta.main.domain.MemberVO;
 import jungkosta.main.service.SignupService;
+import jungkosta.trade.controller.TradeAfterPayController;
 import jungkosta.trade.controller.TradePaymentController;
 import jungkosta.trade.domain.PurchaseVO;
 import jungkosta.trade.domain.SaleVO;
@@ -85,9 +86,9 @@ public class TradeThread extends Thread {
 				Thread.sleep(1000);
 				if(flag == true){		
 						logic();
-						for(int j = 0 ; j < TradePaymentController.threadList.size();j++){
-							if(sale_id==TradePaymentController.threadList.get(j).getSale_id()){
-								TradePaymentController.threadList.remove(j);
+						for(int j = 0 ; j < TradeAfterPayController.threadList.size();j++){
+							if(sale_id==TradeAfterPayController.threadList.get(j).getSale_id()){
+								TradeAfterPayController.threadList.remove(j);
 								System.out.println("스레드 종료");
 								return;
 							}

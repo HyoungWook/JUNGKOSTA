@@ -22,5 +22,7 @@ public interface SaleService {
 	public void updateReadCount(int sale_id)throws Exception;
 
 	public void updateDealCount(String email)throws Exception;
+
+	public List<String> getThunbnail(int sale_id)throws Exception;
 	
 }

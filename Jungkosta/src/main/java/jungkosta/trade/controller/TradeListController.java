@@ -21,7 +21,7 @@ import jungkosta.trade.service.PurchaseService;
 import jungkosta.trade.service.SaleService;
 import jungkosta.trade.service.TradeService;
 
-@Controller
+@RestController
 public class TradeListController {
 
 	@Inject
@@ -48,4 +48,21 @@ public class TradeListController {
 		
 		return service.listSale(subca_id, sort);
 	}
+	
+	@RequestMapping(value = "/item_pic/{sale_id}", method = RequestMethod.GET)
+	public ResponseEntity<List<String>> item_picList(@PathVariable("sale_id") int sale_id) throws Exception {
+		ResponseEntity<List<String>> entity = null;
+
+		try {
+
+			List<String> item_list = service_tw.getThunbnail(sale_id);
+			entity = new ResponseEntity<List<String>>(item_list, HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+			entity = new ResponseEntity<List<String>>(HttpStatus.BAD_REQUEST);
+		}
+
+		return entity;
+	}
+	
 }

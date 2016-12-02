@@ -10,8 +10,7 @@
 <script type="text/javascript"
 	src="/Jungkosta/resources/js/auction/auctionPurchase.js"></script>
 
-<link href="/Jungkosta/resources/css/auction/auctionPurchase.css"
-	rel="stylesheet">
+<link href="/Jungkosta/resources/css/auction/auctionPurchase.css" rel="stylesheet">
 
 
 <div class="container">

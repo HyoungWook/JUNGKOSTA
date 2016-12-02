@@ -12,12 +12,14 @@
 <!-- javaScript -->
 <script type="text/javascript" src="/Jungkosta/resources/js/trade/qna.js"></script>
 <script type="text/javascript" src="/Jungkosta/resources/js/trade/itemDetail.js"></script>
+<script type="text/javascript" src="/Jungkosta/resources/js/trade/itemDetail_zoom.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
 
+<!-- zoom-in -->
+<link href="/Jungkosta/resources/lib/imageviewer.css" rel="stylesheet" type="text/css" />
+<script src="/Jungkosta/resources/lib/imageviewer.js"></script>
 <!-- css -->
-<style type="text/css">
-
-</style>
+<link href="/Jungkosta/resources/css/trade/zoom_in.css" rel="stylesheet">
 <link href="/Jungkosta/resources/css/trade/tradeDetail.css" rel="stylesheet"> 
 
 
@@ -80,7 +82,7 @@
 				</div>
 				<div class="col-md-5 col-md-offset-2 right_ktw">
 					<form action="/Jungkosta/trade/tradeOrder" method="get">
-						<input type="hidden" name="sale_id" value="${register.sale_id }">
+						<input type="hidden" name="sale_id" value="${register.sale_id }" id="sale_id">
 						<div class="row">
 							<div class="col-md-12">
 								<img id="good_ktw" src="/Jungkosta/resources/images/trade/good.png" />&nbsp;
@@ -144,7 +146,6 @@
 			<br> <br> <br>
 			<div class="li_active">
 				<ul class="nav nav-tabs detail_select_ktw">
-
 					<li class="active"><a href="#product_info" data-toggle="tab">상품정보</a></li>
 					<li><a href="#comment" data-toggle="tab">판매자가 받은 상품평</a></li>
 					<li><a href="#qAnda" data-toggle="tab">상품문의</a></li>
@@ -154,6 +155,20 @@
 				<div class="tab-content">
 					<br> <br>
 					<div class="tab-pane active" id="product_info">
+						<label>상품 정보</label><br><br> 
+						<!-- 사진 추가-tw -->
+					<div id="item_pic_list">
+						<div id="image-gallery">
+							<div class="image-container"></div>
+							<img src="/Jungkosta/resources/images/trade/left.svg"
+							class="prev" /> <img
+								src="/Jungkosta/resources/images/trade/right.svg" class="next" />
+							<div class="footer-info">
+								<span class="current"></span>/<span class="total"></span>
+							</div>
+						</div>
+					</div>
+					<br><br>
 						<div class="row">
 							<div class="col-md-offset-1 col-md-1">
 								<span id="BUY_TIME_ktw" class="item_info_Quest_ktw">구매시기</span>
@@ -183,8 +198,6 @@
 								<span id="ADDITIONAL_INFO_ktw" class="item_info_Quest_ktw">추가정보</span>
 							</div>
 							<div class="col-md-offset-1 col-md-9">
-								<!-- 		<span class="ADDITIONAL_INFO_Result_ktw">1.액정에 기스가 있습니다.</span><br>
-								<span class="ADDITIONAL_INFO_Result_ktw">2.상태가 좋습니다.</span><br> -->
 								<span class="form-control" name="additional_info">
 									${register.additional_info } </span>
 							</div>

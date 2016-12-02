@@ -1,5 +1,6 @@
 package jungkosta.trade.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -54,6 +55,19 @@ public class SaleServiceImpl implements SaleService {
 	@Override
 	public void updateDealCount(String email) throws Exception {
 		saleDAO.updateDealCount(email);
+	}
+
+	@Override
+	public List<String> getThunbnail(int sale_id) throws Exception {
+		SaleVO salevo = saleDAO.searchSale(sale_id);
+		
+		List<String> list = new ArrayList<>();
+		
+		list.add(salevo.getItem_pic1());
+		list.add(salevo.getItem_pic2());
+		list.add(salevo.getItem_pic3());
+		list.add(salevo.getItem_pic4());
+		return list;
 	}
 
 }
