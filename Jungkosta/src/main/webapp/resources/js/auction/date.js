@@ -5,7 +5,8 @@ $(function() {
 		showButtonPanel : true,
 		changeMonth : true,
 		changeYear : true,
-		dateFormat : 'yy-mm-dd'
+		dateFormat : 'yy-mm-dd',
+		maxDate: "d"
 	});
 	
 
@@ -14,7 +15,8 @@ $(function() {
 		showButtonPanel : true,
 		changeMonth : true,
 		changeYear : true,
-		dateFormat : 'yy-mm-dd'
+		dateFormat : 'yy-mm-dd',
+		minDate:"+1d"
 	});
 	
 
