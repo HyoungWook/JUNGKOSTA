@@ -25,7 +25,19 @@
 <body>
 	<div class="container">
 		<div class="row">
-			<div class="col-md-12">
+			<!-- start 현우 추가부분 -->
+			<div class="col-md-3">
+				<%@ include file="menu.jsp"%>
+			</div>
+
+
+			<div class="col-md-9">
+
+				<br>
+				<br>
+
+				<!-- end 현우 추가부분 -->
+
 				<h4 class="text-primary">경매 무통장 입금</h4>
 				<table class="table table-hover">
 					<thead>

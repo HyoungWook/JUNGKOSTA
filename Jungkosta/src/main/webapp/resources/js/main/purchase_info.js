@@ -6,7 +6,7 @@ $(function() {
 	var phoneNum = $("#phoneNum").val();
 
 	// 경매 상품 상세 보기 event
-	$("#purchase_list").on("click", ".detail_view", function(event) {
+	$("#aucPurchase_list").on("click", ".detail_view", function(event) {
 		event.preventDefault();
 
 		var $target = $(this).parent().parent().next();
@@ -22,7 +22,7 @@ $(function() {
 	var obj;
 
 	// 구매확정 버튼 event
-	$("#purchase_list").on(
+	$("#aucPurchase_list").on(
 			"click",
 			".aucAfter",
 			function() {
@@ -52,7 +52,7 @@ $(function() {
 			});
 	
 	//item_name click Event
-	$("#purchase_list").on("click", ".goToDetail", function(event){
+	$("#aucPurchase_list").on("click", ".goToDetail", function(event){
 		
 		event.preventDefault();
 		
@@ -151,7 +151,7 @@ $(function() {
 
 				var html = template(info);
 
-				$("#purchase_list").append(html);
+				$("#aucPurchase_list").append(html);
 			});
 
 		});

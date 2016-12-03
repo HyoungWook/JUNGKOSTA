@@ -1,12 +1,12 @@
-#item_image{
+th{
 	text-align: center;
-	padding-top: 15px;
 }
 
-#aucPurList_info td{
+#auction_list td{
 	vertical-align: middle;
 }
 
-th{
+.item_image{
 	text-align: center;
+	padding-top: 15px;
 }

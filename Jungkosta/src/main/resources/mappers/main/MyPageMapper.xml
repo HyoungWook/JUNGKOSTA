@@ -9,5 +9,14 @@
 		select * from auc_pur_view
 			where email = #{email}
 	</select>
+	
+	<select id="readMyAucSale" parameterType="String" resultType="AucAndSaleVO">
+		select * from AucAndSale_view
+		where email = #{email}
+	</select>
+	
+	<select id="bestBiddingCost" parameterType="int" resultType="int">
+		select bidding_fn(#{auction_id}) from dual
+	</select>
 
 </mapper>

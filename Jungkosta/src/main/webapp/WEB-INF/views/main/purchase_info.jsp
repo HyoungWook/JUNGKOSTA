@@ -39,7 +39,7 @@
 				<hr>
 
 				<h4>경매 주문 내역</h4>
-				<table class="table">
+				<table class="table" id="aucPurList_info">
 
 					<thead>
 						<tr>
@@ -48,7 +48,7 @@
 							<th width="100">비고</th>
 						</tr>
 					</thead>
-					<tbody id="purchase_list">
+					<tbody id="aucPurchase_list">
 					</tbody>
 
 				</table>
@@ -56,7 +56,7 @@
 				<br> <br>
 
 				<h4>일반 주문 내역</h4>
-				<table class="table" id="aucPurList_info">
+				<table class="table">
 					<thead>
 						<tr>
 							<th width="300">주문 정보</th>
@@ -64,7 +64,7 @@
 							<th width="100">비고</th>
 						</tr>
 					</thead>
-					<tbody id="purchase_list">
+					<tbody id="salePurchase_list">
 					</tbody>
 
 				</table>
@@ -137,8 +137,8 @@
 				</div>
 			</div>
 		</td>
-		<td align='center' style='vertical-align : middle;' >{{status}}</td>
-		<td align='center' style='vertical-align : middle;'>
+		<td align='center'>{{status}}</td>
+		<td align='center'>
 			<button class='btn btn-sm'>배송 조회</button><br><br>
 			{{#check st}}
 				<button class='btn btn-sm aucAfter' data-toggle="modal"
