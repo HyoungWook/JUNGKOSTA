@@ -3,10 +3,11 @@ $(function(){
 	$(".sub_filter_ktw").find("input").checkboxradio({
 		icon : false
 	});
-	
+
 	$("#radio_btn input").checkboxradio({
 		icon : false
 	});
+	
 	$("#radio_btn").controlgroup();
 	
 	function successHandler(data) {
