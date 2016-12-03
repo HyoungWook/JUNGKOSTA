@@ -99,6 +99,11 @@ public class AuctionPaymentController {
 
 			if (vo.getCost() == aucAndBid.getTotal_cost()) {
 				service.registerPay(vo, sale_id, email);
+
+				AucCompleteSale thread = new AucCompleteSale(service, sale_id);
+				threadList.add(thread);
+				thread.start();
+
 				entity = new ResponseEntity<>("success", HttpStatus.OK);
 			} else {
 				entity = new ResponseEntity<>("fale", HttpStatus.OK);

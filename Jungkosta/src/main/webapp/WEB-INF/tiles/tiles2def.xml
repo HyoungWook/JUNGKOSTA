@@ -7,116 +7,150 @@
 <tiles-definitions>
 
 	<definition name="base_layout" template="/WEB-INF/views/module/template.jsp">
-		<put-attribute name="header" value="/WEB-INF/views/module/header.jsp"/>
-		<put-attribute name="nav" value="/WEB-INF/views/module/nav.jsp"/>
-		<put-attribute name="footer" value="/WEB-INF/views/module/footer.jsp"/>	
+		<put-attribute name="header" value="/WEB-INF/views/module/header.jsp" />
+		<put-attribute name="nav" value="/WEB-INF/views/module/nav.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/views/module/footer.jsp" />
 	</definition>
-	
+
 	<definition name="main" extends="base_layout">
-		<put-attribute name="body" value="/WEB-INF/views/main/main.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/main/main.jsp" />
 	</definition>
 	<definition name="boardWriteForm" extends="base_layout">
-		<put-attribute name="body" value="/WEB-INF/views/main/boardWriteForm.jsp"/>
+		<put-attribute name="body"
+			value="/WEB-INF/views/main/boardWriteForm.jsp" />
 	</definition>
 	<definition name="boardList" extends="base_layout">
-		<put-attribute name="body" value="/WEB-INF/views/main/boardList.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/main/boardList.jsp" />
 	</definition>
 	<definition name="mainSignupForm" extends="base_layout">
-		<put-attribute name="body" value="/WEB-INF/views/main/mainSignupForm.jsp"/>
+		<put-attribute name="body"
+			value="/WEB-INF/views/main/mainSignupForm.jsp" />
 	</definition>
 	<definition name="mainSignupForm2" extends="base_layout">
-		<put-attribute name="body" value="/WEB-INF/views/main/mainSignupForm2.jsp"/>
+		<put-attribute name="body"
+			value="/WEB-INF/views/main/mainSignupForm2.jsp" />
 	</definition>
-	
+
 	<!-- 우성 2016/11월/18일 추가 -->
 	<definition name="boardDetail" extends="base_layout">
-		<put-attribute name="body" value="/WEB-INF/views/main/boardDetail.jsp"/>
+		<put-attribute name="body"
+			value="/WEB-INF/views/main/boardDetail.jsp" />
 	</definition>
 	<definition name="findEmailForm" extends="base_layout">
-		<put-attribute name="body" value="/WEB-INF/views/main/findEmailForm.jsp"/>
+		<put-attribute name="body"
+			value="/WEB-INF/views/main/findEmailForm.jsp" />
 	</definition>
 	<definition name="findEmailResult" extends="base_layout">
-		<put-attribute name="body" value="/WEB-INF/views/main/findEmailResult.jsp"/>
+		<put-attribute name="body"
+			value="/WEB-INF/views/main/findEmailResult.jsp" />
 	</definition>
 	<definition name="findPasswordForm" extends="base_layout">
-		<put-attribute name="body" value="/WEB-INF/views/main/findPasswordForm.jsp"/>
+		<put-attribute name="body"
+			value="/WEB-INF/views/main/findPasswordForm.jsp" />
 	</definition>
 	<definition name="findPasswordResult" extends="base_layout">
-		<put-attribute name="body" value="/WEB-INF/views/main/findPasswordResult.jsp"/>
+		<put-attribute name="body"
+			value="/WEB-INF/views/main/findPasswordResult.jsp" />
 	</definition>
 	<definition name="customSearchForm" extends="base_layout">
-		<put-attribute name="body" value="/WEB-INF/views/main/customSearchForm.jsp"/>
+		<put-attribute name="body"
+			value="/WEB-INF/views/main/customSearchForm.jsp" />
 	</definition>
 	<definition name="blackListForm" extends="base_layout">
-		<put-attribute name="body" value="/WEB-INF/views/main/blackListForm.jsp"/>
+		<put-attribute name="body"
+			value="/WEB-INF/views/main/blackListForm.jsp" />
 	</definition>
 	<!-- 우성 끝 -->
-	
+
 	<!-- 2016/11/19 우성 추가 -->
 	<definition name="messageSendForm" extends="base_layout">
-		<put-attribute name="body" value="/WEB-INF/views/main/messageSendForm.jsp"/>
+		<put-attribute name="body"
+			value="/WEB-INF/views/main/messageSendForm.jsp" />
 	</definition>
 	<definition name="messageReceiveForm" extends="base_layout">
-		<put-attribute name="body" value="/WEB-INF/views/main/messageReceiveForm.jsp"/>
+		<put-attribute name="body"
+			value="/WEB-INF/views/main/messageReceiveForm.jsp" />
 	</definition>
 	<definition name="warningForm" extends="base_layout">
-		<put-attribute name="body" value="/WEB-INF/views/main/warningForm.jsp"/>
+		<put-attribute name="body"
+			value="/WEB-INF/views/main/warningForm.jsp" />
 	</definition>
 	<!-- 우성 끝 -->
-	
+
 	<!-- 2016/11/23 우성 추가 -->
 	<definition name="purchaseList" extends="base_layout">
-		<put-attribute name="body" value="/WEB-INF/views/main/purchaseList.jsp"/>
+		<put-attribute name="body"
+			value="/WEB-INF/views/main/purchaseList.jsp" />
 	</definition>
 	<definition name="paymentList" extends="base_layout">
-		<put-attribute name="body" value="/WEB-INF/views/main/paymentList.jsp"/>
+		<put-attribute name="body"
+			value="/WEB-INF/views/main/paymentList.jsp" />
 	</definition>
 	<definition name="aucList" extends="base_layout">
-		<put-attribute name="body" value="/WEB-INF/views/main/aucList.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/main/aucList.jsp" />
 	</definition>
-	
+
 	<!-- 우성 끝 -->
-	
+
+	<!-- start 현우 mypage virew 추가 -->
+	<definition name="sale_info" extends="base_layout">
+		<put-attribute name="body" value="/WEB-INF/views/main/sale_info.jsp" />
+	</definition>
+	<definition name="purchase_info" extends="base_layout">
+		<put-attribute name="body" value="/WEB-INF/views/main/purchase_info.jsp" />
+	</definition>
+	<!-- end 현우 mypage virew 추가 -->
+
+
 	<!-- start 현우 auction view 추가 -->
-   <definition name="auctionList" extends="base_layout">
-      <put-attribute name="body" value="/WEB-INF/views/auction/auctionList.jsp"></put-attribute>
-   </definition>
-   
-   <definition name="auctionDetail" extends="base_layout">
-      <put-attribute name="body" value="/WEB-INF/views/auction/auctionDetail.jsp"></put-attribute>
-   </definition>
-   
-   <definition name="auctionRegisterForm" extends="base_layout">
-      <put-attribute name="body" value="/WEB-INF/views/auction/auctionRegisterForm.jsp"></put-attribute>
-   </definition>
-   
-   <definition name="auctionPurchaseForm" extends="base_layout">
-      <put-attribute name="body" value="/WEB-INF/views/auction/auctionPurchaseForm.jsp"></put-attribute>
-   </definition>
-   
-   <definition name="auctionPurchase" extends="base_layout">
-      <put-attribute name="body" value="/WEB-INF/views/auction/auctionPurchase.jsp"></put-attribute>
-   </definition>
-   
-   <!-- end 현우 auction view 추가 -->
-	
+	<definition name="auctionList" extends="base_layout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/auction/auctionList.jsp"></put-attribute>
+	</definition>
+
+	<definition name="auctionDetail" extends="base_layout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/auction/auctionDetail.jsp"></put-attribute>
+	</definition>
+
+	<definition name="auctionRegisterForm" extends="base_layout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/auction/auctionRegisterForm.jsp"></put-attribute>
+	</definition>
+
+	<definition name="auctionPurchaseForm" extends="base_layout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/auction/auctionPurchaseForm.jsp"></put-attribute>
+	</definition>
+
+	<definition name="auctionPurchase" extends="base_layout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/auction/auctionPurchase.jsp"></put-attribute>
+	</definition>
+
+	<!-- end 현우 auction view 추가 -->
+
 	<!-- start 태완 trade view 추가 -->
 	<definition name="tradeDetail" extends="base_layout">
-		<put-attribute name="body" value="/WEB-INF/views/trade/tradeDetail.jsp"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/trade/tradeDetail.jsp"></put-attribute>
 	</definition>
-	
+
 	<definition name="tradeRegisterForm" extends="base_layout">
-		<put-attribute name="body" value="/WEB-INF/views/trade/tradeRegisterForm.jsp"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/trade/tradeRegisterForm.jsp"></put-attribute>
 	</definition>
-	
+
 	<definition name="tradePayment" extends="base_layout">
-		<put-attribute name="body" value="/WEB-INF/views/trade/tradePayment.jsp"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/trade/tradePayment.jsp"></put-attribute>
 	</definition>
-	
+
 	<definition name="tradeOrder" extends="base_layout">
-		<put-attribute name="body" value="/WEB-INF/views/trade/tradeOrder.jsp"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/trade/tradeOrder.jsp"></put-attribute>
 	</definition>
-	
+
 	<definition name="tradeList" extends="base_layout">
 		<put-attribute name="body" value="/WEB-INF/views/trade/tradeList.jsp"></put-attribute>
 	</definition>

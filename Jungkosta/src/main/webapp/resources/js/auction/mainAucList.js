@@ -51,7 +51,7 @@ $(function() {
 			
 			alert("정상 처리되었습니다.");
 			
-			self.location = "/Jungkosta";
+			self.location = "/Jungkosta/purchase_info";
 		} else {
 			alert("금액을 정확히 써주세요.");
 		}

@@ -4,7 +4,6 @@
 <%@ page session="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<%@ page session="false"%>
 <html>
 <head>
 <title>중코스타 - 국내 1위 중고거래 사이트</title>

@@ -27,9 +27,7 @@
 			});
 		});
 
-		function successHandler() {
-			alert("거래 완료닷");
-		}
+		
 
 	});
 </script>
