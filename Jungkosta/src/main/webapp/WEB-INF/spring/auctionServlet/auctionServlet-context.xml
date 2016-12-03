@@ -40,13 +40,20 @@
 	</beans:bean>
 	
 	<beans:bean id="LoginIntercepter" class="jungkosta.commons.interceptor.LoginInterceptor"/>
+	<beans:bean id="PreferIntercepter" class="jungkosta.commons.interceptor.PreferInterceptor"/>
+	
 	
 	<interceptors>
 		<interceptor>
 			<mapping path="/auctionRegisterForm"/>
 			<mapping path="/aucPaymentForm"/>
+			<mapping path="/auctionPurchase"/>
 			<mapping path="/auctionPurchaseForm"/>
 			<beans:ref bean="LoginIntercepter"/>
+		</interceptor>
+		<interceptor>
+			<mapping path="/auctionDetail"/>
+			<beans:ref bean="PreferIntercepter"/>
 		</interceptor>
 	</interceptors>
 	
