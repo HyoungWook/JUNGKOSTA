@@ -20,10 +20,13 @@
         //메시지가 오면 messageTextArea요소에 메시지를 추가한다.
         webSocket.onmessage = function processMessge(message){
             //Json 풀기
-            var jsonData = JSON.parse(message.data);
-            if(jsonData.message != null) {
-                messageTextArea.value += jsonData.message + "\n"
+            //var jsonData = JSON.parse(message.data);
+          
+            if(message.data != null) {
+                messageTextArea.value += message.data+ "\n"
+                alert(messageTextArea.value);
             };
+            
         }
         //메시지 보내기
         function sendMessage(){
