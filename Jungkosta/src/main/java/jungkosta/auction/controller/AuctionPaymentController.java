@@ -12,11 +12,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import jungkosta.auction.domain.AucAndBidVO;
 import jungkosta.auction.domain.AucPayVO;
 import jungkosta.auction.service.AucPayService;
+import jungkosta.auction.service.AucPurService;
 import jungkosta.commons.util.AucCompleteSale;
 
 @RestController
@@ -26,6 +28,9 @@ public class AuctionPaymentController {
 
 	@Inject
 	private AucPayService service;
+
+	@Inject
+	private AucPurService aucPurSerivce;
 
 	@RequestMapping(value = "/aucPaymentForm", method = RequestMethod.POST)
 	public ResponseEntity<String> aucPaymentForm_post(AucPayVO vo, @RequestParam("form_btn") String form_btn,
@@ -70,6 +75,35 @@ public class AuctionPaymentController {
 			AucAndBidVO view = service.readPurchase(vo.getBid_id());
 			service.cancelPay(view);
 			entity = new ResponseEntity<>("success", HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+			entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
+
+		return entity;
+	}
+
+	@ResponseBody
+	@RequestMapping("/deposit")
+	public ResponseEntity<String> deposit(AucPayVO vo, @RequestParam("sale_id") int sale_id, HttpServletRequest request)
+			throws Exception {
+		ResponseEntity<String> entity = null;
+
+		try {
+
+			AucAndBidVO aucAndBid = aucPurSerivce.readAucAndBid(sale_id);
+
+			String email = (String) request.getSession().getAttribute("email");
+
+			vo.setBid_id(aucAndBid.getBid_id());
+
+			if (vo.getCost() == aucAndBid.getTotal_cost()) {
+				service.registerPay(vo, sale_id, email);
+				entity = new ResponseEntity<>("success", HttpStatus.OK);
+			} else {
+				entity = new ResponseEntity<>("fale", HttpStatus.OK);
+			}
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
