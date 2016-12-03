@@ -118,7 +118,7 @@
 	</definition>
 	
 	<definition name="tradeList" extends="base_layout">
-		<put-attribute name="body" value="/WEB-INF/views/trade/tradeList.jsp"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/trade/tradeList2.jsp"></put-attribute>
 	</definition>
 	<!-- end 태완 trade view 추가 -->
 </tiles-definitions>
