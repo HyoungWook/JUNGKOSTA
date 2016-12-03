@@ -68,8 +68,8 @@
 	<definition name="purchaseList" extends="base_layout">
 		<put-attribute name="body" value="/WEB-INF/views/main/purchaseList.jsp"/>
 	</definition>
-	<definition name="saleList" extends="base_layout">
-		<put-attribute name="body" value="/WEB-INF/views/main/saleList.jsp"/>
+	<definition name="paymentList" extends="base_layout">
+		<put-attribute name="body" value="/WEB-INF/views/main/paymentList.jsp"/>
 	</definition>
 	<definition name="aucList" extends="base_layout">
 		<put-attribute name="body" value="/WEB-INF/views/main/aucList.jsp"/>

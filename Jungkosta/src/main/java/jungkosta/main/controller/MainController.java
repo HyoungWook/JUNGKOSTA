@@ -1,8 +1,11 @@
 package jungkosta.main.controller;
 
+import java.util.List;
 import java.util.Locale;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,9 +18,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import jungkosta.auction.domain.AuctionListVO;
 import jungkosta.main.domain.MemberVO;
 import jungkosta.main.service.MainService;
 import jungkosta.main.service.SignupService;
+import jungkosta.trade.domain.PurchaseListVO;
 
 @Controller
 public class MainController {
@@ -38,7 +43,6 @@ public class MainController {
 		logger.info("메인 컨트롤러 실행 완료....", locale);
 		
 		
-		
 		return "main";
 	}
 	
@@ -49,7 +53,7 @@ public class MainController {
 		ResponseEntity<String> entity = null;
 		
 		String json = mainService.newItem();
-				
+
 		entity = new ResponseEntity<String>(json,HttpStatus.OK);
 		
 		return entity;
@@ -85,18 +89,32 @@ public class MainController {
 	}
 	
 	@RequestMapping(value="aucList", method=RequestMethod.GET)
-	public void aucList(){
+	public void aucList(HttpServletRequest request, Model model){
+		
+		HttpSession session = request.getSession();
+		
+		List<AuctionListVO> list = mainService.auctionList(session);
+		
+		model.addAttribute("list",list);
 		
 	}
 	
 	
 	@RequestMapping(value="purchaseList", method=RequestMethod.GET)
-	public void purchaseList(){
+	public void purchaseList(HttpServletRequest request, Model model){
+		
+		
 		
 	}
 	
-	@RequestMapping(value="saleList", method=RequestMethod.GET)
-	public void saleList(){
+	@RequestMapping(value="paymentList", method=RequestMethod.GET)
+	public void saleList(HttpServletRequest request, Model model){
+		
+		HttpSession session = request.getSession();
+		
+		List<PurchaseListVO> list = mainService.paymentList(session);
+		
+		model.addAttribute("list",list);
 		
 	}
 	
