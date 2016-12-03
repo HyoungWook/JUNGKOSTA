@@ -5,7 +5,7 @@
 <style>
 .menu {
 	border: 1px solid #dcdcdc;
-	border-radius: 10x;
+	border-radius: 20px;
 }
 
 .menu ul{
@@ -17,9 +17,9 @@
 }
 
 .menu li:not(.category){
-	padding-top : 5px;
+	padding-top : 10px;
 	padding-left: 60px;
-	height: 30px;
+	height: 40px;
 	vertical-align: middle;
 }
 
@@ -28,10 +28,36 @@
 	color : gray;
 	padding-left: 30px;
 }
+
+.now{
+	background: #DDDDDD;
+	font-weight: bold;
+	color: black;
+}
 </style>
 
 <script type="text/javascript">
 	$(function(){
+		
+		var $li = $(".menu").find("li");
+		
+		var now_url = location.href;
+		now_url = now_url.substring(now_url.lastIndexOf("/"));
+		
+		$li.each(function(index){
+			var a_url = $(this).find("a").attr("href");
+			
+			if(a_url != null){
+				var url = a_url.substring(a_url.lastIndexOf("/"));
+				
+				if(url == now_url){
+					
+					$(this).addClass("now");
+					return;
+				}
+			}
+			
+		});
 		
 	});
 </script>

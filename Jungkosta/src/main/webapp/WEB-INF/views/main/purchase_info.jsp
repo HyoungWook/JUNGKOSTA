@@ -88,7 +88,7 @@
 				<div class="modal-body" align="center">
 					<form id="auctionReview" method="Post">
 						<div id="id_area"></div>
-					
+
 						<table class="table table-bordered">
 							<tr>
 								<td class="active">별점 평가</td>
@@ -105,7 +105,8 @@
 								<td><textarea cols="60" rows="10" name="content"></textarea></td>
 							</tr>
 						</table>
-						<button id="register" type="submit" class="btn btn-info button_header">등록하기</button>
+						<button id="register" type="submit"
+							class="btn btn-info button_header">등록하기</button>
 					</form>
 				</div>
 			</div>
@@ -136,8 +137,8 @@
 				</div>
 			</div>
 		</td>
-		<td align='center'>{{status}}</td>
-		<td align='center'>
+		<td align='center' style='vertical-align : middle;' >{{status}}</td>
+		<td align='center' style='vertical-align : middle;'>
 			<button class='btn btn-sm'>배송 조회</button><br><br>
 			{{#check st}}
 				<button class='btn btn-sm aucAfter' data-toggle="modal"
@@ -152,11 +153,15 @@
 	</tr>
 	<tr class='hide'>
 		<td colspan='3'>
-			<div>
-				<h5>배송 정보</h5>
-				<p>받는 사람 : {{receive_man}}<p>
-				<p>휴대폰 : {{phoneNum}}</p>
-				<p>주소 : {{address}}</p>
+			<div class='row'>
+				<div class='col-md-offset-3'>
+					<div>
+						<h5>배송 정보</h5>
+						<p>받는 사람 : {{receive_man}}<p>
+						<p>휴대폰 : {{phoneNum}}</p>
+						<p>주소 : {{address}}</p>
+					</div>
+				</div>
 			</div>
 		</td>
 	</tr>
