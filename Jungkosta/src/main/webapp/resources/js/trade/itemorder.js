@@ -152,8 +152,8 @@ $(function() {
 		var $itemPrice = $('#itemcost').val();
 		var $point1 = $('.point_tw').val();
 		
-		alert($itemPrice);
-		alert($point1);
+		/*alert($itemPrice);
+		alert($point1);*/
 		var type = "";
 		var persent;
 
@@ -167,7 +167,7 @@ $(function() {
 
 		var charge = ($itemPrice * persent);
 		var total = parseInt($itemPrice) + charge + 2500- $point1;
-		alert(total);
+		//alert(total);
 		var charge_str = addComma(charge);
 		var total_str = addComma(total);
 		$('#extraPriceRst_ktw').text(charge_str + " 원");

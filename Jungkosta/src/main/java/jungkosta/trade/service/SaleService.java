@@ -25,4 +25,5 @@ public interface SaleService {
 
 	public List<String> getThunbnail(int sale_id)throws Exception;
 	
+	public List<SaleVO> readMyTradeSale(String email)throws Exception;
 }

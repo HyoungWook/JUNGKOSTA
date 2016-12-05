@@ -83,7 +83,7 @@ public class TradeThread extends Thread {
 		try {
 			System.out.println("스레드 시작..");
 			// 클릭시 처리 로직
-			for (int i = 0; i < 100; i++) {
+			for (int i = 0; i < 10; i++) {
 				Thread.sleep(1000);
 				if (flag == true) {
 					logic();
@@ -112,7 +112,7 @@ public class TradeThread extends Thread {
 			salevo.setSale_status("거래완료");
 			saleService.updateSaleStatusFirst(salevo); // 거래완료로 상태 변경
 
-			//purchasevo = purchaseService.selectPurchase(purchase_id);
+			purchasevo = purchaseService.selectPurchase(purchase_id);
 			//purchasevo.setPurchase_status("배송 완료");
 			//purchaseService.updatePurchase(purchasevo);
 			

@@ -6,10 +6,10 @@ $(function(){
 	var subca_id = $('#subcaId').val();
 	
 	$('#check').on('click', function(){
-			alert("dd");
+			//alert("dd");
 			
 			var sendData = "purchase_id=" + purchase + "&sale_id=" + sale;
-			alert(sendData);
+			//alert(sendData);
 			$.ajax({
 				url: "tradeThread2",
 				type:"POST",

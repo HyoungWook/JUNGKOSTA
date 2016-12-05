@@ -40,7 +40,7 @@ $(function() {
 		event.preventDefault();
 		var that = $(this);
 			var password = password2.val();
-			alert(password);
+			//alert(password);
 			flag = true;
 			var sendData = "password=" + password;
 			var paymentCost = Number(payment);
@@ -51,7 +51,7 @@ $(function() {
 					type:'POST',
 					dataType:"text",
 					error:function(data){
-						alert(data + ' 실패');
+						//alert(data + ' 실패');
 						return false;
 					},
 					success:function(data){

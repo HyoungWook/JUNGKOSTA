@@ -6,6 +6,10 @@ th{
 	vertical-align: middle;
 }
 
+#sale_list td{
+	vertical-align: middle;
+}
+
 .item_image{
 	text-align: center;
 	padding-top: 15px;

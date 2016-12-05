@@ -31,7 +31,7 @@
 		<if test="sort != null">
 			<choose>
 				<when test="sort == 'n'.toString()">
-					order by sale_date asc
+					order by sale_date desc
 				</when>
 				<when test="sort == 'l'.toString()">
 					order by item_cost asc
@@ -43,7 +43,9 @@
 		</if>
 	</select>
 
-
+	<select id="readMyTradeSale" parameterType="String" resultType="SaleVO">
+		select * from sale where flag='0' and email=#{email} order by sale_date desc
+	</select>
 	<!-- listAll_tw -->
 	<!-- <select id="listSale" resultType="SaleVO"> select * from sale </select> -->
 
@@ -72,8 +74,7 @@
 	</select>
 
 	<update id="changeSaleStateFirst" parameterType="SaleVO" >
-		update sale set sale_status = #{sale_status} where sale_id IN
-		(select sale_id from PURCHASE)
+		update sale set sale_status = #{sale_status} where sale_id = #{sale_id}
 	</update>
 	
 	<update id="updateReadCount" parameterType="int">

@@ -71,4 +71,9 @@ public class SaleServiceImpl implements SaleService {
 		return list;
 	}
 
+	@Override
+	public List<SaleVO> readMyTradeSale(String email) throws Exception {
+		return saleDAO.readMyTradeSale(email);
+	}
+
 }
