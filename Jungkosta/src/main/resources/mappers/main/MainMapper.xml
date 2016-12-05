@@ -37,6 +37,10 @@
 		b.bid_id = ac.bid_id and
 		ab.email = #{email}
 		
+		<!-- 현우 추가부분 -->
+		and b.payment_method = '무통장입금'
+		and b.bid_status = '입금 대기'
+		
 	</select>
 	
 	<select id="checkPrefer" parameterType="CustomPreferVO" resultType="Integer">

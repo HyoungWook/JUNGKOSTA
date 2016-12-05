@@ -124,11 +124,6 @@ $(function() {
 			$('#content').val("");
 		});
 	}
-	
-	
-	
-	
-	// start 현우 추가 부분
 
 	var sale_id = $("#sale_id").val();
 	
@@ -157,17 +152,6 @@ $(function() {
 		$main.hide();
 		
 		$main.attr("src", getImagePath(src)).fadeIn();
-	});
-	
-	
-	$.getJSON("item_pic/" + sale_id, function(data){
-		var html = "";
-		$.each(data, function(index, item){
-			html += "<img alt='item_pic' src='displayFile?fileName=" + getImagePath(item) + "' > <br>";
-		});
-		
-		$("#item_pic_list").html(html);
-		
 	});
 	
 	var templateReply = Handlebars.compile($("#templateReply").html());
@@ -236,5 +220,6 @@ $(function() {
 
 	getRelyList();
 	
+	
 });
-// end 현우 추가 부분
+

@@ -186,45 +186,31 @@
    </div>
    
    <!-- start 현우 판매등록 모달 -->
-   <div class="modal fade" id="sale_Modal" tabindex="-1" role="dialog"
-      aria-labelledby="saleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-         <div class="modal-content">
-            <div class="modal-header">
-               <button type="button" class="close" data-dismiss="modal">
-                  <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
-               </button>
-               <h4 class="modal-title" id="saleModalLabel">판매 등록</h4>
-            </div>
-            <div class="modal-body" align="center">
-               <a href="/Jungkosta/trade/tradeRegisterForm" class="btn btn-default">일반 상품 등록</a> <br> <br>
-               <a href="/Jungkosta/auction/auctionRegisterForm"
-                  class="btn btn-default">경매 상품 등록</a>
-            </div>
-         </div>
+	<div class="modal fade" id="sale_Modal" tabindex="-1" role="dialog"
+		aria-labelledby="saleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					</button>
+					<h4 class="modal-title" id="saleModalLabel">판매 등록</h4>
+				</div>
+				<div class="modal-body" align="center">
+					<a href="#" class="btn btn-default">일반 상품 등록</a> <br> <br>
+					<a href="/Jungkosta/auction/auctionRegisterForm"
+						class="btn btn-default">경매 상품 등록</a>
+				</div>
+			</div>
 
-      </div>
+		</div>
+
+	</div>
+	<!-- end 현우 판매등록 모달 -->
 
    </div>
    <!-- end 현우 판매등록 모달 -->
-      <%-- <div class="modal fade" id="sale_Modal" tabindex="-1" role="dialog"
-               aria-labelledby="saleModalLabel" aria-hidden="true">
-               <div class="modal-dialog">
-                  <div class="modal-content">
-                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">
-                           <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
-                        </button>
-                        <h4 class="modal-title" id="saleModalLabel">판매 등록</h4>
-                     </div>
-                        <div class="modal-body">
-                              <jsp:include page="../auction/sale_btn_lsj.jsp"/>
-                     </div>
-                  </div>
-               
-               </div>
-               
-            </div> --%>
+      
 
 </body>
 </html>

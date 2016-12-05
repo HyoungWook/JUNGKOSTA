@@ -33,7 +33,7 @@ $(function() {
 	});
 
 	// form submit event
-	$("#auctoin_purchase").submit(
+	$("#auction_purchase").submit(
 			function(event) {
 
 				event.preventDefault();

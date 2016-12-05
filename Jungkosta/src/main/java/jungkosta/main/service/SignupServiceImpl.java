@@ -1,6 +1,5 @@
 package jungkosta.main.service;
 
-
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;

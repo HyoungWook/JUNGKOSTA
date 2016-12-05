@@ -5,9 +5,8 @@
 
 .item_detail_phw {
 	display: inline;
-	
 	height: 500px;
-	
+	margin-top:2%;
 }
 
 .item_imgs_phw {
@@ -121,32 +120,27 @@
 	text-align: center;
 }
 
-#info{
-	color:gray;
+#info {
+	color: gray;
 }
 
-#product_info{
-	font-size:20px;
+#product_info {
+	font-size: 20px;
 }
 
-#item_main_phw2{
-	width:60%;
-	height:60%;
+#item_main_phw2 {
+	width: 60%;
+	height: 60%;
 }
 
-.table th{
+.table th {
 	text-align: center;
 }
 
-.active_phw{
+.active_phw {
 	border: 5px solid red;
 }
 
-#item_pic_list img{
-	display: block;
-	
-	width: 500px;
-}
-.answer_icon{
+.answer_icon {
 	width: 30px;
 }

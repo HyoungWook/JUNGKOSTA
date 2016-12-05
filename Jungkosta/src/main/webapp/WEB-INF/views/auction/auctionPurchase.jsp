@@ -99,7 +99,7 @@
 					value="${purchase.payment_method }">
 				<c:choose>
 					<c:when test="${purchase.payment_method == '무통장입금' }">
-						<a href="auctionList" class="btn btn-primary" id="check">확인</a>
+						<a href="#" class="btn btn-primary" id="check">확인</a>
 					</c:when>
 					<c:otherwise>
 						<a href="#AucPay_modal" class="btn btn-primary"

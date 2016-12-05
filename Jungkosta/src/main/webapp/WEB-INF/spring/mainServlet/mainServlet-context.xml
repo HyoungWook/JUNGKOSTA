@@ -30,6 +30,12 @@
 			<mapping path="/purchaseList"/>
 			<mapping path="/saleList"/>
 			<mapping path="/aucList"/>
+			
+			<!-- start 현우 추가 부분 -->
+			<mapping path="/sale_info" />
+			<mapping path="/purchase_info" />
+			<!-- end 현우 추가 부분 -->
+			
 			<beans:ref bean="LoginIntercepter"/>
 		</interceptor>
 		
@@ -41,10 +47,6 @@
 			<beans:ref bean="ManagerIntercepter"/>
 		</interceptor>
 	</interceptors>
-	
-	
-		
-		
 		
 		
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->

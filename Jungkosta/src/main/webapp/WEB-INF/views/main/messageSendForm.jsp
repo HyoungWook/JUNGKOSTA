@@ -51,8 +51,17 @@
 <body>
 	<div class="container">
 		<div class="row">
-			<div class="col-md-2"></div>
-			<div class="col-md-8">
+			<!-- start 현우 추가부분 -->
+			<div class="col-md-3">
+				<%@ include file="menu.jsp"%>
+			</div>
+
+
+			<div class="col-md-9">
+
+				<br> <br>
+
+				<!-- end 현우 추가부분 -->
 
 				<h4 class="text-primary">메시지 작성</h4>
 				<hr>

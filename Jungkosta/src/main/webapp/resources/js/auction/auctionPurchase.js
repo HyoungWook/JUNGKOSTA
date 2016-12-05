@@ -50,10 +50,7 @@ $(function() {
 			dataType : "text",
 			success : function() {
 				alert("처리가 완료되었습니다.");
-				self.location = "auctionList";
-				
-				window.open("aucAfterPay?sale_id="+sale_id, "newWindow",
-				'width=550, height=500, menubar=yes, status=yes, scrollbar = yes');
+				self.location = "/Jungkosta/purchase_info";
 			},
 			error : function() {
 				alert("error - 관리자에게 문의하세요. -");
@@ -69,7 +66,7 @@ $(function() {
 		
 		flag = true;
 		
-		self.location = "auctionList";
+		self.location = "/Jungkosta/aucList";
 	});
 	
 

@@ -36,6 +36,7 @@ public class MainController {
 	
 	@Inject
 	private MainService mainService;
+
 	
 	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 	

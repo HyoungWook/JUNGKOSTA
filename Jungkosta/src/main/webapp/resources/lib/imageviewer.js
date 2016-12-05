@@ -766,6 +766,8 @@
             imgSrc = container.attr('src') || container.attr('data-src');
             hiResImg = container.attr('high-res-src') || container.attr('data-high-res-src');
         }
+
+
         var viewer = new ImageViewer(container, options);
         viewer._init();
 
