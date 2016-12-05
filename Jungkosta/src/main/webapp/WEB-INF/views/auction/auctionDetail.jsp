@@ -20,6 +20,18 @@
 
 <!-- jQuery -->
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<!-- zoom in -->
+<link href="/Jungkosta/resources/css/auction/zoom_in.css"
+	rel="stylesheet" type="text/css" />
+<link href="/Jungkosta/resources/lib/imageviewer.css" rel="stylesheet"
+	type="text/css" />
+<script src="/Jungkosta/resources/lib/imageviewer.js"></script>
+
+<script src="/Jungkosta/resources/js/auction/auctionDetail_zoom.js"
+	type="text/javascript"></script>
+
+
 <script type="text/javascript"
 	src="/Jungkosta/resources/js/auction/auction_detail_phw.js"></script>
 
@@ -191,7 +203,19 @@
 				<br /> <br /> <br />
 				<div class="tab-pane active" id="product_info">
 					<label>상품 정보</label> <br /> <br />
-					<div id="item_pic_list"></div>
+					<!-- start 현우 추가 부분 -->
+					<div id="item_pic_list">
+						<div id="image-gallery">
+							<div class="image-container"></div>
+							<img src="/Jungkosta/resources/images/auction/left.svg"
+								class="prev" /> <img
+								src="/Jungkosta/resources/images/auction/right.svg" class="next" />
+							<div class="footer-info">
+								<span class="current"></span>/<span class="total"></span>
+							</div>
+						</div>
+					</div>
+					<!-- end 현우 추가 부분 -->
 					<br /> <br /> <span id="info">제품구입 일자:</span>&nbsp;
 					<!-- src변경 -->
 					<fmt:formatDate value="${auction.buy_time}" pattern="yyyy년 MM월 dd일" />
@@ -358,7 +382,7 @@
 <script src="/Jungkosta/resources/js/auction/jquery.star-rating-svg.js"></script>
 <script>
 	$(function() {
-		$(".my-rating-9").each(function(index){
+		$(".my-rating-9").each(function(index) {
 			var star = parseFloat($(this).parent().first().text());
 
 			$(this).starRating({

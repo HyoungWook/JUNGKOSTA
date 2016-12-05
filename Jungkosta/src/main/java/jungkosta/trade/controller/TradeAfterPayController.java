@@ -54,6 +54,10 @@ public class TradeAfterPayController {
 			member = memberService.selectMemberService(purchasevo.getEmail());
 			
 			salevo = saleService.searchSale(sale_id);
+			purchasevo = purchaseService.selectPurchase(purchase_id);
+			purchasevo.setPurchase_status("배송 완료");
+			purchaseService.updatePurchase(purchasevo);
+			
 			model.addAttribute("purchase", purchasevo);
 			model.addAttribute("payment_id", payment_id);
 			model.addAttribute("sale", salevo);
@@ -87,6 +91,9 @@ public class TradeAfterPayController {
 			purchasevo = purchaseService.findPurchase(sale_id);
 			if(payment.getPayment_cost() == purchasevo.getPurchase_cost()){
 				paymentService.insertPayment(payment);
+				purchasevo = purchaseService.selectPurchase(payment.getPurchase_id());
+				purchasevo.setPurchase_status("배송 완료");
+				purchaseService.updatePurchase(purchasevo);
 				TradeThread thread = new TradeThread(saleService, memberService, purchaseService, 
 						sale_id, payment.getPurchase_id());
 				thread.start();
@@ -104,37 +111,6 @@ public class TradeAfterPayController {
 		return entity;
 	}
 	
-/*	@RequestMapping(value="/tradeWithdrawThread", method=RequestMethod.POST)
-	public String tradeWithdrawThreadProc(PaymentVO payment, @RequestParam("sale_id") int sale_id, Model model){
-		System.out.println("넘어온 판매번호 : " + sale_id);
-		PurchaseVO purchasevo = null;
-		SaleVO salevo = null;
-		MemberVO member = null;
-		int purchase_id;
-		purchase_id = purchasevo.getPurchase_id();
-		try {
-			purchasevo = purchaseService.findPurchase(sale_id);
-			
-			paymentService.insertPayment(paymentvo);
-			member = memberService.selectMemberService(purchasevo.getEmail());
-			salevo = saleService.searchSale(sale_id);
-			model.addAttribute("purchase", purchasevo);
-			model.addAttribute("sale", salevo);
-			model.addAttribute("subca_id", salevo.getSubca_id());
-			model.addAttribute("member", member);
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-	
-		TradeThread thread = new TradeThread(saleService, memberService, purchaseService, 
-				sale_id, purchase_id);
-		thread.start();
-		threadList.add(thread);
-		
-		return "tradeThread";
-	}*/
 	
 	//실시간 계좌이체-tw
 	@ResponseBody
@@ -143,7 +119,6 @@ public class TradeAfterPayController {
 			@RequestParam("sale_id") int sale_id){
 		
 		System.out.println("테스트");
-		//System.out.println(flag);
 		ResponseEntity<String> entity = null;
 		boolean flag = false;
 		try {
@@ -186,5 +161,35 @@ public class TradeAfterPayController {
 		}
 		return "tradeThread";
 	}
+	
+	
+	
+	//무통장입금 구매확정 버튼 눌렀을시 -tw
+	@ResponseBody
+	@RequestMapping("/successTotrade")
+	public ResponseEntity<String> threadwithProc(@RequestParam("sale_id") int sale_id){
+		
+		System.out.println("테스트");
+		//System.out.println(flag);
+		ResponseEntity<String> entity = null;
+		boolean flag = false;
+		
+		try {
+			System.out.println("ajax 테스트");
+			for(int i = 0 ; i < threadList.size();i++){
+				if(threadList.get(i).getSale_id() ==sale_id){
+					flag = true;
+					threadList.get(i).setFlag(flag);
+				}
+			}
+			entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+			entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+		}
+		
+		return entity;
+	}
+	
 	
 }

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -41,7 +41,7 @@
 				success:function(data){
 					if(data=="success"){
 						alert('성공');
-						self.location = '/Jungkosta/trade/tradeDeposit'; 
+						self.location = '/Jungkosta/purchase_info'; 
 					}else{
 						alert('실패');
 					}
@@ -79,7 +79,18 @@
 <body>
 	<div class="container">
 		<div class="row">
-			<div class="col-md-12">
+
+			<!-- start 현우 추가부분 -->
+			<div class="col-md-3">
+				<%@ include file="menu.jsp"%>
+			</div>
+
+
+			<div class="col-md-9">
+
+				<br> <br>
+
+				<!-- end 현우 추가부분 -->
 				<h4 class="text-primary">무통장 입금</h4>
 				<table class="table table-hover">
 					<thead>
@@ -96,6 +107,10 @@
 							<tr>
 								<td><img alt="제목없음" src="${item.item_pic1}"></td>
 								<td><a href="/Jungkosta/trade/tradeDetail?sale_id=${item.sale_id}">${item.item_name}</a></td>
+
+								<td><a href="/Jungkosta/auction/auctionDetail?sale_id="
+									${item.sale_id}>${item.item_name}</a></td>
+
 								<td>${item.email}</td>
 								<td>${item.purchase_cost }</td>
 								<td>${item.purchase_deadline }</td>

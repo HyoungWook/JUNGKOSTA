@@ -6,6 +6,7 @@
 	rel="stylesheet">
 <link href="/Jungkosta/resources/css/auction/auction_add_lsj.css"
 	rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="/Jungkosta/resources/css/auction/timedropper.css"> 
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="/Jungkosta/resources/bootstrap/js/bootstrap.min.js"></script>
@@ -26,16 +27,16 @@
 	rel="stylesheet" type="text/css" />
 <script type="text/javascript">
 	//이수진 추가 start
-	$(function(){
-		var email="${email}";
-		
-		$('#add_btn').submit(function(event){
-			if(!email){
+	$(function() {
+		var email = "${email}";
+
+		$('#add_btn').submit(function(event) {
+			if (!email) {
 				alert("로그인 해주세요.");
 				return false;
 			}
 		});
-		
+
 	});
 	//이수진 추가 end
 </script>
@@ -61,6 +62,9 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="/Jungkosta/resources/js/auction/date.js"></script>
+<script src="/Jungkosta/resources/js/auction/timedropper.js"></script>
+ 
+
 
 <span id="top_lsj">경매 물품 등록</span>
 
@@ -213,13 +217,7 @@
 							<br>
 						</div>
 						<div class="col-md-5">
-							<label for="to">종료 시간:</label> <select class="form-control"
-								name="time_sel">
-								<option value="null">시간을 선택해 주세요.</option>
-								<option>00:00</option>
-								<option>06:00</option>
-								<option>18:00</option>
-							</select>
+							<input type="text" id="alarm" name="time_sel" class="form-control"/>
 						</div>
 					</div>
 					<br />
@@ -375,7 +373,9 @@
 			}
 		});
 	});
-	//end 현우 수정 부분
+	$( "#alarm" ).timeDropper({
+		format:"H:mm"
+	});
 </script>
 
 

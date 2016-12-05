@@ -43,7 +43,7 @@
 
 <script type="text/javascript">
    function sendDetail(id) {
-	   var status = $('#status').val();
+	   var status = $(this).find(".status").val();
 	   if(status=="거래완료"){
 		   alert('본 상품은 판매가 종료된 상품입니다');
 		   return false;
@@ -244,7 +244,7 @@
 								<span name="email">중코스타</span>&nbsp; 
 								<img id="check_ktw" src="/Jungkosta/resources/images/trade/check.jpg" />
 								<div class="item_img_ktw">
-									<input type="hidden" id="status" value="${temp.sale_status }">
+									<input type="hidden" class="status" value="${temp.sale_status }">
 									<img id="item_main_img" src="displayFile?fileName=${temp.item_pic1}">
 									<c:choose>
 									<c:when test="${temp.sale_status =='거래완료'}">

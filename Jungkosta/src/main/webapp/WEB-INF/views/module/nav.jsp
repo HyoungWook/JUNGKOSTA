@@ -72,7 +72,7 @@
                      data-target="#sale_Modal">판매하기</a>
                <a href="/Jungkosta/boardList/1" class="a_nav">커뮤니티</a>
                <a href="/Jungkosta" class="a_nav">JUNGKOSTA 홈</a>
-               <a href="/Jungkosta/trade/tradeList?subca_id=8" class="a_nav">스마트폰</a>
+               <a href="/Jungkosta/trade/tradeList?subca_id=3" class="a_nav">스마트폰</a>
                <a href="/Jungkosta/trade/tradeList?subca_id=2" class="a_nav">태플릿 PC</a>
                <a href="/Jungkosta/trade/tradeList?subca_id=1" class="a_nav">노트북/PC</a>
                <a href="/Jungkosta/trade/tradeList?subca_id=9" class="a_nav">카메라</a>
@@ -89,10 +89,10 @@
                             <div class="row">
                                <div class="col-md-6">
                                   <div class="content_nav_ws">
-                                     <a href="/Jungkosta/trade/tradeList?subca_id=8" class="content_link_nav_ws">스마트폰</a>
+                                     <a href="/Jungkosta/trade/tradeList?subca_id=3" class="content_link_nav_ws">스마트폰</a>
                                   </div>
                                   <div class="content_nav_ws">
-                                     <a href="/Jungkosta/trade/tradeList?subca_id=3" class="content_link_nav_ws">컴퓨터</a>
+                                     <a href="/Jungkosta/trade/tradeList?subca_id=8" class="content_link_nav_ws">컴퓨터</a>
                                   </div>
                                   <div class="content_nav_ws">
                                      <a href="/Jungkosta/trade/tradeList?subca_id=1" class="content_link_nav_ws">노트북</a>
@@ -101,7 +101,7 @@
                                      <a href="/Jungkosta/trade/tradeList?subca_id=2" class="content_link_nav_ws">테블릿</a>
                                   </div>
                                   <div class="content_nav_ws">
-                                     <a href="/Jungkosta/trade/tradeList?subca_id=3" class="content_link_nav_ws">노트북/pc 주변기기</a>
+                                     <a href="/Jungkosta/trade/tradeList?subca_id=8" class="content_link_nav_ws">노트북/pc 주변기기</a>
                                   </div>
                                   <div class="content_nav_ws">
                                      <a href="/Jungkosta/trade/tradeList?subca_id=9" class="content_link_nav_ws">카메라</a>

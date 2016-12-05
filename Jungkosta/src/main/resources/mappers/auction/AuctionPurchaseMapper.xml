@@ -54,4 +54,9 @@
 		sale_id = #{sale_id}
 	</update>
 	
+	<select id="readAucAndBid" parameterType="int" resultType="AucAndBidVO">
+		select * from auc_bid_view
+		where sale_id = #{sale_id}
+	</select>
+	
 </mapper>

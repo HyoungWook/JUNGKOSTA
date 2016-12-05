@@ -39,9 +39,9 @@ public class BidController {
 	public String bidRegister(BiddingVO vo, HttpServletRequest request, Model model) throws Exception {
 
 		int sale_id = Integer.parseInt(request.getParameter("sale_id"));
-
+		System.out.println("bid " + vo);
 		AuctionVO auction = auctionService.read(sale_id);
-
+		System.out.println(auction);
 		int bidding_cost = Integer.parseInt(request.getParameter("bidding_cost"));
 
 		bidService.registerBid(vo);

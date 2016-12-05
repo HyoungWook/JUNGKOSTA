@@ -5,9 +5,11 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
+import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import jungkosta.auction.domain.AuctionCriteria;
 import jungkosta.auction.domain.AuctionVO;
 
 @Repository
@@ -19,13 +21,12 @@ public class AuctionListDAOImpl implements AuctionListDAO {
 	private static final String namespace = "jungkosta.main.mappers.auction.AuctionMapper";
 
 	@Override
-	public List<AuctionVO> auctionList(Map<String, String> map) throws Exception {
+	public List<AuctionVO> auctionList(Map<String, Object> map) throws Exception {
 
-		List<AuctionVO> list = sqlSession.selectList(namespace + ".auctionList", map);
+		AuctionCriteria cri = (AuctionCriteria) map.get("cri");
 
-		System.out.println("현재 개수 : " + list.size());
-
-		return sqlSession.selectList(namespace + ".auctionList", map);
+		return sqlSession.selectList(namespace + ".auctionList", map,
+				new RowBounds(cri.getPageStart(), cri.getPerPageNum()));
 	}
 
 }

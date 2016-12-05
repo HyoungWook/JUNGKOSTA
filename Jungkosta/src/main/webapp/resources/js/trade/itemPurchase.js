@@ -69,7 +69,7 @@ $(function() {
 		
 		flag = true;
 		
-		self.location = "tradeList?subca_id="+subca_id;
+		self.location = "/Jungkosta/purchase_info";
 	});
 	
 

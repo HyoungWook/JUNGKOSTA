@@ -38,11 +38,8 @@
 	<div class=container>
 
 		<div class="main">
-
 			<h2>주문 상품 결제</h2>
-
 			<hr>
-
 			<div class="product_info">
 				<div class="row">
 					<div class="col-md-offset-2">
