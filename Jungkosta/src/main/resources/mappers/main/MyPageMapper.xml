@@ -10,6 +10,11 @@
 			where email = #{email}
 	</select>
 	
+	<select id="readMyTradePur" parameterType="String" resultType="TradePurVO">
+		select * from trade_pur_view
+			where email = #{email}
+	</select>
+	
 	<select id="readMyAucSale" parameterType="String" resultType="AucAndSaleVO">
 		select * from AucAndSale_view
 		where email = #{email}

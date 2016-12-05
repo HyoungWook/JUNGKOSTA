@@ -23,10 +23,13 @@
 <script type="text/javascript"
 	src="/Jungkosta/resources/js/main/purchase_info.js"></script>
 
+<script type="text/javascript"
+	src="/Jungkosta/resources/js/main/purchase_info_trade.js"></script>
 <div class="container">
 
 	<input type="hidden" id="name" value="${member.name }"> <input
 		type="hidden" id="phoneNum" value="${member.phone_num }">
+	<input type="hidden" id="address" value="${member.address }">	
 
 	<div class="row">
 		<div class="col-md-3">
@@ -167,3 +170,51 @@
 	</tr>
 </script>
 
+<script id="template_trade" type="text/x-handlebars-template">
+	<tr>
+		<td>
+			<div class='row'>
+				<div class='col-md-5'>
+					<div id='item_image'>
+						<img alt='item_image' src='{{item_pic}}' >
+					</div>
+				</div>
+				<div class='col-md-7'>
+					<div id='info'>
+						<a href='{{sale_id}}' class='goToDetail'><b>{{item_name}}</b></a><br><br>
+						<p>주문 번호 : <span>{{bid_id}}</span></p>
+						<p>구매 일자 : <span>{{date_fomat purchase_date}}</span></p>
+						<p>금액 : <span>{{money_format cost}}</span></p>
+					</div>
+				</div>
+			</div>
+		</td>
+		<td align='center'>{{status}}</td>
+		<td align='center'>
+			<button class='btn btn-sm'>배송 조회</button><br><br>
+			{{#check st}}
+				<button class='btn btn-sm aucAfter' data-toggle="modal"
+					data-target="#review_Modal" >구매 확정</button>
+			{{/check}}
+				<input type='hidden' value='{{sale_id}}'>
+				<input type='hidden' value='{{item_name}}'>
+		</td>
+	</tr>
+	<tr>
+		<td colspan='3' align='center'><a class='detail_view'>주문 상세정보 보기</a> </td>
+	</tr>
+	<tr class='hide'>
+		<td colspan='3'>
+			<div class='row'>
+				<div class='col-md-offset-3'>
+					<div>
+						<h5>배송 정보</h5>
+						<p>받는 사람 : {{receive_man}}<p>
+						<p>휴대폰 : {{phoneNum}}</p>
+						<p>주소 : {{address}}</p>
+					</div>
+				</div>
+			</div>
+		</td>
+	</tr>
+</script>

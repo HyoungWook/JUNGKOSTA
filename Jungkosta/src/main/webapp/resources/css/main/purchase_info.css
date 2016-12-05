@@ -6,6 +6,9 @@
 #aucPurList_info td{
 	vertical-align: middle;
 }
+#salePurchase_list td{
+	vertical-align: middle;
+}
 
 th{
 	text-align: center;

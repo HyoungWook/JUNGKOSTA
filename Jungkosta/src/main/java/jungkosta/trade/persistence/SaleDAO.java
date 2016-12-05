@@ -22,4 +22,6 @@ public interface SaleDAO {
 	public void updateReadCount(int sale_id)throws Exception;
 	
 	public void updateDealCount(String email)throws Exception;
+	
+	public List<SaleVO> readMyTradeSale(String email)throws Exception;
 }

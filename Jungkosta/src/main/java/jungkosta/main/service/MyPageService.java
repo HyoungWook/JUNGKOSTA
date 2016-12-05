@@ -4,6 +4,7 @@ import java.util.List;
 
 import jungkosta.main.domain.AucAndSaleVO;
 import jungkosta.main.domain.AucPurVO;
+import jungkosta.main.domain.TradePurVO;
 
 public interface MyPageService {
 	
@@ -13,4 +14,5 @@ public interface MyPageService {
 	
 	public int bestBiddingCost(int auction_id) throws Exception;
 
+	public List<TradePurVO> readMyTradePur(String email) throws Exception;
 }

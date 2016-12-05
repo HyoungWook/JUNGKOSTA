@@ -23,6 +23,7 @@ $(function(){
 		}else{
 			if(status=='거래중'){
 				alert("마이페이지를 이용해주세요.");
+				self.location="/Jungkosta/purchaseList";
 				return false;
 			}else if(status=="거래완료"){
 				alert('본 상품은 거래가 종료된 상품입니다.');

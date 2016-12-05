@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import jungkosta.main.domain.AucAndSaleVO;
 import jungkosta.main.domain.AucPurVO;
+import jungkosta.main.domain.TradePurVO;
 import jungkosta.main.persistence.MyPageDAO;
 
 @Service
@@ -30,6 +31,11 @@ public class MyPageServiceImpl implements MyPageService {
 	@Override
 	public int bestBiddingCost(int auction_id) throws Exception {
 		return dao.bestBiddingCost(auction_id);
+	}
+
+	@Override
+	public List<TradePurVO> readMyTradePur(String email) throws Exception {
+		return dao.readMyTradePur(email);
 	}
 
 }

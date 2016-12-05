@@ -64,5 +64,10 @@ public class SaleDAOImpl implements SaleDAO {
 		
 	}
 
+	@Override
+	public List<SaleVO> readMyTradeSale(String email) throws Exception {
+		return sqlSession.selectList(namespace+".readMyTradeSale", email);
+	}
+
 
 }

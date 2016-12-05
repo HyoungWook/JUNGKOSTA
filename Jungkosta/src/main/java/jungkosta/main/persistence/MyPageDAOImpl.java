@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import jungkosta.main.domain.AucAndSaleVO;
 import jungkosta.main.domain.AucPurVO;
+import jungkosta.main.domain.TradePurVO;
 
 @Repository
 public class MyPageDAOImpl implements MyPageDAO {
@@ -31,6 +32,11 @@ public class MyPageDAOImpl implements MyPageDAO {
 	@Override
 	public int bestBiddingCost(int auction_id) throws Exception {
 		return sqlSession.selectOne(namespace + ".bestBiddingCost", auction_id);
+	}
+
+	@Override
+	public List<TradePurVO> readMyTradePur(String email) throws Exception {
+		return sqlSession.selectList(namespace+".readMyTradePur", email);
 	}
 
 }

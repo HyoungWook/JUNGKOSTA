@@ -13,6 +13,7 @@
 	href="/Jungkosta/resources/css/main/sale_info.css">
 	
 <script src="/Jungkosta/resources/js/main/sale_info.js"></script>
+<script src="/Jungkosta/resources/js/main/sale_info_trade.js"></script>
 
 <div class="container">
 
@@ -49,6 +50,7 @@
 						<tr>
 							<th width="300">판매 정보</th>
 							<th width="100">상태</th>
+							<th width="100">비고</th>
 						</tr>
 					</thead>
 					<tbody id="sale_list">
@@ -85,5 +87,29 @@
 		</td>
 		<td align='center'>{{status}}</td>
 		<td align='center'>{{money_format bidding_cost}}</td>
+	</tr>
+</script>
+
+<script id="template2" type="text/x-handlebars-template">
+	<tr>
+		<td>
+			<div class='row'>
+				<div class='col-md-5'>
+					<div class='item_image'>
+						<img alt='item_image' src='{{item_pic}}'>
+					</div>
+					
+				</div>
+				<div class='col-md-7'>
+					<div id='info'>
+						<a href='{{sale_id}}' class='goToDetail'><b>{{item_name}}</b></a><br><br>
+						<p>금액 : <span>{{money_format item_cost}}</span></p>
+						<p>상품 등록일 : <span>{{date_fomat sale_date}}</span></p>
+					</div>
+				</div>
+			</div>
+		</td>
+		<td align='center'>{{status}}</td>
+		<td></td>
 	</tr>
 </script>

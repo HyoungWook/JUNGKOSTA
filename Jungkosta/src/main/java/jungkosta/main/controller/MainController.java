@@ -24,6 +24,7 @@ import jungkosta.commons.util.Path;
 import jungkosta.main.domain.MemberVO;
 import jungkosta.main.service.MainService;
 import jungkosta.main.service.SignupService;
+import jungkosta.trade.controller.TradeOrderController;
 import jungkosta.trade.domain.PurchaseListVO;
 import jungkosta.trade.domain.SaleVO;
 import net.sf.json.JSONArray;
@@ -135,9 +136,23 @@ public class MainController {
 	}
 	
 	
-	@RequestMapping(value="/purchaseList", method=RequestMethod.GET)
+	@RequestMapping(value="purchaseList", method=RequestMethod.GET)
 	public void purchaseList(HttpServletRequest request, Model model){
-				
+		
+		HttpSession session = request.getSession();
+		List<PurchaseListVO> list = mainService.paymentList(session);
+		System.out.println(list);
+		MemberVO admin = null;
+		String admin2 = TradeOrderController.admin;
+		try {
+			admin = service.selectMemberService(admin2);
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		model.addAttribute("list", list);
+		model.addAttribute("admin", admin);
 	}
 	
 	@RequestMapping(value="paymentList", method=RequestMethod.GET)

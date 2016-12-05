@@ -16,8 +16,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import jungkosta.main.domain.AucAndSaleVO;
 import jungkosta.main.domain.AucPurVO;
 import jungkosta.main.domain.MemberVO;
+import jungkosta.main.domain.TradePurVO;
 import jungkosta.main.service.MyPageService;
 import jungkosta.main.service.SignupService;
+import jungkosta.trade.domain.SaleVO;
+import jungkosta.trade.service.SaleService;
 
 @Controller
 public class MyPageController {
@@ -28,6 +31,9 @@ public class MyPageController {
 	@Inject
 	private SignupService memberService;
 
+	@Inject
+	private SaleService saleService;
+	
 	@RequestMapping("/sale_info")
 	public void sale_info() throws Exception {
 
@@ -89,4 +95,42 @@ public class MyPageController {
 		return entity;
 	}
 
+	@ResponseBody
+	@RequestMapping("/getTradePurList")
+	public ResponseEntity<List<TradePurVO>> getTradePurList(HttpServletRequest request) throws Exception {
+		ResponseEntity<List<TradePurVO>> entity = null;
+
+		try {
+			String email = (String) request.getSession().getAttribute("email");
+			List<TradePurVO> list = service.readMyTradePur(email);
+
+			entity = new ResponseEntity<>(list, HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+			entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
+
+		return entity;
+	}
+	
+	@ResponseBody
+	@RequestMapping("/getTradeSale")
+	public ResponseEntity<List<SaleVO>> getTradeSale(HttpServletRequest request) throws Exception {
+		ResponseEntity<List<SaleVO>> entity = null;
+
+		try {
+
+			String email = (String) request.getSession().getAttribute("email");
+
+			List<SaleVO> list = saleService.readMyTradeSale(email);
+
+			entity = new ResponseEntity<>(list, HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+			entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
+
+		return entity;
+	}
+	
 }

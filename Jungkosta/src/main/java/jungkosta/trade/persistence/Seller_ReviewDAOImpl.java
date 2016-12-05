@@ -20,7 +20,7 @@ public class Seller_ReviewDAOImpl implements Seller_ReviewDAO {
 		if ((sqlSession.selectOne(namespace + ".selectSeller_id")) == null) {
 			return 0;
 		} else {
-			return sqlSession.selectOne(namespace + ".selectP_id");
+			return sqlSession.selectOne(namespace + ".selectSeller_id");
 		}
 	}
 

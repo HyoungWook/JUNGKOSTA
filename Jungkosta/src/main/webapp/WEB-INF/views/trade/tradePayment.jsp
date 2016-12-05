@@ -15,7 +15,6 @@
 <script src="/Jungkosta/resources/lib/jquery-3.1.1.min.js"></script>
 
 <!-- javaScript -->
-<!-- <script type="text/javascript" src="/Jungkosta/resources/js/trade/itemorder.js"></script> -->
 <script type="text/javascript" src="/Jungkosta/resources/js/trade/itemPayment.js"></script>
 
 <!-- css  -->
@@ -33,27 +32,14 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="/Jungkosta/resources/bootstrap/js/bootstrap.min.js"></script>
 
-<script type="text/javascript">
-
- $(function(){
-	var pointnum = ${purchase_ktw.purchase_cost}*0.01;
-	var point2 = Math.round(pointnum);
-	$('#pointnum').val(point2);
-	
-}); 
-
-</script>
 </head>
 <body>
 
 	<div class=container>
 
 		<div class="main">
-
 			<h2>주문 상품 결제</h2>
-
 			<hr>
-
 			<div class="product_info">
 				<div class="row">
 					<div class="col-md-offset-2">
@@ -352,7 +338,7 @@
 						<tr>
 						<td align="center"><label>비밀번호 &nbsp;</label></td>
 						<td><input type="password" name="account_no" size="20"
-									id="password2" value=""></td>				
+									id="password2"></td>				
 						<td><input type="hidden" id="originPw" value="${member.password }">
 			<input type="hidden" id="paymentCost" value="${purchase_ktw.purchase_cost}"></td>		
 							</tr>

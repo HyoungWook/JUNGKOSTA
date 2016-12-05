@@ -197,7 +197,7 @@
 					<h4 class="modal-title" id="saleModalLabel">판매 등록</h4>
 				</div>
 				<div class="modal-body" align="center">
-					<a href="#" class="btn btn-default">일반 상품 등록</a> <br> <br>
+					<a href="/Jungkosta/trade/tradeRegisterForm" class="btn btn-default">일반 상품 등록</a> <br> <br>
 					<a href="/Jungkosta/auction/auctionRegisterForm"
 						class="btn btn-default">경매 상품 등록</a>
 				</div>
@@ -208,8 +208,6 @@
 	</div>
 	<!-- end 현우 판매등록 모달 -->
 
-   </div>
-   <!-- end 현우 판매등록 모달 -->
       
 
 </body>

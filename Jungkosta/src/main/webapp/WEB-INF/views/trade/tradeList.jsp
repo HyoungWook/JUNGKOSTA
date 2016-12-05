@@ -43,7 +43,7 @@
 
 <script type="text/javascript">
    function sendDetail(id) {
-	   var status = $('#status').val();
+	   var status = $(this).find(".status").val();
 	   if(status=="거래완료"){
 		   alert('본 상품은 판매가 종료된 상품입니다');
 		   return false;
@@ -215,16 +215,7 @@
 
 				<h3 id="realTime_item_ktw">실시간 상품</h3>
 				&nbsp;&nbsp;
-<!-- 
-				<div class="btn-group radio_button" data-toggle="buttons">
-        <label class="btn btn-primary">
-          <input type="radio" name="sort" value="n" />신규등록순
-        </label>
-        <label class="btn btn-primary">
-          <input type="radio" name="sort" value="l" />최저가격순
-        </label>
-      </div> -->
-				
+ 
 				<fieldset id="radio_btn">
 					<label for="radio-1">신규 등록순</label> <input type="radio"
                   	name="sort" class="button_radio" checked="checked" id="radio-1"
@@ -236,7 +227,7 @@
 
 				<div class="item_list_ktw">
 					<div class="row">
-						<c:forEach var="temp" items="${ list}">
+					<%-- 	<c:forEach var="temp" items="${ list}">
 				
 							<div class="col-md-3 item_info_ktw"
 								onclick="sendDetail(${temp.sale_id})">
@@ -244,7 +235,7 @@
 								<span name="email">중코스타</span>&nbsp; 
 								<img id="check_ktw" src="/Jungkosta/resources/images/trade/check.jpg" />
 								<div class="item_img_ktw">
-									<input type="hidden" id="status" value="${temp.sale_status }">
+									<input type="hidden" class="status" value="${temp.sale_status }">
 									<img id="item_main_img" src="displayFile?fileName=${temp.item_pic1}">
 									<c:choose>
 									<c:when test="${temp.sale_status =='거래완료'}">
@@ -265,7 +256,7 @@
 								<br>
 
 							</div>
-						</c:forEach>
+						</c:forEach> --%>
 
 					</div>
 				</div>
@@ -291,6 +282,8 @@
 	<img id="check_ktw" src="/Jungkosta/resources/images/trade/check.jpg" />
 	<div class="item_img_ktw">
 		<img src="displayFile?fileName={{item_pic1 }}" id="listImg_ysi">
+		{{#if_ktw sale_status}}
+		{{/if_ktw}}
 	</div>
 		<br> <br> 
 			<b class="item_name_ktw">{{item_name }}</b>
@@ -316,14 +309,25 @@ $(function(){
 	       return results[1] || 0;
 	    }
 	}
-	
+	var subca_id = $.urlParam('subca_id');
 	//핸들바 템플릿 컴파일, 가져오기
 	var template = Handlebars.compile($("#template").html());
 	
 	
+	Handlebars.registerHelper("if_ktw", function(sale_status, block) {
+		var accum = "";
+
+		if (sale_status == '거래중') {
+			accum += '<img id="ing_tra_ktw" alt="trade_close" src="/Jungkosta/resources/images/trade/sale_status_ing.png">';
+		}else if(sale_status == '거래완료'){ 
+			accum += '<img id="close_auc_ktw" alt="trade_close" src="/Jungkosta/resources/images/trade/auction_close.png">';		
+		}
+		return accum;
+	});
+	var sort="n";
 	$('.button_radio').click(function(){
-		var sort = $(this).val();
-		var subca_id = $.urlParam('subca_id');
+		sort = $(this).val();
+	
 		
 		$.getJSON("/Jungkosta/trade/listSale/" + subca_id + "/" + sort, function(list) {
 			
@@ -334,12 +338,21 @@ $(function(){
 				var html = template(list[index]);
 				
 				$('.item_list_ktw').append(html);
-				
 			});
 		});
 	});
 
-	
+	$.getJSON("/Jungkosta/trade/listSale/" + subca_id + "/" + sort, function(list) {
+		
+		$('.item_info_ktw').remove();
+		
+		$(list).each(function(index) {
+			
+			var html = template(list[index]);
+			
+			$('.item_list_ktw').append(html);
+		});
+		});	
 });
 
 	

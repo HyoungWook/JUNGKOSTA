@@ -3,7 +3,6 @@ package jungkosta.trade.controller;
 import java.util.List;
 
 import javax.inject.Inject;
-import javax.mail.search.IntegerComparisonTerm;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,10 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
 import jungkosta.trade.domain.SaleVO;
-import jungkosta.trade.service.PurchaseService;
 import jungkosta.trade.service.SaleService;
 import jungkosta.trade.service.TradeService;
 
@@ -30,13 +27,19 @@ public class TradeListController {
 	@Inject
 	private TradeService service;
 	
-	@Inject
-	private PurchaseService purchaseService;
 
 	//카테고리별 목록_ysi
 	@RequestMapping(value = "/tradeList", method=RequestMethod.GET)
 	public void tradelistSub(Model model, @RequestParam("subca_id") Integer subca_id, String sort) throws Exception{
-		model.addAttribute("list", service.listSale(subca_id, sort));
+		System.out.println("1");
+		List<SaleVO> salevo = service.listSale(subca_id, sort);
+		for(int i = 0 ; i < salevo.size();i++){
+			System.out.println(salevo.get(i).toString());
+		}
+		System.out.println(salevo);
+		model.addAttribute("list", salevo);
+		System.out.println("2");
+		
 		
 	}
 	

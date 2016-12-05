@@ -6,6 +6,7 @@ import javax.inject.Inject;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import jungkosta.commons.util.Encryption;
+import jungkosta.commons.util.TradeThread;
 import jungkosta.main.domain.MemberVO;
 import jungkosta.main.service.SignupService;
 import jungkosta.trade.domain.PaymentVO;
@@ -45,14 +47,14 @@ public class TradePaymentController {
 	}
 	
 	@RequestMapping(value="/tradepaymentProc", method=RequestMethod.POST)
-	public String tradePaymentProc(RedirectAttributes rttr, PaymentVO paymentVo, PurchaseVO purchaseVo) throws Exception{
+	public String tradePaymentProc(Model model, PaymentVO paymentVo, PurchaseVO purchaseVo) throws Exception{
 		System.out.println("purchase_id : " + purchaseVo.getPurchase_id());
 		PurchaseVO purchasevo = purchaseService.selectPurchase(purchaseVo.getPurchase_id());
 			
 		System.out.println(purchasevo.getPurchase_id());
 		paymentVo.setPayment_status("결제완료");
 		
-		purchasevo.setPurchase_status("배송완료");
+		purchasevo.setPurchase_status("배송 완료");
 		purchaseService.updatePurchase(purchasevo);
 		paymentVo.setPayment_cost(purchasevo.getPurchase_cost());
 		
@@ -63,13 +65,13 @@ public class TradePaymentController {
 	
 		SaleVO sale = saleService.searchSale(purchasevo.getSale_id());
 	
-		rttr.addAttribute("email", member.getEmail());
-		rttr.addAttribute("purchase_id",purchasevo.getPurchase_id());
-		rttr.addAttribute("payment_id", paymentVo.getPayment_id());
-		rttr.addAttribute("sale_id", sale.getSale_id());
-		rttr.addFlashAttribute("msg","SUCCESS");
+	
+		TradeThread thread = new TradeThread(saleService, memberService, purchaseService, 
+				purchasevo.getSale_id(), purchaseVo.getPurchase_id());
+		thread.start();
+		TradeAfterPayController.threadList.add(thread);
 		
-		return "redirect:/trade/tradeThread";
+		return "redirect:/purchase_info";
 	}
 	
 	
@@ -78,15 +80,19 @@ public class TradePaymentController {
 	public ResponseEntity<String> passCheck(@RequestParam("password") String password){
 		ResponseEntity<String> entity = null;
 		String pass = null;
+		System.out.println("패스워드 : " + password);
 		Encryption encrypt = new Encryption();		
 		try {
 			pass = encrypt.passEcnript(password);
+			System.out.println("암호화후 "  + pass);
 			entity = new ResponseEntity<String>(pass, HttpStatus.OK);
+			return entity;
 		} catch (Exception e) {
 			e.printStackTrace();
 			entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+			return entity;
 		}
 		
-		return entity;
+		
 	}
 }

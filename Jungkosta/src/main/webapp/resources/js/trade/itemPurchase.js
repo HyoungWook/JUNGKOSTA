@@ -2,66 +2,6 @@ $(function() {
 
 	var total_cost = $("#total_cost").val();
 	var subca_id = $('#subca_id').val();
-//	var flag = false;
-/*
-	$("#cost").val("0");
-
-	$("#cost").click(function() {
-		$(this).val("");
-	});*/
-
-/*	$("input[type=text]").keyup(function(event) {
-		var num_check = /[^0-9]/gi;
-		var result = $(this).val();
-
-		if (num_check.test(result)) {
-			$(this).val(result.replace(num_check, ""));
-		}
-	});
-*/
-/*	$(".payForm_btn").click(function() {
-
-		flag = true;
-
-		var input_cost = $("#cost").val();
-
-		var form = $("#payForm");
-		
-		var sale_id = $("#sale_id").val();
-
-		if (this.id == "complete_btn") {
-			if (input_cost != total_cost) {
-				alert("금액을 정확히 입력하세요.");
-				$("#cost").val("0");
-				return;
-			}
-		} else {
-			alert("결제를 취소 합니다.");
-		}
-
-		var html = "<input type='hidden'";
-		html += "name='form_btn' value='" + this.id + "'>";
-		form.append(html);
-
-		$.ajax({
-			url : "aucPaymentForm",
-			type : "post",
-			data : form.serialize(),
-			dataType : "text",
-			success : function() {
-				alert("처리가 완료되었습니다.");
-				self.location = "auctionList";
-				
-				window.open("aucAfterPay?sale_id="+sale_id, "newWindow",
-				'width=550, height=500, menubar=yes, status=yes, scrollbar = yes');
-			},
-			error : function() {
-				alert("error - 관리자에게 문의하세요. -");
-
-			}
-		});
-
-	});*/
 	
 	$("#check").click(function(event){
 		
@@ -69,7 +9,7 @@ $(function() {
 		
 		flag = true;
 		
-		self.location = "tradeList?subca_id="+subca_id;
+		self.location = "/Jungkosta/purchase_info";
 	});
 	
 

@@ -23,9 +23,9 @@
 	</select>
 	<!-- 2016/12/01 우성 추가 -->
 	<select id="purchaseList" parameterType="String" resultType="PurchaseListVO">
-		select s.item_pic1,s.item_name ,p.purchase_cost ,p.purchase_deadline,s.sale_id,s.email
+		select s.item_pic1,s.item_name ,p.purchase_cost ,p.purchase_deadline,p.purchase_id,s.sale_id,s.email
 		from purchase p, sale s
-		where p.email = #{email} and p.sale_id = s.sale_id and p.payment_method = '무통장입금'
+		where p.email = #{email} and p.sale_id = s.sale_id and p.payment_method = '무통장입금' and p.purchase_status='입금대기중'
 	</select>
 	
 	<select id="auctionList" parameterType="String" resultType="AuctionListVO">

@@ -46,7 +46,7 @@ body {
 }
 
 #item_sub_imgs_ktw {
-	width: 30px;
+	width: 100px;
 	height: 30px;
 }
 
@@ -138,7 +138,7 @@ function sample4_execDaumPostcode() {
 			<input type="hidden" name="buy_info" value="${register.buy_info} ">
 			
 			<input type="hidden" name="subca_id" value="${register.subca_id} ">
-	
+		
 			<input type="hidden" name="sale_status" value="${register.sale_status} ">
 			<input type="hidden" name="item_pic1" value="${register.item_pic1} ">
 			<input type="hidden" name="item_pic2" value="${register.item_pic2} ">
@@ -227,13 +227,13 @@ function sample4_execDaumPostcode() {
 			<h3>결제 상품</h3>
 			<br>
 			<div class="row">
-				<div class="col-md-offset-1 col-md-2">
+				<div class="col-md-3">
 					<div id="item_sub_imgs_ktw">
 						<img alt="" src="displayFile?fileName=${register.item_pic1}">
 					</div>
 					<br>
 				</div>
-				<div class="col-md-offset-2 col-md-7">
+				<div class="col-md-offset-4 col-md-5">
 					<div id="item_num_name_ktw">${register.sale_id }/
 						${register.item_name }</div>
 				</div>
@@ -327,7 +327,7 @@ function sample4_execDaumPostcode() {
 				</div>
 			</div>
 
-	<!-- 		<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+	<!-- 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
 				aria-labelledby="myModalLabel" aria-hidden="true">
 				<div class="modal-dialog">
 					<div class="modal-content">

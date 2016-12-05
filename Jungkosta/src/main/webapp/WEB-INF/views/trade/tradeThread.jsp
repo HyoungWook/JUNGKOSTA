@@ -28,25 +28,19 @@
 
 <body>
 	<h2>쓰레드</h2>
-	<input type="hidden" name="email" id= "email_" value="${email }">
-	<input type="hidden" name="purchase_id" id= "purchase" value="${purchasevo.purchase_id }">
-	<input type="hidden" name="payment_id" id= "payment" value="${payment_id }">
-	<input type="hidden" name="sale_id" id= "sale" value="${sale.sale_id }">
-	<input type="hidden" name="subca_id" id="subcaId" value="${subca_id }">
-	<h3>${payment_id }</h3>
 	<h3>${msg }</h3>
 	
-	<button class="order_sure" type="button">구매확정</button>
+	<button class="1order_sure" type="button">구매확정</button>
 	
 	<form action="/Jungkosta/trade/tradeSellerReview" method="post">
 	<input type="hidden" name="email" id= "email_" value="${email }">
-	<input type="hidden" name="purchase_id" id= "purchase" value="${purchasevo.purchase_id }">
-	<input type="hidden" name="payment_id" id= "payment" value="${payment_id }">
+	<input type="hidden" name="purchase_id" id= "purchase" value="${purchase.purchase_id }">
 	<input type="hidden" name="sale_id" id= "sale" value="${sale.sale_id }">
 	<input type="hidden" name="subca_id" id="subcaId" value="${subca_id }">
 		<input type="hidden" name="purchaser" value="${purchase.email }">
 		<input type="hidden" name="seller" value="${sale.email }">
-		<button type="button" class="btn btn-lg payProc"
+		
+		<button type="button" class="btn btn-lg payProc" class="order_sure"
 			data-target="#myModal" data-toggle="modal">구매확정2</button>
 			
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
@@ -99,7 +93,7 @@
 					</div>
 				</div>
 				<div class="modal-footer">
-					<button type="submit" class="btn btn-primary" id="check">주문</button>
+					<button type="button" class="btn btn-primary" id="check">주문</button>
 					<button type="button" class="btn btn-default"
 						data-dismiss="modal">취소</button>
 				</div>

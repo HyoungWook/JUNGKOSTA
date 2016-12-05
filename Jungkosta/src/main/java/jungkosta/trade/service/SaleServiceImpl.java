@@ -24,6 +24,7 @@ public class SaleServiceImpl implements SaleService {
 	
 	@Override
 	public List<SaleVO> listSalesub(Integer subca_id) throws Exception {
+		System.out.println("2");
 		return saleDAO.listSalesub(subca_id);
 	}
 	
@@ -68,6 +69,11 @@ public class SaleServiceImpl implements SaleService {
 		list.add(salevo.getItem_pic3());
 		list.add(salevo.getItem_pic4());
 		return list;
+	}
+
+	@Override
+	public List<SaleVO> readMyTradeSale(String email) throws Exception {
+		return saleDAO.readMyTradeSale(email);
 	}
 
 }
