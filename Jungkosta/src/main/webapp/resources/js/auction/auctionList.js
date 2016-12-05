@@ -120,7 +120,7 @@ $(function() {
 			checkLabelClass($(this), false);
 		});
 		
-		getListData("null");
+		getListData(sort);
 
 	});
 
@@ -134,7 +134,7 @@ $(function() {
 		}
 
 		checkedAll_item(type);
-		getListData("null");
+		getListData(sort);
 	});
 
 	function checkedAll_item(type) {
@@ -205,6 +205,6 @@ $(function() {
 
 	checkedAll_item("category");
 	checkedAll_item("status");
-	getListData("null")
+	getListData(sort);
 
 });
