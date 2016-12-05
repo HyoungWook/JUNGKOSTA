@@ -22,7 +22,12 @@ import jungkosta.auction.domain.AuctionListVO;
 import jungkosta.main.domain.MemberVO;
 import jungkosta.main.service.MainService;
 import jungkosta.main.service.SignupService;
+import jungkosta.trade.controller.TradeOrderController;
+import jungkosta.trade.controller.TradePaymentController;
 import jungkosta.trade.domain.PurchaseListVO;
+import jungkosta.trade.domain.PurchaseVO;
+import jungkosta.trade.domain.SaleVO;
+import jungkosta.trade.service.PurchaseService;
 
 @Controller
 public class MainController {
@@ -32,6 +37,9 @@ public class MainController {
 	
 	@Inject
 	private MainService mainService;
+	
+	@Inject
+	private PurchaseService purchaseService;
 	
 	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 	
@@ -103,8 +111,20 @@ public class MainController {
 	@RequestMapping(value="purchaseList", method=RequestMethod.GET)
 	public void purchaseList(HttpServletRequest request, Model model){
 		
-		
-		
+		HttpSession session = request.getSession();
+		List<PurchaseListVO> list = mainService.paymentList(session);
+		System.out.println(list);
+		MemberVO admin = null;
+		String admin2 = TradeOrderController.admin;
+		try {
+			admin = service.selectMemberService(admin2);
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		model.addAttribute("list", list);
+		model.addAttribute("admin", admin);
 	}
 	
 	@RequestMapping(value="paymentList", method=RequestMethod.GET)

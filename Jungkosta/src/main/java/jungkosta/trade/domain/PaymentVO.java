@@ -6,7 +6,7 @@ import java.sql.Timestamp;
 public class PaymentVO implements Serializable{
 	private int payment_id;
 	private int payment_cost;
-	private String payment_status;
+	private String payment_status="결제완료";
 	private Timestamp payment_date;
 	private int purchase_id;
 	

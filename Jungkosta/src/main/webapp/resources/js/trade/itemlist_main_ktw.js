@@ -13,7 +13,7 @@ $(function(){
 	function successHandler(data) {
 		$('.item_list_ktw').empty().hide();
 		$.each(data,function(index, entry) {
-							var html = "<div class='col-md-2 col-md-offset-2 item_info_ktw' onclick='sendDetail("
+							var html = "<div class='col-md-3 item_info_ktw' onclick='sendDetail("
 									+ entry.sale_id + ")'>";
 							/*html += "<b>무료배송</b>";*/
 							/*html += "<img id='icon_auc_phw' alt='' src='./images_phw/icon_auc.png'>";*/

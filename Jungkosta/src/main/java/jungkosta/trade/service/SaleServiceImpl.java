@@ -58,7 +58,7 @@ public class SaleServiceImpl implements SaleService {
 		saleDAO.updateDealCount(email);
 	}
 
-/*	@Override
+	@Override
 	public List<String> getThunbnail(int sale_id) throws Exception {
 		SaleVO salevo = saleDAO.searchSale(sale_id);
 		
@@ -70,5 +70,5 @@ public class SaleServiceImpl implements SaleService {
 		list.add(salevo.getItem_pic4());
 		return list;
 	}
-*/
+
 }

@@ -1,12 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Insert title here</title>
 <head>
 
@@ -15,7 +15,6 @@
 <script src="/Jungkosta/resources/lib/jquery-3.1.1.min.js"></script>
 
 <!-- javaScript -->
-<!-- <script type="text/javascript" src="/Jungkosta/resources/js/trade/itemorder.js"></script> -->
 <script type="text/javascript" src="/Jungkosta/resources/js/trade/itemPayment.js"></script>
 
 <!-- css  -->
@@ -33,16 +32,6 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="/Jungkosta/resources/bootstrap/js/bootstrap.min.js"></script>
 
-<script type="text/javascript">
-
- $(function(){
-	var pointnum = ${purchase_ktw.purchase_cost}*0.01;
-	var point2 = Math.round(pointnum);
-	$('#pointnum').val(point2);
-	
-}); 
-
-</script>
 </head>
 <body>
 
@@ -352,7 +341,7 @@
 						<tr>
 						<td align="center"><label>비밀번호 &nbsp;</label></td>
 						<td><input type="password" name="account_no" size="20"
-									id="password2" value=""></td>				
+									id="password2"></td>				
 						<td><input type="hidden" id="originPw" value="${member.password }">
 			<input type="hidden" id="paymentCost" value="${purchase_ktw.purchase_cost}"></td>		
 							</tr>

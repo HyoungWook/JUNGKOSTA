@@ -8,7 +8,8 @@ public class PurchaseListVO implements Serializable {
 	
 	private String item_pic1;
 	private String item_name;
-	private String sale_id;
+	private int sale_id;
+	private int purchase_id;
 	private int purchase_cost;
 	private Timestamp purchase_deadline;
 	private String email;
@@ -17,22 +18,17 @@ public class PurchaseListVO implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	
-
-
-	public PurchaseListVO(String item_pic1, String item_name, String sale_id, int purchase_cost,
+	public PurchaseListVO(String item_pic1, String item_name, int sale_id, int purchase_id, int purchase_cost,
 			Timestamp purchase_deadline, String email) {
 		super();
 		this.item_pic1 = item_pic1;
 		this.item_name = item_name;
 		this.sale_id = sale_id;
+		this.purchase_id = purchase_id;
 		this.purchase_cost = purchase_cost;
 		this.purchase_deadline = purchase_deadline;
 		this.email = email;
 	}
-
-
-
 
 	public String getItem_pic1() {
 		return item_pic1;
@@ -48,6 +44,22 @@ public class PurchaseListVO implements Serializable {
 
 	public void setItem_name(String item_name) {
 		this.item_name = item_name;
+	}
+
+	public int getSale_id() {
+		return sale_id;
+	}
+
+	public void setSale_id(int sale_id) {
+		this.sale_id = sale_id;
+	}
+
+	public int getPurchase_id() {
+		return purchase_id;
+	}
+
+	public void setPurchase_id(int purchase_id) {
+		this.purchase_id = purchase_id;
 	}
 
 	public int getPurchase_cost() {
@@ -66,22 +78,23 @@ public class PurchaseListVO implements Serializable {
 		this.purchase_deadline = purchase_deadline;
 	}
 
-	public String getSale_id() {
-		return sale_id;
-	}
-
-	public void setSale_id(String sale_id) {
-		this.sale_id = sale_id;
-	}
-
 	public String getEmail() {
 		return email;
 	}
 
-
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+	@Override
+	public String toString() {
+		return "PurchaseListVO [item_pic1=" + item_pic1 + ", item_name=" + item_name + ", sale_id=" + sale_id
+				+ ", purchase_id=" + purchase_id + ", purchase_cost=" + purchase_cost + ", purchase_deadline="
+				+ purchase_deadline + ", email=" + email + "]";
+	}
+
 	
+
+
 	
 }

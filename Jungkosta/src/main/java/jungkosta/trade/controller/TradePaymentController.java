@@ -78,15 +78,19 @@ public class TradePaymentController {
 	public ResponseEntity<String> passCheck(@RequestParam("password") String password){
 		ResponseEntity<String> entity = null;
 		String pass = null;
+		System.out.println("패스워드 : " + password);
 		Encryption encrypt = new Encryption();		
 		try {
 			pass = encrypt.passEcnript(password);
+			System.out.println("암호화후 "  + pass);
 			entity = new ResponseEntity<String>(pass, HttpStatus.OK);
+			return entity;
 		} catch (Exception e) {
 			e.printStackTrace();
 			entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+			return entity;
 		}
 		
-		return entity;
+		
 	}
 }

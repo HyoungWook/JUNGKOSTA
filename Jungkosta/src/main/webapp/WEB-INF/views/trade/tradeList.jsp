@@ -25,7 +25,6 @@
 <script src="/Jungkosta/resources/js/trade/itemlist_main_ktw.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
 
-
 <!-- css -->
 <link href="/Jungkosta/resources/css/trade/tradeList.css" rel="stylesheet">
 
