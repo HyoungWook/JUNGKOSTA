@@ -34,7 +34,7 @@
 }
 
 .auc_bid_list table {
-	font-size: 10px;
+	font-size: 12px;
 }
 
 .auc_bid_list table th {
@@ -48,14 +48,26 @@
 
 #bid_person_phw {
 	color: red;
+	font-size: 12px;
 }
 
 #bid_able_phw {
 	color: blue;
+	font-size: 12px;
 }
 
 .button_phw {
 	text-align: center;
+}
+
+#header{
+	margin-top:3%;
+	margin-bottom:3%;
+}
+
+#size{
+	font-size: 12px;
+	font-weight:bold;
 }
 </style>
 
@@ -85,19 +97,19 @@
 	<div class="container">
 
 		<div class="auc_bid_info_phw">
-			<label>입찰 상품</label>
-			<table border="1">
-				<tr>
-					<td width="150">상품명</td>
+			<label id="header">입찰 상품</label>
+			<table class="table table-bordered">
+				<tr >
+					<td width="150" class="active">상품명</td>
 					<td width="250">${auction.item_name}</td>
 				</tr>
 				<tr>
-					<td>경매 마감일자</td>
+					<td class="active">경매 마감일자</td>
 					<td><fmt:formatDate value="${auction.auction_end_date }"
 							pattern="yyyy년 MM월 dd일  aa hh시 mm분" /></td>
 				</tr>
 				<tr>
-					<td>최대 구매가능 수량</td>
+					<td class="active">최대 구매가능 수량</td>
 					<td>1개</td>
 				</tr>
 			</table>
@@ -108,7 +120,7 @@
 
 			<div class="row">
 				<div class="col-md-offset-3 col-md-3">
-					<span>구분 : <b id="bid_person_phw"> ● 낙찰자</b> <b
+					<span id="size">구분 : <b id="bid_person_phw"> ● 낙찰자</b> <b
 						id="bid_able_phw"> ● 낙찰 가능자</b>
 					</span>
 				</div>
@@ -116,14 +128,14 @@
 
 			<br>
 
-			<table border="1">
+			<table class="table table-bordered">
 				<thead>
 					<tr>
-						<th width="100">입찰자 email</th>
-						<th width="200">입찰 일자</th>
-						<th width="100">입찰 가격</th>
-						<th width="50">수량</th>
-						<th width="50">누적 수량</th>
+						<th>입찰자 이메일</th>
+						<th>입찰 일자</th>
+						<th>입찰 가격</th>
+						<th>수량</th>
+						<th>누적 수량</th>
 					</tr>
 				</thead>
 
