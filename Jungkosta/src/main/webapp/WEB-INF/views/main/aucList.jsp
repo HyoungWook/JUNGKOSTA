@@ -120,12 +120,6 @@
 								<br>
 								<div class="row">
 									<div class="col-md-offset-2 col-md-3">
-										<p>비밀번호 :</p>
-									</div>
-								</div>
-								<br>
-								<div class="row">
-									<div class="col-md-offset-2 col-md-3">
 										<p>금액 :</p>
 									</div>
 									<div class="col-md-5">

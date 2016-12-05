@@ -46,6 +46,7 @@ public class MyPageController {
 			for(AucAndSaleVO vo : list){
 				int cost = service.bestBiddingCost(vo.getAuction_id());
 				vo.setBidding_cost(cost);
+				System.out.println(vo);
 			}
 			
 			entity = new ResponseEntity<>(list, HttpStatus.OK);
