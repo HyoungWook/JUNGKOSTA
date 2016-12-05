@@ -106,7 +106,7 @@ public class AuctionPaymentController {
 
 				entity = new ResponseEntity<>("success", HttpStatus.OK);
 			} else {
-				entity = new ResponseEntity<>("fale", HttpStatus.OK);
+				entity = new ResponseEntity<>("fail", HttpStatus.OK);
 			}
 
 		} catch (Exception e) {

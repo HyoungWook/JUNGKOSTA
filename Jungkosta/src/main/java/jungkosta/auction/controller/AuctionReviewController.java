@@ -13,15 +13,17 @@ import jungkosta.auction.domain.AuctionVO;
 import jungkosta.auction.domain.SellerReviewVO;
 import jungkosta.auction.service.AuctionReviewService;
 import jungkosta.auction.service.AuctionService;
+import jungkosta.trade.domain.SaleVO;
+import jungkosta.trade.service.SaleService;
 
 @Controller
 public class AuctionReviewController {
 
 	@Inject
 	private AuctionReviewService service;
-
+	
 	@Inject
-	private AuctionService auctionService;
+	private SaleService saleService;
 
 	@ResponseBody
 	@RequestMapping("/auctionComment")
@@ -34,10 +36,10 @@ public class AuctionReviewController {
 
 			int sale_id = Integer.parseInt(request.getParameter("sale_id"));
 
-			AuctionVO auction = auctionService.read(sale_id);
+			SaleVO sale = saleService.searchSale(sale_id);
 
 			vo.setPurchaser(purchaser);
-			vo.setSeller(auction.getEmail());
+			vo.setSeller(sale.getEmail());
 			vo.setSeller_review_id(service.sellerReview_id() + 1);
 
 			service.insertAuctionReview(vo);
