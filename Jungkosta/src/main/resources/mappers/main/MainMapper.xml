@@ -5,11 +5,21 @@
 
 <mapper namespace="jungkosta.mappers.main.MainMapper">
 
+	<!-- 2016/12/04 우성 수정 -->
 	<select id="hotItem" resultType="SaleVO">
+		select *
+		from sale
+		where sale_status = '거래가능'
+		order by view_cnt
 	</select>
 	
+	<!-- 끝 -->
+	
 	<select id="newItem" resultType="SaleVO">
-		select * from sale order by sale_id desc
+		select * 
+		from sale 
+		where sale_status = '거래가능'
+		order by sale_id desc
 	</select>
 	<!-- 2016/12/01 우성 추가 -->
 	<select id="purchaseList" parameterType="String" resultType="PurchaseListVO">
@@ -28,5 +38,45 @@
 		ab.email = #{email}
 		
 	</select>
+	
+	<select id="checkPrefer" parameterType="CustomPreferVO" resultType="Integer">
+		select CUSTOMPREFER_ID
+		from customer_prefer
+		where email = #{email} and sale_id = #{sale_id}
+	</select>
+	
+	<select id="maxNum" resultType="Integer">
+		select max(customprefer_id) from customer_prefer
+	</select>
+	
+	<update id="updatePrefer" parameterType="Integer">
+		update customer_prefer set view_num = view_num+1 where customprefer_id = #{customprefer_id} 
+	</update>
+	
+	<insert id="insertPrefer" parameterType="CustomPreferVO">
+		insert into customer_prefer(customprefer_id,view_num,sale_id,email) values(#{customprefer_id},#{view_num},#{sale_id},#{email})
+	</insert>
 	<!-- 종료 -->
+	
+	<!-- 2016/12/03 우성 수정 -->
+	
+	<select id="allList" resultType="CustomPreferVO">
+		select * from customer_prefer
+	</select>
+	
+	<select id="similarPersonList1" resultType="CustompreferVO" parameterType="String">
+		select cp.customprefer_id, cp.email, cp.sale_id, cp.view_num 
+		from customer_prefer cp, sale s
+		where cp.email = #{email} and cp.sale_id = s.sale_id
+		and s.sale_status = '거래가능'
+	</select>
+	
+	<select id="similarPersonList2" resultType="SaleVO" parameterType="Integer">
+		select * from sale where sale_id = #{sale_id}
+	</select>
+	<select id="allEmail" resultType="String">
+		select email from member
+	</select>
+	<!-- 끝 -->
+	
 </mapper>

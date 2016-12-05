@@ -1,6 +1,5 @@
 package jungkosta.main.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import jungkosta.commons.util.Path;
 import jungkosta.main.domain.Board2VO;
 import jungkosta.main.domain.BoardVO;
 import jungkosta.main.domain.Listmodel;

@@ -1,5 +1,6 @@
 package jungkosta.main.controller;
 
+import java.net.URLEncoder;
 import java.util.List;
 import java.util.Locale;
 
@@ -19,10 +20,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import jungkosta.auction.domain.AuctionListVO;
+import jungkosta.commons.util.Path;
 import jungkosta.main.domain.MemberVO;
 import jungkosta.main.service.MainService;
 import jungkosta.main.service.SignupService;
 import jungkosta.trade.domain.PurchaseListVO;
+import jungkosta.trade.domain.SaleVO;
+import net.sf.json.JSONArray;
 
 @Controller
 public class MainController {
@@ -39,9 +43,38 @@ public class MainController {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/", method = {RequestMethod.GET,RequestMethod.POST})
-	public String home(Locale locale, Model model) {
+	public String home(Locale locale, Model model,HttpServletRequest request) {
 		logger.info("메인 컨트롤러 실행 완료....", locale);
 		
+		HttpSession session = request.getSession();
+		
+		String hotItemJson = mainService.hotItem();
+		
+		model.addAttribute("hotItem",hotItemJson);
+		
+		if(session.getAttribute("email") != null){
+			
+			String email = (String)session.getAttribute("email");
+			
+			List<SaleVO> preferList = mainService.preferList(email);
+			
+			JSONArray jsonArray = JSONArray.fromObject(preferList);
+			
+			String json = jsonArray.toString();
+			
+			try {
+				
+				json = URLEncoder.encode(json, "utf-8");
+			} catch (Exception e) {
+				
+				e.printStackTrace();
+			}
+			
+			System.out.println(json);
+			
+			model.addAttribute("preferList",json);
+			
+		}
 		
 		return "main";
 	}
@@ -117,15 +150,19 @@ public class MainController {
 		model.addAttribute("list",list);
 		
 	}
-	
-	
-	@RequestMapping(value="/clientTest", method=RequestMethod.GET)
-	public void clientTest(){
+	//2016/12/03 우성 추가
+	@RequestMapping(value="/preferListProc",method=RequestMethod.GET)
+	public String preferListProc(HttpServletRequest request){
 		
-	}
-	@RequestMapping(value="/clientTest2", method=RequestMethod.GET)
-	public void clientTest2(){
+		String prev_URL = request.getHeader("referer");
+		String url = Path.getInstance().determine_url(prev_URL);
 		
+		
+		if(url.equals("/") && url.equals("preferListProc")){
+			return "redirect:/";
+		}
+		
+		return "redirect:"+url;
 	}
 	
 }

@@ -1,28 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page session="false"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<%@ page session="false"%>
 <html>
 <head>
 <title>중코스타 - 국내 1위 중고거래 사이트</title>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="/Jungkosta/resources/bootstrap/js/bootstrap.min.js"></script>
-<title>중코스타 - 국내 1위 중고거래 사이트</title>
 
-<script type="text/javascript"
-	src="/Jungkosta/resources/js/main/main.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
+<script type="text/javascript" src="/Jungkosta/resources/js/main/main.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
+<script type="text/javascript" src="/Jungkosta/resources/js/auction/upload.js"></script>
+<link href="/Jungkosta/resources/css/auction/auction_main_phw.css" rel="stylesheet">
 
-<script type="text/javascript"
-	src="/Jungkosta/resources/js/auction/upload.js"></script>
-
-<link href="/Jungkosta/resources/css/auction/auction_main_phw.css"
-	rel="stylesheet">
 <script>
  	$('.carousel').carousel()
  </script>
@@ -73,7 +63,9 @@
 
 </head>
 <body>
-
+	<!-- 2016/12/04 우성 추가 -->
+		<input type="hidden" value="${hotItem }" id="hotItem_ws">
+	<!-- 끝 -->
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
@@ -83,13 +75,13 @@
 		</div>
 		<div class="row">
 			<div class="col-md-12">
-				<div id="carousel-example-generic" class="carousel slide">
+				<div id="carousel-example-generic1" class="carousel slide">
 					<div class="carousel-inner" id="carousel_ws1"></div>
 					<!-- Controls -->
-					<a class="left carousel-control" href="#carousel-example-generic"
+					<a class="left carousel-control" href="#carousel-example-generic1"
 						data-slide="prev"> <span
 						class="glyphicon glyphicon-chevron-left"></span>
-					</a> <a class="right carousel-control" href="#carousel-example-generic"
+					</a> <a class="right carousel-control" href="#carousel-example-generic1"
 						data-slide="next"> <span
 						class="glyphicon glyphicon-chevron-right "></span>
 					</a>
@@ -104,22 +96,53 @@
 		</div>
 		<div class="row">
 			<div class="col-md-12">
-				<div id="carousel-example-generic" class="carousel slide">
+				<div id="carousel-example-generic2" class="carousel slide">
 					<div class="carousel-inner" id="carousel_ws2"></div>
 					<!-- Controls -->
-					<a class="left carousel-control" href="#carousel-example-generic"
+					<a class="left carousel-control" href="#carousel-example-generic2"
 						data-slide="prev"> <span
 						class="glyphicon glyphicon-chevron-left"></span>
-					</a> <a class="right carousel-control" href="#carousel-example-generic"
+					</a> <a class="right carousel-control" href="#carousel-example-generic2"
 						data-slide="next"> <span
 						class="glyphicon glyphicon-chevron-right "></span>
 					</a>
 				</div>
 			</div>
 		</div>
+		<c:if test="${email != null}">
+			<div class="row">
+			<div class="col-md-12">
+				<h2 class="main_title_ws">Recommended Item</h2>
+				<input type="hidden" value="${preferList }" id="preferList_ws">
+				
+				<hr>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+					<div id="carousel-example-generic3" class="carousel slide">
+						<div class="carousel-inner" id="carousel_ws3">
+							
+						</div>
+						<a class="left carousel-control" href="#carousel-example-generic3"
+							data-slide="prev"> <span
+							class="glyphicon glyphicon-chevron-left"></span>
+						</a> <a class="right carousel-control"
+							href="#carousel-example-generic3" data-slide="next"> <span
+							class="glyphicon glyphicon-chevron-right "></span>
+						</a>
+
+					</div>
+				</div>
+		</div>
+		<div id="allProduct">
+		
+		</div>
+		</c:if>
 	</div>
 </body>
 <!-- 2016/11/26 우성 추가 -->
+
 <script id="template1" type="text/x-handlebars-template">
  		<div class="col-md-3 item_info_phw" onclick="sendDetailAuction({{sale_id}})">
  			<br> 
@@ -139,9 +162,9 @@
  			<span>현재가 </span> &nbsp;&nbsp; 
  			<strong class="product_price_phw">
  				{{money_fomat item_cost}}
- 			</strong></br></br>
- 			
- 			<br> <br>
+ 			</strong>
+ 			<br>
+			<br>
  		</div>
  </script>
 

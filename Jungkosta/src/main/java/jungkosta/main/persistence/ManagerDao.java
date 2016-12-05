@@ -5,7 +5,6 @@ import java.util.List;
 
 import jungkosta.main.domain.BlackListVO;
 import jungkosta.main.domain.MemberVO;
-import jungkosta.main.domain.MessageVO;
 
 public interface ManagerDao {
 	public List<MemberVO> customSearch(MemberVO vo);
