@@ -69,6 +69,8 @@
 								</textarea></td>
 							</tr>
 						</table>
+							<input type="hidden" name="purchaser" value="qhtjr335@naver.com"/>
+							<input type="hidden" name="seller" value=""/>
 						<button type="submit" class="btn btn-default btn-info">등록하기</button>
 					</form>
 				</div>
