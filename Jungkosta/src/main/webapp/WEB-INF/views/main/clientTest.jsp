@@ -20,7 +20,6 @@
     <textarea id="messageTextArea" rows="10" cols="50"></textarea>
      
     <script type="text/javascript">
-        //WebSocketEx는 프로젝트 이름
         //websocket 클래스 이름
         var webSocket = new WebSocket("ws://localhost:8081/Jungkosta/websocket");
         var messageTextArea = document.getElementById("messageTextArea");
