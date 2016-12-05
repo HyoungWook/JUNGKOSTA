@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import jungkosta.auction.domain.AucAndBidVO;
 import jungkosta.auction.domain.BidVO;
 
 @Repository
@@ -61,6 +62,11 @@ public class AucPurDAOImpl implements AucPurDAO {
 	public void updateSale_cost(Map<String, Integer> map) throws Exception {
 		sqlSession.update(namespace + ".updateSale_cost", map);
 		
+	}
+
+	@Override
+	public AucAndBidVO readAucAndBid(int sale_id) throws Exception {
+		return sqlSession.selectOne(namespace + ".readAucAndBid", sale_id);
 	}
 
 }

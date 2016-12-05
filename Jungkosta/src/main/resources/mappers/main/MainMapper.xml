@@ -11,4 +11,26 @@
 	<select id="newItem" resultType="SaleVO">
 		select * from sale order by sale_id desc
 	</select>
+	<!-- 2016/12/01 우성 추가 -->
+	<select id="purchaseList" parameterType="String" resultType="PurchaseListVO">
+		select s.item_pic1,s.item_name ,p.purchase_cost ,p.purchase_deadline,s.sale_id,s.email
+		from purchase p, sale s
+		where p.email = #{email} and p.sale_id = s.sale_id and p.payment_method = '무통장입금'
+	</select>
+	
+	<select id="auctionList" parameterType="String" resultType="AuctionListVO">
+		
+		select s.item_pic1, s.item_name, s.email, b.purchase_deadline, s.sale_id 
+		from auc_bid_view ac, sale s, auction_bidding ab, bid b
+		where ac.sale_id = s.sale_id and 
+		ab.bidding_id = ac.bidding_id and
+		b.bid_id = ac.bid_id and
+		ab.email = #{email}
+		
+		<!-- 현우 추가부분 -->
+		and b.payment_method = '무통장입금'
+		and b.bid_status = '입금 대기'
+		
+	</select>
+	<!-- 종료 -->
 </mapper>

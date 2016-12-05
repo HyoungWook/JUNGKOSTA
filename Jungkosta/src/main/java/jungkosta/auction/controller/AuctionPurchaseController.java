@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import jungkosta.auction.domain.AucAndBidVO;
+import jungkosta.auction.domain.AucPayVO;
 import jungkosta.auction.domain.AuctionVO;
 import jungkosta.auction.domain.BidVO;
 import jungkosta.auction.domain.BiddingVO;
@@ -163,5 +164,6 @@ public class AuctionPurchaseController {
 		
 		return entity;
 	}
+	
 
 }

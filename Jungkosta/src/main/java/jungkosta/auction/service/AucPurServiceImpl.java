@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import jungkosta.auction.domain.AucAndBidVO;
 import jungkosta.auction.domain.AuctionVO;
 import jungkosta.auction.domain.BidVO;
 import jungkosta.auction.domain.BiddingVO;
@@ -72,6 +73,11 @@ public class AucPurServiceImpl implements AucPurService {
 		}
 
 		System.out.println(auction.getItem_name() + " 주문 취소");
+	}
+
+	@Override
+	public AucAndBidVO readAucAndBid(int sale_id) throws Exception {
+		return dao.readAucAndBid(sale_id);
 	}
 
 }

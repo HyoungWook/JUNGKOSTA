@@ -208,13 +208,19 @@
 								<c:choose>
 									<c:when test="${email != 'admin@admin.com' }">
 										<li role="presentation" class="dropdown-header">information</li>
+										
+										<!-- 현우 추가 부분 -->
+										<li role="presentation"><a href="/Jungkosta/sale_info" role="menuitem" tabindex="-1">판매 내역</a></li>
+										<li role="presentation"><a href="/Jungkosta/purchase_info" role="menuitem" tabindex="-1">구매 내역</a></li>
+										<!-- 현우 추가 부분 -->
+										
 										<li role="presentation"><a href='#myModal2' data-toggle='modal' role="menuitem" tabindex="-1">회원 정보 수정</a></li>
 										<li role="presentation"><a href='#' role="menuitem" tabindex="-1">회원 탈퇴</a></li>
 										<li role="presentation" class="divider"></li>
 										<li role="presentation" class="dropdown-header">list</li>
-										<li role="presentation"><a href='/Jungkosta/purchaseList' role="menuitem" tabindex="-1">구매 내역</a></li>
-										<li role="presentation"><a href='/Jungkosta/saleList' role="menuitem" tabindex="-1">판매 내역</a></li>
-										<li role="presentation"><a href='/Jungkosta/aucList' role="menuitem" tabindex="-1">경매 내역</a></li>
+										<li role="presentation"><a href='/Jungkosta/purchaseList' role="menuitem" tabindex="-1">일반 무통장 입금</a></li>
+										<li role="presentation"><a href='/Jungkosta/aucList' role="menuitem" tabindex="-1">경매 무통장 입금</a></li>
+										<!-- <li role="presentation"><a href='/Jungkosta/paymentList' role="menuitem" tabindex="-1">구매 내역</a></li> -->
 									</c:when>
 									<c:otherwise>
 										<li role="presentation" class="dropdown-header">Manage</li>
