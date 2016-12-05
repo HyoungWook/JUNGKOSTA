@@ -8,6 +8,7 @@
 
 .filter_phw {
 	border: 1px solid gray;
+	border-radius: 20px;
 }
 
 .category_phw label {

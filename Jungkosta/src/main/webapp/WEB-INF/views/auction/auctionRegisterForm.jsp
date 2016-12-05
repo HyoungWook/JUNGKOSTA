@@ -6,7 +6,8 @@
 	rel="stylesheet">
 <link href="/Jungkosta/resources/css/auction/auction_add_lsj.css"
 	rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="/Jungkosta/resources/css/auction/timedropper.css"> 
+<link rel="stylesheet" type="text/css"
+	href="/Jungkosta/resources/css/auction/timedropper.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="/Jungkosta/resources/bootstrap/js/bootstrap.min.js"></script>
@@ -25,21 +26,6 @@
 <link
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
 	rel="stylesheet" type="text/css" />
-<script type="text/javascript">
-	//이수진 추가 start
-	$(function() {
-		var email = "${email}";
-
-		$('#add_btn').submit(function(event) {
-			if (!email) {
-				alert("로그인 해주세요.");
-				return false;
-			}
-		});
-
-	});
-	//이수진 추가 end
-</script>
 <style>
 .input_error_phw {
 	display: none;
@@ -63,7 +49,7 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="/Jungkosta/resources/js/auction/date.js"></script>
 <script src="/Jungkosta/resources/js/auction/timedropper.js"></script>
- 
+
 
 
 <span id="top_lsj">경매 물품 등록</span>
@@ -217,7 +203,8 @@
 							<br>
 						</div>
 						<div class="col-md-5">
-							<input type="text" id="alarm" name="time_sel" class="form-control"/>
+							<input type="text" id="alarm" name="time_sel"
+								class="form-control" />
 						</div>
 					</div>
 					<br />
@@ -259,6 +246,7 @@
 					</span>
 				</div>
 			</div>
+		</div>
 	</form>
 </div>
 
@@ -319,13 +307,13 @@
 										success : function(data) {
 
 											var fileInfo = getFileInfo(data);
-
 											var html = template(fileInfo);
 
 											$(".uploadedList").append(html);
 
-											$file_area.html('');
-
+											
+											$file_area.html("");
+											
 											var str = "";
 											$(".uploadedList .delbtn")
 													.each(
@@ -355,26 +343,36 @@
 						}
 					});
 
-	$(".uploadedList").on("click", ".delbtn", function(event) {
-		event.preventDefault();
-		var that = $(this);
+	$(".uploadedList").on(
+			"click",
+			".delbtn",
+			function(event) {
+				event.preventDefault();
+				var that = $(this);
 
-		$.ajax({
-			url : "deleteFile",
-			type : "post",
-			data : {
-				fileName : $(this).attr("href")
-			},
-			dataType : "text",
-			success : function(result) {
-				if (result == 'deleted') {
-					that.closest("li").remove();
-				}
-			}
-		});
-	});
-	$( "#alarm" ).timeDropper({
-		format:"H:mm"
+				var $file_area = $("#file_area");
+
+				var $input = $file_area.find("input[value='"
+						+ $(this).attr("href") + "']");
+
+				$input.remove();
+
+				$.ajax({
+					url : "deleteFile",
+					type : "post",
+					data : {
+						fileName : $(this).attr("href")
+					},
+					dataType : "text",
+					success : function(result) {
+						if (result == 'deleted') {
+							that.closest("li").remove();
+						}
+					}
+				});
+			});
+	$("#alarm").timeDropper({
+		format : "H:mm"
 	});
 </script>
 

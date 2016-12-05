@@ -149,7 +149,7 @@
 		</td>
 	</tr>
 	<tr>
-		<td colspan='3' align='center'><a class='detail_view'>주문 상세정보 보기</a> </td>
+		<td colspan='3' align='center'><a href='#' class='detail_view'>주문 상세정보 보기</a> </td>
 	</tr>
 	<tr class='hide'>
 		<td colspan='3'>
