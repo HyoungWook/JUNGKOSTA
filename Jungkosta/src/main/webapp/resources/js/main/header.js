@@ -45,9 +45,11 @@ $(function() {
 				var result = decodeData.trim();
 				
 				alert(result);
+				
 				if(result != '아이디나 비밀번호가 틀렸습니다.'){
 					
 					location.reload();
+					location.href = "/Jungkosta/preferListProc"
 				}
 			},
 			error:function(){

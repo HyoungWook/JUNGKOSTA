@@ -48,8 +48,11 @@ public class PurchaseServiceImpl implements PurchaseService {
 		purchaseDAO.backPoint(member);
 		
 	}
-	
-	
 
+	@Override
+	public PurchaseVO findPurchase(int sale_id) throws Exception {
+		return purchaseDAO.findPurchase(sale_id);
+	}
+	
 
 }

@@ -12,15 +12,15 @@
 <!-- javaScript -->
 <script type="text/javascript" src="/Jungkosta/resources/js/trade/qna.js"></script>
 <script type="text/javascript" src="/Jungkosta/resources/js/trade/itemDetail.js"></script>
+<script type="text/javascript" src="/Jungkosta/resources/js/trade/itemDetail_zoom.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
 
+<!-- zoom-in -->
+<link href="/Jungkosta/resources/lib/imageviewer.css" rel="stylesheet" type="text/css" />
+<script src="/Jungkosta/resources/lib/imageviewer.js"></script>
 <!-- css -->
-<style type="text/css">
-
-</style>
+<link href="/Jungkosta/resources/css/trade/zoom_in.css" rel="stylesheet">
 <link href="/Jungkosta/resources/css/trade/tradeDetail.css" rel="stylesheet"> 
-<script type="text/javascript" src="/Jungkosta/resources/js/trade/qna.js"></script>
-
 
 
 <!-- bootstrap -->
@@ -34,13 +34,8 @@
 </head>
 <body>
 
-	물품 상세 페이지
-
 	<div id="section">
-		<%-- <jsp:include page="../header&footer/header.jsp"></jsp:include>
-		<jsp:include page="../header&footer/nav.jsp"></jsp:include> --%>
 		<div class="container">
-
 			<a href="#">${totalcategoryName}&nbsp;</a><img
 				id="category_button_ktw" src="/Jungkosta/resources/images/trade/category_direct.png">
 			<img src="/Jungkosta/resources/images/trade/direct_tw.png">&nbsp;<a href="#">&nbsp;${subcategory.subca_name}</a>
@@ -87,7 +82,7 @@
 				</div>
 				<div class="col-md-5 col-md-offset-2 right_ktw">
 					<form action="/Jungkosta/trade/tradeOrder" method="get">
-						<input type="hidden" name="sale_id" value="${register.sale_id }">
+						<input type="hidden" name="sale_id" value="${register.sale_id }" id="sale_id">
 						<div class="row">
 							<div class="col-md-12">
 								<img id="good_ktw" src="/Jungkosta/resources/images/trade/good.png" />&nbsp;
@@ -126,7 +121,16 @@
 									<span id="itemPrice_ktw" name="item_cost"><fmt:formatNumber
 											value="${register.item_cost }" pattern="#,###" />원</span>
 								</div>
-								<br>
+								<br><br>
+								<c:choose>
+								<c:when test="${register.sale_status=='거래중' &&purchase.email==email}">
+									<span id="status3">마이 페이지를 이용해 거래해 주세요.</span>
+								</c:when>
+								<c:when test="${register.sale_status=='거래중' &&purchase.email!=email}">
+								<span id="status2">다른 사람과 거래중 입니다.</span>
+								</c:when>
+								</c:choose>
+		
 								<hr>
 							</div>
 							<br> <br> <br> <br>
@@ -142,7 +146,6 @@
 			<br> <br> <br>
 			<div class="li_active">
 				<ul class="nav nav-tabs detail_select_ktw">
-
 					<li class="active"><a href="#product_info" data-toggle="tab">상품정보</a></li>
 					<li><a href="#comment" data-toggle="tab">판매자가 받은 상품평</a></li>
 					<li><a href="#qAnda" data-toggle="tab">상품문의</a></li>
@@ -152,6 +155,20 @@
 				<div class="tab-content">
 					<br> <br>
 					<div class="tab-pane active" id="product_info">
+						<label>상품 정보</label><br><br> 
+						<!-- 사진 추가-tw -->
+					<div id="item_pic_list">
+						<div id="image-gallery">
+							<div class="image-container"></div>
+							<img src="/Jungkosta/resources/images/trade/left.svg"
+							class="prev" /> <img
+								src="/Jungkosta/resources/images/trade/right.svg" class="next" />
+							<div class="footer-info">
+								<span class="current"></span>/<span class="total"></span>
+							</div>
+						</div>
+					</div>
+					<br><br>
 						<div class="row">
 							<div class="col-md-offset-1 col-md-1">
 								<span id="BUY_TIME_ktw" class="item_info_Quest_ktw">구매시기</span>
@@ -181,8 +198,6 @@
 								<span id="ADDITIONAL_INFO_ktw" class="item_info_Quest_ktw">추가정보</span>
 							</div>
 							<div class="col-md-offset-1 col-md-9">
-								<!-- 		<span class="ADDITIONAL_INFO_Result_ktw">1.액정에 기스가 있습니다.</span><br>
-								<span class="ADDITIONAL_INFO_Result_ktw">2.상태가 좋습니다.</span><br> -->
 								<span class="form-control" name="additional_info">
 									${register.additional_info } </span>
 							</div>
@@ -239,10 +254,12 @@
 											</div>
 										</div>
 									</div>
+				<input type="hidden" name="email" id="purchase_email" value="${purchase.email }">
+				
 									<div id="collapseOne" class="panel-collapse collapse in">
 										<div class="panel-body">
 											<form id="reply">
-												<input type='hidden' name="email" value="${email }">
+												<input type='hidden' id="session_email" name="email" value="${email }">
 												<input type="hidden" name="sale_id"
 													value="${param.sale_id }">
 												<div class="qAnda form-group">
@@ -340,16 +357,6 @@
 					$(".reply_table_si tbody").empty().hide();
 					
 					$(list).each(function(index) {
-						
-						/* var html = template(list[index]); */
-						
-						/* var html = "<tr>";
-						html += "<td>" + (index + 1) + "</td>";
-						html += "<td>" + list[index].content + "</td>";
-						html += "<td>" + list[index].email + "</td>";
-						html += "</tr>";
-						$('.reply_table_si tbody').append(html); */
-						
 					});
 					
 					$(".reply_table_si tbody").fadeIn();

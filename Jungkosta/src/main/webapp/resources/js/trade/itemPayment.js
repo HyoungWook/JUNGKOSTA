@@ -1,6 +1,6 @@
 $(function() {
 	window.history.forward(1);
-	//[출처] Javascript 뒤로가기 방지, 새로고침 방지, 복사 방지|작성자 니키아
+	
 	var subca_id = $('#subca_id').val();
 	var password2 = $('#password2');
 	var originPw = $('#originPw').val();
@@ -12,7 +12,7 @@ $(function() {
 		
 		var cancel = confirm('주문을 취소하시겠습니까?');
 		if (cancel == true) {
-			alert("주문이 취소되었습니다.");
+			alert("주문 취소");
 			$.ajax({
 				url: "DeletePurchase",
 				type: "POST",
@@ -20,47 +20,55 @@ $(function() {
 				dataType: "text",
 				success: successHandler,
 				error: function(data){
-					alert('실패');
+					alert('fail');
 				}		
 			})
-			
-			
 		}
 	})
 
 		function successHandler(data){
-			alert("주문 취소");
+			alert("성공");
 			sendList(subca_id);
 			
 	}
 	$('#orderButton_ktw').on('click', function(){
 		flag = true;
-		alert(flag + ' 테스트');
 	})
 	
 	
 	$('#check').on('click', function(event) {
 		var password = password2.val();
 		flag = true;
+		var sendData = "password=" + password;
 		var paymentCost = Number(payment);
 	
-		if (password != originPw) {
-			alert('비밀번호가 올바르지 않습니다.');
+			$.ajax({
+				url:"passCheck",
+				data : sendData,
+				type:'POST',
+				dataType:"text",
+				error:function(data){
+					alert('에러');
+					
+				},
+				success:function(data){
+					if(data!= originPw){
+						alert(data + '비밀번호가 올바르지 않습니다.');
+						return false;
+					}else if (data == originPw) {
+						alert('비밀번호가 일치합니다.');
 
-			return false;
-
-		} else if (password == originPw) {
-			alert('비밀번호가 일치합니다.');
-
-			var cost = prompt('결제할 금액을 입력하세요', paymentCost);
-			if (cost == paymentCost) {
-				alert('결제 완료');
-			} else {
-				alert('결제할 금액이 올바르지 않습니다.');
-				return false;
-			}
-		}
-
+						var cost = prompt('결제할 금액을 입력하세요.', paymentCost);
+						if (cost == paymentCost) {
+							alert('결제 완료');
+						} else {
+							alert('결제할 금액이 올바르지 않습니다.');
+							return false;
+						}
+					}
+				
+				}
+			})
 	});
 
 	
@@ -83,15 +91,8 @@ $(function() {
 
 	   // 브라우저 종료시 발생하는 이벤트
 	   window.addEventListener("beforeunload", function(event) {
-
-	      var confirmationMessage = "\o/";
-
-	     /* var sale_id = $("#sale_id").val();
-	      var bidding_id = $("#bidding_id").val();
-
-	      var data = "sale_id=" + sale_id + "&bidding_id=" + bidding_id;*/
+	    var confirmationMessage = "\o/";
 	    var purchase_id = $('#purchase_Id').val();
-	//    var sale_id = $('#sale_id').val();
 	  	var sendData = "purchase_id=" + purchase_id;
 	  	
 	  	if(flag == false){

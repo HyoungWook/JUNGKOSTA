@@ -6,7 +6,6 @@ import java.util.Date;
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class SaleVO implements Serializable{
-	
 	private int sale_id;
 	private String item_name;
 	private int item_cost;

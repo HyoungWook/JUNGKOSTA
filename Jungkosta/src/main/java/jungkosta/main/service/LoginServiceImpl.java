@@ -6,7 +6,6 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 import jungkosta.commons.util.Decryption;
@@ -22,10 +21,17 @@ public class LoginServiceImpl implements LoginService {
 	
 	
 	//2016/11/19 우성 수정
-	@SuppressWarnings("unused")
 	@Override
 	public String check_Login(HttpServletRequest request,MemberVO vo, String pass)throws Exception{		
 		MemberVO ret_vo = loginDao.check_Login(vo);
+		
+		
+		//2016/12/04 우성 수정
+		if(ret_vo == null){
+			return URLEncoder.encode("E-mail이 틀렸습니다.","utf-8");
+		}
+		
+		//끝
 		Decryption decrypt = new Decryption();		//복호화 객체
 		
 		String[] brypass = decrypt.covertHtoOne(ret_vo.getPassword());	//db저장비번 이진수로 변환

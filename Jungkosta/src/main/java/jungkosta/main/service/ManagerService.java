@@ -1,6 +1,5 @@
 package jungkosta.main.service;
 
-import java.util.List;
 
 import jungkosta.main.domain.BlackListVO;
 import jungkosta.main.domain.MemberVO;

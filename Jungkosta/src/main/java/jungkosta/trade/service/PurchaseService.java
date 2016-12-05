@@ -17,4 +17,6 @@ public interface PurchaseService {
 	public void usePoint(MemberVO member)throws Exception;
 	
 	public void backPoint(MemberVO member)throws Exception;
+	
+	public PurchaseVO findPurchase(int sale_id)throws Exception;
 }

@@ -36,14 +36,20 @@
 	
 	
 	<beans:bean id="LoginIntercepter" class="jungkosta.commons.interceptor.LoginInterceptor"/>
+	<beans:bean id="PreferIntercepter" class="jungkosta.commons.interceptor.PreferInterceptor"/>
 	
 	
 	<interceptors>
 		<interceptor>
 			<mapping path="/tradeRegisterForm"/>
-			<mapping path="/tradeRegisterForm"/>
 			<mapping path="/tradeOrder"/>
+			<mapping path="/tradePuchase"/>
+			<mapping path="/tradePayment"/>
 			<beans:ref bean="LoginIntercepter"/>
+		</interceptor>
+		<interceptor>
+			<mapping path="/tradeDetail"/>
+			<beans:ref bean="PreferIntercepter"/>
 		</interceptor>
 	</interceptors>
 	

@@ -15,7 +15,7 @@ import jungkosta.auction.service.BiddingService;
 import jungkosta.main.domain.MessageVO;
 import jungkosta.main.service.MessageService;
 
-@Component
+//@Component
 public class BidThread extends Thread {
 
 	@Inject

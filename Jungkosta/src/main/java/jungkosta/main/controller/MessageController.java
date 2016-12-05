@@ -15,12 +15,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import jungkosta.commons.util.Path;
 import jungkosta.main.domain.MessageVO;
 import jungkosta.main.service.MessageService;
 
 @Controller
 public class MessageController {
+	
 	
 	@Inject
 	private MessageService service;
@@ -31,12 +31,7 @@ public class MessageController {
 	}
 	
 	@RequestMapping(value="/messageSendProc",method=RequestMethod.POST)
-	public String messageSendProc(HttpServletRequest request, MessageVO vo){
-		
-		String prev_URL = request.getHeader("referer");
-		String url = null;
-		
-		url = Path.getInstance().determine_url(prev_URL);
+	public String messageSendProc(HttpServletRequest request,MessageVO vo){
 		
 		service.insertMessage(vo);
 		
