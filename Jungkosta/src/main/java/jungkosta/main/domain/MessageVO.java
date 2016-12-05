@@ -77,4 +77,15 @@ public class MessageVO implements Serializable{
 	public void setMessage_isread(String message_isread) {
 		this.message_isread = message_isread;
 	}
+
+
+
+	@Override
+	public String toString() {
+		return "MessageVO [message_id=" + message_id + ", title=" + title + ", content=" + content + ", send_time="
+				+ send_time + ", receiver=" + receiver + ", sender=" + sender + ", message_isread=" + message_isread
+				+ "]";
+	}
+	
+	
 }

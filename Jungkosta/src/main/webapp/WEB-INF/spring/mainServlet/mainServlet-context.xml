@@ -56,4 +56,5 @@
 	
 	<context:component-scan base-package="jungkosta.main.controller"/>
 	
+	
 </beans:beans>

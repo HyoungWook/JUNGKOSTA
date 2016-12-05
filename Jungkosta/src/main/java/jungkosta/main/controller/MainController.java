@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import jungkosta.auction.domain.AuctionListVO;
+import jungkosta.commons.util.Path;
 import jungkosta.main.domain.MemberVO;
 import jungkosta.main.service.MainService;
 import jungkosta.main.service.SignupService;
@@ -38,10 +39,10 @@ public class MainController {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
+	
 	@RequestMapping(value = "/", method = {RequestMethod.GET,RequestMethod.POST})
 	public String home(Locale locale, Model model) {
 		logger.info("메인 컨트롤러 실행 완료....", locale);
-		
 		
 		return "main";
 	}

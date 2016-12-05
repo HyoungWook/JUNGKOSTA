@@ -58,7 +58,7 @@
 						</div>
 
 						<div class="form-group" id="expire_time_ws"></div>
-						<div class="form group button_div_header">
+						<div class="form group button_div_header cancel">
 							<button type="button" class="btn btn-danger btn-lg button_header"
 								data-dismiss="modal" id="modalCancel_khw">Cancel</button>
 						</div>
@@ -87,7 +87,7 @@
 						<label for="emailaddress" class="col-xs-2 col-lg-2 control-label">E-Mail</label>
 						<div class="col-xs-6 col-lg-6">
 							<input type="email" name="email" id="email_khw"
-								class="form-control" placeholder="E-Mail">
+								class="form-control" placeholder="E-Mail" readonly="readonly">
 						</div>
 
 						<div class="col-xs-3 col-lg-3">

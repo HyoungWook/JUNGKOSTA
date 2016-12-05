@@ -52,4 +52,5 @@
 	
 	<context:component-scan base-package="jungkosta.auction.controller" />
 	
+	
 </beans:beans>

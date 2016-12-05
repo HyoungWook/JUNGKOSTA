@@ -24,7 +24,7 @@
           
             if(message.data != null) {
                 messageTextArea.value += message.data+ "\n"
-                alert(messageTextArea.value);
+               	alert(messageTextArea.value);
             };
             
         }

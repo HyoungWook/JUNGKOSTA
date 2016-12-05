@@ -22,7 +22,6 @@ import jungkosta.main.service.MessageService;
 @Controller
 public class MessageController {
 	
-	
 	@Inject
 	private MessageService service;
 	
@@ -32,7 +31,7 @@ public class MessageController {
 	}
 	
 	@RequestMapping(value="/messageSendProc",method=RequestMethod.POST)
-	public String messageSendProc(HttpServletRequest request,MessageVO vo){
+	public String messageSendProc(HttpServletRequest request, MessageVO vo){
 		
 		String prev_URL = request.getHeader("referer");
 		String url = null;

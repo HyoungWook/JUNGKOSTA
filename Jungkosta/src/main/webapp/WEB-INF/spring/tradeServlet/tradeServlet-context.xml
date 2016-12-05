@@ -34,7 +34,9 @@
 	<!-- Controller Scan -->
 	<context:component-scan base-package="jungkosta.trade.controller"/>
 	
+	
 	<beans:bean id="LoginIntercepter" class="jungkosta.commons.interceptor.LoginInterceptor"/>
+	
 	
 	<interceptors>
 		<interceptor>

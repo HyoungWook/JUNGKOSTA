@@ -1,4 +1,7 @@
-
+.cancel{
+	padding-right: 3em;
+	text-align: right;
+}
 
 #signup_khw{
 	font-size: 2.5em;
@@ -33,7 +36,7 @@ overflow: scroll;
 }
 
 .interests_label_khw{
-	position: absolute;
+	
 	height: 5em;
 	font-weight: bolder;
 	
@@ -64,6 +67,9 @@ overflow: scroll;
 .interests_ca3_head_khw{
 	margin-left: 8.1em;
 	
+}
+.inlineCheckbox_khw{
+	vertical-align: 2px;
 }
 
 #mail_form{

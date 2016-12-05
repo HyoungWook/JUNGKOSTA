@@ -2,6 +2,11 @@ package jungkosta.commons.util;
 
 import java.util.StringTokenizer;
 
+import javax.inject.Inject;
+
+import org.springframework.stereotype.Component;
+
+
 public class Path {
 	
 	private static Path path = new Path();
@@ -28,4 +33,5 @@ public class Path {
 		
 		return url;
 	}
+	
 }

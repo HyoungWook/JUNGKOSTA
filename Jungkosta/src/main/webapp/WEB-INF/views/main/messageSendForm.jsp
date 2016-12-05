@@ -9,6 +9,7 @@
 <head>
 <!-- <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <link href="../bootstrap/css/custom2.css" rel="stylesheet"> -->
+<script src="/Jungkosta/resources/lib/jquery-3.1.1.min.js"></script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="/Jungkosta/resources/bootstrap/js/bootstrap.min.js"></script>
@@ -18,9 +19,28 @@
 <title>Insert title here</title>
 
 <script type="text/javascript">
+
+	//웹소켓 초기화
+	var webSocket = new WebSocket("ws://localhost:8081/Jungkosta/broadsocket");
+	
+	 //메시지 보내기
+    function sendMessage(){
+        //var messageText = document.getElementById("messageText");
+        var $message = $('#ms_reciever_ws').val()+ "/" + $('#ms_sender_ws').val() + "/" + 
+        				$('#ms_title_ws').val()+ "/" + $('#ms_content_ws').val();
+        
+        webSocket.send($message);
+        
+        $('#ms_reciever_ws').val("");
+        $('#ms_title_ws').val("");
+        $('#ms_content_ws').val("");
+    }
+
 	function cancel(){
 		history.go(-1);
 	}
+
+	
 </script>
 <style type="text/css">
 #message_frame_button_ws{
@@ -73,11 +93,12 @@
 					<div class="form-group" id="ms_div_content_ws">
 						<label for="content_ws" class="col-xs-2 col-lg-2 control-label">내용</label>
 						<div class="col-xs-10 col-lg-10">
-							<textarea  rows="5" class="form-control" id="ms_content_ws" name="content" id=></textarea>
+							<textarea  rows="5" class="form-control" id="ms_content_ws" name="content"></textarea>
 						</div>
 					</div>
 					<div class="form-group">
 						<div id="message_frame_button_ws"class="col-xs-offset-2 col-xs-10 col-lg-offset-2 col-lg-10 ">
+							<%--<button type="button" class="btn btn-primary" onclick="sendMessage()">확인</button> --%>
 							<button type="submit" class="btn btn-primary">확인</button>
 							<button type="reset" class="btn btn-danger" onclick="cancel()">취소</button>
 						</div>

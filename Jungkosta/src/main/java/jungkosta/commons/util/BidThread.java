@@ -30,9 +30,9 @@ public class BidThread extends Thread {
 	@Inject
 	private AucPayService paymentService;
 
-	public BidThread() {
+	/*public BidThread() {
 		start();
-	}
+	}*/
 
 	@Override
 	public void run() {

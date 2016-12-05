@@ -21,6 +21,7 @@ public class MessageServiceImpl implements MessageService {
 		Integer m_id = messageDao.selectMessageMaxNum();
 		
 		if(m_id == null){
+			System.out.println("3");
 			vo.setMessage_id(1);
 		}else{
 			vo.setMessage_id(m_id+1);
