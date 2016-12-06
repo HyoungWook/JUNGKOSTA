@@ -20,7 +20,6 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		
-		System.out.println("죽어 임마");
 		
 		HttpSession session = request.getSession();
 		
