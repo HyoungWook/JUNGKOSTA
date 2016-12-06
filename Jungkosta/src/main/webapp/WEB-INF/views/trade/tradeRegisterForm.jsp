@@ -62,15 +62,27 @@
                      <label for="sel1">서브 카테고리</label> <select class="form-control cate_ktw"
                         id="sub_category_ktw" name="subca_id">
                         <option value="null" selected="selected">서브카테고리 선택</option>
-                        <option class="ele" value="1">노트북</option>
-                        <option class="ele" value="2">테블릿</option>
-                        <option class="ele" value="3">PC</option>
-                        <option class="child" value="4">의류</option>
-                        <option class="child" value="5">용품</option>
-                        <option class="sports" value="6">신발</option>
-                        <option class="sports" value="7">장비</option>
-                        <option class="ele" value="8">스마트폰</option>
-                        <option class="ele" value="9">카메라</option>
+						<option class="ele" value="1">노트북</option>
+						<option class="ele" value="2">컴퓨터</option>
+						<option class="ele" value="3">스마트폰</option>
+						<option class="ele" value="4">테블릿</option>
+						<option class="ele" value="5">노트북/pc 주변기기</option>
+						<option class="ele" value="6">카메라</option>
+						<option class="ele" value="7">음향 기기</option>
+						<option class="ele" value="8">웨어러블</option>
+						<option class="ele" value="9">영상 가전</option>
+						<option class="ele" value="10">게임/타이틀</option>
+						<option class="ele" value="11">자동차 기기</option>
+						<option class="ele" value="12">기타 전자 기기</option>
+						<option class="travel" value="13">지류 카드 상품권</option>
+						<option class="travel" value="14">공연/티켓</option>
+						<option class="travel" value="15">모바일쿠폰/상품권</option>
+						<option class="travel" value="16">여행/항공권</option>
+						<option class="global" value="17">명품 가방</option>
+						<option class="global" value="18">명품 지갑</option>
+						<option class="global" value="18">명품 시계</option>
+						<option class="global" value="18">명품 신발</option>
+						<option class="global" value="18">명품 악세사리</option>
                      </select>
                   </div>
                   <br>

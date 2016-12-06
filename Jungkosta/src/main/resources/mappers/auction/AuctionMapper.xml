@@ -64,29 +64,28 @@
 
 	<select id="auctionList" parameterType="java.util.Map"
 		resultType="AuctionVO">
-		select * from auctionlist_view
-
-		<if test="category != null or status != null">
+		select * from (select * from auctionList_view
+		<if test="status != null">
 			<where>
-				<if test="category != null">
-					subca_id in
-					<foreach collection="category" item="ca" separator=","
-						open="(" close=")">
-						#{ca}
-					</foreach>
-
-					<if test="status != null">
-						and
-					</if>
-				</if>
-
-				<if test="status != null">
-					<foreach collection="status" item="st" separator="or">
-						item_status like '${st}%'
-					</foreach>
-				</if>
+				<foreach collection="status" item="st" separator="or">
+					item_status like '${st}%'
+				</foreach>
 			</where>
 		</if>
+		)
+
+
+		<if test="category != null">
+			<where>
+				subca_id in
+				<foreach collection="category" item="ca" separator="," open="("
+					close=")">
+					#{ca}
+				</foreach>
+			</where>
+		</if>
+
+
 		<choose>
 			<when test="cri.sort == 'add_sort'.toString()">
 				order by sale_date desc

@@ -39,7 +39,7 @@ public class AuctionListController {
 		if (statusList.equals("")) {
 			statusList = null;
 		}
-
+		
 		try {
 
 			List<AuctionVO> list = auctionListService.auctionList(cri, categoryList, statusList);
