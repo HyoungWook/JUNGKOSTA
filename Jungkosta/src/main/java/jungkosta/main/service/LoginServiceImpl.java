@@ -8,7 +8,10 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
 
+import jungkosta.commons.util.AvlTree;
+import jungkosta.commons.util.DataStructure;
 import jungkosta.commons.util.Decryption;
+import jungkosta.commons.util.Node;
 import jungkosta.main.domain.BlackListVO;
 import jungkosta.main.domain.MemberVO;
 import jungkosta.main.persistence.LoginDao;
@@ -62,9 +65,22 @@ public class LoginServiceImpl implements LoginService {
 			else
 				ret_Value = "E-mail이 틀렸습니다.";
 		}else{
+			
+			
 			BlackListVO b_Vo = loginDao.checkBlackList(vo.getEmail()); 
 			
 			if(b_Vo == null){
+				
+				AvlTree tree =  DataStructure.getTree();
+				
+				Node node = new Node();
+				
+				node.setEmail(vo.getEmail());
+				node.setSession(request.getSession());
+				
+				if(tree.insertNode(node) == AvlTree.FAIL){
+					tree.deleteNode(vo.getEmail());
+				}
 				
 				session.setAttribute("email", ret_vo.getEmail());
 				session.setAttribute("name", ret_vo.getName());
