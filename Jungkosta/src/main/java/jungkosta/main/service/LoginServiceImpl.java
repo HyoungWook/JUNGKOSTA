@@ -80,6 +80,7 @@ public class LoginServiceImpl implements LoginService {
 				
 				if(tree.insertNode(node) == AvlTree.FAIL){
 					tree.deleteNode(vo.getEmail());
+					tree.insertNode(node);
 				}
 				
 				session.setAttribute("email", ret_vo.getEmail());
