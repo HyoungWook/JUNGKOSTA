@@ -57,9 +57,7 @@
 					</tr>
 					<tr>
 						<td colspan="8">
-						<pre>
-							${board.content }
-						</pre>
+						<pre>${board.content }</pre>
 						</td>
 					</tr>
 				</table>

@@ -15,7 +15,7 @@ import jungkosta.auction.service.BiddingService;
 import jungkosta.main.domain.MessageVO;
 import jungkosta.main.service.MessageService;
 
-//@Component
+@Component
 public class BidThread extends Thread {
 
 	@Inject
@@ -30,9 +30,9 @@ public class BidThread extends Thread {
 	@Inject
 	private AucPayService paymentService;
 
-	/*public BidThread() {
+	public BidThread() {
 		start();
-	}*/
+	}
 
 	@Override
 	public void run() {
