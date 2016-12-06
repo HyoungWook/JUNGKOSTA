@@ -33,7 +33,7 @@
 				<div class="modal-body">
 					<form method="post" id="mail_form">
 						<div id="loading">
-							<img alt="loading" src="../images/loading.gif">
+							<img alt="loading" src="/Jungkosta/resources/images/main/loading.gif">
 						</div>
 						<div class="form-group">
 							<label for="email" class="col-xs-2 col-lg-2 control-label"

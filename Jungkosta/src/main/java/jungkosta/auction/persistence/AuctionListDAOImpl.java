@@ -24,7 +24,10 @@ public class AuctionListDAOImpl implements AuctionListDAO {
 	public List<AuctionVO> auctionList(Map<String, Object> map) throws Exception {
 
 		AuctionCriteria cri = (AuctionCriteria) map.get("cri");
-
+		
+		String[] category = (String[]) map.get("category");
+		String[] status = (String[])map.get("status");
+		
 		return sqlSession.selectList(namespace + ".auctionList", map,
 				new RowBounds(cri.getPageStart(), cri.getPerPageNum()));
 	}

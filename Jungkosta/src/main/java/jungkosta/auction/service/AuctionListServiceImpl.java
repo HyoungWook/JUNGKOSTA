@@ -1,6 +1,5 @@
 package jungkosta.auction.service;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,13 +26,7 @@ public class AuctionListServiceImpl implements AuctionListService {
 
 		if (categoryList != null) {
 			String[] temp = categoryList.split(",");
-			int[] category = new int[temp.length];
-
-			for (int i = 0; i < temp.length; i++) {
-				category[i] = Integer.parseInt(temp[i]);
-
-			}
-			map.put("category", category);
+			map.put("category", temp);
 		}
 
 		if (statusList != null) {

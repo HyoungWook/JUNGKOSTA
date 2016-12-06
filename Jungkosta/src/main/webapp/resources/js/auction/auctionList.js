@@ -110,11 +110,13 @@ $(function() {
 
 	// checkbox event start
 	var $all_item = $(".all_item");
-	var $checkbox = $(".check_phw input:checkbox");
+	var $checkbox = $(".check_phw input:checkbox:not(.all_item)");
 
 	$all_item.click(function(event) {
 		var type = (this.id).substring(0, (this.id).indexOf("_"));
-
+	
+		$(this).prop("checked", true);
+		
 		$("." + type).each(function(index) {
 			$(this).prop("checked", false);
 			checkLabelClass($(this), false);
