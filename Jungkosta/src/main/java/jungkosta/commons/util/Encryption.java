@@ -16,6 +16,7 @@ public class Encryption {
 			shiftResult += "=" + refactoring(bryChr); // password 암호화
 		}
 
+		System.out.println(shiftResult);
 		return shiftResult;
 	}
 
