@@ -55,13 +55,8 @@ $(function() {
 		var $point = Number($('.point_tw').val());//사용할 마일리지
 		var hp = Number($('#havingpoint').val()); //보유 마일리지
 		var backPoint = hp - $point;
-		
-		alert($point);
-		alert(hp);
-		
-		
+				
 		 var point = "point=" +$point +"&email=" + email;
-		 alert(point);
 		 $.ajax({
 			 url: "usePoint2",
 			 type: "POST",
@@ -128,9 +123,6 @@ $(function() {
 	$('.radio_btn').click(function(event) {
 		var btn_radio = $(this).val();
 
-		// alert($itemPrice);
-		alert(btn_radio);
-
 		chargeType(this.id);
 
 		$('#orderButton_ktw').click(function(event) {
@@ -152,8 +144,6 @@ $(function() {
 		var $itemPrice = $('#itemcost').val();
 		var $point1 = $('.point_tw').val();
 		
-		/*alert($itemPrice);
-		alert($point1);*/
 		var type = "";
 		var persent;
 
@@ -167,7 +157,6 @@ $(function() {
 
 		var charge = ($itemPrice * persent);
 		var total = parseInt($itemPrice) + charge + 2500- $point1;
-		//alert(total);
 		var charge_str = addComma(charge);
 		var total_str = addComma(total);
 		$('#extraPriceRst_ktw').text(charge_str + " 원");

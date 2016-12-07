@@ -26,15 +26,16 @@
 	<div class="container">
 		<div class="row">
 			<!-- start 현우 추가부분 -->
-			<div class="col-md-3">
-				<%@ include file="menu.jsp"%>
-			</div>
+			<c:if test="${email != 'admin@admin.com' }">
+				<div class="col-md-3">
+					<jsp:include page="menu.jsp" />
+				</div>
+			</c:if>
 
 
 			<div class="col-md-9">
 
-				<br>
-				<br>
+				<br> <br>
 
 				<!-- end 현우 추가부분 -->
 

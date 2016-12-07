@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 
 
+
 <!-- bootstrap -->
 <script src="/Jungkosta/resources/bootstrap/js/bootstrap.min.js"></script>
 
@@ -28,14 +29,17 @@
 <div class="container">
 
 	<input type="hidden" id="name" value="${member.name }"> <input
-		type="hidden" id="phoneNum" value="${member.phone_num }">
-	<input type="hidden" id="address" value="${member.address }">	
+		type="hidden" id="phoneNum" value="${member.phone_num }"> <input
+		type="hidden" id="address" value="${member.address }">
 
 	<div class="row">
-		<div class="col-md-3">
-			<%@ include file="menu.jsp"%>
-		</div>
+		<c:if test="${email != 'admin@admin.com' }">
+			<div class="col-md-3">
+				<jsp:include page="menu.jsp" />
+			</div>
+		</c:if>
 
+		<c:if test=""> </c:if>
 		<div class="col-md-9">
 			<div class="main">
 				<h2>구매 내역</h2>

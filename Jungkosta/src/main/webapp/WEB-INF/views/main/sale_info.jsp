@@ -8,19 +8,21 @@
 <!-- template -->
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
-	
+
 <link rel="stylesheet" type="text/css"
 	href="/Jungkosta/resources/css/main/sale_info.css">
-	
+
 <script src="/Jungkosta/resources/js/main/sale_info.js"></script>
 <script src="/Jungkosta/resources/js/main/sale_info_trade.js"></script>
 
 <div class="container">
 
 	<div class="row">
-		<div class="col-md-3">
-			<%@ include file="menu.jsp"%>
-		</div>
+		<c:if test="${email != 'admin@admin.com' }">
+			<div class="col-md-3">
+				<jsp:include page="menu.jsp" />
+			</div>
+		</c:if>
 
 		<div class="col-md-9">
 			<div class="main">

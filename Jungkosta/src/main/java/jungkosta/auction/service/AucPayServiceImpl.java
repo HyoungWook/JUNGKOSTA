@@ -78,7 +78,9 @@ public class AucPayServiceImpl implements AucPayService {
 
 		dao.deleteBid(vo.getBid_id());
 
-		AuctionVO auction = auctionDao.read(vo.getAuction_id());
+		AuctionVO auction = auctionDao.read(vo.getSale_id());
+		
+		System.out.println(vo);
 
 		if (AuctionCheck.compareTime(auction.getAuction_end_date())) {
 			dao.deleteBidding(vo.getBidding_id());

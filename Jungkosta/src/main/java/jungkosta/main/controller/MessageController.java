@@ -69,8 +69,9 @@ public class MessageController {
 	@RequestMapping(value="/messageCheck",method=RequestMethod.POST)
 	public ResponseEntity<Integer> messageCheck(HttpServletRequest request){
 		
+		HttpSession session = request.getSession();
 		
-		String email = (String)request.getAttribute("email");
+		String email = (String)session.getAttribute("email");
 		
 		ResponseEntity<Integer> entity=null;
 		

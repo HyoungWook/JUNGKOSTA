@@ -42,50 +42,57 @@
 	<div class="container">
 		<div class="row">
 			<!-- start 현우 추가부분 -->
-			<div class="col-md-3">
-				<%@ include file="menu.jsp"%>
+			<c:if test="${email != 'admin@admin.com' }">
+				<div class="col-md-3">
+					<jsp:include page="menu.jsp" />
+				</div>
+			</c:if>
+
+			<c:if test="${email != 'admin@admin.com' }">
+				<div class="col-md-9">
+			</c:if>
+
+			<c:if test="${email != 'admin@admin.com' }">
+				<div class="col-md-12">
+			</c:if>
+
+			<br> <br>
+			<!-- end 현우 추가부분 -->
+
+
+			<h4 class="text-primary">메시지 함</h4>
+			<hr>
+			<div class="row">
+				<div class="col-md-2 mr_middle_ws">번호</div>
+				<div class="col-md-5">제목</div>
+				<div class="col-md-3 mr_middle_ws">보낸 사람</div>
+				<div class="col-md-2 mr_middle_ws">날짜</div>
 			</div>
 
-
-			<div class="col-md-9">
-
-				<br> <br>
-				<!-- end 현우 추가부분 -->
-
-
-				<h4 class="text-primary">메시지 함</h4>
+			<c:forEach items="${list }" var="item" varStatus="status">
 				<hr>
 				<div class="row">
-					<div class="col-md-2 mr_middle_ws">번호</div>
-					<div class="col-md-5">제목</div>
-					<div class="col-md-3 mr_middle_ws">보낸 사람</div>
-					<div class="col-md-2 mr_middle_ws">날짜</div>
-				</div>
-
-				<c:forEach items="${list }" var="item" varStatus="status">
-					<hr>
-					<div class="row">
-						<div class="col-md-2 mr_middle_ws">${status.count }</div>
-						<div class="col-md-5 mr_overflow_ws">
-							<c:if test="${item.message_isread eq 'N' }">
-								<a href="/Jungkosta/messageDetailForm/${item.message_id }"
-									class="mr_a_ws mr_a_red_ws">${item.title}</a>
-							</c:if>
-							<c:if test="${item.message_isread eq 'Y' }">
-								<a href="/Jungkosta/messageDetailForm/${item.message_id }"
-									class="mr_a_ws mr_a_black_ws">${item.title}</a>
-							</c:if>
-						</div>
-						<div class="col-md-3 mr_overflow_ws mr_middle_ws">${item.sender }</div>
-						<div class="col-md-2 mr_middle_ws">
-							<fmt:formatDate value="${item.send_time }" pattern="yyyy-MM-dd" />
-						</div>
+					<div class="col-md-2 mr_middle_ws">${status.count }</div>
+					<div class="col-md-5 mr_overflow_ws">
+						<c:if test="${item.message_isread eq 'N' }">
+							<a href="/Jungkosta/messageDetailForm/${item.message_id }"
+								class="mr_a_ws mr_a_red_ws">${item.title}</a>
+						</c:if>
+						<c:if test="${item.message_isread eq 'Y' }">
+							<a href="/Jungkosta/messageDetailForm/${item.message_id }"
+								class="mr_a_ws mr_a_black_ws">${item.title}</a>
+						</c:if>
 					</div>
-				</c:forEach>
-			</div>
-			<div class="col-md-2"></div>
-
+					<div class="col-md-3 mr_overflow_ws mr_middle_ws">${item.sender }</div>
+					<div class="col-md-2 mr_middle_ws">
+						<fmt:formatDate value="${item.send_time }" pattern="yyyy-MM-dd" />
+					</div>
+				</div>
+			</c:forEach>
 		</div>
+		<div class="col-md-2"></div>
+
+	</div>
 	</div>
 </body>
 </html>
