@@ -61,8 +61,8 @@ $(function() {
 	});
 
 	var flag = true;
+	
 	$(document).scroll(function() {
-
 		// 현재 화면의 위치
 		var currentHeight = $(window).scrollTop() + window.innerHeight;
 		// document 크기의 90%
@@ -71,9 +71,7 @@ $(function() {
 		if (currentHeight >= height) {
 			if (flag) {
 				flag = false;
-				
 				var obj = getCaAndSta();
-
 				var data = "page=" + (++page) + "&";
 				data += "sort=" + sort + "&",
 				data += "categoryList=" + obj.category + "&",

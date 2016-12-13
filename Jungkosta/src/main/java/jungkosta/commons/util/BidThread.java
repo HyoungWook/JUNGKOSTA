@@ -26,7 +26,7 @@ public class BidThread extends Thread {
 
 	@Inject
 	private BiddingService biddingService;
-	
+
 	@Inject
 	private AucPayService paymentService;
 
@@ -36,47 +36,31 @@ public class BidThread extends Thread {
 
 	@Override
 	public void run() {
-
 		System.out.println("경매 관리 Thread 시작!....");
-
 		while (true) {
 			try {
-
 				List<AuctionVO> endList = null;
-
-				try {
-					endList = service.endAuctionList();
-
-					for (AuctionVO vo : endList) {
-						auctionManager(vo);
-					}
-
-				} catch (Exception e) {
-					e.printStackTrace();
+				endList = service.endAuctionList();
+				for (AuctionVO vo : endList) {
+					auctionManager(vo);
 				}
-
 				sleep(1000);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-
 		}
-
 	}
 
 	private void auctionManager(AuctionVO vo) throws Exception {
 		service.endAuction(vo.getAuction_id());
 		service.updateSale_status(vo.getSale_id());
-
 		sendBidMessage(vo);
 	}
 
 	private void sendBidMessage(AuctionVO auction) throws Exception {
 		MessageVO saler = null;
 		MessageVO costomer = null;
-
 		List<BiddingVO> biddingList = biddingService.biddingList(auction.getAuction_id());
-
 		if (biddingList.size() == 0 || biddingList == null) {
 			saler = contentSaler(auction, false);
 			paymentService.updateSale_status(auction.getSale_id());
@@ -85,10 +69,8 @@ public class BidThread extends Thread {
 			costomer = contentCos(auction);
 			costomer.setSender("admin@admin.com");
 		}
-
 		saler.setSender("admin@admin.com");
 		messageService.insertMessage(saler);
-
 		if (costomer != null) {
 			messageService.insertMessage(costomer);
 		}

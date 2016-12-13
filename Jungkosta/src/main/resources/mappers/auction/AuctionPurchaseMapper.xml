@@ -8,15 +8,11 @@
 	<insert id="insertAuctionPurchase" parameterType="BidVO">
 		insert into bid
 		(
-		bid_id, bidding_id, payment_method, del_address, bid_status,
-		total_cost,
-		purchase_deadline, purchase_date
-		) values
-		(
-		#{bid_id},
-		#{bidding_id}, #{payment_method}, #{del_address},
-		#{bid_status},
-		#{total_cost}, sysdate + 3, sysdate
+			bid_id, bidding_id, payment_method, del_address, bid_status,
+			total_cost, purchase_deadline, purchase_date
+		) values (
+			#{bid_id}, #{bidding_id}, #{payment_method}, #{del_address},
+			#{bid_status}, #{total_cost}, sysdate + 3, sysdate
 		)
 	</insert>
 

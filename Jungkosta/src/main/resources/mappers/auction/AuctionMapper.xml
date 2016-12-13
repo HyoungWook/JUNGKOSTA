@@ -64,22 +64,21 @@
 
 	<select id="auctionList" parameterType="java.util.Map"
 		resultType="AuctionVO">
-		select * from (select * from auctionList_view
-		<if test="status != null">
-			<where>
-				<foreach collection="status" item="st" separator="or">
-					item_status like '${st}%'
-				</foreach>
-			</where>
-		</if>
-		)
-
-
+		select * from 
+				(select * from auctionList_view
+					<if test="status != null">
+						<where>
+							<foreach collection="status" item="st" separator="or">
+								item_status like '${st}%'
+							</foreach>
+						</where>
+					</if>
+				)
+				
 		<if test="category != null">
 			<where>
 				subca_id in
-				<foreach collection="category" item="ca" separator="," open="("
-					close=")">
+				<foreach collection="category" item="ca" separator="," open="(" close=")">
 					#{ca}
 				</foreach>
 			</where>

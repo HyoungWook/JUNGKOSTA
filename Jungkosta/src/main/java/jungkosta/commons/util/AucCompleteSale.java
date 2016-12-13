@@ -35,41 +35,30 @@ public class AucCompleteSale extends Thread {
 
 	@Override
 	public void run() {
-
 		System.out.println("'구매확정' 버튼 입력 대기중");
-
 		List<AucCompleteSale> list = AuctionPaymentController.threadList;
-
 		System.out.println("현재 구매 확정 버튼 대기중 : " + list.size());
-
 		try {
-
 			for (int i = 0; i < 10; i++) {
 				Thread.sleep(1000);
-
 				if (flag) {
 					treadEnd(list);
 					return;
 				}
 			}
-
 			treadEnd(list);
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
 	private void treadEnd(List<AucCompleteSale> list) throws Exception {
-
 		for (AucCompleteSale thread : list) {
 			if (thread.getSale_id() == sale_id) {
 				list.remove(thread);
 				break;
 			}
 		}
-
 		service.updateSale_status(sale_id);
 	}
-
 }

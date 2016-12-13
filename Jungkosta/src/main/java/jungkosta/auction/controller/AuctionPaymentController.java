@@ -37,25 +37,18 @@ public class AuctionPaymentController {
 			HttpServletRequest request) throws Exception {
 
 		ResponseEntity<String> entity = null;
-
 		try {
 			AucAndBidVO view = service.readPurchase(vo.getBid_id());
-
 			String email = (String) request.getSession().getAttribute("email");
-
 			if (form_btn.equals("complete_btn")) {
 				service.registerPay(vo, view.getSale_id(), email);
-
 				AucCompleteSale thread = new AucCompleteSale(service, view.getSale_id());
 				threadList.add(thread);
 				thread.start();
-
 			} else {
 				service.cancelPay(view);
 			}
-
 			entity = new ResponseEntity<>("success", HttpStatus.OK);
-
 		} catch (Exception e) {
 			e.printStackTrace();
 			entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
