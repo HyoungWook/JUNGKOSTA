@@ -75,6 +75,7 @@ public class MessageController {
 		
 		ResponseEntity<Integer> entity=null;
 		
+		
 		if(email != null)
 		{
 			entity = new ResponseEntity<Integer>(service.messageCheck(email),HttpStatus.OK);

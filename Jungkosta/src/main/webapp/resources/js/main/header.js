@@ -13,7 +13,6 @@ $(function() {
 				success : function(data) {
 						
 					var value = '메시지 수신';
-
 					$('#a_message_ws').html(value + ' (' + data + ')');
 
 				},
